@@ -1,12 +1,22 @@
-import React from 'react';
+import React, { Component } from 'react'
+import Slideshow from "./Components/Slideshow"
+import MurmurBook from "./Components/MurmurBook"
 
-
-function App() {
-  return (
-    <div className="App">
-      
-    </div>
-  );
+export default class App extends Component {
+  state = {
+    showImage: true
+  }
+  render() {
+    const {showImage} = this.state;
+    return (<>{showImage ? <Slideshow/> : <MurmurBook/>}</>)
+  }
+  componentDidMount = () => {
+    setTimeout(
+      function(){
+      this.setState({showImage: false});
+    }
+    .bind(this),
+    3000
+    )
+  }
 }
-
-export default App;
