@@ -1,0 +1,16 @@
+body {
+    font-family: 'Bevan', cursive;
+}
+
+h1 {
+    font-size: 45px;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+ul {
+    list-style-type: none;
+}

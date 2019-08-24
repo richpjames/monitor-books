@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./App.css"
 import Slideshow from "./Components/Slideshow";
 import MurmurBook from "./Components/MurmurBook";
 
@@ -11,9 +12,9 @@ export default class App extends Component {
     return (
       <>
         {
-          /* <>{showImage ? <Slideshow/> :  */
-        }
-        <MurmurBook />
+           showImage ? <Slideshow/> :  
+        
+        <MurmurBook />}
       </>
     );
   }
