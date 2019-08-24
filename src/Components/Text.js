@@ -5,7 +5,11 @@ const LeftSection = styled.p`
 width: 45%;`
 const RightSection = styled.p`
 width: 45%;`
-const TextWrapper = styled.section`display: flex; justify-content: space-between;`
+const TextWrapper = styled.section`
+display: flex; 
+justify-content: space-between;     
+font-family: "GT America", sans-serif;
+`
 
 const Text = () => {
   return (

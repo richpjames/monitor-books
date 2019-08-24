@@ -9,6 +9,7 @@ const Nav = styled.nav`
   margin-left: auto;
   margin-right:auto;
   margin-top: 10vh;
+  font-family: "GT America", sans-serif;
 `;
 const Logo = styled.img`
   height: 100px;
@@ -26,7 +27,7 @@ const NavBar = () => {
         src="https://www.monitorbooks.co.uk/img/monitor-bw-resized.jpg"
       />
       <NavLinks>
-        <NavItem>Contact</NavItem>
+        <NavItem> <a href="mailto:editor@monitorbooks.co.uk">Contact</a></NavItem>
         <NavItem>About</NavItem>
       </NavLinks>
     </Nav>
