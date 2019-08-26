@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./App.css"
+import "./App.css";
 import Slideshow from "./Components/Slideshow";
 import MurmurBook from "./Components/MurmurBook";
 
@@ -9,14 +9,7 @@ export default class App extends Component {
   };
   render() {
     const { showImage } = this.state;
-    return (
-      <>
-        {
-           showImage ? <Slideshow/> :  
-        
-        <MurmurBook />}
-      </>
-    );
+    return <>{showImage ? <Slideshow /> : <MurmurBook />}</>;
   }
   componentDidMount = () => {
     setTimeout(
