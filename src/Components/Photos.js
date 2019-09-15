@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Img from 'react-image'
 
 const PhotoWrap = styled.section`
   min-height: 50vh;
@@ -21,13 +22,16 @@ const Photo = styled.div`
   }
 `;
 
+const paths = [1,2,3,4,5,6]
+const path = "http://www.murmurbooks.co.uk/img/ant_img/"
 export default function Photos() {
   return (
     <PhotoWrap className="PhotoWrap">
-      <Photo className="Photo"></Photo>
-      <Photo className="Photo"></Photo>
-      <Photo className="Photo"></Photo>
-      <Photo className="Photo"></Photo>
+      {paths.map(photo => {
+        return <Img src={`require('${path}${photo}.jpeg')`} alt="Murmur Book"/>
+      })}
+      {/* <Photo className="Photo"></Photo> */}
+      
     </PhotoWrap>
   );
 }
