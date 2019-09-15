@@ -1,5 +1,8 @@
-import React from "react";
+import React, { Component } from "react";
 import styled from "styled-components";
+import Lightbox from "react-image-lightbox";
+import "react-image-lightbox/style.css";
+import IndividualPhoto from "./IndividualPhoto";
 
 const PhotoWrap = styled.section`
   min-height: 50vh;
@@ -9,25 +12,71 @@ const PhotoWrap = styled.section`
   margin-top: 3vh;
 `;
 
-const Photo = styled.div`
-  border: 1px solid black;
-  min-width: 45%;
-  display: flex;
-  margin: 2%;
-  max-height: 20vw;
-  @media screen and (max-width: 500px) {
-    margin: 0.5%;
-    width: 100%;
-  }
-`;
+const photoNumbers = [1, 2, 3, 4, 5, 6];
+const mainURL = "http://www.monitorbooks.co.uk/img/ant_img/";
+const thumbURL = `http://www.monitorbooks.co.uk/img/ant_img/`;
+const imageUrls = photoNumbers.map(photo => `${mainURL}${photo}.jpg`);
+const thumbUrls = photoNumbers.map(photo => `${thumbURL}${photo}.jpg`);
 
-export default function Photos() {
-  return (
-    <PhotoWrap className="PhotoWrap">
-      <Photo className="Photo"></Photo>
-      <Photo className="Photo"></Photo>
-      <Photo className="Photo"></Photo>
-      <Photo className="Photo"></Photo>
-    </PhotoWrap>
-  );
+export default class Photos extends Component {
+  state = {
+    photoIndex: 0,
+    isOpen: false
+  };
+
+  render() {
+    const { photoIndex, isOpen } = this.state;
+    // const photoReel = imageUrls.map((url, i) => {
+    //   return (
+    //     <IndividualPhoto
+    //       className="IndividualPhoto"
+    //       openLightbox={this.openLightbox}
+    //       index={i}
+    //       photo={url}
+    //       key={url}
+    //     />
+    //   );
+    // });
+    const thumbReel = thumbUrls.map((url, i) => {
+      return (
+        <IndividualPhoto
+          className="IndividualPhoto"
+          openLightbox={this.openLightbox}
+          index={i}
+          photo={url}
+          key={url}
+        />
+      );
+    });
+
+    return (
+      <>
+        <PhotoWrap className="ImagesWrapper">{thumbReel}</PhotoWrap>
+        {isOpen && (
+          <Lightbox
+            mainSrc={imageUrls[photoIndex]}
+            nextSrc={imageUrls[(photoIndex + 1) % imageUrls.length]}
+            prevSrc={
+              imageUrls[(photoIndex + imageUrls.length - 1) % imageUrls.length]
+            }
+            onCloseRequest={() => this.setState({ isOpen: false })}
+            onMovePrevRequest={() =>
+              this.setState({
+                photoIndex:
+                  (photoIndex + imageUrls.length - 1) % imageUrls.length
+              })
+            }
+            onMoveNextRequest={() =>
+              this.setState({
+                photoIndex: (photoIndex + 1) % imageUrls.length
+              })
+            }
+          />
+        )}
+      </>
+    );
+  }
+  openLightbox = i => {
+    this.setState({ isOpen: true, photoIndex: i });
+  };
 }
