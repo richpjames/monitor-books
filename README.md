@@ -1,4 +1,1 @@
-Website for                             __                
- )\/) _   _  o _)_ _   _    )_)  _   _ ( _  _ 
-(  ( (_) ) ) ( (_ (_) )    /__) (_) (_) )\ (  
-                                           _)
+Website for Monitor Books
