@@ -10,6 +10,9 @@ const PhotoWrap = styled.section`
   flex-wrap: wrap;
   max-width: 100%;
   margin-top: 3vh;
+
+  @media only screen and (max-width: 600px) {
+  }
 `;
 
 const photoNumbers = [1, 2, 3, 4, 5, 6];

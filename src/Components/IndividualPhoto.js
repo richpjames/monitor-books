@@ -8,10 +8,17 @@ const Photo = styled.img`
   margin: 2%;
   max-height: 20vw;
   @media screen and (max-width: 500px) {
+    max-height: 100vw;
     margin: 0.5%;
     width: 100%;
+    height: auto;
   }
 `;
+
+const PhotoWrap = styled.div`
+  min-height: 300px;
+`;
+
 export default function IndividualPhoto(props) {
   const { openLightbox, photo, index } = props;
 
