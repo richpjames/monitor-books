@@ -15,7 +15,7 @@ const PhotoWrap = styled.section`
   }
 `;
 
-const photoNumbers = [1, 2, 3, 4, 5, 6];
+const photoNumbers = [2, 3, 5, 6];
 const mainURL = "http://www.monitorbooks.co.uk/img/ant_img/";
 const thumbURL = `http://www.monitorbooks.co.uk/img/ant_img/`;
 const imageUrls = photoNumbers.map(photo => `${mainURL}${photo}.jpg`);
@@ -29,17 +29,7 @@ export default class Photos extends Component {
 
   render() {
     const { photoIndex, isOpen } = this.state;
-    // const photoReel = imageUrls.map((url, i) => {
-    //   return (
-    //     <IndividualPhoto
-    //       className="IndividualPhoto"
-    //       openLightbox={this.openLightbox}
-    //       index={i}
-    //       photo={url}
-    //       key={url}
-    //     />
-    //   );
-    // });
+  
     const thumbReel = thumbUrls.map((url, i) => {
       return (
         <IndividualPhoto

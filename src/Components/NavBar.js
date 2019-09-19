@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import {Link} from "@reach/router";
 import Logo from "./Logo";
 
 const Nav = styled.nav`
@@ -14,6 +15,8 @@ const Nav = styled.nav`
 
 const NavLinks = styled.ul`
   list-style: none;
+  text-align: right;
+  padding-top: 2px;  
 `;
 const NavItem = styled.li``;
 
@@ -25,7 +28,7 @@ const NavBar = () => {
         <NavItem>
           <a href="mailto:editor@monitorbooks.co.uk">Contact</a>
         </NavItem>
-        <NavItem>About</NavItem>
+        <NavItem><Link to="about">About</Link></NavItem>
       </NavLinks>
     </Nav>
   );

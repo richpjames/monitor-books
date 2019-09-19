@@ -26,12 +26,20 @@ const Banner = styled.img`
   }
 `;
 
+const BannerWrap = styled.div`
+width: 50%;
+margin-left: auto;
+margin-right: auto;
+`
+
 const Slideshow = () => {
   return (
+    <BannerWrap>
     <Banner
       src="https://www.monitorbooks.co.uk/img/banner.jpg"
       className="Banner"
     />
+    </BannerWrap>
   );
 };
 
