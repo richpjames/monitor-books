@@ -10,14 +10,13 @@ const PhotoWrap = styled.section`
   flex-wrap: wrap;
   max-width: 100%;
   margin-top: 3vh;
-
-  @media only screen and (max-width: 600px) {
-  }
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 const photoNumbers = [2, 3, 5, 6];
 const mainURL = "http://www.monitorbooks.co.uk/img/ant_img/";
-const thumbURL = `http://www.monitorbooks.co.uk/img/ant_img/`;
+const thumbURL = `http://www.monitorbooks.co.uk/img/ant_img/thumbnails/`;
 const imageUrls = photoNumbers.map(photo => `${mainURL}${photo}.jpg`);
 const thumbUrls = photoNumbers.map(photo => `${thumbURL}${photo}.jpg`);
 

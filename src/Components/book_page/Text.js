@@ -9,6 +9,7 @@ const LeftSection = styled.p`
 `;
 const RightSection = styled.p`
   width: 45%;
+  margin-right: 4%;
   @media screen and (max-width: 500px) {
     width: 100%;
   }
@@ -49,7 +50,7 @@ const Text = () => {
         Edition of 250<br></br>
         <br></br>
         Published September 2019<br></br>
-        £12
+        £13 + p&p
       </RightSection>
     </TextWrapper>
   );

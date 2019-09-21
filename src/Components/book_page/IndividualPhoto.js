@@ -5,18 +5,15 @@ import VisibilitySensor from "react-visibility-sensor";
 const Photo = styled.img`
   min-width: 45%;
   display: flex;
-  margin: 2%;
+  margin: 2.5%;
   max-height: 20vw;
+  min-height: 10vw;
   @media screen and (max-width: 500px) {
     max-height: 100vw;
     margin: 0.5%;
     width: 100%;
     height: auto;
   }
-`;
-
-const PhotoWrap = styled.div`
-  min-height: 300px;
 `;
 
 export default function IndividualPhoto(props) {
@@ -27,7 +24,7 @@ export default function IndividualPhoto(props) {
       <Photo
         onClick={() => openLightbox(index)}
         src={photo}
-        alt="photo of tape"
+        alt="photo of book"
       />
     </VisibilitySensor>
   );
