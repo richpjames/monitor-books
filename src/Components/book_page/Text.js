@@ -3,20 +3,23 @@ import styled from "styled-components";
 
 const LeftSection = styled.p`
   width: 45%;
+  margin-left: 0.5%;
   @media screen and (max-width: 500px) {
     width: 100%;
   }
 `;
 const RightSection = styled.p`
   width: 45%;
-  margin-right: 4%;
+  margin-right: 2.5%;
   @media screen and (max-width: 500px) {
     width: 100%;
   }
 `;
 const TextWrapper = styled.section`
   display: flex;
-  margin: 0 2%;
+  margin-left: 2%;
+  margin-right: 2%;
+  margin-top: 1%;
   @media screen and (max-width: 500px) {
     flex-direction: column;
   }
