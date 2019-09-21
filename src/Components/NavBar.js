@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import {Link} from "@reach/router";
+import { Link } from "@reach/router";
 import Logo from "./Logo";
+import BookDetails from "./book_page/BookDetails";
 
 const Nav = styled.nav`
   display: flex;
@@ -16,11 +17,12 @@ const Nav = styled.nav`
 const NavLinks = styled.ul`
   list-style: none;
   text-align: right;
-  padding-top: 2px;  
+  padding-top: 2px;
 `;
 const NavItem = styled.li``;
 
-const NavBar = () => {
+const NavBar = props => {
+  const { bookPage } = props;
   return (
     <Nav className="Nav">
       <Logo className="Logo" />
@@ -28,7 +30,15 @@ const NavBar = () => {
         <NavItem>
           <a href="mailto:editor@monitorbooks.co.uk">Contact</a>
         </NavItem>
-        <NavItem><Link to="about">About</Link></NavItem>
+        <NavItem>
+          {bookPage ? (
+            <Link to="about">About</Link>
+          ) : (
+            <Link to="/">
+              Murmur Anthology
+            </Link>
+          )}
+        </NavItem>
       </NavLinks>
     </Nav>
   );
