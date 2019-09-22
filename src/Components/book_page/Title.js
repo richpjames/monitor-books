@@ -7,12 +7,18 @@ padding-bottom: 3vh;
 font-size: 1.5em;
 width: 100%;
 margin-top: 0;
-margin-right 0;
+margin-right: 0;
 margin-bottom: 0;
 margin-left: 2.54%;
-font-family: "GT America", sans-serif;
+font-family: "Caslon", sans-serif;
 text-align: left;
-
+@font-face {
+    font-family: "Caslon";
+    src: url(ACaslonPro-Italic.otf) format("truetype");
+}
+p.customfont { 
+    font-family: "My Custom Font", Verdana, Tahoma;
+}
 `;
 
 const TitleWrap = styled.section`

@@ -15,8 +15,8 @@ const PhotoWrap = styled.section`
 `;
 
 const photoNumbers = [2, 3, 5, 6];
-const mainURL = "http://www.monitorbooks.co.uk/img/ant_img/";
-const thumbURL = `http://www.monitorbooks.co.uk/img/ant_img/thumbnails/`;
+const mainURL = "https://www.monitorbooks.co.uk/img/ant_img/";
+const thumbURL = `https://www.monitorbooks.co.uk/img/ant_img/thumbnails/`;
 const imageUrls = photoNumbers.map(photo => `${mainURL}${photo}.jpg`);
 const thumbUrls = photoNumbers.map(photo => `${thumbURL}${photo}.jpg`);
 
