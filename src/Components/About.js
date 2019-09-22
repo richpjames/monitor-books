@@ -1,20 +1,40 @@
 import React from "react";
-import styled from 'styled-components'
+import styled from "styled-components";
 
 const TextWrap = styled.p`
-margin-left: auto;
-margin-right: auto;
-padding-top: 5vh;
-width: 50%;`
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 2vh;
+  width: 50%;
+`;
 
+const Banner = styled.img`
+  position: relative;
+  width: 100%;
+  min-height: 100%;
+`;
+
+const BannerWrap = styled.div`
+  width: 35%;
+  margin: 0 auto;
+  position: relative;
+`;
 function About() {
   return (
-    <TextWrap>
-      Monitor is a publication platform for poetry and innovative writing based
-      in Manchester, UK. Its first publication, Murmur Anthology #1, is
-      published September 2019. Single-author releases are forthcoming from the
-      autumn
-    </TextWrap>
+    <>
+      <BannerWrap>
+        <Banner
+          src="https://www.monitorbooks.co.uk/img/logo.jpg"
+          className="Banner"
+        />
+      </BannerWrap>
+      <TextWrap>
+        Monitor is a publication platform for poetry, innovative writing and
+        criticism based in Manchester, UK. Its first publication, Murmur
+        Anthology #1, is published September 2019; single-author releases are
+        forthcoming from the winter.
+      </TextWrap>
+    </>
   );
 }
 

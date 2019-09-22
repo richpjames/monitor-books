@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "@reach/router";
 import Logo from "./Logo";
-import BookDetails from "./book_page/BookDetails";
 
 const Nav = styled.nav`
   display: flex;
@@ -18,8 +17,11 @@ const NavLinks = styled.ul`
   list-style: none;
   text-align: right;
   padding-top: 2px;
+  margin-right: 1.73vw
 `;
-const NavItem = styled.li``;
+const NavItem = styled.li`
+  margin-top: 0.5em;
+`;
 
 const NavBar = props => {
   const { bookPage } = props;

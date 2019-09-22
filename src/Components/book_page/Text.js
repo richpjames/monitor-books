@@ -2,28 +2,30 @@ import React from "react";
 import styled from "styled-components";
 
 const LeftSection = styled.p`
-  width: 45%;
+  width: 43%;
   margin-left: 0.5%;
-  @media screen and (max-width: 500px) {
-    width: 100%;
-  }
+
+
 `;
 const RightSection = styled.p`
   width: 45%;
-  margin-right: 2.5%;
+  margin-right: 0.5%;
+  margin-left: 11%;
+  text-align: right;
   @media screen and (max-width: 500px) {
     width: 100%;
   }
 `;
 const TextWrapper = styled.section`
   display: flex;
+  line-height: 1.3;
   margin-left: 2%;
   margin-right: 2%;
   margin-top: 1%;
   @media screen and (max-width: 500px) {
     flex-direction: column;
   }
-  justify-content: space-between;
+  justify-content: start;
 `;
 
 const Text = () => {
@@ -52,7 +54,7 @@ const Text = () => {
         Perfect bound with tracing paper dust-jacket<br></br>
         Edition of 250<br></br>
         <br></br>
-        Published September 2019<br></br>
+        Published 30th September 2019<br></br>
         £13 + p&p
       </RightSection>
     </TextWrapper>
