@@ -13,7 +13,7 @@ const Banner = styled.img`
   width: 100%;
   height: 100%;
   max-height: 100%;
-  `;
+`;
 
 const BannerWrap = styled.div`
   width: 35%;
@@ -31,7 +31,7 @@ function About() {
       </BannerWrap>
       <TextWrap>
         Monitor is a publication platform for poetry, innovative writing and
-        criticism based in Manchester, UK.Its first publication, Murmur
+        criticism based in Manchester, UK. Its first publication, Murmur
         Anthology #1, is published September 2019; single-author releases are
         forthcoming from the winter.
       </TextWrap>

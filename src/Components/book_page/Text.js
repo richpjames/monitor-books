@@ -56,7 +56,7 @@ const Text = () => {
         Perfect bound with tracing paper dust-jacket<br></br>
         Edition of 250<br></br>
         Published 30th September 2019<br></br>
-        £13 + p&p<br></br>
+        £13 + UK p&p<br></br>
       </RightSection>
     </TextWrapper>
   );
