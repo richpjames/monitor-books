@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Banner = styled.img`
   position: relative;
   width: 100%;
-  min-height: 100%;
+  max-height: 100%;
   -webkit-animation: fade-out 1s ease-out 8s both;
   animation: fade-out 1s ease-out 8s both;
   @-webkit-keyframes fade-out {

@@ -24,15 +24,16 @@ export default class MainPage extends Component {
   }
    render(){
      const {bookPage} = this.state;
-  return (
+  return (<>
     <BookWrap>
       <NavBar bookPage={bookPage} />
       <Router>
         <BookDetails path="/" setBookPage={this.setBookPage}/>
        <About path="about" />
       </Router>
-      <Footer />
     </BookWrap>
+          <Footer />
+</>
   );
 };
 }

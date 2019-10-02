@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-
 //USED TO CREATE BUTTON IMG
 // const FullWidthWrap = styled.div`
 //   margin-left: 4%;
@@ -30,11 +29,16 @@ const BuyButtonImg = styled.input`
   width: 150px;
   height: 40px;
 `;
+
+
 const PayPalForm = styled.form`
   width: 150px;
   padding-top: 4vh;
   margin-left: auto;
   margin-right: auto;
+  @media only screen and (max-width: 500px) {
+    margin-top: 7%;
+  }
 `;
 function BuyButton() {
   return (
@@ -51,7 +55,7 @@ function BuyButton() {
       ></input>
       <BuyButtonImg
         type="image"
-        src="https://www.monitorbooks.co.uk/img/preorder-button.png"
+        src="https://www.monitorbooks.co.uk/img/buy-button.png"
         border="0"
         name="submit"
         alt="Buy"

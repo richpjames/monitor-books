@@ -8,11 +8,11 @@ const Photo = styled.img`
   margin: 2.5%;
   max-height: 20vw;
   min-height: 10vw;
-  @media screen and (max-width: 500px) {
+  @media only screen and (max-width: 500px) {
     max-height: 100vw;
-    margin: 0.5%;
+    margin: 3% 0%;
     width: 100%;
-    height: auto;
+    height: 100%;
   }
 `;
 
