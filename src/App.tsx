@@ -4,7 +4,7 @@ import Slideshow from "./Components/Slideshow";
 import MainPage from "./Components/MainPage";
 
 const App = () => {
-  const [showImage, setShowImage] = useState(true);
+  const [showImage, setShowImage] = useState(false);
 
   useEffect(() => {
     setTimeout(function () {
