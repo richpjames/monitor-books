@@ -34,13 +34,16 @@ const Murmur = styled.h1`
 
 interface IProps {
   title: String;
+  author: String;
 }
 
 function Title(props: IProps) {
+  const { title, author } = props;
   return (
     <TitleWrap className="TitleWrap">
       <TitleText className="TitleText">
-        <Murmur>Murmur </Murmur>Anthology I
+        <Murmur>{author} </Murmur>
+        {title}
       </TitleText>
     </TitleWrap>
   );
