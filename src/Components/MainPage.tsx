@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Router } from "@reach/router";
 
-import { books } from "./data.json";
+import * as data from "./data.json";
 
 import NavBar from "./NavBar";
 import BookDetails from "./book_page/BookDetails";
@@ -20,7 +20,9 @@ const MainPage = () => {
       <BookWrap>
         <NavBar />
         <Router>
-          <BookDetails path="/" book={books[0]} />
+          {data.books.map((book) => (
+            <BookDetails path={book.slug} book={book} />
+          ))}
           <About path="about" />
         </Router>
       </BookWrap>
