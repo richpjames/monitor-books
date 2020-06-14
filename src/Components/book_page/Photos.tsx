@@ -21,7 +21,7 @@ const imageUrls = photoNumbers.map((photo) => `${mainURL}${photo}.jpg`);
 const thumbUrls = photoNumbers.map((photo) => `${thumbURL}${photo}.jpg`);
 
 interface IProps {
-  photos: [number, number, number, number];
+  photos: number[];
 }
 
 const Photos = (props: IProps) => {
