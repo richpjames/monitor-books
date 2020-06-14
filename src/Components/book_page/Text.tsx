@@ -25,10 +25,11 @@ const TextWrapper = styled.section`
   margin-left: 2%;
   margin-right: 2%;
   margin-top: 1%;
+  justify-content: start;
+  white-space: pre-line;
   @media only screen and (max-width: 500px) {
     flex-direction: column;
   }
-  justify-content: start;
 `;
 
 interface IProps {
