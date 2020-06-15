@@ -17,6 +17,7 @@
     "react-ga": "^2.7.0",
     "react-image-lightbox": "^5.1.1",
     "react-native-fast-image": "^7.0.2",
+    "react-redux": "^7.2.0",
     "react-scripts": "^3.4.1",
     "react-visibility-sensor": "^5.1.1",
     "styled-components": "^4.4.1",
