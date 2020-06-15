@@ -12,7 +12,7 @@ const App = () => {
     }, 3000);
   }, []);
 
-  return <> {showImage ? <Slideshow /> : <MainPage />} </>;
+  return <MainPage />;
 };
 
 export default App;
