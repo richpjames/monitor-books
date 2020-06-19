@@ -32,13 +32,12 @@ const NavBar = () => {
       <Logo />
       <NavLinks>
         <NavItem>
-          <a href="mailto:editor@monitorbooks.co.uk">Contact</a>
+          <Link to="/anthology">Murmur Anthology</Link>
         </NavItem>
         <NavItem>
-          <Link to="about">About</Link>
-
-          <Link to="/anthology">Murmur Anthology</Link>
           <Link to="/propositions">Propositions</Link>
+        </NavItem>
+        <NavItem>
           <Link to="/basket">Basket</Link>
         </NavItem>
       </NavLinks>
