@@ -3,7 +3,7 @@ import styled from "styled-components/macro";
 
 const LogoWrap = styled.div`
   width: 100px;
-  padding-top: 0.5em;
+  padding-top: 1.5em;
   margin-left: 0.62%;
 `;
 
