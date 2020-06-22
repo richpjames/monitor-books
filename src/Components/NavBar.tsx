@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import { Link } from "@reach/router";
 import Logo from "./Logo";
 
@@ -12,7 +12,7 @@ const Nav = styled.nav`
   margin-right: auto;
   margin-top: 10vh;
   @media only screen and (max-width: 500px) {
-  margin-top: 5vh;
+    margin-top: 5vh;
   }
 `;
 
@@ -20,29 +20,25 @@ const NavLinks = styled.ul`
   list-style: none;
   text-align: right;
   padding-top: 2px;
-  margin-right: 1.73vw
+  margin-right: 1.73vw;
 `;
 const NavItem = styled.li`
   margin-top: 0.5em;
 `;
 
-const NavBar = props => {
-  const { bookPage } = props;
+const NavBar = () => {
   return (
-    <Nav className="Nav">
-      <Logo className="Logo" />
+    <Nav>
+      <Logo />
       <NavLinks>
         <NavItem>
-          <a href="mailto:editor@monitorbooks.co.uk">Contact</a>
+          <Link to="/anthology">Murmur Anthology</Link>
         </NavItem>
         <NavItem>
-          {bookPage ? (
-            <Link to="about">About</Link>
-          ) : (
-            <Link to="/">
-              Murmur Anthology
-            </Link>
-          )}
+          <Link to="/propositions">Propositions</Link>
+        </NavItem>
+        <NavItem>
+          <Link to="/basket">Basket</Link>
         </NavItem>
       </NavLinks>
     </Nav>

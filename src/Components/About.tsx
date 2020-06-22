@@ -1,4 +1,5 @@
 import React from "react";
+import { RouteComponentProps } from "@reach/router";
 import styled from "styled-components";
 
 const TextWrap = styled.p`
@@ -20,7 +21,10 @@ const BannerWrap = styled.div`
   margin: 0 auto;
   position: relative;
 `;
-function About() {
+
+interface IProps extends RouteComponentProps {}
+
+const About = (props: IProps) => {
   return (
     <>
       <BannerWrap>
@@ -37,6 +41,6 @@ function About() {
       </TextWrap>
     </>
   );
-}
+};
 
 export default About;

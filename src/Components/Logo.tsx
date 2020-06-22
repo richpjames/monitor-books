@@ -1,10 +1,10 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 
 const LogoWrap = styled.div`
   width: 100px;
-  padding-top: 0.5em;
-  margin-left: 0.62%;`;
+  margin-left: 0.62%;
+`;
 
 const Logo = () => {
   return (
