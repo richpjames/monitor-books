@@ -3,8 +3,8 @@ import styled from "styled-components";
 
 const LogoWrap = styled.div`
   width: 100px;
-  margin-bottom: -10%;
-`;
+  padding-top: 0.5em;
+  margin-left: 0.62%;`;
 
 const Logo = () => {
   return (

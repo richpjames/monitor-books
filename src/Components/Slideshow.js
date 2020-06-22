@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Banner = styled.img`
   position: relative;
   width: 100%;
-  min-height: 100%;
+  max-height: 100%;
   -webkit-animation: fade-out 1s ease-out 8s both;
   animation: fade-out 1s ease-out 8s both;
   @-webkit-keyframes fade-out {
@@ -26,12 +26,24 @@ const Banner = styled.img`
   }
 `;
 
+const BannerWrap = styled.div`
+width: 35%;
+left: 50%;
+margin: 0;
+position: absolute;
+top: 45%;
+-ms-transform: translate(-50%, -50%);
+transform: translate(-50%, -50%);
+`;
+
 const Slideshow = () => {
   return (
-    <Banner
-      src="https://www.monitorbooks.co.uk/img/banner.jpg"
-      className="Banner"
-    />
+    <BannerWrap>
+      <Banner
+        src="https://www.monitorbooks.co.uk/img/logo.jpg"
+        className="Banner"
+      />
+    </BannerWrap>
   );
 };
 

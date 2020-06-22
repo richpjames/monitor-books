@@ -1,0 +1,1 @@
+{"version":3,"sources":["App.css"],"names":[],"mappings":"AAAA,KACI,iCACJ,CAEA,GACI,cACJ,CAEA,EACI,UAAY,CACZ,oBACJ,CAEA,GACI,oBACJ","file":"main.d95bda3d.chunk.css","sourcesContent":["body {\n    font-family: \"GT America\", sans-serif;\n}\n\nh1 {\n    font-size: 45px;\n}\n\na {\n    color: black;\n    text-decoration: none;\n}\n\nul {\n    list-style-type: none;\n}"]}
