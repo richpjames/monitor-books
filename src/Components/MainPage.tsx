@@ -20,13 +20,7 @@ const MainPage = () => {
       <BookWrap>
         <NavBar />
         <Router>
-          {data.books.map((book) =>
-            book.slug === "propositions" ? (
-              <BookDetails path={book.slug} book={book} default />
-            ) : (
-              <BookDetails path={book.slug} book={book} />
-            )
-          )}
+          <BookDetails path={data.slug} book={data} />
           <About path="about" />
         </Router>
       </BookWrap>
