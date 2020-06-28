@@ -6,8 +6,6 @@ const VideoWrap = styled.div`
   padding: 56.25% 0 0 0;
   margin-left: 5%;
   margin-right: 5%;
-  margin-top: 0;
-  margin-bottom: 0;
 `;
 
 const Iframe = styled.iframe`
