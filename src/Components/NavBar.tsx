@@ -11,8 +11,10 @@ const Nav = styled.nav`
   margin-left: auto;
   margin-right: auto;
   margin-top: 10vh;
-  @media only screen and (max-width: 500px) {
+  font-size: 2vh;
+  @media only screen and (max-width: 600px) {
     margin-top: 5vh;
+    font-size: 1.7vh;
   }
 `;
 
@@ -21,24 +23,31 @@ const NavLinks = styled.ul`
   text-align: right;
   padding-top: 2px;
   margin-right: 1.73vw;
+  @media only screen and (max-width: 600px) {
+    margin-top: 2.5vh;
+    margin-right: 0;
+    padding-left: 0;
+  }
 `;
 const NavItem = styled.li`
   margin-top: 0.5em;
+  @media only screen and (max-width: 600px) {
+    margin-top: 1em;
+  }
 `;
 
 const NavBar = () => {
   return (
     <Nav>
-      <Logo />
+      <Link to="/about">
+        <Logo />
+      </Link>
       <NavLinks>
         <NavItem>
           <Link to="/anthology">Murmur Anthology</Link>
         </NavItem>
         <NavItem>
-          <Link to="/propositions">Propositions</Link>
-        </NavItem>
-        <NavItem>
-          <Link to="/basket">Basket</Link>
+          <Link to="/murmur-episode-one">Murmur Reading Series</Link>
         </NavItem>
       </NavLinks>
     </Nav>

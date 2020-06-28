@@ -27,20 +27,20 @@ const Banner = styled.img`
 `;
 
 const BannerWrap = styled.div`
-width: 35%;
-left: 50%;
-margin: 0;
-position: absolute;
-top: 45%;
--ms-transform: translate(-50%, -50%);
-transform: translate(-50%, -50%);
+  width: 35%;
+  left: 50%;
+  margin: 0;
+  position: absolute;
+  top: 45%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 `;
 
 const Slideshow = () => {
   return (
     <BannerWrap>
       <Banner
-        src="https://www.monitorbooks.co.uk/img/logo.jpg"
+        src="https://www.monitorbooks.co.uk/img/logo.png"
         className="Banner"
       />
     </BannerWrap>

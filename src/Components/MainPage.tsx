@@ -1,27 +1,41 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Router } from "@reach/router";
 
-import * as data from "./data.json";
-
+import { getBooks, getVideos } from "../Hooks";
+import VideoPage from "./VideoPage/VideoPage";
 import NavBar from "./NavBar";
-import BookDetails from "./book_page/BookDetails";
+import BookDetails from "./BookPage";
 import Footer from "./Footer";
 import About from "./About";
 
 const BookWrap = styled.div`
   width: 70vw;
   margin: 0 auto;
+  @media only screen and (max-width: 600px) {
+    width: 80vw;
+  }
 `;
 
 const MainPage = () => {
+  const [books, setBooks] = useState<Book[]>();
+  const [videos, setVideos] = useState<Video[]>();
+
+  useEffect(() => {
+    setBooks(getBooks());
+    setVideos(getVideos());
+  }, []);
+
   return (
     <>
       <BookWrap>
         <NavBar />
         <Router>
-          {data.books.map((book) => (
-            <BookDetails path={book.slug} book={book} />
+          {books?.map((book: Book) => (
+            <BookDetails path={book.slug} book={book} default />
+          ))}
+          {videos?.map((video) => (
+            <VideoPage path={video.slug} video={video} />
           ))}
           <About path="about" />
         </Router>

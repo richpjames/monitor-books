@@ -5,13 +5,8 @@ import "react-image-lightbox/style.css";
 import IndividualPhoto from "./IndividualPhoto";
 
 const PhotoWrap = styled.section`
-  min-height: 50vh;
   display: flex;
   flex-wrap: wrap;
-  max-width: 100%;
-  margin-top: 3vh;
-  margin-left: auto;
-  margin-right: auto;
 `;
 
 const photoNumbers = [2, 3, 5, 6];
