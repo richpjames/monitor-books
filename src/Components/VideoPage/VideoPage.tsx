@@ -2,7 +2,7 @@ import React from "react";
 import { RouteComponentProps } from "@reach/router";
 
 import Video from "./Video";
-import Title from "../Common/TitleVideo";
+import VideoTitle from "./VideoTitle";
 import Text from "../Common/Text";
 
 interface IProps extends RouteComponentProps {
@@ -14,7 +14,7 @@ export default function VideoPage(props: IProps) {
   return (
     <>
       <Video url={url} title={title} />
-      <Title title={creator} subtitle={title} />
+      <VideoTitle title={creator} subtitle={title} />
       <Text leftText={description1} rightText={description2} />
     </>
   );
