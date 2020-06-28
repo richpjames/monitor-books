@@ -14,10 +14,11 @@ export default function VideoPage(props: IProps) {
     <>
       <Video url={url} title={title} />
       <MetaSection
-        title={title}
-        subtitle={creator}
+        title={creator}
+        subtitle={title}
         leftText={description1}
         rightText={description2}
+        split={true}
       />
     </>
   );
