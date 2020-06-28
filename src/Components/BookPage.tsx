@@ -4,6 +4,7 @@ import { RouteComponentProps } from "@reach/router";
 import Photos from "./Common/Photos";
 import MetaSection from "./Common/MetaSection";
 import { PageContainer } from "./Common/Common";
+import BuyButton from "./Common/BuyButton";
 
 interface IProps extends RouteComponentProps {
   book: Book;
@@ -20,6 +21,7 @@ const BookDetails = (props: IProps) => {
         leftText={blurb1}
         rightText={blurb2}
       />
+      <BuyButton />
     </PageContainer>
   );
 };
