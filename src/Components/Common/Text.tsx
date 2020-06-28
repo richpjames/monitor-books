@@ -4,7 +4,11 @@ import styled from "styled-components";
 const LeftSection = styled.p`
   margin-left: 0.5%;
   width: 45%;
+  text-align: justify;
+  border-bottom: none;
   @media only screen and (max-width: 500px) {
+    padding-bottom: 25px;
+    border-bottom: 1px solid black;
     margin-right: 0%;
     width: 100%;
   }
@@ -12,11 +16,12 @@ const LeftSection = styled.p`
 const RightSection = styled.p`
   width: 45%;
   margin-right: 0.5%;
-  margin-left: 11%;
-  text-align: right;
+  margin-left: 9%;
+  text-align: justify;
   @media only screen and (max-width: 500px) {
     width: 100%;
     margin-right: 0%;
+    margin-left: 0%;
   }
 `;
 const TextWrapper = styled.section`
@@ -27,7 +32,9 @@ const TextWrapper = styled.section`
   margin-top: 1%;
   justify-content: start;
   white-space: pre-line;
+  font-size: 1em;
   @media only screen and (max-width: 500px) {
+    font-size: 0.75em;
     flex-direction: column;
   }
 `;
