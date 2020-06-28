@@ -12,6 +12,9 @@ import About from "./About";
 const BookWrap = styled.div`
   width: 70vw;
   margin: 0 auto;
+  @media only screen and (max-width: 600px) {
+    width: 80vw;
+  }
 `;
 
 const MainPage = () => {
@@ -29,7 +32,7 @@ const MainPage = () => {
         <NavBar />
         <Router>
           {books?.map((book: Book) => (
-            <BookDetails path={book.slug} book={book} />
+            <BookDetails path={book.slug} book={book} default />
           ))}
           {videos?.map((video) => (
             <VideoPage path={video.slug} video={video} />
