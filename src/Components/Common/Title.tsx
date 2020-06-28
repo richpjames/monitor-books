@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 
 const TitleText = styled.h1`
   font-weight: 200;
@@ -28,16 +28,18 @@ const TitleCopy = styled.h1`
 `;
 
 interface IProps {
-  title: String;
-  subtitle: String;
+  title: string;
+  subtitle: string;
+  split?: boolean;
 }
 
 function Title(props: IProps) {
-  const { title, subtitle } = props;
+  const { title, subtitle, split } = props;
   return (
     <TitleWrap className="TitleWrap">
       <TitleText className="TitleText">
         <TitleCopy>{subtitle} </TitleCopy>
+        {split && <br></br>}
         {title}
       </TitleText>
     </TitleWrap>
