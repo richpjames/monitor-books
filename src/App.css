@@ -1,3 +1,13 @@
+@font-face {
+    font-family: "GT America";
+    src: url(https://www.richjames.co.uk/fonts/gt-america-standard-regular-webfont.woff) format("woff");
+}
+
+@font-face {
+    font-family: "Caslon";
+    src: url(https://www.richjames.co.uk/fonts/ACaslonPro-Italic.otf) format("truetype");
+}
+
 body {
     font-family: "GT America", sans-serif;
 }
