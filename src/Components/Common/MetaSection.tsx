@@ -8,14 +8,14 @@ interface IProps {
   subtitle: string;
   leftText: string;
   rightText: string;
-  split?: boolean;
+  splitLineHeader?: boolean;
 }
 
 const MetaSection = (props: IProps) => {
-  const { title, subtitle, leftText, rightText, split } = props;
+  const { title, subtitle, leftText, rightText, splitLineHeader } = props;
   return (
     <>
-      <Title title={title} subtitle={subtitle} split={split} />
+      <Title title={title} subtitle={subtitle} split={splitLineHeader} />
       <Text leftText={leftText} rightText={rightText} />
     </>
   );
