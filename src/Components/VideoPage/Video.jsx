@@ -6,6 +6,7 @@ const VideoWrap = styled.div`
   padding: 56.25% 0 0 0;
   margin-left: 5%;
   margin-right: 5%;
+  margin-top: 6vh;
 `;
 
 const Iframe = styled.iframe`
@@ -25,6 +26,9 @@ const Video = ({ url, title }) => {
         allow="autoplay; fullscreen"
         allowfullscreen
         frameBorder="0"
+        allowFullScreen
+        webkitallowfullscreen
+        mozallowfullscreen
         title={title}
       />
     </VideoWrap>
