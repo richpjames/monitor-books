@@ -34,7 +34,7 @@ interface IProps {
   split?: boolean;
 }
 
-function Title(props: IProps) {
+function VideoTitle(props: IProps) {
   const { title, subtitle, split } = props;
   return (
     <TitleWrap className="TitleWrap">
@@ -47,4 +47,4 @@ function Title(props: IProps) {
   );
 }
 
-export default Title;
+export default VideoTitle;
