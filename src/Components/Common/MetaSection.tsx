@@ -2,21 +2,21 @@ import React from "react";
 
 import Title from "./Title";
 import Text from "./Text";
-import BuyButton from "./BuyButton";
 
 interface IProps {
   title: string;
   subtitle: string;
   leftText: string;
   rightText: string;
+  split?: boolean;
 }
+
 const MetaSection = (props: IProps) => {
-  const { title, subtitle, leftText, rightText } = props;
+  const { title, subtitle, leftText, rightText, split } = props;
   return (
     <>
-      <Title title={title} subtitle={subtitle} />
+      <Title title={title} subtitle={subtitle} split={split} />
       <Text leftText={leftText} rightText={rightText} />
-      <BuyButton />
     </>
   );
 };
