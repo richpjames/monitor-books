@@ -2,11 +2,6 @@ import React from "react";
 import styled from "styled-components";
 
 const TitleText = styled.h1`
-  @font-face {
-    font-family: "Caslon";
-    src: url(https://www.richjames.co.uk/fonts/ACaslonPro-Italic.otf)
-      format("truetype");
-  }
   font-weight: 200;
   padding-top: 5vh;
   padding-bottom: 3vh;
@@ -25,7 +20,7 @@ const TitleWrap = styled.span`
   width: 100%;
 `;
 
-const Murmur = styled.h1`
+const TitleCopy = styled.h1`
   display: inline;
   font-family: "GT America", sans-serif;
   font-size: 1em;
@@ -34,15 +29,15 @@ const Murmur = styled.h1`
 
 interface IProps {
   title: String;
-  author: String;
+  subtitle: String;
 }
 
 function Title(props: IProps) {
-  const { title, author } = props;
+  const { title, subtitle } = props;
   return (
     <TitleWrap className="TitleWrap">
       <TitleText className="TitleText">
-        <Murmur>{author} </Murmur>
+        <TitleCopy>{subtitle} </TitleCopy>
         {title}
       </TitleText>
     </TitleWrap>
