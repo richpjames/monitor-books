@@ -1,8 +1,9 @@
 import React from "react";
 import { RouteComponentProps } from "@reach/router";
 
-import MetaSection from "../Common/MetaSection";
 import Video from "./Video";
+import Title from "../Common/TitleVideo";
+import Text from "../Common/Text";
 
 interface IProps extends RouteComponentProps {
   video: Video;
@@ -13,13 +14,8 @@ export default function VideoPage(props: IProps) {
   return (
     <>
       <Video url={url} title={title} />
-      <MetaSection
-        title={creator}
-        subtitle={title}
-        leftText={description1}
-        rightText={description2}
-        split={true}
-      />
+      <Title title={creator} subtitle={title} />
+      <Text leftText={description1} rightText={description2} />
     </>
   );
 }
