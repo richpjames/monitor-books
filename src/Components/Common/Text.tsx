@@ -19,7 +19,12 @@ const LeftSection = styled.p`
 const RightSection = styled(LeftSection)`
   margin-right: 0.5%;
   margin-left: 9%;
+  @media only screen and (max-width: 500px) {
+    margin-left: 0;
+    margin-top: 5%;
+  }
 `;
+
 const TextWrapper = styled.section`
   display: flex;
   margin-left: 2%;
