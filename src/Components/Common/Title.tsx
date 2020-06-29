@@ -21,10 +21,6 @@ const TitleText = styled.h1`
   }
 `;
 
-const TitleWrap = styled.span`
-  width: 100%;
-`;
-
 const TitleCopy = styled.h1`
   display: inline;
   font-family: "GT America", sans-serif;
@@ -43,15 +39,12 @@ interface IProps {
 }
 
 function Title(props: IProps) {
-  const { title, subtitle, split } = props;
+  const { title, subtitle } = props;
   return (
-    <TitleWrap className="TitleWrap">
-      <TitleText className="TitleText">
-        <TitleCopy>{subtitle} </TitleCopy>
-        {split && <br></br>}
-        {title}
-      </TitleText>
-    </TitleWrap>
+    <TitleText>
+      <TitleCopy>{subtitle} </TitleCopy>
+      {title}
+    </TitleText>
   );
 }
 
