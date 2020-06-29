@@ -1,11 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 
+import { paragraphSplitter } from "../../utils";
+
 const LeftSection = styled.p`
   margin-left: 0.5%;
   width: 45%;
   text-align: justify;
   border-bottom: none;
+  line-height: 1.7;
   @media only screen and (max-width: 500px) {
     padding-bottom: 25px;
     border-bottom: 1px solid black;
@@ -13,20 +16,12 @@ const LeftSection = styled.p`
     width: 100%;
   }
 `;
-const RightSection = styled.p`
-  width: 45%;
+const RightSection = styled(LeftSection)`
   margin-right: 0.5%;
   margin-left: 9%;
-  text-align: justify;
-  @media only screen and (max-width: 500px) {
-    width: 100%;
-    margin-right: 0%;
-    margin-left: 0%;
-  }
 `;
 const TextWrapper = styled.section`
   display: flex;
-  line-height: 1.3;
   margin-left: 2%;
   margin-right: 2%;
   margin-top: 1%;
@@ -40,16 +35,20 @@ const TextWrapper = styled.section`
 `;
 
 interface IProps {
-  leftText: String;
-  rightText: String;
+  leftText: string;
+  rightText: string;
 }
 
 const Text = (props: IProps) => {
   const { leftText, rightText } = props;
   return (
     <TextWrapper className="TextWrapper">
-      <LeftSection className="LeftSection">{leftText}</LeftSection>
-      <RightSection className="RightSection">{rightText}</RightSection>
+      <LeftSection className="LeftSection">
+        {paragraphSplitter(leftText)}
+      </LeftSection>
+      <RightSection className="RightSection">
+        {paragraphSplitter(rightText)}
+      </RightSection>
     </TextWrapper>
   );
 };
