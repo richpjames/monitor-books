@@ -16,11 +16,10 @@ interface IProps {
 }
 
 function VideoTitle(props: IProps) {
-  const { title, subtitle, split } = props;
+  const { title, subtitle } = props;
   return (
     <AmericaTitle>
       <TitleCopy>{subtitle}: </TitleCopy>
-      {split && <br></br>}
       {title}
     </AmericaTitle>
   );
