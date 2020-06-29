@@ -2,7 +2,8 @@ import React from "react";
 import { RouteComponentProps } from "@reach/router";
 
 import Photos from "./Common/Photos";
-import MetaSection from "./Common/MetaSection";
+import Title from "./Common/Title";
+import Text from "./Common/Text";
 import { PageContainer } from "./Common/Common";
 import BuyButton from "./Common/BuyButton";
 
@@ -15,12 +16,8 @@ const BookDetails = (props: IProps) => {
   return (
     <PageContainer>
       <Photos photos={photos} />
-      <MetaSection
-        title={title}
-        subtitle={author}
-        leftText={blurb1}
-        rightText={blurb2}
-      />
+      <Title title={title} subtitle={author} />
+      <Text leftText={blurb1} rightText={blurb2} />
       <BuyButton />
     </PageContainer>
   );
