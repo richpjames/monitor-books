@@ -16,7 +16,7 @@ const BookDetails = (props: IProps) => {
   return (
     <PageContainer>
       <Photos photos={photos} />
-      <Title title={title} subtitle={author} />
+      <Title title={author} subtitle={title} />
       <Text leftText={blurb1} rightText={blurb2} />
       <BuyButton />
     </PageContainer>
