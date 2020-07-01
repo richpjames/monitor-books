@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+import Logo from "../assets/img/logo.png";
+
 const Banner = styled.img`
   position: relative;
   width: 100%;
@@ -39,10 +41,7 @@ const BannerWrap = styled.div`
 const Slideshow = () => {
   return (
     <BannerWrap>
-      <Banner
-        src="https://www.monitorbooks.co.uk/img/logo.png"
-        className="Banner"
-      />
+      <Banner src={Logo} className="Banner" />
     </BannerWrap>
   );
 };
