@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import { paragraphSplitter } from "../../utils";
 
-const LeftSection = styled.p`
+const LeftSection = styled.div`
   margin-left: 0.5%;
   width: 45%;
   text-align: justify;
