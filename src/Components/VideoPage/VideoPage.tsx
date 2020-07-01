@@ -14,7 +14,7 @@ export default function VideoPage(props: IProps) {
   return (
     <>
       <Video url={url} title={title} />
-      <VideoTitle title={creator} subtitle={title} />
+      <VideoTitle title={title} subtitle={creator} />
       <Text leftText={description1} rightText={description2} />
     </>
   );
