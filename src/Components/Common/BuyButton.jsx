@@ -4,7 +4,6 @@ import styled from "styled-components";
 // const FullWidthWrap = styled.div`
 //   margin-left: 4%;
 //   margin-right: 4%;
-
 //   @media only screen and (max-width: 600px) {
 //     padding-bottom: 5%;
 //   }
@@ -30,7 +29,6 @@ const BuyButtonImg = styled.input`
   height: 40px;
 `;
 
-
 const PayPalForm = styled.form`
   width: 150px;
   padding-top: 4vh;
@@ -55,7 +53,7 @@ function BuyButton() {
       ></input>
       <BuyButtonImg
         type="image"
-        src="https://www.monitorbooks.co.uk/img/buy-button.png"
+        src="https://www.richjames.co.uk/img/buy-button.png"
         border="0"
         name="submit"
         alt="Buy"
