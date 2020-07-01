@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css";
+
 import IndividualPhoto from "./IndividualPhoto";
 
 const PhotoWrap = styled.section`
@@ -9,11 +10,13 @@ const PhotoWrap = styled.section`
   flex-wrap: wrap;
 `;
 
+const mainURL = `https://www.richjames.co.uk/img/ant_img/`;
+const thumbURL = `${mainURL}thumbnails/`;
+
 const photoNumbers = [2, 3, 5, 6];
-const mainURL = "https://www.monitorbooks.co.uk/img/ant_img/";
-const thumbURL = `https://www.monitorbooks.co.uk/img/ant_img/thumbnails/`;
-const imageUrls = photoNumbers.map((photo) => `${mainURL}${photo}.jpg`);
-const thumbUrls = photoNumbers.map((photo) => `${thumbURL}${photo}.jpg`);
+
+const imageURLs = photoNumbers.map((photo) => `${mainURL}${photo}.jpg`);
+const thumbURLs = photoNumbers.map((photo) => `${thumbURL}${photo}.jpg`);
 
 interface IProps {
   photos: number[];
@@ -28,7 +31,7 @@ const Photos = (props: IProps) => {
     setGalleyOpen(true);
   };
 
-  const thumbReel = thumbUrls.map((url, i) => {
+  const thumbReel = thumbURLs.map((url, i) => {
     return (
       <IndividualPhoto
         openLightbox={openLightbox}
@@ -44,19 +47,19 @@ const Photos = (props: IProps) => {
       <PhotoWrap className="ImagesWrapper">{thumbReel}</PhotoWrap>
       {galleryOpen && (
         <Lightbox
-          mainSrc={imageUrls[photoIndex]}
-          nextSrc={imageUrls[(photoIndex + 1) % imageUrls.length]}
+          mainSrc={imageURLs[photoIndex]}
+          nextSrc={imageURLs[(photoIndex + 1) % imageURLs.length]}
           prevSrc={
-            imageUrls[(photoIndex + imageUrls.length - 1) % imageUrls.length]
+            imageURLs[(photoIndex + imageURLs.length - 1) % imageURLs.length]
           }
           onCloseRequest={() => setGalleyOpen(false)}
           onMovePrevRequest={() =>
             setPhotoIndex(
-              (photoIndex + imageUrls.length - 1) % imageUrls.length
+              (photoIndex + imageURLs.length - 1) % imageURLs.length
             )
           }
           onMoveNextRequest={() =>
-            setPhotoIndex((photoIndex + 1) % imageUrls.length)
+            setPhotoIndex((photoIndex + 1) % imageURLs.length)
           }
         />
       )}
