@@ -1,11 +1,6 @@
 import React from "react";
-import styled from "styled-components/macro";
 
-import { CalsonTitle, AmericaTitle } from "./Common";
-
-const TitleWrapper = styled.div`
-  border-bottom: 1px solid black;
-`;
+import { CalsonTitle, AmericaTitle, TitleWrapper } from "./Common";
 
 interface IProps {
   title: string;
