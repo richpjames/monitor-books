@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const fontSize = 3;
+const fontSize = 2;
 
 export const PageContainer = styled.div`
   max-width: 100%;
@@ -18,9 +18,16 @@ export const AmericaTitle = styled(CalsonTitle)`
   font-weight: 200;
   font-family: "GT America", sans-serif;
   font-size: ${fontSize}em;
-  margin-left: 2.5%;
   display: inline;
   @media only screen and (max-width: 700px) {
     font-size: 1.1em;
   }
+`;
+
+export const AmericaTitleBold = styled(AmericaTitle)`
+  font-weight: 400;
+`;
+
+export const TitleWrapper = styled.div`
+  border-bottom: 1px solid black;
 `;
