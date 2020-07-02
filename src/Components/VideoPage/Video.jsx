@@ -4,9 +4,9 @@ import styled from "styled-components/macro";
 const VideoWrap = styled.div`
   position: relative;
   padding: 56.25% 0 0 0;
-  margin-left: 5%;
-  margin-right: 5%;
-  margin-top: 6vh;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+  margin-top: 3vh;
 `;
 
 const Iframe = styled.iframe`
