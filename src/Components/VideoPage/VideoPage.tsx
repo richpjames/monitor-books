@@ -4,6 +4,7 @@ import { RouteComponentProps } from "@reach/router";
 import Video from "./Video";
 import VideoTitle from "./VideoTitle";
 import Text from "../Common/Text";
+import { InfoSection } from "../Common/Common";
 
 interface IProps extends RouteComponentProps {
   video: Video;
@@ -14,8 +15,10 @@ export default function VideoPage(props: IProps) {
   return (
     <>
       <Video url={url} title={title} />
-      <VideoTitle title={title} subtitle={creator} />
-      <Text leftText={description1} rightText={description2} />
+      <InfoSection>
+        <VideoTitle title={title} subtitle={creator} />
+        <Text leftText={description1} rightText={description2} />
+      </InfoSection>
     </>
   );
 }
