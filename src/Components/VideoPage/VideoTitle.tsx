@@ -1,6 +1,6 @@
 import React from "react";
 
-import { AmericaTitleBold, AmericaTitle, TitleWrapper } from "../Common/Common";
+import { AmericaTitleBold, AmericaTitle, TitleWrapper } from "../Common/Titles";
 
 interface IProps {
   title: string;
