@@ -2,9 +2,9 @@ import React from "react";
 import { RouteComponentProps } from "@reach/router";
 
 import Photos from "./Common/Photos";
-import Title from "./Common/Title";
+import Title from "./Common/BookTitle";
 import Text from "./Common/Text";
-import { PageContainer } from "./Common/Common";
+import { PageWrapper, InfoSection } from "./Common/Common";
 import BuyButton from "./Common/BuyButton";
 
 interface IProps extends RouteComponentProps {
@@ -14,12 +14,14 @@ interface IProps extends RouteComponentProps {
 const BookDetails = (props: IProps) => {
   const { photos, title, author, blurb1, blurb2 } = props.book;
   return (
-    <PageContainer>
+    <PageWrapper>
       <Photos photos={photos} />
-      <Title title={author} subtitle={title} />
-      <Text leftText={blurb1} rightText={blurb2} />
+      <InfoSection>
+        <Title title={author} subtitle={title} />
+        <Text leftText={blurb1} rightText={blurb2} />
+      </InfoSection>
       <BuyButton />
-    </PageContainer>
+    </PageWrapper>
   );
 };
 
