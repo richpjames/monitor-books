@@ -11,10 +11,15 @@ const TextWrap = styled.p`
 
 const Banner = styled.img`
   position: relative;
-  margin-top: 5%;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
   width: 100%;
   height: 100%;
   max-height: 100%;
+  @media only screen and (max-width: 500px) {
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+  }
 `;
 
 const BannerWrap = styled.div`
@@ -30,7 +35,7 @@ const About = (props: IProps) => {
     <>
       <BannerWrap>
         <Banner
-          src="https://www.monitorbooks.co.uk/img/logo_black.jpeg"
+          src="https://www.richjames.co.uk/img/logo_black.jpeg"
           className="Banner"
         />
       </BannerWrap>
