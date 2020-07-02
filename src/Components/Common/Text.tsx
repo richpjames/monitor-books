@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 
 import { paragraphSplitter } from "../../utils";
 
@@ -16,7 +16,7 @@ const LeftSection = styled.div`
 const RightSection = styled(LeftSection)`
   padding-left: 9%;
   @media only screen and (max-width: 500px) {
-    margin-left: 0;
+    padding-left: 0;
     margin-top: 5%;
   }
 `;
