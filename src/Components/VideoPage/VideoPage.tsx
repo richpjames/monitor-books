@@ -2,7 +2,7 @@ import React from "react";
 import { RouteComponentProps } from "@reach/router";
 
 import Video from "./Video";
-import VideoTitle from "./VideoTitle";
+import Title from "../Common/Title";
 import Text from "../Common/Text";
 import { InfoSection } from "../Common/Common";
 
@@ -16,7 +16,7 @@ export default function VideoPage(props: IProps) {
     <>
       <Video url={url} title={title} />
       <InfoSection>
-        <VideoTitle title={title} subtitle={creator} />
+        <Title title={`${title}:`} subtitle={creator} />
         <Text leftText={description1} rightText={description2} />
       </InfoSection>
     </>
