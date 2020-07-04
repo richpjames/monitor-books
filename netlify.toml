@@ -1,8 +1,11 @@
+
+# to be able to build this site locally, let's specify
+# build settings in this file
+[build]
+  command = "npm run build"
+  publish = "public"
+# Cypress plugin
 [[plugins]]
   package = "netlify-plugin-cypress"
-  # let's run tests against development server
-  # before building it (and testing the built site)
-  [plugins.inputs.preBuild]
-    start = 'npm start'
-    wait-on = 'http://localhost:3000'
-    wait-on-timeout = '30' # seconds
+  [plugins.inputs]
+    record = true
