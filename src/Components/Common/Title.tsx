@@ -18,8 +18,12 @@ function BookTitle(props: IProps) {
   return (
     <TitleWrapper>
       <AmericaTitle>{title} </AmericaTitle>
-      <CalsonTitle>{subtitle}</CalsonTitle>
-      {bold && <AmericaTitleBold>{subtitle}</AmericaTitleBold>}
+
+      {bold ? (
+        <AmericaTitleBold>{subtitle}</AmericaTitleBold>
+      ) : (
+        <CalsonTitle>{subtitle}</CalsonTitle>
+      )}
     </TitleWrapper>
   );
 }
