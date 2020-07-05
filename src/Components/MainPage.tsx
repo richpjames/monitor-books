@@ -3,9 +3,9 @@ import styled from "styled-components";
 import { Router } from "@reach/router";
 
 import { getBooks, getVideos } from "../Hooks";
-import VideoPage from "./VideoPage/VideoPage";
+import VideoPage from "./VideoPage";
 import NavBar from "./NavBar";
-import BookDetails from "./BookPage/BookPage";
+import BookDetails from "./BookPage";
 import Footer from "./Footer";
 import About from "./About";
 
