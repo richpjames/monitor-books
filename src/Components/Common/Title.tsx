@@ -13,15 +13,19 @@ interface IProps {
   bold?: boolean;
 }
 
-function BookTitle(props: IProps) {
+function Title(props: IProps) {
   const { title, subtitle, bold } = props;
   return (
     <TitleWrapper>
       <AmericaTitle>{title} </AmericaTitle>
-      <CalsonTitle>{subtitle}</CalsonTitle>
-      {bold && <AmericaTitleBold>{subtitle}</AmericaTitleBold>}
+
+      {bold ? (
+        <AmericaTitleBold>{subtitle}</AmericaTitleBold>
+      ) : (
+        <CalsonTitle>{subtitle}</CalsonTitle>
+      )}
     </TitleWrapper>
   );
 }
 
-export default BookTitle;
+export default Title;

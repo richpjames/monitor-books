@@ -16,16 +16,19 @@ const Photo = styled.img`
   }
 `;
 
-export default function IndividualPhoto(props) {
-  const { openLightbox, photo, index } = props;
+interface IProps {
+  openLightbox: (i: number) => void;
+  src: string;
+  index: number;
+  altText: string;
+}
+
+export default function IndividualPhoto(props: IProps) {
+  const { openLightbox, src, index, altText } = props;
 
   return (
     <VisibilitySensor>
-      <Photo
-        onClick={() => openLightbox(index)}
-        src={photo}
-        alt="photo of book"
-      />
+      <Photo onClick={() => openLightbox(index)} src={src} alt={altText} />
     </VisibilitySensor>
   );
 }
