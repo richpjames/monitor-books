@@ -36,8 +36,9 @@ const Photos = (props: IProps) => {
       <IndividualPhoto
         openLightbox={openLightbox}
         index={i}
-        photo={url}
+        src={url}
         key={url}
+        altText="a photo of murmur anthology"
       />
     );
   });
