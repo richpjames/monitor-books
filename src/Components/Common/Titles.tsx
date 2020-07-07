@@ -7,6 +7,9 @@ export const CalsonTitle = styled.h1`
   display: inline;
   font-family: "Caslon", sans-serif;
   font-weight: 300;
+  @media only screen and (max-width: 700px) {
+    font-size: ${fontSize - 0.5}em;
+  }
 `;
 
 export const AmericaTitle = styled(CalsonTitle)`
@@ -15,7 +18,7 @@ export const AmericaTitle = styled(CalsonTitle)`
   font-size: ${fontSize}em;
   display: inline;
   @media only screen and (max-width: 700px) {
-    font-size: 1.1em;
+    font-size: ${fontSize - 0.5}em;
   }
 `;
 
