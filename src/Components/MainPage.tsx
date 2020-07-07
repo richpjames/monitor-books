@@ -32,12 +32,12 @@ const MainPage = () => {
         <NavBar />
         <Router>
           {books?.map((book: Book) => (
-            <BookDetails path={book.slug} book={book} default key={book.slug} />
+            <BookDetails path={book.slug} book={book} key={book.slug} default />
           ))}
           {videos?.map((video) => (
             <VideoPage path={video.slug} video={video} key={video.slug} />
           ))}
-          <About path="about" />
+          <About path="/about" />
         </Router>
       </BookWrap>
       <Footer />
