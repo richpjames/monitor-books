@@ -27,6 +27,7 @@ const TextWrapper = styled.section`
   @media only screen and (max-width: 500px) {
     font-size: 0.75em;
     flex-direction: column;
+    padding-top: 2.5%;
   }
 `;
 
