@@ -1,13 +1,22 @@
 import React, { useState } from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css";
 
 import IndividualPhoto from "./IndividualPhoto";
 
 const PhotoWrap = styled.section`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+`;
+
+const PhotoContainer = styled.div`
   display: flex;
-  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 `;
 
 const mainURL = `https://www.richjames.co.uk/img/ant_img/`;
@@ -33,13 +42,15 @@ const Photos = (props: IProps) => {
 
   const thumbReel = thumbURLs.map((url, i) => {
     return (
-      <IndividualPhoto
-        openLightbox={openLightbox}
-        index={i}
-        src={url}
-        key={url}
-        altText="a photo of murmur anthology"
-      />
+      <PhotoContainer>
+        <IndividualPhoto
+          openLightbox={openLightbox}
+          index={i}
+          src={url}
+          key={url}
+          altText="a photo of murmur anthology"
+        />
+      </PhotoContainer>
     );
   });
 
