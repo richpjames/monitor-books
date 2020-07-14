@@ -5,17 +5,13 @@ import Logo from "./Logo";
 
 const Nav = styled.nav`
   display: flex;
-  width: 95%;
   justify-content: space-between;
+  align-items: center;
   border-bottom: 1px solid black;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 10vh;
-  font-size: 2vh;
-  @media only screen and (max-width: 600px) {
-    margin-top: 5vh;
-    font-size: 1.7vh;
-  }
+  margin-top: 5vh;
+  width: 95%;
 `;
 
 const NavLinks = styled.ul`
@@ -23,18 +19,11 @@ const NavLinks = styled.ul`
   text-align: right;
   padding-top: 2px;
   margin-right: 1.73vw;
+  margin-top: 2.5vh;
   @media only screen and (max-width: 600px) {
-    margin-top: 2.5vh;
-    margin-right: 0;
-    padding-left: 0;
   }
 `;
-const NavItem = styled.li`
-  margin-top: 0.5em;
-  @media only screen and (max-width: 600px) {
-    margin-top: 1em;
-  }
-`;
+const NavItem = styled.li``;
 
 const NavBar = () => {
   return (
