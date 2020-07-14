@@ -13,12 +13,14 @@ body {
 }
 
 h1 {
-    font-size: 45px;
+    font-size: clamp(32px, 2em, 2rem);
+    display: inline;
 }
 
 a {
     color: black;
     text-decoration: none;
+    font-size: clamp(12px, 1rem, 1.2rem);
 }
 
 ul {
@@ -28,6 +30,6 @@ ul {
 p {
     margin: 0 0 0 0;
     line-height: 1.7;
-    font-size: 16px;
+    font-size: clamp(12px, 1rem, 1.2rem);
     justify-content: start;
 }
