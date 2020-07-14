@@ -9,8 +9,8 @@ import BookDetails from "./BookPage";
 import Footer from "./Footer";
 import About from "./About";
 
-const BookWrap = styled.div`
-  width: 70vw;
+const PageWrap = styled.div`
+  width: 75vw;
   margin: 0 auto;
   @media only screen and (max-width: 600px) {
     width: 80vw;
@@ -28,7 +28,7 @@ const MainPage = () => {
 
   return (
     <>
-      <BookWrap>
+      <PageWrap>
         <NavBar />
         <Router>
           {books?.map((book: Book) => (
@@ -39,7 +39,7 @@ const MainPage = () => {
           ))}
           <About path="/about" />
         </Router>
-      </BookWrap>
+      </PageWrap>
       <Footer />
     </>
   );
