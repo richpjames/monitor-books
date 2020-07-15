@@ -5,7 +5,7 @@ import styled from "styled-components";
 const TextWrap = styled.p`
   margin-left: auto;
   margin-right: auto;
-  align-text: justify;
+  text-align: justify;
   width: 60%;
 `;
 
@@ -16,7 +16,7 @@ const Banner = styled.img`
   width: 100%;
   height: 100%;
   max-height: 100%;
-  @media only screen and (max-width: 500px) {
+  @media only screen and (max-width: 600px) {
     margin-top: 10vh;
     margin-bottom: 10vh;
   }
