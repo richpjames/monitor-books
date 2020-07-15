@@ -7,10 +7,11 @@ import IndividualPhoto from "./IndividualPhoto";
 
 const PhotoWrap = styled.section`
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  width: 80%;
-  margin-left: auto;
-  margin-right: auto;
+  grid-template-columns: repeat(1, minmax(200px, 100%));
+  grid-gap: 1rem;
+  @media only screen and (min-width: 600px) {
+    grid-template-columns: repeat(2, minmax(200px, 100%));
+  }
 `;
 
 const PhotoContainer = styled.div`
