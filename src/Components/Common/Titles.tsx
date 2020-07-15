@@ -15,7 +15,11 @@ export const AmericaTitleBold = styled(AmericaTitle)`
 `;
 
 export const TitleWrapper = styled.div`
-  padding-bottom: 0.5%;
-  padding-top: 3.5%;
   border-bottom: 1px solid black;
+  padding-top: 7.5%;
+  padding-bottom: 3%;
+  @media only screen and (min-width: 600px) {
+    padding-bottom: 0.5%;
+    padding-top: 3.5%;
+  }
 `;
