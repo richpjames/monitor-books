@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import { Router } from "@reach/router";
 
 import { getBooks, getVideos } from "../Hooks";
@@ -10,10 +10,12 @@ import Footer from "./Footer";
 import About from "./About";
 
 const PageWrap = styled.div`
-  width: 75vw;
-  margin: 0 auto;
-  @media only screen and (max-width: 600px) {
-    width: 80vw;
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100vw;
+  @media only screen and (min-width: 600px) {
+    width: 60%;
   }
 `;
 
@@ -39,8 +41,8 @@ const MainPage = () => {
           ))}
           <About path="/about" />
         </Router>
+        <Footer />
       </PageWrap>
-      <Footer />
     </>
   );
 };
