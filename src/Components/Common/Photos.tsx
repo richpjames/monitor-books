@@ -43,12 +43,11 @@ const Photos = (props: IProps) => {
 
   const thumbReel = thumbURLs.map((url, i) => {
     return (
-      <PhotoContainer>
+      <PhotoContainer key={url}>
         <IndividualPhoto
           openLightbox={openLightbox}
           index={i}
           src={url}
-          key={url}
           altText="a photo of murmur anthology"
         />
       </PhotoContainer>
