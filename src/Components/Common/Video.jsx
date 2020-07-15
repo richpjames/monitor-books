@@ -4,8 +4,6 @@ import styled from "styled-components/macro";
 const VideoWrap = styled.div`
   position: relative;
   padding: 56.25% 0 0 0;
-  margin-left: 2.5%;
-  margin-right: 2.5%;
   margin-top: 3vh;
 `;
 
