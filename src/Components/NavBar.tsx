@@ -8,7 +8,9 @@ const Nav = styled.nav`
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid black;
-  margin-top: 5vh;
+  @media only screen and (min-width: 600px) {
+    margin-top: 5vh;
+  }
 `;
 
 const NavLinks = styled.ul`
@@ -16,8 +18,9 @@ const NavLinks = styled.ul`
   text-align: right;
   padding-top: 2px;
   margin-right: 1.73vw;
-  margin-top: 2.5vh;
-  @media only screen and (max-width: 600px) {
+  margin-top: 7.5vh;
+  @media only screen and (min-width: 600px) {
+    margin-top: 2.5vh;
   }
 `;
 const NavItem = styled.li``;
