@@ -2,12 +2,27 @@
 # yarn lockfile v1
 
 
+"@applitools/dom-capture@7.2.4":
+  version "7.2.4"
+  resolved "https://registry.yarnpkg.com/@applitools/dom-capture/-/dom-capture-7.2.4.tgz#1e7022ae9d91c8537728b02362b4b08497469c2d"
+  integrity sha512-GcsAe+52Fzrjc9s9opD2JNGYUmIztBF3nTUHLdFuFIkHAYuuIUixEwdiHQLW/IOI51dua6yvOs4it2XlMHFPrw==
+  dependencies:
+    "@applitools/functional-commons" "1.5.4"
+
 "@applitools/dom-snapshot@3.2.3":
   version "3.2.3"
   resolved "https://registry.yarnpkg.com/@applitools/dom-snapshot/-/dom-snapshot-3.2.3.tgz#8e9b56284154bd10bfdef62b11885ab6790acf9c"
   integrity sha512-bF0nea8bBebJCobO5BVTMTEHR59rnF1FqzmGBlcNp91737pOxzxLG96l0ZfATjHCBEqybADmCdZlFgZJ2q/fTA==
   dependencies:
     "@applitools/functional-commons" "^1.5.4"
+
+"@applitools/dom-snapshot@3.6.1":
+  version "3.6.1"
+  resolved "https://registry.yarnpkg.com/@applitools/dom-snapshot/-/dom-snapshot-3.6.1.tgz#fbb1c7106c899aa4e215cfdb0fec2b577fb75c43"
+  integrity sha512-qHiEI749avojUAYb6NKzSUsi1SCyMyqVMISe9kLZFJUmIZWMWZTdO5JkJVIFjjhtMUhGY1EkouHfiNJQKN3+0Q==
+  dependencies:
+    "@applitools/functional-commons" "1.5.4"
+    css-tree "^1.0.0-alpha.39"
 
 "@applitools/eyes-common@3.18.3":
   version "3.18.3"
@@ -20,6 +35,21 @@
     deepmerge "^4.2.2"
     png-async "^0.9.4"
     stack-trace "^0.0.10"
+
+"@applitools/eyes-cypress@^3.10.3":
+  version "3.12.2"
+  resolved "https://registry.yarnpkg.com/@applitools/eyes-cypress/-/eyes-cypress-3.12.2.tgz#338da482abe2a7afdcd7d6b4f732a2548a7db709"
+  integrity sha512-9LsoHmQLdhj0mlH//e5wSmJ7jZpeOPZW2biq7EZgqAMby0maIp3FHpWOIoR+J4IHThvn1POW2aXLdHz7b0CJ+w==
+  dependencies:
+    "@applitools/dom-snapshot" "3.6.1"
+    "@applitools/eyes-sdk-core" "11.2.2"
+    "@applitools/functional-commons" "1.5.4"
+    "@applitools/visual-grid-client" "14.5.2"
+    body-parser "^1.19.0"
+    chalk "3.0.0"
+    cors "^2.8.5"
+    express "^4.17.1"
+    lodash.flatten "^4.4.0"
 
 "@applitools/eyes-cypress@applitools/eyes-cypress":
   version "3.9.11"
@@ -36,6 +66,23 @@
     express "^4.17.1"
     lodash.flatten "^4.4.0"
 
+"@applitools/eyes-sdk-core@11.2.2":
+  version "11.2.2"
+  resolved "https://registry.yarnpkg.com/@applitools/eyes-sdk-core/-/eyes-sdk-core-11.2.2.tgz#8c92b10340f53bcae69d79bd3ce50e9f2cbdb7a4"
+  integrity sha512-XzHnoRtcH7SXoD84lUE94MxXRil6P+CNNDqoPF+73kFp0oH8up693ZqLz0ZP8H4toTXK/cyTZ9eZM5aMZyqLNg==
+  dependencies:
+    "@applitools/dom-capture" "7.2.4"
+    "@applitools/isomorphic-fetch" "3.0.0"
+    axios "0.19.2"
+    chalk "3.0.0"
+    cosmiconfig "^6.0.0"
+    dateformat "^3.0.3"
+    debug "^4.1.1"
+    deepmerge "^4.2.2"
+    png-async "^0.9.4"
+    stack-trace "^0.0.10"
+    tunnel "0.0.6"
+
 "@applitools/eyes-sdk-core@6.0.10":
   version "6.0.10"
   resolved "https://registry.yarnpkg.com/@applitools/eyes-sdk-core/-/eyes-sdk-core-6.0.10.tgz#73d72d03720c6ae4473ac72d9f4f92f30f6a44d7"
@@ -47,6 +94,11 @@
     chalk "3.0.0"
     es6-promise-pool "2.5.0"
     tunnel "0.0.6"
+
+"@applitools/feature-flags@2.1.1":
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/@applitools/feature-flags/-/feature-flags-2.1.1.tgz#cf784e3b7ab4f322b0ebe62a5ea45ec56738b2d4"
+  integrity sha512-bhzTHOpTmIg1KzI/kcNyDgFeKiHrX+Tjja9MtDwkOBUJ52Ff2A7nH9rm1xWww4yY4Me3yTaG8F6U75X3UdXE5g==
 
 "@applitools/functional-commons@1.5.4":
   version "1.5.4"
@@ -129,6 +181,26 @@
     "@applitools/http-commons" "2.3.12"
     "@applitools/isomorphic-fetch" "3.0.0"
     "@applitools/jsdom" "1.0.2"
+    he "1.2.0"
+    lodash.mapvalues "^4.6.0"
+    mime-types "^2.1.24"
+    mkdirp "^0.5.1"
+    postcss-value-parser "^4.0.2"
+    throat "^5.0.0"
+
+"@applitools/visual-grid-client@14.5.2":
+  version "14.5.2"
+  resolved "https://registry.yarnpkg.com/@applitools/visual-grid-client/-/visual-grid-client-14.5.2.tgz#e5b0cf9abc79c49921c2f6d5095f3dc68da1e9e0"
+  integrity sha512-y1utLhx3mbU2PcjZC5zkpj0ms5xFZW9JY6eZxpHioLlxde0fZCr8wV/BnPB3wbFMYWsvCMQP7WI/qLDbtYcb6Q==
+  dependencies:
+    "@applitools/dom-snapshot" "3.6.1"
+    "@applitools/eyes-sdk-core" "11.2.2"
+    "@applitools/feature-flags" "2.1.1"
+    "@applitools/functional-commons" "1.5.4"
+    "@applitools/http-commons" "2.3.12"
+    "@applitools/isomorphic-fetch" "3.0.0"
+    "@applitools/jsdom" "1.0.2"
+    chalk "3.0.0"
     he "1.2.0"
     lodash.mapvalues "^4.6.0"
     mime-types "^2.1.24"
@@ -2562,6 +2634,11 @@ asynckit@^0.4.0:
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
   integrity sha1-x57Zf380y48robyXkLzDZkdLS3k=
 
+at-least-node@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/at-least-node/-/at-least-node-1.0.0.tgz#602cd4b46e844ad4effc92a8011a3c46e0238dc2"
+  integrity sha512-+q/t7Ekv1EDY2l6Gda6LLiX14rU9TV20Wa3ofeQmwPFZbOMo9DXrLbOjFaaclkXKWidIaopwAObQDqwWtGUjqg==
+
 atob@^2.1.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
@@ -3928,7 +4005,7 @@ css-tree@1.0.0-alpha.37:
     mdn-data "2.0.4"
     source-map "^0.6.1"
 
-css-tree@1.0.0-alpha.39:
+css-tree@1.0.0-alpha.39, css-tree@^1.0.0-alpha.39:
   version "1.0.0-alpha.39"
   resolved "https://registry.yarnpkg.com/css-tree/-/css-tree-1.0.0-alpha.39.tgz#2bff3ffe1bb3f776cf7eefd91ee5cba77a149eeb"
   integrity sha512-7UvkEYgBAHRG9Nt980lYxjsTrCyHFN53ky3wVsDkiMdVqylqRt+Zc+jm5qw7/qyOvN2dHSYtX0e4MbCCExSvnA==
@@ -4084,6 +4161,49 @@ cyclist@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/cyclist/-/cyclist-1.0.1.tgz#596e9698fd0c80e12038c2b82d6eb1b35b6224d9"
   integrity sha1-WW6WmP0MgOEgOMK4LW6xs1tiJNk=
+
+cypress@^4.5.0:
+  version "4.10.0"
+  resolved "https://registry.yarnpkg.com/cypress/-/cypress-4.10.0.tgz#6b507f4637af6a65ea285953f899951d65e82416"
+  integrity sha512-eFv1WPp4zFrAgZ6mwherBGVsTpHvay/hEF5F7U7yfAkTxsUQn/ZG/LdX67fIi3bKDTQXYzFv/CvywlQSeug8Bg==
+  dependencies:
+    "@cypress/listr-verbose-renderer" "0.4.1"
+    "@cypress/request" "2.88.5"
+    "@cypress/xvfb" "1.2.4"
+    "@types/sinonjs__fake-timers" "6.0.1"
+    "@types/sizzle" "2.3.2"
+    arch "2.1.2"
+    bluebird "3.7.2"
+    cachedir "2.3.0"
+    chalk "2.4.2"
+    check-more-types "2.24.0"
+    cli-table3 "0.5.1"
+    commander "4.1.1"
+    common-tags "1.8.0"
+    debug "4.1.1"
+    eventemitter2 "6.4.2"
+    execa "1.0.0"
+    executable "4.1.1"
+    extract-zip "1.7.0"
+    fs-extra "8.1.0"
+    getos "3.2.1"
+    is-ci "2.0.0"
+    is-installed-globally "0.3.2"
+    lazy-ass "1.6.0"
+    listr "0.14.3"
+    lodash "4.17.15"
+    log-symbols "3.0.0"
+    minimist "1.2.5"
+    moment "2.26.0"
+    ospath "1.2.2"
+    pretty-bytes "5.3.0"
+    ramda "0.26.1"
+    request-progress "3.0.0"
+    supports-color "7.1.0"
+    tmp "0.1.0"
+    untildify "4.0.0"
+    url "0.11.0"
+    yauzl "2.10.0"
 
 cypress@^4.9.0:
   version "4.9.0"
@@ -4550,7 +4670,7 @@ ecc-jsbn@~0.1.1:
     jsbn "~0.1.0"
     safer-buffer "^2.1.0"
 
-ecstatic@4.1.4:
+ecstatic@4.1.4, ecstatic@^4.1.4:
   version "4.1.4"
   resolved "https://registry.yarnpkg.com/ecstatic/-/ecstatic-4.1.4.tgz#86bf340dabe56c4d0c93d406ac36c040f68e1d79"
   integrity sha512-8E4ZLK4uRuB9pwywGpy/B9vcz4gCp6IY7u4cMbeCINr/fjb1v+0wf0Ae2XlfSnG8xZYnE4uaJBjFkYI0bqcIdw==
@@ -5567,6 +5687,16 @@ fs-extra@^7.0.0:
     graceful-fs "^4.1.2"
     jsonfile "^4.0.0"
     universalify "^0.1.0"
+
+fs-extra@^9.0.0:
+  version "9.0.1"
+  resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-9.0.1.tgz#910da0062437ba4c39fedd863f1675ccfefcb9fc"
+  integrity sha512-h2iAoN838FqAFJY2/qVpzFXy+EBxfVE220PalAqQLDVsFOHLJrZvut5puAbCdNv6WJk+B8ihI+k0c7JK5erwqQ==
+  dependencies:
+    at-least-node "^1.0.0"
+    graceful-fs "^4.2.0"
+    jsonfile "^6.0.1"
+    universalify "^1.0.0"
 
 fs-minipass@^2.0.0:
   version "2.1.0"
@@ -7420,6 +7550,15 @@ jsonfile@^4.0.0:
   optionalDependencies:
     graceful-fs "^4.1.6"
 
+jsonfile@^6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/jsonfile/-/jsonfile-6.0.1.tgz#98966cba214378c8c84b82e085907b40bf614179"
+  integrity sha512-jR2b5v7d2vIOust+w3wtFKZIfpC2pnRmFAhAC/BuweZFQR8qZzxH1OyrQ10HmdVYiXWkYUqPVsz91cG7EL2FBg==
+  dependencies:
+    universalify "^1.0.0"
+  optionalDependencies:
+    graceful-fs "^4.1.6"
+
 jsonify@~0.0.0:
   version "0.0.0"
   resolved "https://registry.yarnpkg.com/jsonify/-/jsonify-0.0.0.tgz#2c74b6ee41d93ca51b7b5aaee8f503631d252a73"
@@ -8219,6 +8358,17 @@ netlify-plugin-cypress@^1.3.11:
     debug "4.1.1"
     ecstatic "4.1.4"
     got "10.7.0"
+
+netlify-plugin-visual-diff@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/netlify-plugin-visual-diff/-/netlify-plugin-visual-diff-1.2.0.tgz#ad0d08146861aca57ff14edda0f171ff79418f66"
+  integrity sha512-ARGlxROI3WXv66sWoSLKteofmpKBzAgGvj9Hh4PWiTYMrz+Z7sa/kHKjpJjwIvuEsVBd/lETY+67AA9D10q3Mw==
+  dependencies:
+    "@applitools/eyes-cypress" "^3.10.3"
+    cypress "^4.5.0"
+    ecstatic "^4.1.4"
+    fs-extra "^9.0.0"
+    glob "^7.1.6"
 
 next-tick@~1.0.0:
   version "1.0.0"
@@ -11808,6 +11958,11 @@ universalify@^0.1.0:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/universalify/-/universalify-0.1.2.tgz#b646f69be3942dabcecc9d6639c80dc105efaa66"
   integrity sha512-rBJeI5CXAlmy1pV+617WB9J63U6XcazHHF2f2dbJix4XzpUF0RS3Zbj0FGIOCAva5P/d/GBOYaACQ1w+0azUkg==
+
+universalify@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/universalify/-/universalify-1.0.0.tgz#b61a1da173e8435b2fe3c67d29b9adf8594bd16d"
+  integrity sha512-rb6X1W158d7pRQBg5gkR8uPaSfiids68LTJQYOtEUhoJUWBdaQHsuT/EUduxXYxcrt4r5PJ4fuHW1MHT6p0qug==
 
 unpipe@1.0.0, unpipe@~1.0.0:
   version "1.0.0"
