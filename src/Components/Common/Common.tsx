@@ -6,7 +6,6 @@ export const PageWrapper = styled.div`
 `;
 
 export const InfoSection = styled.div`
-  width: 95%;
   margin-left: auto;
   margin-right: auto;
 `;
