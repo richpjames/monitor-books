@@ -6,7 +6,7 @@ import Logo from "./Logo";
 const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
   border-bottom: 1px solid black;
   @media only screen and (min-width: 600px) {
     margin-top: 5vh;
@@ -17,7 +17,6 @@ const NavLinks = styled.ul`
   list-style: none;
   text-align: right;
   padding-top: 2px;
-  margin-right: 1.73vw;
   margin-top: 7.5vh;
   @media only screen and (min-width: 600px) {
     margin-top: 2.5vh;

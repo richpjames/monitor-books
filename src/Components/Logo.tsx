@@ -3,7 +3,6 @@ import styled from "styled-components/macro";
 
 const LogoWrap = styled.div`
   width: 100px;
-  margin-left: 0.62%;
   top: 15px;
   position: relative;
   @media only screen and (max-width: 600px) {
