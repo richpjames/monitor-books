@@ -4,7 +4,8 @@ import styled from "styled-components/macro";
 const LogoWrap = styled.div`
   width: 100px;
   margin-left: 0.62%;
-  padding-top: 2.5vh;
+  top: 15px;
+  position: relative;
   @media only screen and (max-width: 700px) {
     padding-top: 5vh;
     width: 75px;
