@@ -8,10 +8,7 @@ const Nav = styled.nav`
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid black;
-  margin-left: auto;
-  margin-right: auto;
   margin-top: 5vh;
-  width: 95%;
 `;
 
 const NavLinks = styled.ul`
