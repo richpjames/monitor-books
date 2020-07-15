@@ -5,7 +5,7 @@ import VisibilitySensor from "react-visibility-sensor";
 const Photo = styled.img`
   max-height: 100%;
   max-width: 100%;
-  @media only screen and (max-width: 500px) {
+  @media only screen and (max-width: 600px) {
     max-height: 100vw;
     margin: 3% 0%;
     width: 100%;

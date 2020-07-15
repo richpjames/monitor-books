@@ -6,7 +6,7 @@ const LogoWrap = styled.div`
   margin-left: 0.62%;
   top: 15px;
   position: relative;
-  @media only screen and (max-width: 700px) {
+  @media only screen and (max-width: 600px) {
     padding-top: 5vh;
     width: 75px;
   }
