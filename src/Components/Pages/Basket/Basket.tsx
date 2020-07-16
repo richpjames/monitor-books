@@ -2,7 +2,8 @@ import React from "react";
 import { RouteComponentProps } from "@reach/router";
 import styled from "styled-components/macro";
 
-import { AmericaTitle } from "../Common/Titles";
+import { AmericaTitle } from "../../Common/Titles";
+import BasketList from "./BasketList";
 
 const BasketTitle = styled(AmericaTitle)`
   width: 100%;
@@ -16,6 +17,7 @@ const Basket = (props: IProps) => {
   return (
     <div>
       <BasketTitle>Basket</BasketTitle>
+      <BasketList />
     </div>
   );
 };
