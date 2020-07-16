@@ -1,6 +1,6 @@
 import React from "react";
 import { RouteComponentProps } from "@reach/router";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 
 const TextWrap = styled.p`
   margin-left: auto;
