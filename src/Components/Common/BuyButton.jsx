@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 //USED TO CREATE BUTTON IMG
 // const FullWidthWrap = styled.div`
 //   margin-left: 4%;
