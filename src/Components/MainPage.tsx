@@ -4,7 +4,7 @@ import { Router } from "@reach/router";
 
 import { getBooks, getVideos } from "../Hooks";
 import About from "./Pages/About";
-import Basket from "./Pages/Basket";
+import Basket from "./Pages/Basket/Basket";
 import BookDetails from "./Pages/BookPage";
 import Footer from "./Footer";
 import NavBar from "./NavBar";
