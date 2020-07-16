@@ -1,10 +1,6 @@
 import styled from "styled-components/macro";
 
-const fontSize = 2;
-
 export const CalsonTitle = styled.h1`
-  font-size: ${fontSize}em;
-  display: inline;
   font-family: "Caslon", sans-serif;
   font-weight: 300;
 `;
@@ -12,11 +8,6 @@ export const CalsonTitle = styled.h1`
 export const AmericaTitle = styled(CalsonTitle)`
   font-weight: 200;
   font-family: "GT America", sans-serif;
-  font-size: ${fontSize}em;
-  display: inline;
-  @media only screen and (max-width: 700px) {
-    font-size: 1.1em;
-  }
 `;
 
 export const AmericaTitleBold = styled(AmericaTitle)`
@@ -24,7 +15,11 @@ export const AmericaTitleBold = styled(AmericaTitle)`
 `;
 
 export const TitleWrapper = styled.div`
-  padding-bottom: 2.5%;
-  padding-top: 2.5%;
   border-bottom: 1px solid black;
+  padding-top: 7.5%;
+  padding-bottom: 3%;
+  @media only screen and (min-width: 600px) {
+    padding-bottom: 0.5%;
+    padding-top: 3.5%;
+  }
 `;

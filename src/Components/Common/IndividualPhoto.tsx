@@ -3,12 +3,9 @@ import styled from "styled-components";
 import VisibilitySensor from "react-visibility-sensor";
 
 const Photo = styled.img`
-  min-width: 45%;
-  display: flex;
-  margin: 2.5%;
-  max-height: 20vw;
-  min-height: 10vw;
-  @media only screen and (max-width: 500px) {
+  max-height: 100%;
+  max-width: 100%;
+  @media only screen and (max-width: 600px) {
     max-height: 100vw;
     margin: 3% 0%;
     width: 100%;

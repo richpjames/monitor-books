@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import { Router } from "@reach/router";
 
 import { getBooks, getVideos } from "../Hooks";
@@ -9,11 +9,13 @@ import BookDetails from "./BookPage";
 import Footer from "./Footer";
 import About from "./About";
 
-const BookWrap = styled.div`
-  width: 70vw;
-  margin: 0 auto;
-  @media only screen and (max-width: 600px) {
-    width: 80vw;
+const PageWrap = styled.div`
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100vw;
+  @media only screen and (min-width: 600px) {
+    width: 60%;
   }
 `;
 
@@ -28,19 +30,19 @@ const MainPage = () => {
 
   return (
     <>
-      <BookWrap>
+      <PageWrap>
         <NavBar />
         <Router>
           {books?.map((book: Book) => (
-            <BookDetails path={book.slug} book={book} default key={book.slug} />
+            <BookDetails path={book.slug} book={book} key={book.slug} default />
           ))}
           {videos?.map((video) => (
             <VideoPage path={video.slug} video={video} key={video.slug} />
           ))}
-          <About path="about" />
+          <About path="/about" />
         </Router>
-      </BookWrap>
-      <Footer />
+        <Footer />
+      </PageWrap>
     </>
   );
 };

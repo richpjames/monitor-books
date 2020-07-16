@@ -34,7 +34,7 @@ const PayPalForm = styled.form`
   padding-top: 4vh;
   margin-left: auto;
   margin-right: auto;
-  @media only screen and (max-width: 500px) {
+  @media only screen and (max-width: 600px) {
     margin-top: 7%;
   }
 `;

@@ -18,7 +18,6 @@ function Title(props: IProps) {
   return (
     <TitleWrapper>
       <AmericaTitle>{title} </AmericaTitle>
-
       {bold ? (
         <AmericaTitleBold>{subtitle}</AmericaTitleBold>
       ) : (
