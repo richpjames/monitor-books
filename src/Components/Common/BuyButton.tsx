@@ -24,7 +24,7 @@ import styled from "styled-components/macro";
 //   left: 50%;
 //   transform: translate(-50%, -50%);
 // `;
-const BuyButtonImg = styled.input`
+const Button = styled.button`
   width: 150px;
   height: 40px;
 `;
@@ -38,37 +38,13 @@ const PayPalForm = styled.form`
     margin-top: 7%;
   }
 `;
-function BuyButton() {
-  return (
-    <PayPalForm
-      target="paypal"
-      action="https://www.paypal.com/cgi-bin/webscr"
-      method="post"
-    >
-      <input type="hidden" name="cmd" value="_s-xclick"></input>
-      <input
-        type="hidden"
-        name="hosted_button_id"
-        value="9T65B28LLM2MC"
-      ></input>
-      <BuyButtonImg
-        type="image"
-        src="https://www.richjames.co.uk/img/buy-button.png"
-        border="0"
-        name="submit"
-        alt="Buy"
-      ></BuyButtonImg>
-      <img
-        alt=""
-        border="0"
-        src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif(43 B)
-https://www.paypalobjects.com/en_GB/i/scr/pixel.gif
-"
-        width="1"
-        height="0.5"
-      ></img>
-    </PayPalForm>
-  );
+interface IProps {
+  id: string;
+  addToBasket: (id: string) => void;
+}
+function BuyButton(props: IProps) {
+  const { id, addToBasket } = props;
+  return <Button onClick={() => addToBasket(id)} />;
 }
 
 export default BuyButton;
