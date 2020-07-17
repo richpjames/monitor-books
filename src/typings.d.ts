@@ -7,6 +7,7 @@ interface Book {
   price: string;
   publishDate: string;
   slug: string;
+  id: string;
 }
 interface Video {
   title: string;
