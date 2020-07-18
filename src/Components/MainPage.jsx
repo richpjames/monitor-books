@@ -2,13 +2,16 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components/macro";
 import { Router } from "@reach/router";
 
-import { getBooks, getVideos } from "../Hooks";
+import { connect } from "react-redux";
+import { getVideos } from "../Hooks";
 import About from "./Pages/About";
-import Basket from "./Pages/Basket/Basket";
+import BasketContainer from "./Pages/Basket/BasketContainer";
 import BookDetails from "./Pages/BookPage";
 import Footer from "./Footer";
 import NavBar from "./NavBar";
 import VideoPage from "./Pages/VideoPage";
+import { addToCart } from "../actions";
+import { getVisibleProducts } from "../reducers/products";
 
 const PageWrap = styled.div`
   margin-left: auto;
@@ -21,12 +24,14 @@ const PageWrap = styled.div`
   }
 `;
 
-const MainPage = () => {
-  const [books, setBooks] = useState<Book[]>();
-  const [videos, setVideos] = useState<Video[]>();
+// interface IProps {
+//   addToCart: (id: string) => void;
+// }
+
+const MainPage = ({ products, addToCart }) => {
+  const [videos, setVideos] = useState();
 
   useEffect(() => {
-    setBooks(getBooks());
     setVideos(getVideos());
   }, []);
 
@@ -35,13 +40,19 @@ const MainPage = () => {
       <PageWrap>
         <NavBar />
         <Router>
-          {books?.map((book: Book) => (
-            <BookDetails path={book.slug} book={book} key={book.slug} default />
+          {products?.map((book) => (
+            <BookDetails
+              path={book.slug}
+              book={book}
+              key={book.id}
+              addBookToBasket={() => addToCart(book.id)}
+              default={book.slug === "anthology"}
+            />
           ))}
           {videos?.map((video) => (
             <VideoPage path={video.slug} video={video} key={video.slug} />
           ))}
-          <Basket path="/basket" />
+          <BasketContainer path="/basket" />
           <About path="/about" />
         </Router>
         <Footer />
@@ -50,4 +61,8 @@ const MainPage = () => {
   );
 };
 
-export default MainPage;
+const mapStateToProps = (state) => ({
+  products: getVisibleProducts(state.products),
+});
+
+export default connect(mapStateToProps, { addToCart })(MainPage);
