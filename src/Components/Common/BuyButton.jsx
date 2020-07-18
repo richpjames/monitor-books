@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
+import { Dispatch } from "redux";
 //USED TO CREATE BUTTON IMG
 // const FullWidthWrap = styled.div`
 //   margin-left: 4%;
@@ -38,13 +39,16 @@ const PayPalForm = styled.form`
     margin-top: 7%;
   }
 `;
-interface IProps {
-  id: string;
-  addToBasket: (id: string) => void;
-}
-function BuyButton(props: IProps) {
-  const { id, addToBasket } = props;
-  return <Button onClick={() => addToBasket(id)} />;
+
+function BuyButton({ addToBasket, product }) {
+  return (
+    <Button
+      onClick={addToBasket}
+      disabled={product.inventory > 0 ? "" : "disabled"}
+    >
+      {product.inventory > 0 ? "Add to cart" : "Sold Out"}
+    </Button>
+  );
 }
 
 export default BuyButton;
