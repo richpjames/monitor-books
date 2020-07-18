@@ -32,6 +32,9 @@ const NavBar = () => {
       </Link>
       <NavLinks>
         <NavItem>
+          <Link to="/basket">Basket</Link>
+        </NavItem>
+        <NavItem>
           <Link to="/anthology">Murmur Anthology</Link>
         </NavItem>
         <NavItem>
