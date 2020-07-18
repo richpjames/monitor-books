@@ -13,7 +13,6 @@ const BasketListContainer = styled.section`
 const BasketList = () => {
   return (
     <BasketListContainer>
-      <BasketListItem />
       <p>Total: $20</p>
     </BasketListContainer>
   );

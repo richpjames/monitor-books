@@ -14,12 +14,16 @@ const Image = styled.div`
   width: 40%;
 `;
 
-const BasketListItem = () => {
+interface IProps {
+  title: string;
+}
+
+const BasketListItem = ({ title }: IProps) => {
   return (
     <Container>
       <Image />
-      <p>Name</p>
-      <br></br> <p>Price</p>
+      <p>{title}</p>
+      {/* <br></br> <p>{children}</p> */}
       <br></br>
       <p>Quantity</p>
     </Container>
