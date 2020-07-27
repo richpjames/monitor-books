@@ -59,7 +59,7 @@ const MainPage = ({ books, videos, addToCart }) => {
 const mapStateToProps = (state) => {
   console.log("main page", state);
   return {
-    books: state.products.byId.books,
+    books: state.products.visibleIds.books,
     videos: state.videos,
   };
 };
