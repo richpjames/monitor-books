@@ -17,7 +17,7 @@ const receiveVideos = (videos) => {
 
 export const getAllProducts = () => (dispatch) => {
   shop.getProducts((products) => {
-    dispatch(receiveProducts(products));
+    return dispatch(receiveProducts(products));
   });
 };
 
