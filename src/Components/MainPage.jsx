@@ -28,7 +28,7 @@ const PageWrap = styled.div`
 //   addToCart: (id: string) => void;
 // }
 
-const MainPage = ({ books, bookIds, videos, addToCart }) => {
+const MainPage = ({ books, bookIds, videos, videoIds, addToCart }) => {
   return (
     <>
       <PageWrap>
@@ -43,8 +43,12 @@ const MainPage = ({ books, bookIds, videos, addToCart }) => {
               default={books[bookId].slug === "anthology"}
             />
           ))}
-          {videos?.map((video) => (
-            <VideoPage path={video.slug} video={video} key={video.slug} />
+          {videoIds?.map((videoId) => (
+            <VideoPage
+              path={videos[videoId].slug}
+              video={videos[videoId]}
+              key={videos[videoId].slug}
+            />
           ))}
           <BasketContainer path="/basket" />
           <About path="/about" />
@@ -59,6 +63,7 @@ const mapStateToProps = (state) => {
   return {
     bookIds: state.products.visibleIds,
     books: state.products.byId,
+    videoIds: state.videos.visibleIds,
     videos: state.videos,
   };
 };
