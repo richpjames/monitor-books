@@ -28,20 +28,19 @@ const PageWrap = styled.div`
 //   addToCart: (id: string) => void;
 // }
 
-const MainPage = ({ books, videos, addToCart }) => {
-  console.log(books, "books");
+const MainPage = ({ books, bookIds, videos, addToCart }) => {
   return (
     <>
       <PageWrap>
         <NavBar />
         <Router>
-          {books?.map((book) => (
+          {bookIds?.map((bookId) => (
             <BookDetails
-              path={book.slug}
-              book={book}
-              key={book.id}
-              addBookToBasket={() => addToCart(book.id)}
-              default={book.slug === "anthology"}
+              path={books[bookId].slug}
+              book={books[bookId]}
+              key={bookId}
+              addBookToBasket={() => addToCart(bookId)}
+              default={books[bookId].slug === "anthology"}
             />
           ))}
           {videos?.map((video) => (
@@ -57,9 +56,9 @@ const MainPage = ({ books, videos, addToCart }) => {
 };
 
 const mapStateToProps = (state) => {
-  console.log("main page", state);
   return {
-    books: state.products.visibleIds.books,
+    bookIds: state.products.visibleIds,
+    books: state.products.byId,
     videos: state.videos,
   };
 };
