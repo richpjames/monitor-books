@@ -1,14 +1,31 @@
 import shop from "../api/shop";
-import * as types from "../constants/ActionTypes";
+import * as types from "../constants/actionTypes";
 
-const receiveProducts = (products) => ({
-  type: types.RECEIVE_PRODUCTS,
-  products,
-});
+const receiveProducts = (products) => {
+  console.log(products);
+  return {
+    type: types.RECEIVE_PRODUCTS,
+    books: products.books,
+  };
+};
+
+const receiveVideos = (videos) => {
+  console.log(videos, videos.books, "videos");
+  return {
+    type: types.RECEIVE_VIDEOS,
+    videos: videos,
+  };
+};
 
 export const getAllProducts = () => (dispatch) => {
   shop.getProducts((products) => {
     dispatch(receiveProducts(products));
+  });
+};
+
+export const getAllVideos = () => (dispatch) => {
+  shop.getVideos((videos) => {
+    dispatch(receiveVideos(videos));
   });
 };
 
