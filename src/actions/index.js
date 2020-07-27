@@ -2,15 +2,13 @@ import shop from "../api/shop";
 import * as types from "../constants/actionTypes";
 
 const receiveProducts = (products) => {
-  console.log(products);
   return {
     type: types.RECEIVE_PRODUCTS,
-    books: products.books,
+    books: products,
   };
 };
 
 const receiveVideos = (videos) => {
-  console.log(videos, videos.books, "videos");
   return {
     type: types.RECEIVE_VIDEOS,
     videos: videos,
