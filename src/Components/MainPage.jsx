@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components/macro";
 import { Router } from "@reach/router";
 
 import { connect } from "react-redux";
-import { getVideos } from "../Hooks";
 import About from "./Pages/About";
 import BasketContainer from "./Pages/Basket/BasketContainer";
 import BookDetails from "./Pages/BookPage";
 import Footer from "./Footer";
 import NavBar from "./NavBar";
-import VideoPage from "./Pages/VideoPage";
 import { addToCart } from "../actions";
 import { getVisibleProducts } from "../reducers/products";
+import { getVideos } from "../reducers/videos";
+import VideoPage from "./Pages/VideoPage";
 
 const PageWrap = styled.div`
   margin-left: auto;
@@ -28,19 +28,14 @@ const PageWrap = styled.div`
 //   addToCart: (id: string) => void;
 // }
 
-const MainPage = ({ products, addToCart }) => {
-  const [videos, setVideos] = useState();
-
-  useEffect(() => {
-    setVideos(getVideos());
-  }, []);
-
+const MainPage = ({ books, videos, addToCart }) => {
+  console.log(books, "books");
   return (
     <>
       <PageWrap>
         <NavBar />
         <Router>
-          {products?.map((book) => (
+          {books?.map((book) => (
             <BookDetails
               path={book.slug}
               book={book}
@@ -61,8 +56,12 @@ const MainPage = ({ products, addToCart }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  products: getVisibleProducts(state.products),
-});
+const mapStateToProps = (state) => {
+  console.log("main page", state);
+  return {
+    books: state.products.byId.books,
+    videos: state.videos,
+  };
+};
 
 export default connect(mapStateToProps, { addToCart })(MainPage);
