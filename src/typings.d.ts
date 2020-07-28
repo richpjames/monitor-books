@@ -8,6 +8,7 @@ interface Book {
   publishDate: string;
   slug: string;
   id: string;
+  inventory: number;
 }
 interface Video {
   title: string;
@@ -17,4 +18,10 @@ interface Video {
   url: string;
   publishDate: string;
   slug: string;
+}
+
+interface State {
+  products: { byId: { [id: string]: Book }; visibleIds: string[] };
+  videos: { byId: { [id: string]: Video }; visibleIds: string[] };
+  cart: { addedIds: string[]; quantityById: { string: number } };
 }
