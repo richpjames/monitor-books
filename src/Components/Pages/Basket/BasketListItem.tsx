@@ -17,15 +17,11 @@ const MetaInfoContainer = styled.div`
 const BasketListItemTitle = styled.h3`
   width: 100%;
   text-align: center;
-  margin-top: 0;
-  margin-bottom: 0;
 `;
 
 const BasketListItemSubtitle = styled.h4`
   width: 100%;
   text-align: center;
-  margin-top: 0;
-  margin-bottom: 0;
 `;
 
 const Quantity = styled.span`
