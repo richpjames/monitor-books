@@ -9,14 +9,15 @@ interface IProps {
 }
 
 const Basket = ({ products, total, onCheckoutClicked }: IProps) => {
-  console.log(products, "prods");
   const hasProducts = products?.length > 0;
   const nodes = hasProducts ? (
     products.map((product: Book) => (
       <BasketListItem
         title={product.title}
+        subtitle={product.author}
         price={product.price}
         quantity={product.inventory}
+        imageSrc={`https://www.richjames.co.uk/img/${product.path}/thumbnails/${product.thumbnail}`}
         key={product.id}
       />
     ))
@@ -26,7 +27,6 @@ const Basket = ({ products, total, onCheckoutClicked }: IProps) => {
 
   return (
     <div>
-      <h3>Your Cart</h3>
       <div>{nodes}</div>
       <p>Total: &#36;{total}</p>
       <button
