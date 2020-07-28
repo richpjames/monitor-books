@@ -2,14 +2,21 @@ import React from "react";
 import PropTypes from "prop-types";
 import BasketListItem from "./BasketListItem";
 
-const Basket = ({ products, total, onCheckoutClicked }) => {
+interface IProps {
+  products: Book[];
+  total: string;
+  onCheckoutClicked: (products: []) => void;
+}
+
+const Basket = ({ products, total, onCheckoutClicked }: IProps) => {
+  console.log(products, "prods");
   const hasProducts = products?.length > 0;
   const nodes = hasProducts ? (
-    products.map((product) => (
+    products.map((product: Book) => (
       <BasketListItem
         title={product.title}
         price={product.price}
-        quantity={product.quantity}
+        quantity={product.inventory}
         key={product.id}
       />
     ))
@@ -23,8 +30,8 @@ const Basket = ({ products, total, onCheckoutClicked }) => {
       <div>{nodes}</div>
       <p>Total: &#36;{total}</p>
       <button
-        onClick={onCheckoutClicked}
-        disabled={hasProducts ? "" : "disabled"}
+      // onClick={onCheckoutClicked}
+      // disabled={hasProducts ? "" : "disabled"}
       >
         Checkout
       </button>

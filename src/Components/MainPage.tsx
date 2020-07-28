@@ -9,8 +9,7 @@ import BookDetails from "./Pages/BookPage";
 import Footer from "./Footer";
 import NavBar from "./NavBar";
 import { addToCart } from "../actions";
-import { getVisibleProducts } from "../reducers/products";
-import { getVideos } from "../reducers/videos";
+
 import VideoPage from "./Pages/VideoPage";
 
 const PageWrap = styled.div`
@@ -24,11 +23,15 @@ const PageWrap = styled.div`
   }
 `;
 
-// interface IProps {
-//   addToCart: (id: string) => void;
-// }
+interface IProps {
+  addToCart: (id: string) => void;
+  books: { [id: string]: Book };
+  videos: { [id: string]: Video };
+  bookIds: string[];
+  videoIds: string[];
+}
 
-const MainPage = ({ books, bookIds, videos, videoIds, addToCart }) => {
+const MainPage = ({ books, bookIds, videos, videoIds, addToCart }: IProps) => {
   return (
     <>
       <PageWrap>
@@ -59,12 +62,12 @@ const MainPage = ({ books, bookIds, videos, videoIds, addToCart }) => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: State) => {
   return {
     bookIds: state.products.visibleIds,
     books: state.products.byId,
     videoIds: state.videos.visibleIds,
-    videos: state.videos,
+    videos: state.videos.byId,
   };
 };
 

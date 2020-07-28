@@ -14,22 +14,26 @@ const BasketTitle = styled(AmericaTitle)`
   display: block;
 `;
 
-// interface IProps extends RouteComponentProps {}
+interface IProps extends RouteComponentProps {
+  products: [];
+  total: string;
+  checkout: (products: []) => void;
+}
 
-const BasketContainer = ({ products, total, checkout }) => {
+const BasketContainer = ({ products, total, checkout }: IProps) => {
   return (
     <div>
       <BasketTitle>Basket</BasketTitle>
       <Basket
         products={products}
         total={total}
-        onCheckoutClick={() => checkout(products)}
+        onCheckoutClicked={() => checkout(products)}
       />
     </div>
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: State) => ({
   products: getCartProducts(state),
   total: getTotal(state),
 });
