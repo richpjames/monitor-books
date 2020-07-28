@@ -9,6 +9,8 @@ interface Book {
   slug: string;
   id: string;
   inventory: number;
+  path: string;
+  thumbnail: string;
 }
 interface Video {
   title: string;
