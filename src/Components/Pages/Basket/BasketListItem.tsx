@@ -2,30 +2,65 @@ import React from "react";
 import styled from "styled-components/macro";
 
 const Container = styled.div`
-  border: 1px solid black;
   display: flex;
   height: 200px;
   width: 500px;
 `;
 
-const Image = styled.div`
-  border: 1px solid red;
-  height: 100%;
-  width: 40%;
+const MetaInfoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  padding: 20px;
 `;
 
+const BasketListItemTitle = styled.h3`
+  width: 100%;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 0;
+`;
+
+const BasketListItemSubtitle = styled.h4`
+  width: 100%;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 0;
+`;
+
+const Quantity = styled.span`
+  width: 100%;
+  text-align: center;
+  padding-top: 15px;
+`;
+
+const Photo = styled.img`
+  max-height: 100%;
+  max-width: 100%;
+  @media only screen and (max-width: 600px) {
+    max-height: 100vw;
+    margin: 3% 0%;
+    width: 100%;
+    height: 100%;
+  }
+`;
 interface IProps {
   title: string;
+  subtitle: string;
+  quantity: number;
+  price: string;
+  imageSrc: string;
 }
 
-const BasketListItem = ({ title }: IProps) => {
+const BasketListItem = ({ title, quantity, subtitle, imageSrc }: IProps) => {
   return (
     <Container>
-      <Image />
-      <p>{title}</p>
-      {/* <br></br> <p>{children}</p> */}
-      <br></br>
-      <p>Quantity</p>
+      <Photo src={imageSrc} />
+      <MetaInfoContainer>
+        <BasketListItemTitle>{title}</BasketListItemTitle>
+        <BasketListItemSubtitle>{subtitle}</BasketListItemSubtitle>
+        <Quantity>Quantity: {quantity}</Quantity>
+      </MetaInfoContainer>
     </Container>
   );
 };
