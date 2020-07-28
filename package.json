@@ -15,7 +15,6 @@
     "@types/styled-components": "^5.1.0",
     "jshint": "^2.11.1",
     "netlify-plugin-visual-diff": "^1.2.0",
-    "normalize.css": "^8.0.1",
     "react": "^16.13.1",
     "react-animations": "^1.0.0",
     "react-dom": "^16.13.1",
