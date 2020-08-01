@@ -1,6 +1,7 @@
 import React from "react";
+import { connect } from "react-redux";
 import styled from "styled-components/macro";
-import { Dispatch } from "redux";
+
 //USED TO CREATE BUTTON IMG
 // const FullWidthWrap = styled.div`
 //   margin-left: 4%;
@@ -30,25 +31,27 @@ const Button = styled.button`
   height: 40px;
 `;
 
-const PayPalForm = styled.form`
-  width: 150px;
-  padding-top: 4vh;
-  margin-left: auto;
-  margin-right: auto;
-  @media only screen and (max-width: 600px) {
-    margin-top: 7%;
-  }
-`;
+function BuyButton({ addToBasket, product, cartQuantityById }) {
+  //if inventory is > 0 and not in basket return "Add to basket"
+  //else if quantity in cart is > 0 return "In basket"
+  //else return out of stock
+  let message;
 
-function BuyButton({ addToBasket, product }) {
+  if (product.inventory > 0 && !cartQuantityById[product.id]) {
+    message = "Add to basket";
+  } else if (cartQuantityById[product.id] > 0) {
+    message = "In basket";
+  } else return "Out of stock";
+
   return (
-    <Button
-      onClick={addToBasket}
-      disabled={product.inventory > 0 ? "" : "disabled"}
-    >
-      {product.inventory > 0 ? "Add to cart" : "Sold Out"}
+    <Button onClick={addToBasket} disabled={product.inventory > 0 && true}>
+      {message}
     </Button>
   );
 }
 
-export default BuyButton;
+const mapStateToProps = (state) => ({
+  cartQuantityById: state.cart.quantityById,
+});
+
+export default connect(mapStateToProps)(BuyButton);
