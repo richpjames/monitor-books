@@ -9,8 +9,8 @@ import BookDetails from "./Pages/BookPage";
 import Footer from "./Footer";
 import NavBar from "./NavBar";
 import { addToCart } from "../actions";
-
 import VideoPage from "./Pages/VideoPage";
+import OnRouteChange from "./ScrollToTop";
 
 const PageWrap = styled.div`
   margin-left: auto;
@@ -56,6 +56,8 @@ const MainPage = ({ books, bookIds, videos, videoIds, addToCart }: IProps) => {
           <BasketContainer path="/basket" />
           <About path="/about" />
         </Router>
+        //this prevents the page from opening at the centre
+        <OnRouteChange action={() => window.scrollTo(0, 0)} />
         <Footer />
       </PageWrap>
     </>
