@@ -78,6 +78,25 @@ describe("reducers", () => {
           ]);
         });
       });
+      describe("when an item is removed from the cart", () => {
+        beforeEach(() => {
+          state = reducer(state, { type: "REMOVE_FROM_CART", productId: 1 });
+        });
+        it("the inventory is increased", () => {
+          expect(products.getVisibleProducts(state)).toEqual([
+            {
+              id: 1,
+              title: "Book 1",
+              inventory: 3,
+            },
+            {
+              id: 2,
+              title: "Book 2",
+              inventory: 1,
+            },
+          ]);
+        });
+      });
     });
   });
 });
