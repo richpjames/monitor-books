@@ -1,24 +1,32 @@
 import React from "react";
+import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import BasketListItem from "./BasketListItem";
 
-interface IProps {
-  products: Book[];
+type IProps = {
+  productIds: string[];
+  productsById: { [index: string]: Book };
   total: string;
-  onCheckoutClicked: (products: []) => void;
-}
+  onCheckoutClicked: (click: React.MouseEvent) => void;
+};
 
-const Basket = ({ products, total, onCheckoutClicked }: IProps) => {
-  const hasProducts = products?.length > 0;
+const Basket = ({
+  productIds,
+  productsById,
+  total,
+  onCheckoutClicked,
+}: IProps): React.ReactElement => {
+  const hasProducts = productIds?.length > 0;
+
   const nodes = hasProducts ? (
-    products.map((product: Book) => (
+    productIds.map((productId: string) => (
       <BasketListItem
-        title={product.title}
-        subtitle={product.author}
-        price={product.price}
-        quantity={product.inventory}
-        imageSrc={`https://www.richjames.co.uk/img/${product.path}/thumbnails/${product.thumbnail}`}
-        key={product.id}
+        title={productsById[productId].title}
+        subtitle={productsById[productId].author}
+        price={productsById[productId].price}
+        quantity={productsById[productId].inventory}
+        imageSrc={`https://www.richjames.co.uk/img/${productsById[productId].path}/thumbnails/${productsById[productId].thumbnail}`}
+        key={productsById[productId].id}
       />
     ))
   ) : (
@@ -29,20 +37,10 @@ const Basket = ({ products, total, onCheckoutClicked }: IProps) => {
     <div>
       <div>{nodes}</div>
       <p>Total: &#36;{total}</p>
-      <button
-      // onClick={onCheckoutClicked}
-      // disabled={hasProducts ? "" : "disabled"}
-      >
+      <button onClick={onCheckoutClicked} disabled={hasProducts}>
         Checkout
       </button>
     </div>
   );
 };
-
-Basket.propTypes = {
-  products: PropTypes.array,
-  total: PropTypes.string,
-  onCheckoutClicked: PropTypes.func,
-};
-
 export default Basket;
