@@ -36,15 +36,21 @@ function BuyButton({ addToBasket, product, cartQuantityById }) {
   //else if quantity in cart is > 0 return "In basket"
   //else return out of stock
   let message;
+  let disabled;
 
   if (product.inventory > 0 && !cartQuantityById[product.id]) {
     message = "Add to basket";
+    disabled = false;
   } else if (cartQuantityById[product.id] > 0) {
     message = "In basket";
-  } else message = "Out of stock";
+    disabled = true;
+  } else {
+    message = "Out of stock";
+    disabled = true;
+  }
 
   return (
-    <Button onClick={addToBasket} disabled={product.inventory > 0 && true}>
+    <Button onClick={addToBasket} disabled={product.inventory > 0}>
       {message}
     </Button>
   );
