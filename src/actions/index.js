@@ -38,6 +38,24 @@ export const addToCart = (productId) => (dispatch, getState) => {
   }
 };
 
+const isInBasket = (state, productId) =>
+  state.cart.quantityById[productId] > 0 &&
+  state.cart.addedIds.indexOf(productId) !== -1;
+
+export const decrementInCart = (productId) => (dispatch, getState) => {
+  const state = getState();
+  if (isInBasket(state, productId)) {
+    dispatch({ type: types.DECREMENT_IN_CART, productId });
+  }
+};
+
+export const removeFromCart = (productId) => (dispatch, getState) => {
+  const state = getState();
+  if (isInBasket(state, productId)) {
+    dispatch({ type: types.REMOVE_FROM_CART, productId });
+  }
+};
+
 export const checkout = (products) => (dispatch, getState) => {
   const { cart } = getState();
 
