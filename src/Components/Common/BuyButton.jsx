@@ -31,17 +31,21 @@ const Button = styled.button`
   height: 40px;
 `;
 
-function BuyButton({ addToBasket, product, cartQuantityById }) {
+function BuyButton({
+  addToBasket,
+  productId,
+  cartQuantityById,
+  inventoryQuantity,
+}) {
   //if inventory is > 0 and not in basket return "Add to basket"
   //else if quantity in cart is > 0 return "In basket"
   //else return out of stock
   let message;
   let disabled;
-
-  if (product.inventory > 0 && !cartQuantityById[product.id]) {
+  if (inventoryQuantity > 0 && !cartQuantityById[productId]) {
     message = "Add to basket";
     disabled = false;
-  } else if (cartQuantityById[product.id] > 0) {
+  } else if (cartQuantityById[productId] > 0) {
     message = "In basket";
     disabled = true;
   } else {
@@ -50,14 +54,15 @@ function BuyButton({ addToBasket, product, cartQuantityById }) {
   }
 
   return (
-    <Button onClick={addToBasket} disabled={product.inventory > 0}>
+    <Button onClick={addToBasket} disabled={inventoryQuantity > 0}>
       {message}
     </Button>
   );
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state, ownProps) => ({
   cartQuantityById: state.cart.quantityById,
+  inventoryQuantity: state.products.byId[ownProps.productId],
 });
 
 export default connect(mapStateToProps)(BuyButton);
