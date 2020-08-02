@@ -8,7 +8,6 @@ import BasketContainer from "./Pages/Basket/BasketContainer";
 import BookDetails from "./Pages/BookPage";
 import Footer from "./Footer";
 import NavBar from "./NavBar";
-import { addToCart } from "../actions";
 import VideoPage from "./Pages/VideoPage";
 import OnRouteChange from "./ScrollToTop";
 
@@ -42,7 +41,6 @@ const MainPage = ({ books, bookIds, videos, videoIds, addToCart }: IProps) => {
               path={books[bookId].slug}
               book={books[bookId]}
               key={bookId}
-              addBookToBasket={() => addToCart(bookId)}
               default={books[bookId].slug === "anthology"}
             />
           ))}
@@ -73,4 +71,4 @@ const mapStateToProps = (state: State) => {
   };
 };
 
-export default connect(mapStateToProps, { addToCart })(MainPage);
+export default connect(mapStateToProps)(MainPage);
