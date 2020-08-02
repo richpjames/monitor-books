@@ -18,16 +18,25 @@ interface IProps extends RouteComponentProps {
   products: [];
   total: string;
   checkout: (products: []) => void;
+  productIds: string[];
+  productsById: { [index: string]: Book };
 }
 
-const BasketContainer = ({ products, total, checkout }: IProps) => {
+const BasketContainer = ({
+  productIds,
+  productsById,
+  products,
+  total,
+  checkout,
+}: IProps) => {
   return (
     <div>
       <BasketTitle>Basket</BasketTitle>
       <Basket
-        products={products}
         total={total}
         onCheckoutClicked={() => checkout(products)}
+        productsById={productsById}
+        productIds={productIds}
       />
     </div>
   );
@@ -36,6 +45,8 @@ const BasketContainer = ({ products, total, checkout }: IProps) => {
 const mapStateToProps = (state: State) => ({
   products: getCartProducts(state),
   total: getTotal(state),
+  productIds: state.cart.addedIds,
+  productsById: state.products.byId,
 });
 
 export default connect(mapStateToProps, { checkout })(BasketContainer);
