@@ -1,4 +1,4 @@
-import React, { Dispatch } from "react";
+import React from "react";
 import { RouteComponentProps } from "@reach/router";
 
 import Photos from "../Common/Photos";
@@ -9,11 +9,10 @@ import BuyButton from "../Common/BuyButton";
 
 interface IProps extends RouteComponentProps {
   book: Book;
-  addBookToBasket: Dispatch<string>;
 }
 
 const BookPage = (props: IProps) => {
-  const { book, addBookToBasket } = props;
+  const { book } = props;
   const { photos, title, author, blurb1, blurb2 } = book;
 
   return (
@@ -23,7 +22,7 @@ const BookPage = (props: IProps) => {
         <Title title={author} subtitle={title} />
         <Text leftText={blurb1} rightText={blurb2} />
       </InfoSection>
-      <BuyButton addToBasket={addBookToBasket} product={book} />
+      <BuyButton productId={book.id} />
     </PageWrapper>
   );
 };
