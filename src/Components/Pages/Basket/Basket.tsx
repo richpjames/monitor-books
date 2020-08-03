@@ -1,6 +1,4 @@
 import React from "react";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
 import BasketListItem from "./BasketListItem";
 
 type IProps = {
@@ -28,6 +26,7 @@ const Basket = ({
         price={productsById[productId].price}
         quantity={quantityById[productId]}
         imageSrc={`https://www.richjames.co.uk/img/${productsById[productId].path}/thumbnails/${productsById[productId].thumbnail}`}
+        stock={productsById[productId].inventory}
         key={productsById[productId].id}
       />
     ))
@@ -38,7 +37,7 @@ const Basket = ({
   return (
     <div>
       <div>{nodes}</div>
-      <p>Total: &#36;{total}</p>
+      <p>Total: £{total}</p>
       <button onClick={onCheckoutClicked} disabled={hasProducts}>
         Checkout
       </button>
