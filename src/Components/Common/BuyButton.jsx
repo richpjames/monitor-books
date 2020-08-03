@@ -1,5 +1,4 @@
 import React from "react";
-import { connect } from "react-redux";
 import styled from "styled-components/macro";
 
 //USED TO CREATE BUTTON IMG
@@ -31,38 +30,12 @@ const Button = styled.button`
   height: 40px;
 `;
 
-function BuyButton({
-  addToBasket,
-  productId,
-  cartQuantityById,
-  inventoryQuantity,
-}) {
-  //if inventory is > 0 and not in basket return "Add to basket"
-  //else if quantity in cart is > 0 return "In basket"
-  //else return out of stock
-  let message;
-  let disabled;
-  if (inventoryQuantity > 0 && !cartQuantityById[productId]) {
-    message = "Add to basket";
-    disabled = false;
-  } else if (cartQuantityById[productId] > 0) {
-    message = "In basket";
-    disabled = true;
-  } else {
-    message = "Out of stock";
-    disabled = true;
-  }
-
+function BuyButton({ onClick, disabled, children }) {
   return (
-    <Button onClick={addToBasket} disabled={inventoryQuantity > 0}>
-      {message}
+    <Button onClick={onClick} disabled={disabled}>
+      {children}
     </Button>
   );
 }
 
-const mapStateToProps = (state, ownProps) => ({
-  cartQuantityById: state.cart.quantityById,
-  inventoryQuantity: state.products.byId[ownProps.productId],
-});
-
-export default connect(mapStateToProps)(BuyButton);
+export default BuyButton;
