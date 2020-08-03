@@ -1,5 +1,4 @@
 import React from "react";
-import { connect } from "react-redux";
 import styled from "styled-components/macro";
 
 const Container = styled.div`
@@ -47,15 +46,32 @@ interface IProps {
   quantity: number;
   price: string;
   imageSrc: string;
+  stock: number;
 }
 
-const BasketListItem = ({ title, quantity, subtitle, imageSrc }: IProps) => (
+const BasketListItem = ({
+  title,
+  quantity,
+  subtitle,
+  imageSrc,
+  stock,
+}: IProps) => (
   <Container>
     <Photo src={imageSrc} />
     <MetaInfoContainer>
       <BasketListItemTitle>{title}</BasketListItemTitle>
       <BasketListItemSubtitle>{subtitle}</BasketListItemSubtitle>
-      <Quantity>Quantity: {quantity}</Quantity>
+      <Quantity>
+        Quantity:
+        <input
+          type="number"
+          id={`${title}_quantity`}
+          name={`${title}_quantity`}
+          min="0"
+          max={stock}
+          value={quantity}
+        />
+      </Quantity>
     </MetaInfoContainer>
   </Container>
 );
