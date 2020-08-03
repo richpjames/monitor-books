@@ -49,17 +49,15 @@ interface IProps {
   imageSrc: string;
 }
 
-const BasketListItem = ({ title, quantity, subtitle, imageSrc }: IProps) => {
-  return (
-    <Container>
-      <Photo src={imageSrc} />
-      <MetaInfoContainer>
-        <BasketListItemTitle>{title}</BasketListItemTitle>
-        <BasketListItemSubtitle>{subtitle}</BasketListItemSubtitle>
-        <Quantity>Quantity: {quantity}</Quantity>
-      </MetaInfoContainer>
-    </Container>
-  );
-};
+const BasketListItem = ({ title, quantity, subtitle, imageSrc }: IProps) => (
+  <Container>
+    <Photo src={imageSrc} />
+    <MetaInfoContainer>
+      <BasketListItemTitle>{title}</BasketListItemTitle>
+      <BasketListItemSubtitle>{subtitle}</BasketListItemSubtitle>
+      <Quantity>Quantity: {quantity}</Quantity>
+    </MetaInfoContainer>
+  </Container>
+);
 
 export default BasketListItem;
