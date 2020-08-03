@@ -5,7 +5,7 @@ import { Router } from "@reach/router";
 import { connect } from "react-redux";
 import About from "./Pages/About";
 import BasketContainer from "./Pages/Basket/BasketContainer";
-import BookDetails from "./Pages/BookPage";
+import BookPage from "./Pages/BookPage";
 import Footer from "./Footer";
 import NavBar from "./NavBar";
 import VideoPage from "./Pages/VideoPage";
@@ -23,21 +23,20 @@ const PageWrap = styled.div`
 `;
 
 interface IProps {
-  addToCart: (id: string) => void;
   books: { [id: string]: Book };
   videos: { [id: string]: Video };
   bookIds: string[];
   videoIds: string[];
 }
 
-const MainPage = ({ books, bookIds, videos, videoIds, addToCart }: IProps) => {
+const MainPage = ({ books, bookIds, videos, videoIds }: IProps) => {
   return (
     <>
       <PageWrap>
         <NavBar />
         <Router>
           {bookIds?.map((bookId) => (
-            <BookDetails
+            <BookPage
               path={books[bookId].slug}
               book={books[bookId]}
               key={bookId}
