@@ -8,6 +8,7 @@ type IProps = {
   productsById: { [index: string]: Book };
   total: string;
   onCheckoutClicked: (click: React.MouseEvent) => void;
+  quantityById: { [key: string]: number };
 };
 
 const Basket = ({
@@ -15,6 +16,7 @@ const Basket = ({
   productsById,
   total,
   onCheckoutClicked,
+  quantityById,
 }: IProps): React.ReactElement => {
   const hasProducts = productIds?.length > 0;
 
@@ -24,7 +26,7 @@ const Basket = ({
         title={productsById[productId].title}
         subtitle={productsById[productId].author}
         price={productsById[productId].price}
-        quantity={productsById[productId].inventory}
+        quantity={quantityById[productId]}
         imageSrc={`https://www.richjames.co.uk/img/${productsById[productId].path}/thumbnails/${productsById[productId].thumbnail}`}
         key={productsById[productId].id}
       />
