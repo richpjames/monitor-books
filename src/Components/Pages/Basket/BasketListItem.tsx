@@ -1,5 +1,8 @@
 import React from "react";
 import styled from "styled-components/macro";
+import { connect } from "react-redux";
+
+import { addToCart, decrementInCart, removeFromCart } from "../../../actions";
 
 const Container = styled.div`
   display: flex;
@@ -47,6 +50,10 @@ interface IProps {
   price: string;
   imageSrc: string;
   stock: number;
+  id: string;
+  addToCart: (id: string) => void;
+  decrementInCart: (id: string) => void;
+  removeFromCart: (id: string, quantityToReplace: number) => void;
 }
 
 const BasketListItem = ({
@@ -55,25 +62,48 @@ const BasketListItem = ({
   subtitle,
   imageSrc,
   stock,
-}: IProps) => (
-  <Container>
-    <Photo src={imageSrc} />
-    <MetaInfoContainer>
-      <BasketListItemTitle>{title}</BasketListItemTitle>
-      <BasketListItemSubtitle>{subtitle}</BasketListItemSubtitle>
-      <Quantity>
-        Quantity:
-        <input
-          type="number"
-          id={`${title}_quantity`}
-          name={`${title}_quantity`}
-          min="0"
-          max={stock}
-          value={quantity}
-        />
-      </Quantity>
-    </MetaInfoContainer>
-  </Container>
-);
+  id,
+  addToCart,
+  decrementInCart,
+  removeFromCart,
+}: IProps) => {
+  let addButtonMessage;
+  let buttonDisabled;
+  if (stock > 0) {
+    addButtonMessage = "Add another copy";
+    buttonDisabled = false;
+  } else {
+    addButtonMessage = "Out of stock";
+    buttonDisabled = true;
+  }
 
-export default BasketListItem;
+  return (
+    <Container>
+      <Photo src={imageSrc} />
+      <MetaInfoContainer>
+        <BasketListItemTitle>{title}</BasketListItemTitle>
+        <BasketListItemSubtitle>{subtitle}</BasketListItemSubtitle>
+        <button
+          onClick={() => {
+            return addToCart(id);
+          }}
+          disabled={buttonDisabled}
+        >
+          {addButtonMessage}
+        </button>
+        <Quantity>
+          Quantity:
+          {quantity}
+        </Quantity>
+        <button onClick={() => decrementInCart(id)} disabled={quantity <= 0}>
+          Less copies!
+        </button>
+        <button onClick={() => removeFromCart(id, quantity)}>Bin</button>
+      </MetaInfoContainer>
+    </Container>
+  );
+};
+
+export default connect(null, { addToCart, removeFromCart, decrementInCart })(
+  BasketListItem
+);
