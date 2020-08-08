@@ -25,6 +25,7 @@ const Basket = ({
         subtitle={productsById[productId].author}
         price={productsById[productId].price}
         quantity={quantityById[productId]}
+        id={productId}
         imageSrc={`https://www.richjames.co.uk/img/${productsById[productId].path}/thumbnails/${productsById[productId].thumbnail}`}
         stock={productsById[productId].inventory}
         key={productsById[productId].id}
