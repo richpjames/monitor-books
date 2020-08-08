@@ -80,14 +80,19 @@ describe("reducers", () => {
       });
       describe("when an item is removed from the cart", () => {
         beforeEach(() => {
-          state = reducer(state, { type: "REMOVE_FROM_CART", productId: 1 });
+          state = reducer(state, {
+            type: "REMOVE_FROM_CART",
+            productId: 1,
+            quantityToReplace: 10,
+          });
         });
-        it("the inventory is increased", () => {
+
+        it("the inventory is increased by the amount passed in", () => {
           expect(products.getVisibleProducts(state)).toEqual([
             {
               id: 1,
               title: "Book 1",
-              inventory: 3,
+              inventory: 12,
             },
             {
               id: 2,

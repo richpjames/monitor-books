@@ -49,10 +49,13 @@ export const decrementInCart = (productId) => (dispatch, getState) => {
   }
 };
 
-export const removeFromCart = (productId) => (dispatch, getState) => {
+export const removeFromCart = (productId, quantityToReplace) => (
+  dispatch,
+  getState
+) => {
   const state = getState();
   if (isInBasket(state, productId)) {
-    dispatch({ type: types.REMOVE_FROM_CART, productId });
+    dispatch({ type: types.REMOVE_FROM_CART, productId, quantityToReplace });
   }
 };
 
