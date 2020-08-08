@@ -9,7 +9,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import reducer from "./reducers";
 import { getAllProducts, getAllVideos } from "./actions";
 import App from "./App";
-import { loadState, saveState } from "./localStorage";
+import { loadState, saveState } from "./sessionStorage";
 
 const middleware = [thunk];
 if (process.env.NODE_ENV !== "production") {
