@@ -1,6 +1,9 @@
 import React from "react";
 import styled from "styled-components/macro";
 import { Link } from "@reach/router";
+
+import BasketNav from "./Common/BasketNav";
+
 import Logo from "./Logo";
 
 const Nav = styled.nav`
@@ -32,7 +35,9 @@ const NavBar = () => {
       </Link>
       <NavLinks>
         <NavItem>
-          <Link to="/basket">Basket</Link>
+          <Link to="/basket">
+            <BasketNav />
+          </Link>
         </NavItem>
         <NavItem>
           <Link to="/anthology">Murmur Anthology</Link>
