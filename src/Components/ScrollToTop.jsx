@@ -14,7 +14,6 @@ const OnRouteChangeWorker = ({ location, action }) => {
 const OnRouteChange = ({ action }) => (
   <Location>
     {({ location }) => {
-      console.log(location);
       return <OnRouteChangeWorker location={location} action={action} />;
     }}
   </Location>
