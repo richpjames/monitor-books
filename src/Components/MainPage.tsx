@@ -23,13 +23,18 @@ const PageWrap = styled.div`
 `;
 
 interface IProps {
-  books: { [id: string]: Book };
-  videos: { [id: string]: Video };
-  bookIds: string[];
-  videoIds: string[];
+  books?: { [index: string]: Book };
+  videos?: { [index: string]: Video };
+  bookIds?: string[];
+  videoIds?: string[];
 }
 
-const MainPage = ({ books, bookIds, videos, videoIds }: IProps) => {
+const MainPage = ({
+  books = {},
+  bookIds = [],
+  videos = {},
+  videoIds = [],
+}: IProps) => {
   return (
     <>
       <PageWrap>
@@ -47,7 +52,7 @@ const MainPage = ({ books, bookIds, videos, videoIds }: IProps) => {
             <VideoPage
               path={videos[videoId].slug}
               video={videos[videoId]}
-              key={videos[videoId].slug}
+              key={videoId}
             />
           ))}
           <BasketContainer path="/basket" />
