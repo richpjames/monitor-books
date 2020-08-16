@@ -14,6 +14,7 @@
     "@types/react-dom": "^16.9.8",
     "@types/react-redux": "^7.1.9",
     "@types/styled-components": "^5.1.0",
+    "cross-fetch": "^3.0.5",
     "grommet-icons": "^4.4.0",
     "jshint": "^2.11.1",
     "netlify-plugin-visual-diff": "^1.2.0",
