@@ -23,7 +23,17 @@ interface Video {
 }
 
 interface State {
-  products: { byId: { [id: string]: Book }; visibleIds: string[] };
-  videos: { byId: { [id: string]: Video }; visibleIds: string[] };
+  products: Products;
+  videos: Videos;
   cart: { addedIds: string[]; quantityById: { string: number } };
+}
+
+type byId<T> = { [id: string]: T };
+type visibileIds = string[];
+interface Products {
+  byId: byId<Book>;
+  visibleIds: visibileIds;
+}
+interface Videos extends Products {
+  byId: byId<Video>;
 }
