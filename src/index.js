@@ -7,7 +7,6 @@ import { createLogger } from "redux-logger";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 import reducer from "./reducers";
-import { getAllProducts, getAllVideos } from "./actions";
 import App from "./App";
 import { loadState, saveState } from "./sessionStorage";
 
@@ -26,9 +25,6 @@ const store = createStore(
 store.subscribe(() => {
   saveState(store.getState());
 });
-
-store.dispatch(getAllProducts());
-store.dispatch(getAllVideos());
 
 ReactDOM.render(
   <Provider store={store}>
