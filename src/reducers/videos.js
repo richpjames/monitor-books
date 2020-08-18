@@ -29,5 +29,3 @@ export default combineReducers({
   byId,
   visibleIds,
 });
-
-export const getVideo = (state, id) => state.byId[id];
