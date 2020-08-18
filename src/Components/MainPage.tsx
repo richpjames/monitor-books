@@ -23,10 +23,10 @@ const PageWrap = styled.div`
 `;
 
 interface IProps {
-  books?: { [index: string]: Book };
-  videos?: { [index: string]: Video };
-  bookIds?: string[];
-  videoIds?: string[];
+  books?: byId<Book>;
+  videos?: byId<Video>;
+  bookIds?: visibileIds;
+  videoIds?: visibileIds;
 }
 
 const MainPage = ({
@@ -40,7 +40,7 @@ const MainPage = ({
       <PageWrap>
         <NavBar />
         <Router>
-          {bookIds?.map((bookId) => (
+          {bookIds.map((bookId) => (
             <BookPage
               path={books[bookId].slug}
               book={books[bookId]}
@@ -48,7 +48,7 @@ const MainPage = ({
               default={books[bookId].slug === "anthology"}
             />
           ))}
-          {videoIds?.map((videoId) => (
+          {videoIds.map((videoId) => (
             <VideoPage
               path={videos[videoId].slug}
               video={videos[videoId]}
