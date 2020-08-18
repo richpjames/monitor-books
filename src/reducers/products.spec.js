@@ -10,7 +10,7 @@ describe("reducers", () => {
           {},
           {
             type: "RECEIVE_PRODUCTS",
-            books: [
+            products: [
               {
                 id: 1,
                 title: "Book 1",

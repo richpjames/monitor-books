@@ -27,7 +27,7 @@ const byId = (state = {}, action) => {
     case RECEIVE_PRODUCTS:
       return {
         ...state,
-        ...action.books.reduce((obj, product) => {
+        ...action.products.reduce((obj, product) => {
           obj[product.id] = product;
           return obj;
         }, {}),
@@ -47,7 +47,7 @@ const byId = (state = {}, action) => {
 const visibleIds = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_PRODUCTS:
-      return action.books.map((product) => product.id);
+      return action.products.map((product) => product.id);
     default:
       return state;
   }
