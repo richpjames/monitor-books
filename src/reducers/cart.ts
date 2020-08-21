@@ -6,12 +6,22 @@ import {
   DECREMENT_IN_CART,
 } from "../constants/actionTypes";
 
-const initialState = {
+const initialState: InitialState = {
   addedIds: [],
   quantityById: {},
 };
 
-const addedIds = (state = initialState.addedIds, action) => {
+interface InitialState {
+  addedIds: string[];
+  quantityById: { [key: string]: string };
+}
+type CartAction = {
+  type: Action;
+  productId: string;
+  cart: Cart;
+};
+
+const addedIds = (state = initialState.addedIds, action: CartAction) => {
   switch (action.type) {
     case ADD_TO_CART:
       if (state.indexOf(action.productId) !== -1) {
@@ -29,18 +39,21 @@ const addedIds = (state = initialState.addedIds, action) => {
   }
 };
 
-const quantityById = (state = initialState.quantityById, action) => {
+const quantityById = (
+  state = initialState.quantityById,
+  action: CartAction
+) => {
   switch (action.type) {
     case ADD_TO_CART:
       return {
         ...state,
-        [action.productId]: (state[action.productId] || 0) + 1,
+        [action.productId]: (+state[action.productId] || 0) + 1,
       };
     case DECREMENT_IN_CART:
       return {
         ...state,
         [action.productId]:
-          state[action.productId] && state[action.productId] - 1,
+          state[action.productId] && +state[action.productId] - 1,
       };
     case REMOVE_FROM_CART:
       const { [action.productId]: amount, ...restOfState } = state;
@@ -50,14 +63,14 @@ const quantityById = (state = initialState.quantityById, action) => {
   }
 };
 
-export const getQuantity = (state, productId) =>
+export const getQuantity = (state: InitialState, productId: string) =>
   state.quantityById[productId] || 0;
 
-export const getAddedIds = (state) => {
+export const getAddedIds = (state: InitialState) => {
   return state.addedIds;
 };
 
-const cart = (state = initialState, action) => {
+const cart = (state = initialState, action: CartAction) => {
   switch (action.type) {
     case CHECKOUT_REQUEST:
       return initialState;
