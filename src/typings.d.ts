@@ -22,10 +22,15 @@ interface Video {
   slug: string;
 }
 
+interface Cart {
+  addedIds: string[];
+  quantityById: { [index as string]: string };
+}
+
 interface State {
   products: Products;
   videos: Videos;
-  cart: { addedIds: string[]; quantityById: { [index as string]: string } };
+  cart: Cart;
 }
 
 type byId<T> = { [id: string]: T };
