@@ -25,7 +25,7 @@ interface Video {
 interface State {
   products: Products;
   videos: Videos;
-  cart: { addedIds: string[]; quantityById: { string: number } };
+  cart: { addedIds: string[]; quantityById: { [index as string]: string } };
 }
 
 type byId<T> = { [id: string]: T };
