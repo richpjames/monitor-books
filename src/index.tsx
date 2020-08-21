@@ -10,15 +10,25 @@ import reducer from "./reducers";
 import App from "./App";
 import { loadState, saveState } from "./sessionStorage";
 
-const middleware = [thunk];
+const productionMiddleware = [thunk];
+const loggingMiddleware = [productionMiddleware, createLogger()];
+let middleware: any[] = [];
 if (process.env.NODE_ENV !== "production") {
-  middleware.push(createLogger());
+  middleware = [loggingMiddleware, ...productionMiddleware];
 }
+
 const persistedState = loadState();
+console.log(persistedState);
+
+const initialState: State = {
+  cart: { addedIds: [], quantityById: {} },
+  products: { byId: {}, visibleIds: [] },
+  videos: { byId: {}, visibleIds: [] },
+};
 
 const store = createStore(
   reducer,
-  persistedState,
+  persistedState || initialState,
   composeWithDevTools(applyMiddleware(...middleware))
 );
 
