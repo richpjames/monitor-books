@@ -37,3 +37,10 @@ interface Products {
 interface Videos extends Products {
   byId: byId<Video>;
 }
+
+type Action =
+  | "ADD_TO_CART"
+  | "CHECKOUT_REQUEST"
+  | "CHECKOUT_FAILURE"
+  | "REMOVE_FROM_CART"
+  | "DECREMENT_IN_CART";
