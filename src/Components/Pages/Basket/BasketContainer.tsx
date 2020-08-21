@@ -3,7 +3,7 @@ import { RouteComponentProps } from "@reach/router";
 import styled from "styled-components/macro";
 import { connect } from "react-redux";
 
-import { checkout } from "../../../actions";
+// import { checkout } from "../../../actions";
 import { getTotal, getCartProducts } from "../../../reducers";
 import { AmericaTitle } from "../../Common/Titles";
 import Basket from "./Basket";
@@ -15,9 +15,9 @@ const BasketTitle = styled(AmericaTitle)`
 `;
 
 interface IProps extends RouteComponentProps {
-  products: [];
+  products: string[];
   total: string;
-  checkout: (products: []) => void;
+  // checkout: (products: []) => void;
   productIds: string[];
   productsById: { [key: string]: Book };
   quantityById: { [key: string]: number };
@@ -29,14 +29,14 @@ const BasketContainer = ({
   products,
   total,
   quantityById,
-  checkout,
-}: IProps) => {
+}: // checkout,
+IProps) => {
   return (
     <div>
       <BasketTitle>Basket</BasketTitle>
       <Basket
         total={total}
-        onCheckoutClicked={() => checkout(products)}
+        // onCheckoutClicked={() => checkout(products)}
         productsById={productsById}
         productIds={productIds}
         quantityById={quantityById}
@@ -53,4 +53,4 @@ const mapStateToProps = (state: State) => ({
   quantityById: state.cart.quantityById,
 });
 
-export default connect(mapStateToProps, { checkout })(BasketContainer);
+export default connect(mapStateToProps)(BasketContainer);

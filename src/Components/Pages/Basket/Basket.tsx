@@ -5,7 +5,7 @@ type IProps = {
   productIds: string[];
   productsById: { [index: string]: Book };
   total: string;
-  onCheckoutClicked: (click: React.MouseEvent) => void;
+  onCheckoutClicked?: (click: React.MouseEvent) => void;
   quantityById: { [key: string]: number };
 };
 
