@@ -39,7 +39,7 @@ const Basket = ({
     <div>
       <div>{nodes}</div>
       <p>Total: £{total}</p>
-      <button onClick={onCheckoutClicked} disabled={hasProducts}>
+      <button onClick={onCheckoutClicked} disabled={!hasProducts}>
         Checkout
       </button>
     </div>
