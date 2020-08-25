@@ -1,6 +1,8 @@
 {
   "name": "functions",
   "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "stripe": "^8.89.0"
+  }
 }
