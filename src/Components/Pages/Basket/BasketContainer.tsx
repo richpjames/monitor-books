@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { RouteComponentProps } from "@reach/router";
 import styled from "styled-components/macro";
 import { connect } from "react-redux";
 
-import { getTotal, getCartProducts } from "../../../reducers";
+import { getTotal } from "../../../reducers";
 import { AmericaTitle } from "../../Common/Titles";
 import Basket from "./Basket";
 import { checkout } from "../../../actions/index";
 
+const LoadingSpinner = styled.div`
+  height: 100px;
+  width: 100px;
+  background-color: pink;
+`;
 const BasketTitle = styled(AmericaTitle)`
   width: 100%;
   text-align: center;
@@ -15,9 +20,8 @@ const BasketTitle = styled(AmericaTitle)`
 `;
 
 interface IProps extends RouteComponentProps {
-  products: string[];
   total: string;
-  checkout: (products: string[]) => void;
+  checkout: (products: { [key: string]: number }) => void;
   productIds: string[];
   productsById: { [key: string]: Book };
   quantityById: { [key: string]: number };
@@ -26,31 +30,38 @@ interface IProps extends RouteComponentProps {
 const BasketContainer = ({
   productIds,
   productsById,
-  products,
   total,
   quantityById,
   checkout,
 }: IProps) => {
-  return (
+  const [loading, setLoading] = useState(false);
+
+  const onCheckoutClicked = () => {
+    setLoading(true);
+    checkout(quantityById);
+  };
+
+  return !loading ? (
     <div>
       <BasketTitle>Basket</BasketTitle>
       <Basket
         total={total}
-        onCheckoutClicked={() => checkout(products)}
+        onCheckoutClicked={onCheckoutClicked}
         productsById={productsById}
         productIds={productIds}
         quantityById={quantityById}
       />
     </div>
+  ) : (
+    <LoadingSpinner />
   );
 };
 
 const mapStateToProps = (state: State) => ({
-  products: getCartProducts(state),
   total: getTotal(state),
   productIds: state.cart.addedIds,
-  productsById: state.products.byId,
   quantityById: state.cart.quantityById,
+  productsById: state.products.byId,
 });
 
 export default connect(mapStateToProps, { checkout })(BasketContainer);
