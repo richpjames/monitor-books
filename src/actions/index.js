@@ -60,15 +60,15 @@ export const removeFromCart = (productId, quantityToReplace) => (
 export const checkout = (products) => (dispatch, getState) => {
   const { cart } = getState();
 
+  shop.buyProducts({ products });
+  // dispatch({
+  //   type: types.CHECKOUT_REQUEST,
+  //   what: "what",
+  // });
+
   dispatch({
-    type: types.CHECKOUT_REQUEST,
+    type: types.CHECKOUT_SUCCESS,
   });
-  shop.buyProducts(products, () => {
-    dispatch({
-      type: types.CHECKOUT_SUCCESS,
-      cart,
-    });
-    // Replace the line above with line below to rollback on failure:
-    // dispatch({ type: types.CHECKOUT_FAILURE, cart })
-  });
+  // Replace the line above with line below to rollback on failure:
+  // dispatch({ type: types.CHECKOUT_FAILURE, cart })
 };
