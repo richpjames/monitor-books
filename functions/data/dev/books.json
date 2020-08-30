@@ -9,10 +9,11 @@
     "path": "ant_img",
     "thumbnail": "2.jpg",
     "mainURL": "anthology1",
-    "price": "1300",
+    "price": "13",
     "publishDate": "2019-09-30T00:00:00+0000",
     "slug": "anthology",
     "inventory": 20,
-    "currency": "GBP"
+    "currency": "GBP",
+    "priceCode": "price_1HKrPxJs9ciiqN7OT4bZ07TL"
   }
 ]
