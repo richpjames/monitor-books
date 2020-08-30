@@ -13,14 +13,15 @@
 # will inherit these settings.
 [context.production]
   command = "make production"
+  NODE_ENV = "prod"
   [context.production.environment]
-    ACCESS_TOKEN = "super secret"
-
+ 
 # Deploy Preview context:
 # All deploys generated from a pull/merge request
 # will inherit these settings.
 [context.deploy-preview.environment]
-  ACCESS_TOKEN = "not so secret"
+  NODE_ENV = "development"
+
 
 # Branch deploy context:
 # All deploys that are not from a pull/merge request
