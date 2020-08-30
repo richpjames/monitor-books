@@ -8,7 +8,6 @@ import Title from "../Common/Title";
 import Text from "../Common/Text";
 import { PageWrapper, InfoSection } from "../Common/Common";
 import BuyButton from "../Common/BuyButton";
-import BuyStripe from "../BuyStripe";
 
 interface IProps extends RouteComponentProps {
   book: Book;
@@ -49,7 +48,6 @@ const BookPage = ({
       <InfoSection>
         <Title title={author} subtitle={title} />
         <Text leftText={blurb1} rightText={blurb2} />
-        <BuyStripe />
       </InfoSection>
       {addToCart && (
         <BuyButton onClick={() => addToCart(book.id)} disabled={buttonDisabled}>
