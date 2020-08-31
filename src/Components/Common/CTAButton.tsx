@@ -25,17 +25,32 @@ import styled from "styled-components/macro";
 //   left: 50%;
 //   transform: translate(-50%, -50%);
 // `;
-const Button = styled.button`
+const ButtonStyles = styled.button`
   width: 150px;
   height: 40px;
 `;
 
-function BuyButton({ onClick, disabled, children }) {
-  return (
-    <Button onClick={onClick} disabled={disabled}>
-      {children}
-    </Button>
-  );
+interface IProps {
+  onClick: (click: React.MouseEvent) => void;
+  disabled: boolean;
+  children: string;
+  onDisabledRedirect?: () => void;
+  disabledRedirect?: boolean;
 }
 
-export default BuyButton;
+export function Button({
+  onClick,
+  disabled,
+  children,
+  onDisabledRedirect,
+  disabledRedirect,
+}: IProps) {
+  return (
+    <ButtonStyles
+      onClick={disabledRedirect ? onDisabledRedirect : onClick}
+      disabled={disabled}
+    >
+      {children}
+    </ButtonStyles>
+  );
+}
