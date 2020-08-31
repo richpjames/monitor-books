@@ -16,7 +16,9 @@ h1 {
     font-size: clamp(32px, 2em, 2rem);
     display: inline;
 }
+h4 {  font-size: 1.2em;}
 
+h5 {  font-size: .95em;}
 h1, h2, h3, h4,h5, p, ul, a {
     margin: 0 0 0 0;
     padding: 0 0 0 0;
@@ -36,4 +38,12 @@ p {
     line-height: 1.7;
     font-size: clamp(12px, 1rem, 1.2rem);
     justify-content: start;
+}
+
+button {
+    background-color: #141414;
+    color: white;
+    font-family: "GT America", sans-serif;
+    font-size: 1rem;
+    border: none;
 }
