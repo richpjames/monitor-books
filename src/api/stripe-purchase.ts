@@ -11,14 +11,7 @@ export async function handleCheckout(data: any) {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({
-      id: "9T65B28LLM2MC",
-      name: "book",
-      description: "a book",
-      amount: 12,
-      currency: "GBP",
-      quantity: 1,
-    }),
+    body: JSON.stringify(data),
   }).then((res) => res.json());
 
   if (stripe) {
