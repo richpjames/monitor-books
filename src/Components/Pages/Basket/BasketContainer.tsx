@@ -1,19 +1,11 @@
 import React, { useState } from "react";
 import { RouteComponentProps } from "@reach/router";
-import styled from "styled-components/macro";
 import { connect } from "react-redux";
 
 import { getTotal } from "../../../reducers";
-import { AmericaTitle } from "../../Common/Titles";
 import Basket from "./Basket";
 import { checkout } from "../../../actions/index";
 import { PageWrapper } from "../../Common/Common";
-
-const BasketTitle = styled(AmericaTitle)`
-  width: 100%;
-  text-align: center;
-  display: block;
-`;
 
 interface IProps extends RouteComponentProps {
   total: string;
@@ -30,7 +22,7 @@ const BasketContainer = ({
   quantityById,
   checkout,
 }: IProps) => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const onCheckoutClicked = () => {
     setLoading(true);
@@ -39,7 +31,6 @@ const BasketContainer = ({
 
   return (
     <PageWrapper>
-      <BasketTitle>Basket</BasketTitle>
       <Basket
         total={total}
         onCheckoutClicked={onCheckoutClicked}

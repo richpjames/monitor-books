@@ -2,37 +2,42 @@ import React from "react";
 import styled from "styled-components/macro";
 import { connect } from "react-redux";
 
+import { offWhite } from "../../../constants/colours";
 import { addToCart, decrementInCart, removeFromCart } from "../../../actions";
+import { QuantityPanel } from "./QuantityPanel";
 
 const Container = styled.div`
   display: flex;
-  height: 200px;
-  width: 500px;
+  height: 15rem;
+  margin-left: 5rem;
+  margin-right: 5rem;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+`;
+const InnerContainer = styled.div`
+  display: flex;
+  padding: 1rem;
+  width: 100%;
 `;
 
 const MetaInfoContainer = styled.div`
+  background-color: ${offWhite};
   display: flex;
   flex-direction: column;
-  width: 60%;
-  padding: 20px;
+  align-items: center;
+  width: 40%;
+  margin-left: auto;
 `;
 
-const BasketListItemTitle = styled.h3`
+const BasketListItemTitle = styled.h4`
   width: 100%;
   text-align: center;
 `;
 
-const BasketListItemSubtitle = styled.h4`
+const BasketListItemSubtitle = styled.h5`
   width: 100%;
   text-align: center;
 `;
-
-const Quantity = styled.span`
-  width: 100%;
-  text-align: center;
-  padding-top: 15px;
-`;
-
 const Photo = styled.img`
   max-height: 100%;
   max-width: 100%;
@@ -42,6 +47,10 @@ const Photo = styled.img`
     width: 100%;
     height: 100%;
   }
+`;
+
+const Button = styled.button`
+  width: 10%;
 `;
 interface IProps {
   title: string;
@@ -67,39 +76,30 @@ const BasketListItem = ({
   decrementInCart,
   removeFromCart,
 }: IProps) => {
-  let addButtonMessage;
-  let buttonDisabled;
-  if (stock > 0) {
-    addButtonMessage = "Add another copy";
-    buttonDisabled = false;
-  } else {
+  let addButtonMessage = "+";
+  let buttonDisabled = false;
+  if (stock < 0) {
     addButtonMessage = "Out of stock";
     buttonDisabled = true;
   }
 
   return (
     <Container>
-      <Photo src={imageSrc} />
-      <MetaInfoContainer>
-        <BasketListItemTitle>{title}</BasketListItemTitle>
-        <BasketListItemSubtitle>{subtitle}</BasketListItemSubtitle>
-        <button
-          onClick={() => {
-            return addToCart(id);
-          }}
-          disabled={buttonDisabled}
-        >
-          {addButtonMessage}
-        </button>
-        <Quantity>
-          Quantity:
-          {quantity}
-        </Quantity>
-        <button onClick={() => decrementInCart(id)} disabled={quantity <= 0}>
-          Less copies!
-        </button>
-        <button onClick={() => removeFromCart(id, quantity)}>Bin</button>
-      </MetaInfoContainer>
+      <InnerContainer>
+        <Photo src={imageSrc} />
+        <MetaInfoContainer>
+          <BasketListItemTitle>{title}</BasketListItemTitle>
+          <BasketListItemSubtitle>{subtitle}</BasketListItemSubtitle>
+          <QuantityPanel
+            addToCart={() => addToCart(id)}
+            decrementInCart={() => decrementInCart(id)}
+            addButtonMessage={addButtonMessage}
+            outOfStock={buttonDisabled}
+            quantity={quantity}
+          />
+          <Button onClick={() => removeFromCart(id, quantity)}>Bin</Button>
+        </MetaInfoContainer>
+      </InnerContainer>
     </Container>
   );
 };
