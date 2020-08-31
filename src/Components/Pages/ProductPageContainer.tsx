@@ -1,16 +1,15 @@
 import React from "react";
 import { RouteComponentProps } from "@reach/router";
-import { connect } from "react-redux";
+import { connect, ConnectedProps } from "react-redux";
 
 import { addToCart } from "../../actions";
 import ProductPage from "./ProductPage";
 
-interface IProps extends RouteComponentProps {
+interface OwnProps extends RouteComponentProps {
   product: Book;
-  cartQuantityById?: { [key: string]: number };
-  inventoryQuantity?: number;
-  addToCart?: (productId: string) => void;
 }
+
+type IProps = PropsFromRedux & OwnProps;
 
 const ProductPageContainer = ({
   product,
@@ -35,9 +34,13 @@ const ProductPageContainer = ({
   );
 };
 
-const mapStateToProps = (state: State, ownProps: IProps) => ({
+const mapStateToProps = (state: State, ownProps: OwnProps) => ({
   cartQuantityById: state.cart.quantityById,
   inventoryQuantity: state.products.byId[ownProps.product.id].inventory,
+  product: ownProps.product,
 });
+const connector = connect(mapStateToProps, { addToCart });
 
-export default connect(mapStateToProps, { addToCart })(ProductPageContainer);
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+export default connector(ProductPageContainer);

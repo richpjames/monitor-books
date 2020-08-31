@@ -34,7 +34,7 @@ const BasketContainer = ({
   quantityById,
   checkout,
 }: IProps) => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const onCheckoutClicked = () => {
     setLoading(true);
