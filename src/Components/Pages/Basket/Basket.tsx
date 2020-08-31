@@ -1,6 +1,7 @@
 import React from "react";
 
 import BasketListItem from "./BasketListItem";
+import { LoadingSpinner } from "../../Common/Common";
 
 type IProps = {
   productIds: string[];
@@ -8,6 +9,7 @@ type IProps = {
   total: string;
   onCheckoutClicked?: (click: React.MouseEvent) => void;
   quantityById: { [key: string]: number };
+  loading: boolean;
 };
 
 const Basket = ({
@@ -16,6 +18,7 @@ const Basket = ({
   total,
   onCheckoutClicked,
   quantityById,
+  loading,
 }: IProps): React.ReactElement => {
   const hasProducts = productIds?.length > 0;
 
@@ -38,11 +41,17 @@ const Basket = ({
 
   return (
     <div>
-      <div>{nodes}</div>
-      <p>Total: £{total}</p>
-      <button onClick={onCheckoutClicked} disabled={!hasProducts}>
-        Checkout
-      </button>
+      {!loading ? (
+        <>
+          <div>{nodes}</div>
+          <p>Total: £{total}</p>
+          <button onClick={onCheckoutClicked} disabled={!hasProducts}>
+            Checkout
+          </button>
+        </>
+      ) : (
+        <LoadingSpinner />
+      )}
     </div>
   );
 };

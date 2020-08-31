@@ -7,12 +7,8 @@ import { getTotal } from "../../../reducers";
 import { AmericaTitle } from "../../Common/Titles";
 import Basket from "./Basket";
 import { checkout } from "../../../actions/index";
+import { PageWrapper } from "../../Common/Common";
 
-const LoadingSpinner = styled.div`
-  height: 100px;
-  width: 100px;
-  background-color: pink;
-`;
 const BasketTitle = styled(AmericaTitle)`
   width: 100%;
   text-align: center;
@@ -41,8 +37,8 @@ const BasketContainer = ({
     checkout(quantityById);
   };
 
-  return !loading ? (
-    <div>
+  return (
+    <PageWrapper>
       <BasketTitle>Basket</BasketTitle>
       <Basket
         total={total}
@@ -50,10 +46,9 @@ const BasketContainer = ({
         productsById={productsById}
         productIds={productIds}
         quantityById={quantityById}
+        loading={loading}
       />
-    </div>
-  ) : (
-    <LoadingSpinner />
+    </PageWrapper>
   );
 };
 
