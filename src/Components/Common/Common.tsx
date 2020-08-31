@@ -3,6 +3,9 @@ import styled from "styled-components/macro";
 export const PageWrapper = styled.div`
   max-width: 100%;
   margin-top: 3vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const InfoSection = styled.div`
@@ -10,8 +13,10 @@ export const InfoSection = styled.div`
   margin-right: auto;
 `;
 
-export const LoadingSpinner = styled.div`
-  display: inline-block;
+export const LoadingAnimation = styled.div`
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   width: 80px;
   height: 80px;
   :after {
