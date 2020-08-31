@@ -41,6 +41,7 @@
     "functions": "cd functions && npm i && cd ..",
     "dev": "netlify dev",
     "test": "react-scripts test --env=jest-environment-jsdom-sixteen",
+    "cypress": "npx cypress run",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -65,10 +66,11 @@
     ]
   },
   "devDependencies": {
-    "@applitools/eyes-cypress": "applitools/eyes-cypress",
+    "@applitools/eyes-cypress": "^3.13.4",
     "@testing-library/jest-dom": "^5.11.0",
     "@testing-library/react": "^10.4.3",
     "dotenv": "^8.1.0",
+    "cypress": "^5.0.0",
     "eslint-config-prettier": "^6.1.0",
     "eslint-plugin-jest": "^23.0.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
