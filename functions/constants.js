@@ -1,4 +1,4 @@
-export const SUPPORTED_LOCATIONS = [
+const SUPPORTED_LOCATIONS = [
   "US",
   "CA",
   "GB",
@@ -252,3 +252,5 @@ export const SUPPORTED_LOCATIONS = [
   "ZW",
   "ZZ",
 ];
+
+module.exports = SUPPORTED_LOCATIONS;
