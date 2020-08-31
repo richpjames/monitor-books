@@ -5,7 +5,7 @@ import { Router } from "@reach/router";
 import { connect } from "react-redux";
 import About from "./About";
 import BasketContainer from "./Basket/BasketContainer";
-import ProductPage from "./ProductPage";
+import ProductPageContainer from "./ProductPageContainer";
 import Footer from "../Footer";
 import NavBar from "../NavBar";
 import VideoPage from "./VideoPage";
@@ -42,9 +42,9 @@ const MainPage = ({
         <NavBar />
         <Router>
           {bookIds.map((bookId) => (
-            <ProductPage
+            <ProductPageContainer
               path={books[bookId].slug}
-              book={books[bookId]}
+              product={books[bookId]}
               key={bookId}
               default={books[bookId].slug === "anthology"}
             />
