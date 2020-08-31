@@ -3,13 +3,14 @@ import styled from "styled-components/macro";
 import { Router } from "@reach/router";
 
 import { connect } from "react-redux";
-import About from "./Pages/About";
-import BasketContainer from "./Pages/Basket/BasketContainer";
-import BookPage from "./Pages/BookPage";
-import Footer from "./Footer";
-import NavBar from "./NavBar";
-import VideoPage from "./Pages/VideoPage";
-import OnRouteChange from "./ScrollToTop";
+import About from "./About";
+import BasketContainer from "./Basket/BasketContainer";
+import BookPage from "./BookPage";
+import Footer from "../Footer";
+import NavBar from "../NavBar";
+import VideoPage from "./VideoPage";
+import OnRouteChange from "../ScrollToTop";
+import { Success } from "./Success";
 
 const PageWrap = styled.div`
   margin-left: auto;
@@ -57,6 +58,7 @@ const MainPage = ({
           ))}
           <BasketContainer path="/basket" />
           <About path="/about" />
+          <Success path="/success" />
         </Router>
         {/* this prevents the page from opening at the centre */}
         <OnRouteChange action={() => window.scrollTo(0, 0)} />
