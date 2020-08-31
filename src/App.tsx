@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import "./App.css";
 import Slideshow from "./Components/Slideshow";
-import MainPage from "./Components/MainPage";
+import MainPage from "./Components/Pages/MainPage";
 import { fetchVideos, fetchProducts } from "./actions/index";
 
 interface IProps {
@@ -13,7 +13,6 @@ interface IProps {
 
 const App = ({ fetchVideos, fetchProducts }: IProps) => {
   const [showImage, setShowImage] = useState(false);
-  console.log(process.env);
   useEffect(() => {
     fetchProducts();
     fetchVideos();
