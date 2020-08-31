@@ -58,9 +58,17 @@ export const removeFromCart = (productId, quantityToReplace) => (
 };
 
 export const checkout = (products) => (dispatch, getState) => {
-  const { cart } = getState();
-
-  shop.buyProducts({ products });
+  const productsById = getState().products.byId;
+  const ids = Object.keys(products);
+  const quantityByPriceId = ids.map((id) => {
+    const priceAndQuantity = {
+      id: id,
+      priceId: productsById[id].priceId,
+      quantity: products[id],
+    };
+    return priceAndQuantity;
+  }, []);
+  shop.buyProducts(quantityByPriceId);
   // dispatch({
   //   type: types.CHECKOUT_REQUEST,
   //   what: "what",
