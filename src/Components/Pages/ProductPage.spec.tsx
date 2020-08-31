@@ -8,6 +8,8 @@ describe("ProductPage component", () => {
   it("should render title", () => {
     const { queryByText } = render(
       <ProductPage
+        addToCartRedirect={() => {}}
+        redirectOnAddToCart={false}
         addToCart={jest.fn()}
         title="test product"
         leftDescription="testing is fun"
@@ -24,6 +26,8 @@ describe("ProductPage component", () => {
   it("should render left description", () => {
     const { queryByText } = render(
       <ProductPage
+        addToCartRedirect={() => {}}
+        redirectOnAddToCart={false}
         addToCart={jest.fn()}
         title="test product"
         leftDescription="testing is fun"
@@ -41,6 +45,8 @@ describe("ProductPage component", () => {
   it("should render right description", () => {
     const { queryByText } = render(
       <ProductPage
+        addToCartRedirect={() => {}}
+        redirectOnAddToCart={false}
         addToCart={jest.fn()}
         title="test product"
         leftDescription="testing is fun"
@@ -58,6 +64,8 @@ describe("ProductPage component", () => {
   it("should render author", () => {
     const { queryByText } = render(
       <ProductPage
+        addToCartRedirect={() => {}}
+        redirectOnAddToCart={false}
         addToCart={jest.fn()}
         title="test product"
         leftDescription="testing is fun"
@@ -74,9 +82,13 @@ describe("ProductPage component", () => {
 
   test("calls onClick handler  when clicked", () => {
     const onClick = jest.fn();
+    const onRedirect = jest.fn();
     const { getByText } = render(
       <ProductPage
+        addToCartRedirect={() => {}}
+        redirectOnAddToCart={false}
         addToCart={onClick}
+        addToCartRedirect={onRedirect}
         title="test product"
         leftDescription="testing is fun"
         rightDescription="and good"
@@ -97,11 +109,12 @@ describe("ProductPage component", () => {
   });
 
   test("but is disabled when 0 inventory", () => {
-    const onClick = () => {
-      jest.fn();
-    };
+    const onClick = () => jest.fn();
+
     const { getByText } = render(
       <ProductPage
+        addToCartRedirect={() => {}}
+        redirectOnAddToCart={false}
         addToCart={onClick}
         title="test product"
         leftDescription="testing is fun"
@@ -117,5 +130,29 @@ describe("ProductPage component", () => {
     expect(button).toBeInTheDocument();
 
     expect(button).toBeDisabled();
+  });
+  test("calls redirect function when it is supplied and flag set to true", () => {
+    const onClick = jest.fn();
+
+    const { getByText } = render(
+      <ProductPage
+        addToCartRedirect={onClick}
+        redirectOnAddToCart={true}
+        addToCart={() => {}}
+        title="test product"
+        leftDescription="testing is fun"
+        rightDescription="and good"
+        author="the test author"
+        photos={[0, 2]}
+        id="id"
+        cartQuantityById={{ id: 1 }}
+        inventoryQuantity={0}
+      />
+    );
+    const button = getByText("In basket");
+    expect(onClick).not.toHaveBeenCalled();
+
+    userEvent.click(button);
+    expect(onClick).not.toHaveBeenCalled();
   });
 });
