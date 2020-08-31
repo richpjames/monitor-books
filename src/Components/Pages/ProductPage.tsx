@@ -8,9 +8,9 @@ import { PageWrapper, InfoSection } from "../Common/Common";
 import BuyButton from "../Common/BuyButton";
 
 interface IProps extends RouteComponentProps {
-  cartQuantityById?: { [key: string]: number };
-  inventoryQuantity?: number;
-  addToCart?: (productId: string) => void;
+  cartQuantityById: { [key: string]: number };
+  inventoryQuantity: number;
+  addToCart: (productId: string) => void;
   photos: number[];
   title: string;
   author: string;
