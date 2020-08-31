@@ -1,5 +1,5 @@
 import React from "react";
-import { RouteComponentProps } from "@reach/router";
+import { RouteComponentProps, navigate } from "@reach/router";
 import { connect, ConnectedProps } from "react-redux";
 
 import { addToCart } from "../../actions";
@@ -22,6 +22,8 @@ const ProductPageContainer = ({
   return (
     <ProductPage
       inventoryQuantity={inventoryQuantity}
+      redirectOnAddToCart={true}
+      addToCartRedirect={() => navigate("basket")}
       cartQuantityById={cartQuantityById}
       addToCart={addToCart}
       photos={photos}
