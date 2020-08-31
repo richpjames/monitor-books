@@ -1,8 +1,6 @@
 import React from "react";
 import { RouteComponentProps } from "@reach/router";
-import { connect } from "react-redux";
 
-import { addToCart } from "../../actions";
 import Photos from "../Common/Photos";
 import Title from "../Common/Title";
 import Text from "../Common/Text";
@@ -10,20 +8,28 @@ import { PageWrapper, InfoSection } from "../Common/Common";
 import BuyButton from "../Common/BuyButton";
 
 interface IProps extends RouteComponentProps {
-  book: Book;
   cartQuantityById?: { [key: string]: number };
   inventoryQuantity?: number;
   addToCart?: (productId: string) => void;
+  photos: number[];
+  title: string;
+  author: string;
+  leftDescription: string;
+  rightDescription: string;
+  id: string;
 }
 
 const ProductPage = ({
-  book,
+  photos,
+  title,
+  author,
+  leftDescription,
+  rightDescription,
+  id,
   inventoryQuantity,
   cartQuantityById,
   addToCart,
 }: IProps) => {
-  const { photos, title, author, blurb1, blurb2, id } = book;
-
   let buttonMessage;
   let buttonDisabled;
   if (
@@ -47,10 +53,10 @@ const ProductPage = ({
       <Photos photos={photos} />
       <InfoSection>
         <Title title={author} subtitle={title} />
-        <Text leftText={blurb1} rightText={blurb2} />
+        <Text leftText={leftDescription} rightText={rightDescription} />
       </InfoSection>
       {addToCart && (
-        <BuyButton onClick={() => addToCart(book.id)} disabled={buttonDisabled}>
+        <BuyButton onClick={() => addToCart(id)} disabled={buttonDisabled}>
           {buttonMessage}
         </BuyButton>
       )}
@@ -58,9 +64,4 @@ const ProductPage = ({
   );
 };
 
-const mapStateToProps = (state: State, ownProps: IProps) => ({
-  cartQuantityById: state.cart.quantityById,
-  inventoryQuantity: state.products.byId[ownProps.book.id].inventory,
-});
-
-export default connect(mapStateToProps, { addToCart })(ProductPage);
+export default ProductPage;
