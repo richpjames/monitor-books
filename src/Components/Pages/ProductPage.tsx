@@ -16,7 +16,7 @@ interface IProps extends RouteComponentProps {
   addToCart?: (productId: string) => void;
 }
 
-const BookPage = ({
+const ProductPage = ({
   book,
   inventoryQuantity,
   cartQuantityById,
@@ -63,4 +63,4 @@ const mapStateToProps = (state: State, ownProps: IProps) => ({
   inventoryQuantity: state.products.byId[ownProps.book.id].inventory,
 });
 
-export default connect(mapStateToProps, { addToCart })(BookPage);
+export default connect(mapStateToProps, { addToCart })(ProductPage);

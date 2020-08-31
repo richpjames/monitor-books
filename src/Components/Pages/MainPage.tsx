@@ -5,7 +5,7 @@ import { Router } from "@reach/router";
 import { connect } from "react-redux";
 import About from "./About";
 import BasketContainer from "./Basket/BasketContainer";
-import BookPage from "./BookPage";
+import ProductPage from "./ProductPage";
 import Footer from "../Footer";
 import NavBar from "../NavBar";
 import VideoPage from "./VideoPage";
@@ -42,7 +42,7 @@ const MainPage = ({
         <NavBar />
         <Router>
           {bookIds.map((bookId) => (
-            <BookPage
+            <ProductPage
               path={books[bookId].slug}
               book={books[bookId]}
               key={bookId}

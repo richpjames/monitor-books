@@ -9,7 +9,7 @@ import {
 
 interface IProps {
   title: string;
-  subtitle: string;
+  subtitle?: string;
   bold?: boolean;
 }
 
