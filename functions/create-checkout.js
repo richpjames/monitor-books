@@ -1,19 +1,9 @@
-import { SUPPORTED_LOCATIONS } from "./constants";
+const SUPPORTED_LOCATIONS = require("./constants");
 const stripe = require("stripe")(process.env.REACT_APP_STRIPE_SECRET_KEY);
-const liveInventory = require("./data/live/books.json");
-const devInventory = require("./data/dev/books.json");
-
-const inventory =
-  process.env.NODE_ENV === "production" ? liveInventory : devInventory;
 
 exports.handler = async (event) => {
-  const { id, quantity } = JSON.parse(event.body);
-  const product = inventory.find((p) => p.id === id);
+  const products = JSON.parse(event.body);
 
-  const validatedQuantity = quantity > 0 < 11 ? quantity : 1;
-  console.log(event, "event");
-
-  console.log(product, "product");
   const session = await stripe.checkout.sessions.create({
     mode: "payment",
     payment_method_types: ["card"],
@@ -21,15 +11,19 @@ exports.handler = async (event) => {
     shipping_address_collection: {
       allowed_countries: SUPPORTED_LOCATIONS,
     },
-    success_url: `${process.env.URL}/success.html`,
+    success_url: `${process.env.URL}/success`,
     cancel_url: process.env.URL,
 
-    line_items: [
-      {
-        price: "price_1HF3WIJs9ciiqN7OElxdqBnZ",
+    line_items: products.map((product) => {
+      const validatedQuantity =
+        product.quantity > 0 < 11 ? product.quantity : 1;
+
+      const lineItem = {
+        price: product.priceId,
         quantity: validatedQuantity,
-      },
-    ],
+      };
+      return lineItem;
+    }),
   });
   return {
     statusCode: 200,
