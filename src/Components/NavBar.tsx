@@ -11,6 +11,7 @@ const Nav = styled.nav`
   justify-content: space-between;
   align-items: flex-end;
   border-bottom: 1px solid black;
+  padding-bottom: 0.5rem;
   @media only screen and (min-width: 600px) {
     margin-top: 5vh;
   }
