@@ -21,7 +21,7 @@ const App = ({ fetchVideos, fetchProducts }: IProps) => {
     }, 3000);
   }, [fetchProducts, fetchVideos]);
 
-  return <>{showImage ? <Slideshow /> : <MainPage />};</>;
+  return <>{showImage ? <Slideshow /> : <MainPage />}</>;
 };
 
 export default connect(null, { fetchVideos, fetchProducts })(App);
