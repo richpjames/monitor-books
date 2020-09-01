@@ -5,13 +5,12 @@ import Photos from "../Common/Photos";
 import Title from "../Common/Title";
 import Text from "../Common/Text";
 import { PageWrapper, InfoSection } from "../Common/Common";
-import { Button } from "../Common/CTAButton";
+import { CTAButton } from "../Common/CTAButton";
 
 interface IProps extends RouteComponentProps {
   cartQuantityById: { [key: string]: number };
   inventoryQuantity: number;
   addToCart: (productId: string) => void;
-  redirectOnAddToCart: boolean;
   addToCartRedirect: () => void;
   photos: number[];
   title: string;
@@ -31,21 +30,14 @@ const ProductPage = ({
   addToCartRedirect,
   inventoryQuantity,
   cartQuantityById,
-  redirectOnAddToCart,
   addToCart,
 }: IProps) => {
-  let buttonMessage;
-  let buttonDisabled;
+  let buttonMessage = "Add to basket";
 
   if (cartQuantityById[id] > 0) {
     buttonMessage = "In basket";
-    buttonDisabled = true;
-  } else if (inventoryQuantity > 0) {
-    buttonMessage = "Add to basket";
-    buttonDisabled = false;
-  } else {
+  } else if (inventoryQuantity < 1) {
     buttonMessage = "Out of stock";
-    buttonDisabled = true;
   }
 
   return (
@@ -55,14 +47,14 @@ const ProductPage = ({
         <Title title={author} subtitle={title} />
         <Text leftText={leftDescription} rightText={rightDescription} />
       </InfoSection>
-      <Button
-        onClick={() => addToCart(id)}
-        disabled={buttonDisabled}
-        disabledRedirect={redirectOnAddToCart}
-        onDisabledRedirect={addToCartRedirect}
+      <CTAButton
+        onClick={
+          cartQuantityById[id] > 0 ? addToCartRedirect : () => addToCart(id)
+        }
+        disabled={inventoryQuantity < 1}
       >
         {buttonMessage}
-      </Button>
+      </CTAButton>
     </PageWrapper>
   );
 };

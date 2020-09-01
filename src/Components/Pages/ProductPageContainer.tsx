@@ -22,7 +22,6 @@ const ProductPageContainer = ({
   return (
     <ProductPage
       inventoryQuantity={inventoryQuantity}
-      redirectOnAddToCart={true}
       addToCartRedirect={() => navigate("basket")}
       cartQuantityById={cartQuantityById}
       addToCart={addToCart}
