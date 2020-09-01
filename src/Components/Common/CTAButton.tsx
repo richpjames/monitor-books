@@ -30,27 +30,21 @@ const ButtonStyles = styled.button`
   height: 40px;
 `;
 
+const ButtonWrapper = styled.div`
+  padding-top: 1rem;
+`;
 interface IProps {
   onClick: (click: React.MouseEvent) => void;
   disabled: boolean;
   children: string;
-  onDisabledRedirect?: () => void;
-  disabledRedirect?: boolean;
 }
 
-export function Button({
-  onClick,
-  disabled,
-  children,
-  onDisabledRedirect,
-  disabledRedirect,
-}: IProps) {
+export function CTAButton({ onClick, disabled, children }: IProps) {
   return (
-    <ButtonStyles
-      onClick={disabledRedirect ? onDisabledRedirect : onClick}
-      disabled={disabled}
-    >
-      {children}
-    </ButtonStyles>
+    <ButtonWrapper>
+      <ButtonStyles onClick={onClick} disabled={disabled}>
+        {children}
+      </ButtonStyles>
+    </ButtonWrapper>
   );
 }
