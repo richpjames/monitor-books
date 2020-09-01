@@ -1,15 +1,17 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
+
+const Wrapper = styled.div`
+  display: flex;
+  width: 6rem;
+`;
 
 const Quantity = styled.span`
   width: 100%;
   text-align: center;
-  padding-top: 15px;
 `;
 
-const Button = styled.button`
-  width: 10%;
-`;
+const Button = styled.button``;
 
 interface IProps {
   addToCart: (event: React.MouseEvent) => void;
@@ -26,15 +28,15 @@ export const QuantityPanel = ({
   quantity,
 }: IProps) => (
   <>
-    <Button onClick={addToCart} disabled={outOfStock}>
-      {addButtonMessage}
-    </Button>
-    <Quantity>
-      Quantity:
-      {quantity}
-    </Quantity>
-    <Button onClick={decrementInCart} disabled={quantity <= 0}>
-      -
-    </Button>
+    Quantity:
+    <Wrapper>
+      <Button onClick={addToCart} disabled={outOfStock}>
+        {addButtonMessage}
+      </Button>
+      <Quantity>{quantity}</Quantity>
+      <Button onClick={decrementInCart} disabled={quantity <= 0}>
+        -
+      </Button>
+    </Wrapper>
   </>
 );
