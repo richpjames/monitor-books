@@ -1,42 +1,52 @@
 import React from "react";
 import styled from "styled-components/macro";
 
-const Wrapper = styled.div`
+const Wrap = styled.section`
+  display: flex;
+  padding-bottom: 1rem;
+  margin-top: auto;
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+    margin-top: 0;
+  }
+`;
+
+const ButtonWrapper = styled.div`
   display: flex;
   width: 6rem;
+  @media only screen and (max-width: 600px) {
+  }
 `;
 
-const Quantity = styled.span`
-  width: 100%;
-  text-align: center;
+const Quantity = styled.h5`
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 `;
-
+const QuantityLabel = styled(Quantity)``;
 const Button = styled.button``;
 
 interface IProps {
   addToCart: (event: React.MouseEvent) => void;
   decrementInCart: (event: React.MouseEvent) => void;
-  addButtonMessage: string;
   outOfStock: boolean;
   quantity: number;
 }
 export const QuantityPanel = ({
   addToCart,
   decrementInCart,
-  addButtonMessage,
   outOfStock,
   quantity,
 }: IProps) => (
-  <>
-    Quantity:
-    <Wrapper>
-      <Button onClick={addToCart} disabled={outOfStock}>
-        {addButtonMessage}
-      </Button>
-      <Quantity>{quantity}</Quantity>
+  <Wrap>
+    <QuantityLabel>Quantity:</QuantityLabel>
+    <ButtonWrapper>
       <Button onClick={decrementInCart} disabled={quantity <= 0}>
         -
       </Button>
-    </Wrapper>
-  </>
+      <Quantity>{quantity}</Quantity>
+      <Button onClick={addToCart} disabled={outOfStock}>
+        +
+      </Button>
+    </ButtonWrapper>
+  </Wrap>
 );

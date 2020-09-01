@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import { getTotal } from "../../../reducers";
 import Basket from "./Basket";
 import { checkout } from "../../../actions/index";
-import { PageWrapper } from "../../Common/Common";
 
 interface IProps extends RouteComponentProps {
   total: string;
@@ -30,16 +29,14 @@ const BasketContainer = ({
   };
 
   return (
-    <PageWrapper>
-      <Basket
-        total={total}
-        onCheckoutClicked={onCheckoutClicked}
-        productsById={productsById}
-        productIds={productIds}
-        quantityById={quantityById}
-        loading={loading}
-      />
-    </PageWrapper>
+    <Basket
+      total={total}
+      onCheckoutClicked={onCheckoutClicked}
+      productsById={productsById}
+      productIds={productIds}
+      quantityById={quantityById}
+      loading={loading}
+    />
   );
 };
 

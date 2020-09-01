@@ -2,104 +2,132 @@ import React from "react";
 import styled from "styled-components/macro";
 import { connect } from "react-redux";
 
-import { offWhite } from "../../../constants/colours";
+import { offWhite, offOffWhite } from "../../../constants/colours";
 import { addToCart, decrementInCart, removeFromCart } from "../../../actions";
 import { QuantityPanel } from "./QuantityPanel";
 
-const Container = styled.div`
+const Container = styled.div<{ index: number }>`
   display: flex;
-  height: 15rem;
+  justify-content: center;
+  height: 20%;
+  width: 100%;
   margin-left: 5rem;
   margin-right: 5rem;
+  margin-top: ${(props) => (props.index < 1 ? "0" : "2rem")};
   border-top: 1px solid black;
   border-bottom: 1px solid black;
-`;
-const InnerContainer = styled.div`
-  display: flex;
-  padding: 1rem;
-  width: 100%;
+
+  @media only screen and (max-width: 600px) {
+    flex-direction: column;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+  }
 `;
 
-const MetaInfoContainer = styled.div`
-  background-color: ${offWhite};
+const MetaInfoContainer = styled.div<{ index: number }>`
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 40%;
-  margin-left: auto;
+  position: relative;
+  background-color: ${(props) =>
+    props.index < 1 ? `${offWhite}` : `${offOffWhite}`};
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+  }
 `;
 
-const BasketListItemTitle = styled.h4`
+const BasketListItemTitle = styled.h3`
+  width: 100%;
+  text-align: center;
+  padding-top: 1rem;
+  padding-bottom: 0.1rem;
+`;
+
+const BasketListItemSubtitle = styled.h4`
+  padding-top: 0.1rem;
+  padding-bottom: 1rem;
   width: 100%;
   text-align: center;
 `;
 
-const BasketListItemSubtitle = styled.h5`
-  width: 100%;
-  text-align: center;
+const PhotoWrap = styled.div`
+  width: 40%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${offWhite};
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+  }
 `;
 const Photo = styled.img`
-  max-height: 100%;
-  max-width: 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  overflow: hidden;
+
   @media only screen and (max-width: 600px) {
     max-height: 100vw;
     margin: 3% 0%;
-    width: 100%;
+    max-width: 100%;
     height: 100%;
   }
 `;
 
-const Button = styled.button`
-  width: 10%;
+const RemoveFromCartButton = styled.button`
+  right: 0;
+  position: absolute;
+  font-size: 0.75em;
 `;
 interface IProps {
-  title: string;
-  subtitle: string;
-  quantity: number;
-  price: string;
-  imageSrc: string;
-  stock: number;
-  id: string;
   addToCart: (id: string) => void;
   decrementInCart: (id: string) => void;
+  id: string;
+  imageSrc: string;
+  index: number;
+  price: string;
+  quantity: number;
   removeFromCart: (id: string, quantityToReplace: number) => void;
+  stock: number;
+  subtitle: string;
+  title: string;
 }
 
 const BasketListItem = ({
-  title,
-  quantity,
-  subtitle,
-  imageSrc,
-  stock,
-  id,
   addToCart,
   decrementInCart,
+  id,
+  imageSrc,
+  index,
+  quantity,
   removeFromCart,
+  stock,
+  subtitle,
+  title,
 }: IProps) => {
-  let addButtonMessage = "+";
-  let buttonDisabled = false;
-  if (stock < 0) {
-    addButtonMessage = "Out of stock";
-    buttonDisabled = true;
-  }
-
   return (
-    <Container>
-      <InnerContainer>
+    <Container index={index}>
+      <PhotoWrap>
         <Photo src={imageSrc} />
-        <MetaInfoContainer>
-          <BasketListItemTitle>{title}</BasketListItemTitle>
-          <BasketListItemSubtitle>{subtitle}</BasketListItemSubtitle>
-          <QuantityPanel
-            addToCart={() => addToCart(id)}
-            decrementInCart={() => decrementInCart(id)}
-            addButtonMessage={addButtonMessage}
-            outOfStock={buttonDisabled}
-            quantity={quantity}
-          />
-          <Button onClick={() => removeFromCart(id, quantity)}>Bin</Button>
-        </MetaInfoContainer>
-      </InnerContainer>
+      </PhotoWrap>
+      <MetaInfoContainer index={index}>
+        <BasketListItemTitle>{title}</BasketListItemTitle>
+        <BasketListItemSubtitle>{subtitle}</BasketListItemSubtitle>
+        <QuantityPanel
+          addToCart={() => addToCart(id)}
+          decrementInCart={() => decrementInCart(id)}
+          outOfStock={stock < 0}
+          quantity={quantity}
+        />
+        <RemoveFromCartButton onClick={() => removeFromCart(id, quantity)}>
+          X
+        </RemoveFromCartButton>
+      </MetaInfoContainer>
     </Container>
   );
 };

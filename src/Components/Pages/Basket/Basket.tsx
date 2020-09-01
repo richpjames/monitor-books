@@ -3,9 +3,10 @@ import styled from "styled-components/macro";
 
 import BasketListItem from "./BasketListItem";
 import { LoadingSpinner } from "../../Common/LoadingSpinner";
-import { Button } from "../../Common/CTAButton";
+import { CTAButton } from "../../Common/CTAButton";
 import { BasketTotal } from "./BasketTotal";
 import { AmericaTitle } from "../../Common/Titles";
+import { PageWrapper } from "../../Common/Common";
 
 const PageContainer = styled.div`
   padding: 2.5rem;
@@ -13,6 +14,10 @@ const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-sizing: border-box;
+  @media only screen and (max-width: 600px) {
+    padding: 0;
+  }
 `;
 
 const CheckoutSection = styled.section`
@@ -22,13 +27,23 @@ const CheckoutSection = styled.section`
 `;
 
 const BasketItemsSection = styled.section`
-  width: 100%;
+  padding-left: 5%;
+  padding-right: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2.5rem;
 `;
 
 const BasketTitle = styled(AmericaTitle)`
   width: 100%;
   text-align: center;
   display: block;
+`;
+
+const EmptyCartMessage = styled.div`
+  padding-top: 25%;
+  padding-bottom: 25%;
 `;
 
 type IProps = {
@@ -50,41 +65,50 @@ const Basket = ({
 }: IProps): React.ReactElement => {
   const hasProducts = productIds?.length > 0;
 
-  const cartItems = hasProducts ? (
-    productIds.map((productId: string) => (
-      <BasketListItem
-        title={productsById[productId].title}
-        subtitle={productsById[productId].author}
-        price={productsById[productId].price}
-        quantity={quantityById[productId]}
-        id={productId}
-        imageSrc={`https://www.richjames.co.uk/img/${productsById[productId].path}/thumbnails/${productsById[productId].thumbnail}`}
-        stock={productsById[productId].inventory}
-        key={productsById[productId].id}
-      />
-    ))
-  ) : (
-    <em>Please add some products to cart.</em>
-  );
+  const cartItems = productIds.map((productId: string, index: number) => (
+    <BasketListItem
+      title={productsById[productId].author}
+      subtitle={productsById[productId].title}
+      price={productsById[productId].price}
+      quantity={quantityById[productId]}
+      id={productId}
+      imageSrc={`https://www.richjames.co.uk/img/${productsById[productId].path}/thumbnails/${productsById[productId].thumbnail}`}
+      stock={productsById[productId].inventory}
+      key={productsById[productId].id}
+      index={index}
+    />
+  ));
 
   return (
-    <PageContainer>
-      <BasketTitle>Basket</BasketTitle>
-
-      {!loading ? (
-        <>
-          <BasketItemsSection>{cartItems}</BasketItemsSection>
-          <CheckoutSection>
-            <BasketTotal total={total} />
-            <Button onClick={onCheckoutClicked} disabled={!hasProducts}>
-              Checkout
-            </Button>
-          </CheckoutSection>
-        </>
-      ) : (
-        <LoadingSpinner />
-      )}
-    </PageContainer>
+    <PageWrapper>
+      <PageContainer>
+        <BasketTitle>Basket</BasketTitle>
+        {!loading ? (
+          <>
+            {hasProducts ? (
+              <>
+                <BasketItemsSection>{cartItems}</BasketItemsSection>
+                <CheckoutSection>
+                  <BasketTotal total={total} />
+                  <CTAButton
+                    onClick={onCheckoutClicked}
+                    disabled={!hasProducts}
+                  >
+                    Checkout
+                  </CTAButton>
+                </CheckoutSection>
+              </>
+            ) : (
+              <EmptyCartMessage>
+                Please add some products to cart.
+              </EmptyCartMessage>
+            )}
+          </>
+        ) : (
+          <LoadingSpinner />
+        )}
+      </PageContainer>
+    </PageWrapper>
   );
 };
 export default Basket;

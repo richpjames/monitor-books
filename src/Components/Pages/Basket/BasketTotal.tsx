@@ -1,5 +1,11 @@
 import React from "react";
+import styled from "styled-components/macro";
+
+const TotalWrapper = styled.h3`
+  padding-top: 1rem;
+  text-align: center;
+`;
 
 export const BasketTotal = ({ total }: { total: string }) => {
-  return <h3>Total: £{total}</h3>;
+  return <TotalWrapper>Total: £{total}</TotalWrapper>;
 };
