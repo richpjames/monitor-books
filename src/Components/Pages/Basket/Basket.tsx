@@ -16,7 +16,10 @@ const PageContainer = styled.div`
   align-items: center;
   box-sizing: border-box;
   @media only screen and (max-width: 600px) {
-    padding: 0;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+    padding-left: 0;
+    padding-right: 0;
   }
 `;
 
