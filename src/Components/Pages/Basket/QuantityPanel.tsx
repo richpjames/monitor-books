@@ -6,6 +6,7 @@ const Wrap = styled.section`
   padding-bottom: 1rem;
   margin-top: auto;
   @media only screen and (max-width: 600px) {
+    justify-content: center;
     width: 100%;
     margin-top: 0;
   }
