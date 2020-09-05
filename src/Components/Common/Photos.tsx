@@ -29,7 +29,7 @@ interface IProps {
 const Photos = (props: IProps) => {
   const { url, photos } = props;
 
-  const mainURL = `https://www.richjames.co.uk/img/${url}/`;
+  const mainURL = `${mainImageUrl}${url}/`;
 
   const thumbURL = `${mainURL}thumbnails/`;
 
