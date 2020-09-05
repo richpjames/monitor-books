@@ -3,6 +3,7 @@ import styled from "styled-components/macro";
 import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css";
 
+import { mainImageUrl } from "../../constants";
 import IndividualPhoto from "./IndividualPhoto";
 
 const PhotoWrap = styled.section`
@@ -20,19 +21,23 @@ const PhotoContainer = styled.div`
   align-items: center;
 `;
 
-const mainURL = `https://www.richjames.co.uk/img/ant_img/`;
-const thumbURL = `${mainURL}thumbnails/`;
-
-const photoNumbers = [2, 3, 5, 6];
-
-const imageURLs = photoNumbers.map((photo) => `${mainURL}${photo}.jpg`);
-const thumbURLs = photoNumbers.map((photo) => `${thumbURL}${photo}.jpg`);
-
 interface IProps {
   photos: number[];
+  url: string;
 }
 
 const Photos = (props: IProps) => {
+  const { url, photos } = props;
+
+  const mainURL = `https://www.richjames.co.uk/img/${url}/`;
+
+  const thumbURL = `${mainURL}thumbnails/`;
+
+  const photoNumbers = photos;
+
+  const imageURLs = photoNumbers.map((photo) => `${mainURL}${photo}.jpg`);
+  const thumbURLs = photoNumbers.map((photo) => `${thumbURL}${photo}.jpg`);
+
   const [photoIndex, setPhotoIndex] = useState(0);
   const [galleryOpen, setGalleyOpen] = useState(false);
 
