@@ -1,4 +1,4 @@
-import { initialState } from "./constants/initialState";
+import { initialState } from "./constants/";
 
 export const loadState = (): State => {
   try {

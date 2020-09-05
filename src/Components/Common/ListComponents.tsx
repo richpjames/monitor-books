@@ -1,5 +1,5 @@
 import styled from "styled-components/macro";
-import { offWhite, offOffWhite } from "../../constants/colours";
+import { offWhite, offOffWhite } from "../../constants";
 import { AmericaTitle } from "./Titles";
 
 export const ListItemContainer = styled.div<{
