@@ -11,6 +11,8 @@ import NavBar from "../NavBar";
 import VideoPage from "./VideoPage";
 import OnRouteChange from "../ScrollToTop";
 import { Success } from "./Success";
+import { ProductsPage } from "./ProductsPage";
+import { VideosPage } from "./VideosPage";
 
 const PageWrap = styled.div`
   margin-left: auto;
@@ -41,6 +43,7 @@ const MainPage = ({
       <PageWrap>
         <NavBar />
         <Router>
+          <ProductsPage bookIds={bookIds} books={books} path="books" />
           {bookIds.map((bookId) => (
             <ProductPageContainer
               path={books[bookId].slug}
@@ -49,6 +52,7 @@ const MainPage = ({
               default={books[bookId].slug === "anthology"}
             />
           ))}
+          <VideosPage path="videos" />
           {videoIds.map((videoId) => (
             <VideoPage
               path={videos[videoId].slug}
