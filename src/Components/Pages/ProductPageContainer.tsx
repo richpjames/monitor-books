@@ -17,7 +17,7 @@ const ProductPageContainer = ({
   cartQuantityById,
   addToCart,
 }: IProps) => {
-  const { photos, title, author, blurb1, blurb2, id } = product;
+  const { photos, title, author, blurb1, blurb2, id, imagePath } = product;
 
   return (
     <ProductPage
@@ -31,6 +31,7 @@ const ProductPageContainer = ({
       leftDescription={blurb1}
       rightDescription={blurb2}
       id={id}
+      imagePath={imagePath}
     />
   );
 };
