@@ -36,13 +36,19 @@ export const addToCart = (productId) => (dispatch, getState) => {
   }
 };
 
-const isInBasket = (state, productId) =>
-  state.cart.quantityById[productId] > 0 &&
-  state.cart.addedIds.indexOf(productId) !== -1;
+export const setShipping = (shippingInfo) => (dispatch) => {
+  console.log(shippingInfo, "action");
+  dispatch({
+    type: types.SET_SHIPPING,
+    shipping: shippingInfo,
+  });
+};
+
+const isInBasket = (cart, productId) => cart.addedIds.indexOf(productId) !== -1;
 
 export const decrementInCart = (productId) => (dispatch, getState) => {
   const state = getState();
-  if (isInBasket(state, productId)) {
+  if (isInBasket(state.cart, productId)) {
     dispatch({ type: types.DECREMENT_IN_CART, productId });
   }
 };
@@ -52,13 +58,15 @@ export const removeFromCart = (productId, quantityToReplace) => (
   getState
 ) => {
   const state = getState();
-  if (isInBasket(state, productId)) {
+  if (isInBasket(state.cart, productId)) {
     dispatch({ type: types.REMOVE_FROM_CART, productId, quantityToReplace });
   }
 };
 
 export const checkout = (products) => (dispatch, getState) => {
-  const productsById = getState().products.byId;
+  const state = getState();
+  const productsById = state.products.byId;
+  const { shipping } = state.cart;
   const ids = Object.keys(products);
   const quantityByPriceId = ids.map((id) => {
     const priceAndQuantity = {
@@ -68,6 +76,11 @@ export const checkout = (products) => (dispatch, getState) => {
     };
     return priceAndQuantity;
   }, []);
+  quantityByPriceId.push({
+    id: "shipping",
+    priceId: shipping.priceId,
+    quantity: 1,
+  });
   shop.buyProducts(quantityByPriceId);
   // dispatch({
   //   type: types.CHECKOUT_REQUEST,
