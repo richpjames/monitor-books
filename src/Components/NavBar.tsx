@@ -41,7 +41,7 @@ const NavBar = () => {
           </Link>
         </NavItem>
         <NavItem>
-          <Link to="/anthology">Murmur Anthology</Link>
+          <Link to="/books">Books</Link>
         </NavItem>
         <NavItem>
           <Link to="/murmur-episode-one">Murmur Reading Series</Link>
