@@ -1,12 +1,14 @@
-export const loadState = () => {
+import { initialState } from "./constants/initialState";
+
+export const loadState = (): State => {
   try {
     const serializedState = sessionStorage.getItem("state");
     if (serializedState === null) {
-      return undefined;
+      return initialState;
     }
     return JSON.parse(serializedState);
   } catch (err) {
-    return undefined;
+    return initialState;
   }
 };
 
