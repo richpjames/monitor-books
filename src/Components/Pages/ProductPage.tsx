@@ -1,11 +1,16 @@
 import React from "react";
 import { RouteComponentProps } from "@reach/router";
+import styled from "styled-components/macro";
 
 import Photos from "../Common/Photos";
 import Title from "../Common/Title";
 import Text from "../Common/Text";
 import { PageWrapper, InfoSection } from "../Common/Common";
 import { CTAButton } from "../Common/CTAButton";
+
+const ProductPageWrapper = styled(PageWrapper)`
+  padding-top: 2rem;
+`;
 
 interface IProps extends RouteComponentProps {
   cartQuantityById: { [key: string]: number };
@@ -18,6 +23,7 @@ interface IProps extends RouteComponentProps {
   leftDescription: string;
   rightDescription: string;
   id: string;
+  slug: string;
 }
 
 const ProductPage = ({
@@ -31,6 +37,7 @@ const ProductPage = ({
   inventoryQuantity,
   cartQuantityById,
   addToCart,
+  slug,
 }: IProps) => {
   let buttonMessage = "Add to basket";
 
@@ -41,8 +48,8 @@ const ProductPage = ({
   }
 
   return (
-    <PageWrapper>
-      <Photos photos={photos} />
+    <ProductPageWrapper>
+      <Photos photos={photos} url={slug} />
       <InfoSection>
         <Title title={author} subtitle={title} />
         <Text leftText={leftDescription} rightText={rightDescription} />
@@ -55,7 +62,7 @@ const ProductPage = ({
       >
         {buttonMessage}
       </CTAButton>
-    </PageWrapper>
+    </ProductPageWrapper>
   );
 };
 
