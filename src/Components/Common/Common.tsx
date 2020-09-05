@@ -1,10 +1,19 @@
 import styled from "styled-components/macro";
 
 export const PageWrapper = styled.div`
+  padding: 2.5rem;
   max-width: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-sizing: border-box;
+  @media only screen and (max-width: 600px) {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+    padding-left: 0;
+    padding-right: 0;
+  }
 `;
 
 export const InfoSection = styled.div`
