@@ -1,4 +1,4 @@
-interface Book {
+interface Product {
   title: string;
   author: string;
   photos: number[];
@@ -45,7 +45,7 @@ interface State {
 type byId<T> = { [id: string]: T };
 type visibileIds = string[];
 interface Products {
-  byId: byId<Book>;
+  byId: byId<Product>;
   visibleIds: visibileIds;
 }
 interface Videos extends Products {
