@@ -6,8 +6,9 @@ interface Book {
   blurb2: string;
   price: string;
   publishDate: string;
-  slug: string;
+  imagePath: string;
   id: string;
+  slug: string;
   inventory: number;
   path: string;
   thumbnail: string;
