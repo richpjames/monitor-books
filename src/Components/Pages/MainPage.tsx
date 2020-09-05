@@ -26,7 +26,7 @@ const PageWrap = styled.div`
 `;
 
 interface IProps {
-  books?: byId<Book>;
+  books?: byId<Product>;
   videos?: byId<Video>;
   bookIds?: visibileIds;
   videoIds?: visibileIds;

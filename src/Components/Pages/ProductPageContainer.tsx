@@ -6,7 +6,7 @@ import { addToCart } from "../../actions";
 import ProductPage from "./ProductPage";
 
 interface OwnProps extends RouteComponentProps {
-  product: Book;
+  product: Product;
 }
 
 type IProps = PropsFromRedux & OwnProps;
