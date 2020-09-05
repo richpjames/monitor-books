@@ -5,23 +5,10 @@ import BasketListItem from "./BasketListItem";
 import { LoadingSpinner } from "../../Common/LoadingSpinner";
 import { CTAButton } from "../../Common/CTAButton";
 import { BasketTotal } from "./BasketTotal";
-import { AmericaTitle } from "../../Common/Titles";
+import { ShippingCost } from "./ShippingCost";
 import { PageWrapper } from "../../Common/Common";
-
-const PageContainer = styled.div`
-  padding: 2.5rem;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-sizing: border-box;
-  @media only screen and (max-width: 600px) {
-    padding-top: 2.5rem;
-    padding-bottom: 2.5rem;
-    padding-left: 0;
-    padding-right: 0;
-  }
-`;
+import { ListTitle } from "../../Common/ListComponents";
+import { mainImageUrl } from "../../../constants/index";
 
 const CheckoutSection = styled.section`
   display: flex;
@@ -38,36 +25,41 @@ const BasketItemsSection = styled.section`
   padding-top: 2.5rem;
 `;
 
-const BasketTitle = styled(AmericaTitle)`
-  width: 100%;
-  text-align: center;
-  display: block;
-`;
-
 const EmptyCartMessage = styled.div`
   padding-top: 25%;
   padding-bottom: 25%;
 `;
 
+const ShippingSelector = styled.select``;
+
 type IProps = {
-  productIds: string[];
-  productsById: { [index: string]: Book };
-  total: string;
-  onCheckoutClicked: (click: React.MouseEvent) => void;
-  quantityById: { [key: string]: number };
+  hasItems: boolean;
   loading: boolean;
+  onCheckoutClicked: (click: React.MouseEvent) => void;
+  productIds: string[];
+  productsById: { [index: string]: Product };
+  quantityById: { [key: string]: number };
+  setShipping: (index: number) => void;
+  shipping: Shipping;
+  shippingOptions: Shipping[];
+  total: string;
 };
 
 const Basket = ({
+  hasItems,
+  loading,
+  onCheckoutClicked,
   productIds,
   productsById,
-  total,
-  onCheckoutClicked,
   quantityById,
-  loading,
+  setShipping,
+  shipping,
+  shippingOptions,
+  total,
 }: IProps): React.ReactElement => {
   const hasProducts = productIds?.length > 0;
-
+  const twoDecimalPlaces = (number: number) =>
+    (Math.round(number * 100) / 100).toFixed(2);
   const cartItems = productIds.map((productId: string, index: number) => (
     <BasketListItem
       title={productsById[productId].author}
@@ -75,42 +67,53 @@ const Basket = ({
       price={productsById[productId].price}
       quantity={quantityById[productId]}
       id={productId}
-      imageSrc={`https://www.richjames.co.uk/img/${productsById[productId].path}/thumbnails/${productsById[productId].thumbnail}`}
+      imageSrc={`${mainImageUrl}${productsById[productId].imagePath}/thumbnails/${productsById[productId].thumbnail}`}
       stock={productsById[productId].inventory}
       key={productsById[productId].id}
       index={index}
+      slug={productsById[productId].slug}
     />
   ));
-
+  console.log("re rendder");
   return (
     <PageWrapper>
-      <PageContainer>
-        <BasketTitle>Basket</BasketTitle>
-        {!loading ? (
-          <>
-            {hasProducts ? (
-              <>
-                <BasketItemsSection>{cartItems}</BasketItemsSection>
-                <CheckoutSection>
-                  <BasketTotal total={total} />
-                  <CTAButton
-                    onClick={onCheckoutClicked}
-                    disabled={!hasProducts}
-                  >
-                    Checkout
-                  </CTAButton>
-                </CheckoutSection>
-              </>
-            ) : (
-              <EmptyCartMessage>
-                Please add some products to cart.
-              </EmptyCartMessage>
-            )}
-          </>
-        ) : (
-          <LoadingSpinner />
-        )}
-      </PageContainer>
+      <ListTitle>Basket</ListTitle>
+      {!loading ? (
+        <>
+          {hasProducts ? (
+            <>
+              <BasketItemsSection>{cartItems}</BasketItemsSection>
+              <CheckoutSection>
+                <label htmlFor="shipping">Postal region:</label>
+                <ShippingSelector
+                  onChange={(event) => {
+                    setShipping(+event.target.value);
+                  }}
+                >
+                  {shippingOptions.map((shippingRegion, index) => (
+                    <option value={index} key={index}>
+                      {shippingRegion.region}
+                    </option>
+                  ))}
+                </ShippingSelector>
+                <ShippingCost total={`${twoDecimalPlaces(shipping.price)}`} />
+                <BasketTotal
+                  total={`${twoDecimalPlaces(+total + shipping.price)}`}
+                />
+                <CTAButton onClick={onCheckoutClicked} disabled={!hasItems}>
+                  Checkout
+                </CTAButton>
+              </CheckoutSection>
+            </>
+          ) : (
+            <EmptyCartMessage>
+              Please add some products to cart.
+            </EmptyCartMessage>
+          )}
+        </>
+      ) : (
+        <LoadingSpinner />
+      )}
     </PageWrapper>
   );
 };
