@@ -25,12 +25,20 @@ interface Video {
 interface Cart {
   addedIds: string[];
   quantityById: { [index as string]: string };
+  shipping: Shipping;
+}
+
+interface Shipping {
+  region: string;
+  price: number;
+  priceId: string;
 }
 
 interface State {
   products: Products;
   videos: Videos;
   cart: Cart;
+  shippingCosts: Shipping[];
 }
 
 type byId<T> = { [id: string]: T };
@@ -47,5 +55,14 @@ type Action =
   | "ADD_TO_CART"
   | "CHECKOUT_REQUEST"
   | "CHECKOUT_FAILURE"
+  | "CHECKOUT_SUCCESS"
   | "REMOVE_FROM_CART"
-  | "DECREMENT_IN_CART";
+  | "DECREMENT_IN_CART"
+  | "SET_SHIPPING";
+
+type InitialState = {
+  cart: Cart;
+  products: { byId: {}; visibleIds: [] };
+  videos: { byId: {}; visibleIds: [] };
+  shippingCosts: Shipping[];
+};
