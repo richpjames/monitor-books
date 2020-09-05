@@ -23,7 +23,7 @@ interface IProps extends RouteComponentProps {
   leftDescription: string;
   rightDescription: string;
   id: string;
-  slug: string;
+  imagePath: string;
 }
 
 const ProductPage = ({
@@ -37,7 +37,7 @@ const ProductPage = ({
   inventoryQuantity,
   cartQuantityById,
   addToCart,
-  slug,
+  imagePath,
 }: IProps) => {
   let buttonMessage = "Add to basket";
 
@@ -49,7 +49,7 @@ const ProductPage = ({
 
   return (
     <ProductPageWrapper>
-      <Photos photos={photos} url={slug} />
+      <Photos photos={photos} url={imagePath} />
       <InfoSection>
         <Title title={author} subtitle={title} />
         <Text leftText={leftDescription} rightText={rightDescription} />
