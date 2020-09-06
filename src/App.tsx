@@ -12,7 +12,7 @@ interface IProps {
 }
 
 const App = ({ fetchVideos, fetchProducts }: IProps) => {
-  const [showImage, setShowImage] = useState(false);
+  const [showImage, setShowImage] = useState(true);
   useEffect(() => {
     fetchProducts();
     fetchVideos();
