@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import IndividualPhoto from "./IndividualPhoto";
+import { IndividualPhoto } from "./IndividualPhoto";
 
 describe("IndividualPhoto", () => {
   it("renders an image with the given alt text", () => {

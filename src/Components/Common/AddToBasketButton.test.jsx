@@ -2,7 +2,7 @@ import React from "react";
 import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
-import AddToBasketButton from "./AddToBasketButton";
+import { AddToBasketButton } from "./AddToBasketButton";
 
 describe("addToBasket", () => {
   test("allows custom text", () => {
