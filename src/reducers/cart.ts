@@ -1,24 +1,29 @@
 import {
   ADD_TO_CART,
+  SET_SHIPPING,
   CHECKOUT_REQUEST,
   CHECKOUT_FAILURE,
   REMOVE_FROM_CART,
   DECREMENT_IN_CART,
+  CHECKOUT_SUCCESS,
 } from "../constants/actionTypes";
 
 const initialState: InitialState = {
   addedIds: [],
   quantityById: {},
+  shipping: { price: 2, priceId: "foo", region: "space" },
 };
 
 interface InitialState {
   addedIds: string[];
   quantityById: { [key: string]: string };
+  shipping: Shipping;
 }
 type CartAction = {
   type: Action;
   productId: string;
   cart: Cart;
+  shipping: Shipping;
 };
 
 const addedIds = (state = initialState.addedIds, action: CartAction) => {
@@ -72,14 +77,19 @@ export const getAddedIds = (state: InitialState) => {
 
 const cart = (state = initialState, action: CartAction) => {
   switch (action.type) {
+    case SET_SHIPPING:
+      return { ...state, shipping: action.shipping };
     case CHECKOUT_REQUEST:
-      return initialState;
+      return state;
     case CHECKOUT_FAILURE:
       return action.cart;
+    case CHECKOUT_SUCCESS:
+      return initialState;
     default:
       return {
         addedIds: addedIds(state.addedIds, action),
         quantityById: quantityById(state.quantityById, action),
+        shipping: state.shipping,
       };
   }
 };
