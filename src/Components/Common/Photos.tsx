@@ -24,10 +24,14 @@ const PhotoContainer = styled.div`
 interface IProps {
   photos: number[];
   url: string;
+  imageThumbnailHeight: string;
+  imageThumbnailWidth: string;
 }
 
 const Photos = (props: IProps) => {
-  const { url, photos } = props;
+  const { url, photos, imageThumbnailHeight, imageThumbnailWidth } = props;
+  const [photoIndex, setPhotoIndex] = useState(0);
+  const [galleryOpen, setGalleyOpen] = useState(false);
 
   const mainURL = `${mainImageUrl}${url}/`;
 
@@ -37,9 +41,6 @@ const Photos = (props: IProps) => {
 
   const imageURLs = photoNumbers.map((photo) => `${mainURL}${photo}.jpg`);
   const thumbURLs = photoNumbers.map((photo) => `${thumbURL}${photo}.jpg`);
-
-  const [photoIndex, setPhotoIndex] = useState(0);
-  const [galleryOpen, setGalleyOpen] = useState(false);
 
   const openLightbox = (i: number) => {
     setPhotoIndex(i);
@@ -54,6 +55,8 @@ const Photos = (props: IProps) => {
           index={i}
           src={url}
           altText="a photo of murmur anthology"
+          height={imageThumbnailHeight}
+          width={imageThumbnailWidth}
         />
       </PhotoContainer>
     );

@@ -29,3 +29,7 @@ export const offOffWhite = "#ebebeb";
 
 //URLS
 export const mainImageUrl = `https://www.richjames.co.uk/img/`;
+
+//IMAGES
+export const productPageImageHeight = "50%";
+export const productPageImageWidth = "50%";

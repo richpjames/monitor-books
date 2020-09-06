@@ -7,6 +7,10 @@ import Title from "../Common/Title";
 import Text from "../Common/Text";
 import { PageWrapper, InfoSection } from "../Common/Common";
 import { CTAButton } from "../Common/CTAButton";
+import {
+  productPageImageHeight,
+  productPageImageWidth,
+} from "../../constants/index";
 
 const ProductPageWrapper = styled(PageWrapper)`
   padding-top: 2rem;
@@ -49,7 +53,12 @@ const ProductPage = ({
 
   return (
     <ProductPageWrapper>
-      <Photos photos={photos} url={imagePath} />
+      <Photos
+        photos={photos}
+        url={imagePath}
+        imageThumbnailHeight={productPageImageHeight}
+        imageThumbnailWidth={productPageImageWidth}
+      />
       <InfoSection>
         <Title title={author} subtitle={title} />
         <Text leftText={leftDescription} rightText={rightDescription} />
