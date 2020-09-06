@@ -20,20 +20,23 @@
 # All deploys generated from a pull/merge request
 # will inherit these settings.
 [context.deploy-preview.environment]
-  NODE_ENV = "development"
+  NODE_ENV = "production"
 
 
 # Branch deploy context:
 # All deploys that are not from a pull/merge request
 # or from the production branch will inherit these settings.
-# [context.branch-deploy]
-#   command = "make staging"
+[context.branch-deploy]
+  command = "yarn build"
+  NODE_ENV = "production"
 
 # Specific branch context:
 # Deploys from this branch will take these settings
 # and override their current ones.
 [context.feature]
-  command = "make feature"
+  command = "yarn build"
+  NODE_ENV = "production"
 
 [context."features/branch"]
-  command = "gulp"
+  command = "yarn build"
+  NODE_ENV = "production"
