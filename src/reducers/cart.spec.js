@@ -5,6 +5,7 @@ describe("reducers", () => {
     const initialState = {
       addedIds: [],
       quantityById: {},
+      shipping: { price: 2, priceId: "foo", region: "space" },
     };
 
     it("should provide the initial state", () => {
@@ -12,7 +13,9 @@ describe("reducers", () => {
     });
 
     it("should handle CHECKOUT_REQUEST action", () => {
-      expect(cart({}, { type: "CHECKOUT_REQUEST" })).toEqual(initialState);
+      expect(cart(undefined, { type: "CHECKOUT_REQUEST" })).toEqual(
+        initialState
+      );
     });
 
     it("should handle CHECKOUT_FAILURE action", () => {
@@ -26,6 +29,7 @@ describe("reducers", () => {
         {
           addedIds: [1],
           quantityById: { 1: 1 },
+          shipping: { price: 2, priceId: "foo", region: "space" },
         }
       );
     });
