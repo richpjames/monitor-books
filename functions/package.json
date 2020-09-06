@@ -1,8 +1,0 @@
-{
-  "name": "functions",
-  "version": "1.0.0",
-  "license": "MIT",
-  "dependencies": {
-    "stripe": "^8.89.0"
-  }
-}
