@@ -4,7 +4,7 @@ import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css";
 
 import { mainImageUrl } from "../../constants";
-import IndividualPhoto from "./IndividualPhoto";
+import { IndividualPhoto } from "./index";
 
 const PhotoWrap = styled.section`
   display: grid;
@@ -28,7 +28,7 @@ interface IProps {
   imageThumbnailWidth: string;
 }
 
-const Photos = (props: IProps) => {
+export const Photos = (props: IProps) => {
   const { url, photos, imageThumbnailHeight, imageThumbnailWidth } = props;
   const [photoIndex, setPhotoIndex] = useState(0);
   const [galleryOpen, setGalleyOpen] = useState(false);
@@ -86,5 +86,3 @@ const Photos = (props: IProps) => {
     </>
   );
 };
-
-export default Photos;

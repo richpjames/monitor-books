@@ -56,7 +56,7 @@ export const ListItemSubtitle = styled.h4`
   text-align: center;
 `;
 
-export const PhotoWrap = styled.div<{ width: string }>`
+export const ListItemPhotoWrap = styled.div<{ width: string }>`
   width: ${(props) => props.width};
   height: 100%;
   display: flex;

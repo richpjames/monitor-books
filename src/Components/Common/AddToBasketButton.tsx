@@ -6,7 +6,7 @@ interface IProps {
   disabled?: boolean;
 }
 
-const AddToBasketButton = (props: IProps) => {
+export const AddToBasketButton = (props: IProps) => {
   const { children, onClick, disabled } = props;
   return (
     <button onClick={onClick} disabled={disabled}>
@@ -14,5 +14,3 @@ const AddToBasketButton = (props: IProps) => {
     </button>
   );
 };
-
-export default AddToBasketButton;

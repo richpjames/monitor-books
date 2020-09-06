@@ -36,7 +36,7 @@ interface IProps {
   rightText: string;
 }
 
-const Text = (props: IProps) => {
+export const Text = (props: IProps) => {
   const { leftText, rightText } = props;
   return (
     <TextWrapper className="TextWrapper">
@@ -49,5 +49,3 @@ const Text = (props: IProps) => {
     </TextWrapper>
   );
 };
-
-export default Text;

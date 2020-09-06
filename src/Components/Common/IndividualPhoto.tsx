@@ -22,9 +22,8 @@ interface IProps {
   width?: string;
 }
 
-export default function IndividualPhoto(props: IProps) {
+export const IndividualPhoto = (props: IProps) => {
   const { openLightbox, src, index, altText, height, width } = props;
-
   return (
     <VisibilitySensor>
       <Photo
@@ -36,4 +35,4 @@ export default function IndividualPhoto(props: IProps) {
       />
     </VisibilitySensor>
   );
-}
+};

@@ -3,16 +3,15 @@ import { RouteComponentProps, navigate } from "@reach/router";
 import styled from "styled-components/macro";
 
 import { mainImageUrl } from "../../constants";
-import { PageWrapper } from "../Common/Common";
 import {
-  ListTitle,
   ListItemContainer,
-  PhotoWrap,
-  Photo,
+  ListItemPhotoWrap,
+  ListItemPhoto,
   MetaInfoContainer,
   ListItemTitle,
   ListItemSubtitle,
-} from "../Common/ListComponents";
+  PageWrapper,
+} from "../Common";
 
 interface IProps extends RouteComponentProps {
   books: byId<Product>;
@@ -34,7 +33,7 @@ export const ProductsPage = ({ books, bookIds }: IProps) => {
     );
   return (
     <PageWrapper>
-      <ListTitle>Books</ListTitle>
+      <ListItemTitle>Books</ListItemTitle>
       <ListWrap>
         {bookDetails.map((bookDetail, index) => (
           <ListItemContainer
@@ -46,11 +45,11 @@ export const ProductsPage = ({ books, bookIds }: IProps) => {
             onClick={() => navigate(bookDetail.slug)}
             key={index}
           >
-            <PhotoWrap width="40%">
-              <Photo
+            <ListItemPhotoWrap width="40%">
+              <ListItemPhoto
                 src={`${mainImageUrl}${bookDetail.imagePath}/thumbnails/${bookDetail.thumbnail}`}
               />
-            </PhotoWrap>
+            </ListItemPhotoWrap>
             <MetaInfoContainer index={index} width="40%">
               <ListItemTitle>{bookDetail.title}</ListItemTitle>
               <ListItemSubtitle>{bookDetail.author}</ListItemSubtitle>

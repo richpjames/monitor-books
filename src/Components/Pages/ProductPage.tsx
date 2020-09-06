@@ -2,11 +2,14 @@ import React from "react";
 import { RouteComponentProps } from "@reach/router";
 import styled from "styled-components/macro";
 
-import Photos from "../Common/Photos";
-import Title from "../Common/Title";
-import Text from "../Common/Text";
-import { PageWrapper, InfoSection } from "../Common/Common";
-import { CTAButton } from "../Common/CTAButton";
+import {
+  CTAButton,
+  Photos,
+  Title,
+  Text,
+  PageWrapper,
+  InfoSection,
+} from "../Common";
 import {
   productPageImageHeight,
   productPageImageWidth,

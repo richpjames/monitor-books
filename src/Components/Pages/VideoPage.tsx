@@ -1,10 +1,7 @@
 import React from "react";
 import { RouteComponentProps } from "@reach/router";
 
-import Video from "../Common/Video";
-import Title from "../Common/Title";
-import Text from "../Common/Text";
-import { InfoSection } from "../Common/Common";
+import { InfoSection, Video, Title, Text } from "../Common";
 
 interface IProps extends RouteComponentProps {
   video: Video;

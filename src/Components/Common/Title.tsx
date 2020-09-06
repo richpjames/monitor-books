@@ -13,7 +13,7 @@ interface IProps {
   bold?: boolean;
 }
 
-function Title(props: IProps) {
+export function Title(props: IProps) {
   const { title, subtitle, bold } = props;
   return (
     <TitleWrapper>
@@ -26,5 +26,3 @@ function Title(props: IProps) {
     </TitleWrapper>
   );
 }
-
-export default Title;

@@ -10,9 +10,9 @@ import {
   MetaInfoContainer,
   ListItemTitle,
   ListItemSubtitle,
-  PhotoWrap,
-  Photo,
-} from "../../Common/ListComponents";
+  ListItemPhotoWrap,
+  ListItemPhoto,
+} from "../../Common/";
 
 const RemoveFromCartButton = styled.button`
   right: 0;
@@ -56,9 +56,9 @@ const BasketListItem = ({
       horizontalMargin="5rem"
       topMargin="2rem"
     >
-      <PhotoWrap width="40%" onClick={() => navigate(slug)}>
-        <Photo src={imageSrc} />
-      </PhotoWrap>
+      <ListItemPhotoWrap width="40%" onClick={() => navigate(slug)}>
+        <ListItemPhoto src={imageSrc} />
+      </ListItemPhotoWrap>
       <MetaInfoContainer index={index} width="40%">
         <ListItemTitle onClick={() => navigate(slug)}>{title}</ListItemTitle>
         <ListItemSubtitle onClick={() => navigate(slug)}>
