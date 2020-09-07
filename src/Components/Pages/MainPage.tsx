@@ -49,7 +49,7 @@ const MainPage = ({
               path={books[bookId].slug}
               product={books[bookId]}
               key={bookId}
-              default={books[bookId].slug === "anthology"}
+              default={books[bookId].slug === "propositions"}
             />
           ))}
           <VideosPage path="videos" />
