@@ -3,13 +3,14 @@ import styled from "styled-components/macro";
 
 import Logo from "../assets/img/logo.png";
 
-const Banner = styled.img`
-  position: relative;
-  width: 100%;
-  max-height: 100%;
-  -webkit-animation: fade-out 1s ease-out 8s both;
-  animation: fade-out 1s ease-out 8s both;
-  @-webkit-keyframes fade-out {
+const Background = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  animation: fade-out 1s ease-out 5s both;
+  @keyframes fade-out {
     0% {
       opacity: 1;
     }
@@ -17,7 +18,13 @@ const Banner = styled.img`
       opacity: 0;
     }
   }
+`;
 
+const Banner = styled.img`
+  position: relative;
+  width: 100%;
+  max-height: 100%;
+  animation: fade-out 1s ease-out 3s both;
   @keyframes fade-out {
     0% {
       opacity: 1;
@@ -30,19 +37,15 @@ const Banner = styled.img`
 
 const BannerWrap = styled.div`
   width: 35%;
-  left: 50%;
-  margin: 0;
-  position: absolute;
-  top: 45%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
 `;
 
 const Slideshow = () => {
   return (
-    <BannerWrap>
-      <Banner src={Logo} className="Banner" />
-    </BannerWrap>
+    <Background>
+      <BannerWrap>
+        <Banner src={Logo} className="Banner" />
+      </BannerWrap>
+    </Background>
   );
 };
 
