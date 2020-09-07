@@ -1,4 +1,4 @@
-export const shippingCosts: Shipping[] = [
+const devShippingCosts = [
   { region: "UK", priceId: "price_1HMwTgJs9ciiqN7OnYGR5rOp", price: 2.5 },
   {
     region: "Europe",
@@ -11,6 +11,25 @@ export const shippingCosts: Shipping[] = [
     price: 5,
   },
 ];
+
+const productionShippingCosts = [
+  { region: "UK", priceId: "price_1HOpaOJs9ciiqN7OcNEPQA7G", price: 2.5 },
+  {
+    region: "Europe",
+    priceId: "price_1HOpaOJs9ciiqN7OcRyOPBkG",
+    price: 4,
+  },
+  {
+    region: "Rest Of The World",
+    priceId: "price_1HOpaOJs9ciiqN7Oxtqh00zC",
+    price: 5,
+  },
+];
+
+export const shippingCosts: Shipping[] =
+  process.env.NODE_ENV === "production"
+    ? productionShippingCosts
+    : devShippingCosts;
 
 export const initialState = {
   cart: {
