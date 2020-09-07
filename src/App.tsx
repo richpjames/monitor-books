@@ -18,10 +18,19 @@ const App = ({ fetchVideos, fetchProducts }: IProps) => {
     fetchVideos();
     setTimeout(() => {
       setShowImage(false);
-    }, 3000);
+    }, 3500);
   }, [fetchProducts, fetchVideos]);
 
-  return <>{showImage ? <Slideshow /> : <MainPage />}</>;
+  return (
+    <>
+      {
+        <>
+          {showImage && <Slideshow />}
+          <MainPage />
+        </>
+      }
+    </>
+  );
 };
 
 export default connect(null, { fetchVideos, fetchProducts })(App);
