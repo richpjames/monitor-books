@@ -12,8 +12,10 @@ interface IProps {
 }
 
 const App = ({ fetchVideos, fetchProducts }: IProps) => {
-  const [showImage, setShowImage] = useState(true);
+  const [showImage, setShowImage] = useState(false);
+
   useEffect(() => {
+    if (window.location.pathname === "/") setShowImage(true);
     fetchProducts();
     fetchVideos();
     setTimeout(() => {
@@ -23,12 +25,8 @@ const App = ({ fetchVideos, fetchProducts }: IProps) => {
 
   return (
     <>
-      {
-        <>
-          {showImage && <Slideshow />}
-          <MainPage />
-        </>
-      }
+      {showImage && <Slideshow />}
+      {<MainPage hide={showImage} />}
     </>
   );
 };
