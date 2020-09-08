@@ -14,12 +14,12 @@ import { Success } from "./Success";
 import { ProductsPage } from "./ProductsPage";
 import { VideosPage } from "./VideosPage";
 
-const PageWrap = styled.div`
+const PageWrap = styled.div<{ hide: boolean }>`
   margin-left: auto;
   margin-right: auto;
   max-width: 100vw;
   width: 95%;
-
+  display: ${(props) => (props.hide ? "none" : "block")};
   @media only screen and (min-width: 600px) {
     width: 60%;
   }
@@ -30,6 +30,7 @@ interface IProps {
   videos?: byId<Video>;
   bookIds?: visibileIds;
   videoIds?: visibileIds;
+  hide: boolean;
 }
 
 const MainPage = ({
@@ -37,10 +38,11 @@ const MainPage = ({
   bookIds = [],
   videos = {},
   videoIds = [],
+  hide,
 }: IProps) => {
   return (
     <>
-      <PageWrap>
+      <PageWrap hide={hide}>
         <NavBar />
         <Router>
           <ProductsPage bookIds={bookIds} books={books} path="books" />
