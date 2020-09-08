@@ -21,8 +21,7 @@ const Background = styled.div`
 `;
 
 const Banner = styled.img`
-  position: relative;
-  width: 100%;
+  max-width: 80%;
   max-height: 100%;
   animation: fade-out 1s ease-out 3s both;
   @keyframes fade-out {
@@ -35,16 +34,10 @@ const Banner = styled.img`
   }
 `;
 
-const BannerWrap = styled.div`
-  width: 35%;
-`;
-
 const Slideshow = () => {
   return (
     <Background>
-      <BannerWrap>
-        <Banner src={Logo} className="Banner" />
-      </BannerWrap>
+      <Banner src={Logo} className="Banner" />
     </Background>
   );
 };
