@@ -1,6 +1,6 @@
-describe("Initial test", () => {
-  it("check slideshow", () => {
-    cy.visit("http://localhost:3000");
+describe("Slideshow", () => {
+  it("check slideshow duration", () => {
+    cy.visit("http://localhost:8888");
 
     cy.contains("monitor");
   });
