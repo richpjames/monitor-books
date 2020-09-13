@@ -24,6 +24,7 @@ const Banner = styled.img`
   max-width: 80%;
   max-height: 100%;
   animation: fade-out 1s ease-out 3s both;
+  transform: translateY(-25%);
   @keyframes fade-out {
     0% {
       opacity: 1;
