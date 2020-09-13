@@ -70,7 +70,11 @@ const BasketListItem = ({
           outOfStock={stock < 0}
           quantity={quantity}
         />
-        <RemoveFromCartButton onClick={() => removeFromCart(id, quantity)}>
+        <RemoveFromCartButton
+          onClick={() => removeFromCart(id, quantity)}
+          name="Remove from basket"
+          type="button"
+        >
           X
         </RemoveFromCartButton>
       </MetaInfoContainer>
