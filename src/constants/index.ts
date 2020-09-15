@@ -52,3 +52,5 @@ export const mainImageUrl = `https://www.richjames.co.uk/img/`;
 //IMAGES
 export const productPageImageHeight = "15vw";
 export const productPageImageWidth = "auto";
+
+export const introTimer = 4;
