@@ -6,10 +6,10 @@ import { connect } from "react-redux";
 import About from "./About";
 import BasketContainer from "./Basket/BasketContainer";
 import ProductPageContainer from "./ProductPageContainer";
-import Footer from "../Footer";
-import NavBar from "../NavBar";
+import Footer from "../Global/Footer";
+import NavBar from "../Global/NavBar";
 import VideoPage from "./VideoPage";
-import OnRouteChange from "../ScrollToTop";
+import OnRouteChange from "../Global/ScrollToTop";
 import { Success } from "./Success";
 import { ProductsPage } from "./ProductsPage";
 import { VideosPage } from "./VideosPage";
@@ -51,7 +51,6 @@ const MainPage = ({
               path={books[bookId].slug}
               product={books[bookId]}
               key={bookId}
-              default={books[bookId].slug === "propositions"}
             />
           ))}
           <VideosPage path="videos" />
