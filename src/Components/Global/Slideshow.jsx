@@ -1,7 +1,17 @@
 import React from "react";
 import styled from "styled-components/macro";
 
-import Logo from "../assets/img/logo.png";
+import Logo from "../../assets/img/logo.png";
+import { introTimer } from "../../constants/";
+
+const fadeOut = ` @keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}`;
 
 const Background = styled.div`
   display: flex;
@@ -9,30 +19,16 @@ const Background = styled.div`
   align-items: center;
   width: 100vw;
   height: 100vh;
-  animation: fade-out 1s ease-out 5s both;
-  @keyframes fade-out {
-    0% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-    }
-  }
+  animation: fade-out 1s ease-out ${introTimer}s both;
+  ${fadeOut}
 `;
 
 const Banner = styled.img`
   max-width: 80%;
   max-height: 100%;
-  animation: fade-out 1s ease-out 3s both;
+  animation: fade-out 1s ease-out ${introTimer - 1}s both;
   transform: translateY(-25%);
-  @keyframes fade-out {
-    0% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-    }
-  }
+  ${fadeOut}
 `;
 
 const Slideshow = () => {

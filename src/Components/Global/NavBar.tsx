@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components/macro";
 import { Link } from "@reach/router";
 
-import BasketNav from "./Common/BasketNav";
+import BasketNav from "./BasketNav";
 
 import Logo from "./Logo";
 
