@@ -37,12 +37,13 @@ interface IProps {
   onClick: (click: React.MouseEvent) => void;
   disabled: boolean;
   children: string;
+  className?: string;
 }
 
-export function CTAButton({ onClick, disabled, children }: IProps) {
+export function CTAButton({ onClick, disabled, children, className }: IProps) {
   return (
     <ButtonWrapper>
-      <ButtonStyles onClick={onClick} disabled={disabled}>
+      <ButtonStyles onClick={onClick} disabled={disabled} className={className}>
         {children}
       </ButtonStyles>
     </ButtonWrapper>
