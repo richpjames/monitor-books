@@ -74,7 +74,6 @@ const Basket = ({
       slug={productsById[productId].slug}
     />
   ));
-  console.log("re rendder");
   return (
     <PageWrapper>
       <ListTitle>Basket</ListTitle>
