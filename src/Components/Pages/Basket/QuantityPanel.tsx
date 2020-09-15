@@ -38,13 +38,13 @@ export const QuantityPanel = ({
   outOfStock,
   quantity,
 }: IProps) => (
-  <Wrap>
+  <Wrap className="item-quantity-container">
     <QuantityLabel>Quantity:</QuantityLabel>
     <ButtonWrapper>
       <Button onClick={decrementInCart} disabled={quantity <= 0}>
         -
       </Button>
-      <Quantity>{quantity}</Quantity>
+      <Quantity className="item-quantity-number">{quantity}</Quantity>
       <Button onClick={addToCart} disabled={outOfStock}>
         +
       </Button>

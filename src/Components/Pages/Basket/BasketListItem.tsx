@@ -55,6 +55,7 @@ const BasketListItem = ({
       width="100%"
       horizontalMargin="5rem"
       topMargin="2rem"
+      className={subtitle}
     >
       <ListItemPhotoWrap width="40%" onClick={() => navigate(slug)}>
         <ListItemPhoto src={imageSrc} />

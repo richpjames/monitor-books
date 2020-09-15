@@ -7,5 +7,5 @@ const TotalWrapper = styled.h3`
 `;
 
 export const BasketTotal = ({ total }: { total: string }) => {
-  return <TotalWrapper>Total: £{total}</TotalWrapper>;
+  return <TotalWrapper className="basket-total">Total: £{total}</TotalWrapper>;
 };

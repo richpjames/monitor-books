@@ -67,6 +67,7 @@ const ProductPage = ({
         <Text leftText={leftDescription} rightText={rightDescription} />
       </InfoSection>
       <CTAButton
+        className="product-button"
         onClick={
           cartQuantityById[id] > 0 ? addToCartRedirect : () => addToCart(id)
         }

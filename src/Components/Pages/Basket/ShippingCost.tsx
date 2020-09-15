@@ -5,5 +5,5 @@ interface IProps {
 }
 
 export const ShippingCost = ({ total }: IProps) => {
-  return <h5>Shipping: {total}</h5>;
+  return <h5 className="shipping-cost">Shipping: {total}</h5>;
 };
