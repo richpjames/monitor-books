@@ -3,7 +3,7 @@ import styled from "styled-components/macro";
 
 import BasketListItem from "./BasketListItem";
 import { LoadingSpinner } from "../../Common/LoadingSpinner";
-import { CTAButton } from "../../Common/CTAButton";
+import { CTAButton } from "../../Common/";
 import { BasketTotal } from "./BasketTotal";
 import { ShippingCost } from "./ShippingCost";
 import { PageWrapper } from "../../Common/Common";
@@ -58,8 +58,10 @@ const Basket = ({
   total,
 }: IProps): React.ReactElement => {
   const hasProducts = productIds?.length > 0;
+
   const twoDecimalPlaces = (number: number) =>
     (Math.round(number * 100) / 100).toFixed(2);
+
   const cartItems = productIds.map((productId: string, index: number) => (
     <BasketListItem
       title={productsById[productId].author}
@@ -74,6 +76,7 @@ const Basket = ({
       slug={productsById[productId].slug}
     />
   ));
+
   return (
     <PageWrapper>
       <ListTitle>Basket</ListTitle>
