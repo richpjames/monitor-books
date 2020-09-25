@@ -9,6 +9,7 @@ import { fetchVideos, fetchProducts } from "./actions/index";
 import { introTimer } from "./constants/";
 
 const introTimerMilliseconds = introTimer * 1000;
+
 interface Props {
   fetchVideos: () => void;
   fetchProducts: () => void;
@@ -22,10 +23,12 @@ const App = ({ fetchVideos, fetchProducts }: Props) => {
     fetchProducts();
     fetchVideos();
     setTimeout(() => {
-      setShowImage(false);
-      navigate("propositions");
+      if (showImage) {
+        setShowImage(false);
+        navigate("propositions");
+      }
     }, introTimerMilliseconds);
-  }, [fetchProducts, fetchVideos]);
+  }, [fetchProducts, fetchVideos, showImage]);
 
   return (
     <>
