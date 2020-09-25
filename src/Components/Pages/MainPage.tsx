@@ -5,7 +5,7 @@ import { Router } from "@reach/router";
 import { connect } from "react-redux";
 import About from "./About";
 import BasketContainer from "./Basket/BasketContainer";
-import ProductPageContainer from "./ProductPageContainer";
+import ProductPage from "./ProductPage";
 import Footer from "../Global/Footer";
 import NavBar from "../Global/NavBar";
 import VideoPage from "./VideoPage";
@@ -46,13 +46,31 @@ const MainPage = ({
         <NavBar />
         <Router>
           <ProductsPage bookIds={bookIds} books={books} path="books" />
-          {bookIds.map((bookId) => (
-            <ProductPageContainer
-              path={books[bookId].slug}
-              product={books[bookId]}
-              key={bookId}
-            />
-          ))}
+          {bookIds.map((bookId) => {
+            const {
+              photos,
+              title,
+              author,
+              blurb1,
+              blurb2,
+              slug,
+              imagePath,
+            } = books[bookId];
+
+            return (
+              <ProductPage
+                id={bookId}
+                photos={photos}
+                title={title}
+                author={author}
+                leftDescription={blurb1}
+                rightDescription={blurb2}
+                imagePath={imagePath}
+                path={slug}
+                key={bookId}
+              />
+            );
+          })}
           <VideosPage path="videos" />
           {videoIds.map((videoId) => (
             <VideoPage
