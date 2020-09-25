@@ -25,14 +25,14 @@ const receiveVideos = (videos) => {
   };
 };
 
-const addToCartUnsafe = (productId) => ({
+const addToBasketUnsafe = (productId) => ({
   type: types.ADD_TO_CART,
   productId,
 });
 
-export const addToCart = (productId) => (dispatch, getState) => {
+export const addToBasket = (productId) => (dispatch, getState) => {
   if (getState().products.byId[productId].inventory > 0) {
-    dispatch(addToCartUnsafe(productId));
+    dispatch(addToBasketUnsafe(productId));
   }
 };
 
