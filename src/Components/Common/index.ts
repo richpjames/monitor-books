@@ -1,7 +1,7 @@
-import { AddToBasketButton } from "./AddToBasketButton";
 import { PageWrapper, InfoSection } from "./Common";
-import { CTAButton } from "./CTAButton";
+import AddToBasketButton from "./AddToBasketButton";
 import { IndividualPhoto } from "./IndividualPhoto";
+import { CTAButton } from "./CTAButton";
 import { Photos } from "./Photos";
 import {
   ListItemContainer,
@@ -19,23 +19,23 @@ import { Video } from "./Video";
 
 export {
   AddToBasketButton,
-  PageWrapper,
-  InfoSection,
-  LoadingSpinner,
   CTAButton,
   IndividualPhoto,
-  Photos,
+  InfoSection,
   ListItemContainer,
-  MetaInfoContainer,
-  ListItemSubtitle,
-  ListItemPhotoWrap,
   ListItemPhoto,
+  ListItemPhotoWrap,
+  ListItemSubtitle,
   ListItemTitle,
-  Text,
-  Title,
+  LoadingSpinner,
+  MetaInfoContainer,
   PageSubtitle as CalsonTitle,
   PageTitle as AmericaTitle,
   PageTitleBold as AmericaTitleBold,
+  PageWrapper,
+  Photos,
+  Text,
+  Title,
   TitleWrapper,
   Video,
 };
