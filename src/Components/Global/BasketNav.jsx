@@ -7,6 +7,7 @@ import { Basket } from "grommet-icons";
 const Container = styled.div`
   display: flex;
   justify-content: flex-end;
+  padding-left: 10px;
 `;
 
 const IconWrapper = styled.div`
@@ -19,15 +20,15 @@ const IconWrapper = styled.div`
 const Number = styled.p`
   font-weight: 200;
   font-family: "GT America", sans-serif;
-  width: 10px;
-  height: 10px;
+  width: 7.5px;
+  height: 10.5px;
   line-height: 10px;
   background-color: black;
   color: white;
-  border-radius: 15%;
+  border-radius: 50%;
   position: absolute;
   z-index: 1;
-  padding: 2px;
+  padding: 4px;
 `;
 
 const Icon = styled(Basket)`
