@@ -3,7 +3,11 @@ import styled from "styled-components/macro";
 import { connect } from "react-redux";
 import { navigate } from "@reach/router";
 
-import { addToBasket, decrementInCart, removeFromCart } from "../../../actions";
+import {
+  addToBasket,
+  decrementInCart,
+  removeFromBasket,
+} from "../../../actions";
 import { QuantityPanel } from "./QuantityPanel";
 import {
   ListItemContainer,
@@ -28,7 +32,7 @@ interface Props {
   index: number;
   price: string;
   quantity: number;
-  removeFromCart: (id: string, quantityToReplace: number) => void;
+  removeFromBasket: (id: string, quantityToReplace: number) => void;
   stock: number;
   subtitle: string;
   title: string;
@@ -42,7 +46,7 @@ const BasketListItem = ({
   imageSrc,
   index,
   quantity,
-  removeFromCart,
+  removeFromBasket,
   stock,
   subtitle,
   title,
@@ -72,7 +76,7 @@ const BasketListItem = ({
           quantity={quantity}
         />
         <RemoveFromCartButton
-          onClick={() => removeFromCart(id, quantity)}
+          onClick={() => removeFromBasket(id, quantity)}
           name="Remove from basket"
           type="button"
         >
@@ -85,6 +89,6 @@ const BasketListItem = ({
 
 export default connect(null, {
   addToBasket,
-  removeFromCart,
+  removeFromBasket,
   decrementInCart,
 })(BasketListItem);

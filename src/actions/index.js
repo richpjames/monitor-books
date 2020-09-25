@@ -1,16 +1,6 @@
 import shop from "../api/shop";
 import * as types from "../constants/actionTypes";
 
-export const fetchVideos = () => (dispatch) =>
-  shop.getVideos().then((videos) => {
-    dispatch(receiveVideos(videos));
-  });
-
-export const fetchProducts = () => (dispatch) =>
-  shop.getProducts().then((products) => {
-    dispatch(receiveProducts(products));
-  });
-
 const receiveProducts = (products) => {
   return {
     type: types.RECEIVE_PRODUCTS,
@@ -24,6 +14,16 @@ const receiveVideos = (videos) => {
     videos: videos,
   };
 };
+
+export const fetchVideos = () => (dispatch) =>
+  shop.getVideos().then((videos) => {
+    dispatch(receiveVideos(videos));
+  });
+
+export const fetchProducts = () => (dispatch) =>
+  shop.getProducts().then((products) => {
+    dispatch(receiveProducts(products));
+  });
 
 const addToBasketUnsafe = (productId) => ({
   type: types.ADD_TO_CART,
@@ -53,7 +53,7 @@ export const decrementInCart = (productId) => (dispatch, getState) => {
   }
 };
 
-export const removeFromCart = (productId, quantityToReplace) => (
+export const removeFromBasket = (productId, quantityToReplace) => (
   dispatch,
   getState
 ) => {
