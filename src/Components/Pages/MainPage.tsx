@@ -25,7 +25,7 @@ const PageWrap = styled.div<{ hide: boolean }>`
   }
 `;
 
-interface IProps {
+interface Props {
   books?: byId<Product>;
   videos?: byId<Video>;
   bookIds?: visibileIds;
@@ -39,7 +39,7 @@ const MainPage = ({
   videos = {},
   videoIds = [],
   hide,
-}: IProps) => {
+}: Props) => {
   return (
     <>
       <PageWrap hide={hide}>
