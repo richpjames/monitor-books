@@ -26,7 +26,11 @@ const NavLinks = styled.ul`
     margin-top: 2.5vh;
   }
 `;
-const NavItem = styled.li``;
+const NavItem = styled.li`
+  display: flex;
+  justify-content: flex-end;
+  height: 20px;
+`;
 
 const NavBar = () => {
   return (
@@ -35,20 +39,36 @@ const NavBar = () => {
         <Logo />
       </Link>
       <NavLinks>
-        <NavItem>
-          <Link to="/basket">
-            <BasketNav />
+        {navItems.map((navItem, index) => (
+          <Link to={navItem.link} aria-label={navItem.ariaLabel} key={index}>
+            <NavItem>
+              {navItem.content}
+              {navItem.component}
+            </NavItem>
           </Link>
-        </NavItem>
-        <NavItem>
-          <Link to="/books">Books</Link>
-        </NavItem>
-        <NavItem>
-          <Link to="/murmur-episode-one">Murmur Reading Series</Link>
-        </NavItem>
+        ))}
       </NavLinks>
     </Nav>
   );
 };
 
 export default NavBar;
+
+const navItems = [
+  {
+    link: "/basket",
+    ariaLabel: "Basket link",
+    content: "",
+    component: <BasketNav />,
+  },
+  {
+    link: "/books",
+    ariaLabel: "Books link",
+    content: "Books",
+  },
+  {
+    link: "/murmur-episode-one",
+    ariaLabel: "Video link",
+    content: "Murmur Reading Series",
+  },
+];
