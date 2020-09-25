@@ -3,7 +3,7 @@ import styled from "styled-components/macro";
 import { connect } from "react-redux";
 import { navigate } from "@reach/router";
 
-import { addToCart, decrementInCart, removeFromCart } from "../../../actions";
+import { addToBasket, decrementInCart, removeFromCart } from "../../../actions";
 import { QuantityPanel } from "./QuantityPanel";
 import {
   ListItemContainer,
@@ -20,8 +20,8 @@ const RemoveFromCartButton = styled.button`
   font-size: 0.75em;
 `;
 
-interface IProps {
-  addToCart: (id: string) => void;
+interface Props {
+  addToBasket: (id: string) => void;
   decrementInCart: (id: string) => void;
   id: string;
   imageSrc: string;
@@ -36,7 +36,7 @@ interface IProps {
 }
 
 const BasketListItem = ({
-  addToCart,
+  addToBasket,
   decrementInCart,
   id,
   imageSrc,
@@ -47,7 +47,7 @@ const BasketListItem = ({
   subtitle,
   title,
   slug,
-}: IProps) => {
+}: Props) => {
   return (
     <ListItemContainer
       index={index}
@@ -66,7 +66,7 @@ const BasketListItem = ({
           {subtitle}
         </ListItemSubtitle>
         <QuantityPanel
-          addToCart={() => addToCart(id)}
+          addToCart={() => addToBasket(id)}
           decrementInCart={() => decrementInCart(id)}
           outOfStock={stock < 0}
           quantity={quantity}
@@ -83,6 +83,8 @@ const BasketListItem = ({
   );
 };
 
-export default connect(null, { addToCart, removeFromCart, decrementInCart })(
-  BasketListItem
-);
+export default connect(null, {
+  addToBasket,
+  removeFromCart,
+  decrementInCart,
+})(BasketListItem);
