@@ -9,12 +9,12 @@ import { fetchVideos, fetchProducts } from "./actions/index";
 import { introTimer } from "./constants/";
 
 const introTimerMilliseconds = introTimer * 1000;
-interface IProps {
+interface Props {
   fetchVideos: () => void;
   fetchProducts: () => void;
 }
 
-const App = ({ fetchVideos, fetchProducts }: IProps) => {
+const App = ({ fetchVideos, fetchProducts }: Props) => {
   const [showImage, setShowImage] = useState(false);
 
   useEffect(() => {
