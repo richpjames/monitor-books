@@ -3,7 +3,7 @@ import { RouteComponentProps } from "@reach/router";
 import styled from "styled-components/macro";
 
 import {
-  CTAButton,
+  AddToBasketButton,
   Photos,
   Title,
   Text,
@@ -20,10 +20,6 @@ const ProductPageWrapper = styled(PageWrapper)`
 `;
 
 interface Props extends RouteComponentProps {
-  cartQuantityById: { [key: string]: number };
-  inventoryQuantity: number;
-  addToCart: (productId: string) => void;
-  addToCartRedirect: () => void;
   photos: number[];
   title: string;
   author: string;
@@ -40,20 +36,8 @@ const ProductPage = ({
   leftDescription,
   rightDescription,
   id,
-  addToCartRedirect,
-  inventoryQuantity,
-  cartQuantityById,
-  addToCart,
   imagePath,
 }: Props) => {
-  let buttonMessage = "Add to basket";
-
-  if (cartQuantityById[id] > 0) {
-    buttonMessage = "In basket";
-  } else if (inventoryQuantity < 1) {
-    buttonMessage = "Out of stock";
-  }
-
   return (
     <ProductPageWrapper>
       <Photos
@@ -66,15 +50,7 @@ const ProductPage = ({
         <Title title={author} subtitle={title} />
         <Text leftText={leftDescription} rightText={rightDescription} />
       </InfoSection>
-      <CTAButton
-        className="product-button"
-        onClick={
-          cartQuantityById[id] > 0 ? addToCartRedirect : () => addToCart(id)
-        }
-        disabled={inventoryQuantity < 1}
-      >
-        {buttonMessage}
-      </CTAButton>
+      <AddToBasketButton id={id} />
     </ProductPageWrapper>
   );
 };
