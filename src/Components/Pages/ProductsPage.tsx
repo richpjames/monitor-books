@@ -22,7 +22,7 @@ interface Props extends RouteComponentProps {
 const ListWrap = styled.section`
   display: flex;
   flex-wrap: wrap;
-  padding-top: 1rem;
+  padding-top: 2.5rem;
 `;
 
 export const ProductsPage = ({ books, bookIds }: Props) => {
@@ -36,24 +36,24 @@ export const ProductsPage = ({ books, bookIds }: Props) => {
     <PageWrapper>
       <PageTitle>Books</PageTitle>
       <ListWrap>
-        {bookDetails.map((bookDetail, index) => (
+        {bookDetails.map((book, index) => (
           <ListItemContainer
             index={index}
             height="50%"
             width="100%"
             horizontalMargin="0rem"
             topMargin="1rem"
-            onClick={() => navigate(bookDetail.slug)}
+            onClick={() => navigate(book.slug)}
             key={index}
           >
             <ListItemPhotoWrap width="40%">
               <ListItemPhoto
-                src={`${mainImageUrl}${bookDetail.imagePath}/thumbnails/${bookDetail.thumbnail}`}
+                src={`${mainImageUrl}${book.imagePath}/thumbnails/${book.thumbnail}`}
               />
             </ListItemPhotoWrap>
             <MetaInfoContainer index={index} width="40%">
-              <ListItemTitle>{bookDetail.title}</ListItemTitle>
-              <ListItemSubtitle>{bookDetail.author}</ListItemSubtitle>
+              <ListItemTitle>{book.title}</ListItemTitle>
+              <ListItemSubtitle>{book.author}</ListItemSubtitle>
             </MetaInfoContainer>
           </ListItemContainer>
         ))}
