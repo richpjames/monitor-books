@@ -19,7 +19,7 @@ const ProductPageWrapper = styled(PageWrapper)`
   padding-top: 2rem;
 `;
 
-interface IProps extends RouteComponentProps {
+interface Props extends RouteComponentProps {
   cartQuantityById: { [key: string]: number };
   inventoryQuantity: number;
   addToCart: (productId: string) => void;
@@ -45,7 +45,7 @@ const ProductPage = ({
   cartQuantityById,
   addToCart,
   imagePath,
-}: IProps) => {
+}: Props) => {
   let buttonMessage = "Add to basket";
 
   if (cartQuantityById[id] > 0) {
