@@ -1,4 +1,5 @@
 import { combineReducers } from "redux";
+import { shippingCosts } from "../constants";
 import cart, * as fromCart from "./cart";
 import products, * as fromProducts from "./products";
 import videos from "./videos";
@@ -7,6 +8,7 @@ export default combineReducers({
   cart,
   products,
   videos,
+  shippingCosts: (state = shippingCosts) => state,
 });
 
 const getAddedIds = (state) => fromCart.getAddedIds(state.cart);
