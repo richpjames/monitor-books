@@ -14,12 +14,7 @@ import {
 import { LoadingSpinner } from "./LoadingSpinner";
 import { Text } from "./Text";
 import { Title } from "./Title";
-import {
-  CalsonTitle,
-  AmericaTitle,
-  AmericaTitleBold,
-  TitleWrapper,
-} from "./Titles";
+import { PageSubtitle, PageTitle, PageTitleBold, TitleWrapper } from "./Titles";
 import { Video } from "./Video";
 
 export {
@@ -38,9 +33,9 @@ export {
   ListItemTitle,
   Text,
   Title,
-  CalsonTitle,
-  AmericaTitle,
-  AmericaTitleBold,
+  PageSubtitle as CalsonTitle,
+  PageTitle as AmericaTitle,
+  PageTitleBold as AmericaTitleBold,
   TitleWrapper,
   Video,
 };

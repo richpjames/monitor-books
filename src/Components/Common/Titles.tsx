@@ -1,16 +1,16 @@
 import styled from "styled-components/macro";
 
-export const CalsonTitle = styled.h1`
+export const PageSubtitle = styled.h1`
   font-family: "Caslon", sans-serif;
   font-weight: 300;
 `;
 
-export const AmericaTitle = styled(CalsonTitle)`
+export const PageTitle = styled(PageSubtitle)`
   font-weight: 200;
   font-family: "GT America", sans-serif;
 `;
 
-export const AmericaTitleBold = styled(AmericaTitle)`
+export const PageTitleBold = styled(PageTitle)`
   font-weight: 400;
 `;
 

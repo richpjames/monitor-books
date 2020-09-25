@@ -1,6 +1,6 @@
 import styled from "styled-components/macro";
 import { offWhite, offOffWhite } from "../../constants";
-import { AmericaTitle } from "./Titles";
+import { PageTitle } from "./Titles";
 
 export const ListItemContainer = styled.div<{
   index: number;
@@ -82,7 +82,7 @@ export const Photo = styled.img`
   }
 `;
 
-export const ListTitle = styled(AmericaTitle)`
+export const ListTitle = styled(PageTitle)`
   width: 100%;
   text-align: center;
   display: block;

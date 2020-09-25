@@ -12,8 +12,9 @@ import {
   ListItemSubtitle,
   PageWrapper,
 } from "../Common";
+import { PageTitle } from "../Common/Titles";
 
-interface IProps extends RouteComponentProps {
+interface Props extends RouteComponentProps {
   books: byId<Product>;
   bookIds: visibileIds;
 }
@@ -24,7 +25,7 @@ const ListWrap = styled.section`
   padding-top: 1rem;
 `;
 
-export const ProductsPage = ({ books, bookIds }: IProps) => {
+export const ProductsPage = ({ books, bookIds }: Props) => {
   const bookDetails = bookIds
     .map((bookId) => books[bookId])
     .sort(
@@ -33,7 +34,7 @@ export const ProductsPage = ({ books, bookIds }: IProps) => {
     );
   return (
     <PageWrapper>
-      <ListItemTitle>Books</ListItemTitle>
+      <PageTitle>Books</PageTitle>
       <ListWrap>
         {bookDetails.map((bookDetail, index) => (
           <ListItemContainer

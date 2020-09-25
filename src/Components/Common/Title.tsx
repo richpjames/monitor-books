@@ -1,11 +1,6 @@
 import React from "react";
 
-import {
-  CalsonTitle,
-  AmericaTitle,
-  AmericaTitleBold,
-  TitleWrapper,
-} from "./Titles";
+import { PageSubtitle, PageTitle, PageTitleBold, TitleWrapper } from "./Titles";
 
 interface IProps {
   title: string;
@@ -17,11 +12,11 @@ export function Title(props: IProps) {
   const { title, subtitle, bold } = props;
   return (
     <TitleWrapper>
-      <AmericaTitle>{title} </AmericaTitle>
+      <PageTitle>{title} </PageTitle>
       {bold ? (
-        <AmericaTitleBold>{subtitle}</AmericaTitleBold>
+        <PageTitleBold>{subtitle}</PageTitleBold>
       ) : (
-        <CalsonTitle>{subtitle}</CalsonTitle>
+        <PageSubtitle>{subtitle}</PageSubtitle>
       )}
     </TitleWrapper>
   );
