@@ -10,6 +10,7 @@ import App from "./App";
 import { loadState, saveState } from "./sessionStorage";
 
 const middleware = [thunk];
+// expose store when run in Cypress
 
 const initialState = loadState();
 
@@ -22,6 +23,11 @@ const store = createStore(
 store.subscribe(() => {
   saveState(store.getState());
 });
+
+// expose store when run in Cypress
+if (window.Cypress) {
+  window.store = store;
+}
 
 ReactDOM.render(
   <Provider store={store}>
