@@ -12,22 +12,31 @@ body {
     font-family: "GT America", sans-serif;
     padding: 0;
     margin: 0;
+    background-color: #FAFAFA;
 }
 
 h1 {
     font-size: clamp(32px, 2em, 2rem);
     display: inline;
     line-height: 24px;
+    font-family: 'GT America', sans-serif;
 }
 
 h2 {
    font-size:  1.7rem;
+   font-family: 'GT America', sans-serif;
 }
 
-h2 {
-    font-size:  1.4rem;
+h3 {
+    font-size:  1.45rem;
+    font-family: 'GT America', sans-serif;
  }
-h4 {  font-size: 1.2em;    }
+
+
+h4 {  
+    font-size: 1.4em;
+    font-family: 'Caslon', sans-serif;
+    }
 
 h5 {  font-size: .95em;    }
 
