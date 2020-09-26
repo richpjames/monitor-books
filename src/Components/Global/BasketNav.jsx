@@ -3,6 +3,7 @@ import styled from "styled-components/macro";
 import { connect } from "react-redux";
 
 import { Basket } from "grommet-icons";
+import { darkGrey } from "../../constants";
 
 const Container = styled.div`
   display: flex;
@@ -23,7 +24,7 @@ const Number = styled.p`
   width: 7.5px;
   height: 10.5px;
   line-height: 10px;
-  background-color: black;
+  background-color: ${darkGrey};
   color: white;
   border-radius: 50%;
   position: absolute;
