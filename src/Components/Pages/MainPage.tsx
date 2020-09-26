@@ -13,6 +13,7 @@ import OnRouteChange from "../Global/ScrollToTop";
 import { Success } from "./Success";
 import { ProductsPage } from "./ProductsPage";
 import { VideosPage } from "./VideosPage";
+import { ProductsContainer } from "./ProductsContainer";
 
 const PageWrap = styled.div<{ hide: boolean }>`
   margin-left: auto;
@@ -45,32 +46,35 @@ const MainPage = ({
       <PageWrap hide={hide}>
         <NavBar />
         <Router>
-          <ProductsPage bookIds={bookIds} books={books} path="books" />
-          {bookIds.map((bookId) => {
-            const {
-              photos,
-              title,
-              author,
-              blurb1,
-              blurb2,
-              slug,
-              imagePath,
-            } = books[bookId];
+          <ProductsContainer path="books">
+            <ProductsPage bookIds={bookIds} books={books} path="/" />
+            {bookIds.map((bookId) => {
+              const {
+                photos,
+                title,
+                author,
+                blurb1,
+                blurb2,
+                slug,
+                imagePath,
+              } = books[bookId];
 
-            return (
-              <ProductPage
-                id={bookId}
-                photos={photos}
-                title={title}
-                author={author}
-                leftDescription={blurb1}
-                rightDescription={blurb2}
-                imagePath={imagePath}
-                path={slug}
-                key={bookId}
-              />
-            );
-          })}
+              return (
+                <ProductPage
+                  id={bookId}
+                  photos={photos}
+                  title={title}
+                  author={author}
+                  leftDescription={blurb1}
+                  rightDescription={blurb2}
+                  imagePath={imagePath}
+                  path={`:${slug}`}
+                  default={slug === "propositions"}
+                  key={bookId}
+                />
+              );
+            })}
+          </ProductsContainer>
           <VideosPage path="videos" />
           {videoIds.map((videoId) => (
             <VideoPage
