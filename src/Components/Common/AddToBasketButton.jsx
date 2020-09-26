@@ -1,13 +1,17 @@
 import React from "react";
 import styled from "styled-components/macro";
-import { navigate } from "@reach/router";
+import { navigate, Link } from "@reach/router";
 import { connect } from "react-redux";
 
+import { darkGrey, purp } from "./../../constants/";
 import { addToBasket } from "../../actions";
 
 const ButtonStyles = styled.button`
   width: 150px;
   height: 40px;
+  background: ${darkGrey};
+  border: ${({ borderColour }) =>
+    `1px solid ${borderColour ? borderColour : purp}`};
 `;
 
 const ButtonWrapper = styled.div`
@@ -19,6 +23,8 @@ const AddToBasketButton = ({
   inventoryQuantity,
   addToBasket,
   id,
+  borderColour,
+  linkTo,
 }) => {
   let buttonMessage = "Add to basket";
 
@@ -29,17 +35,20 @@ const AddToBasketButton = ({
   }
 
   return (
-    <ButtonWrapper>
-      <ButtonStyles
-        onClick={
-          cartQuantity > 0 ? () => navigate("basket") : () => addToBasket(id)
-        }
-        disabled={false}
-        className="add-to-basket"
-      >
-        {buttonMessage}
-      </ButtonStyles>
-    </ButtonWrapper>
+    <Link to={linkTo}>
+      <ButtonWrapper>
+        <ButtonStyles
+          onClick={
+            cartQuantity > 0 ? () => navigate("basket") : () => addToBasket(id)
+          }
+          disabled={false}
+          className="add-to-basket"
+          borderColour={borderColour}
+        >
+          {buttonMessage}
+        </ButtonStyles>
+      </ButtonWrapper>
+    </Link>
   );
 };
 
