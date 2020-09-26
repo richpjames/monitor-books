@@ -3,7 +3,7 @@ import styled from "styled-components/macro";
 
 const Wrap = styled.section`
   display: flex;
-  padding-bottom: 1rem;
+  padding-bottom: 2.5rem;
   margin-top: auto;
   @media only screen and (max-width: 600px) {
     justify-content: center;
@@ -26,7 +26,7 @@ const Quantity = styled.h5`
 const QuantityLabel = styled(Quantity)``;
 const Button = styled.button``;
 
-interface IProps {
+interface Props {
   addToCart: (event: React.MouseEvent) => void;
   decrementInCart: (event: React.MouseEvent) => void;
   outOfStock: boolean;
@@ -37,7 +37,7 @@ export const QuantityPanel = ({
   decrementInCart,
   outOfStock,
   quantity,
-}: IProps) => (
+}: Props) => (
   <Wrap className="item-quantity-container">
     <QuantityLabel>Quantity:</QuantityLabel>
     <ButtonWrapper>
