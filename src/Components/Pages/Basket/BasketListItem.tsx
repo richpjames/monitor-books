@@ -20,6 +20,7 @@ import {
 
 const RemoveFromCartButton = styled.button`
   right: 0;
+  top: 0;
   position: absolute;
   font-size: 0.75em;
 `;
@@ -60,15 +61,14 @@ const BasketListItem = ({
       horizontalMargin="5rem"
       topMargin="2rem"
       className={subtitle}
+      to={slug}
     >
       <ListItemPhotoWrap width="40%" onClick={() => navigate(slug)}>
         <ListItemPhoto src={imageSrc} />
       </ListItemPhotoWrap>
       <MetaInfoContainer index={index} width="40%">
-        <ListItemTitle onClick={() => navigate(slug)}>{title}</ListItemTitle>
-        <ListItemSubtitle onClick={() => navigate(slug)}>
-          {subtitle}
-        </ListItemSubtitle>
+        <ListItemTitle>{title}</ListItemTitle>
+        <ListItemSubtitle>{subtitle}</ListItemSubtitle>
         <QuantityPanel
           addToCart={() => addToBasket(id)}
           decrementInCart={() => decrementInCart(id)}
