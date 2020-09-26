@@ -11,9 +11,10 @@ import {
   InfoSection,
 } from "../Common";
 import {
+  darkGrey,
   productPageImageHeight,
   productPageImageWidth,
-} from "../../constants/index";
+} from "../../constants";
 
 const ProductPageWrapper = styled(PageWrapper)`
   padding-top: 2rem;
@@ -37,6 +38,7 @@ const ProductPage = ({
   rightDescription,
   id,
   imagePath,
+  path,
 }: Props) => {
   return (
     <ProductPageWrapper>
@@ -50,7 +52,7 @@ const ProductPage = ({
         <Title title={author} subtitle={title} />
         <Text leftText={leftDescription} rightText={rightDescription} />
       </InfoSection>
-      <AddToBasketButton id={id} />
+      <AddToBasketButton id={id} borderColour={darkGrey} linkTo={path} />
     </ProductPageWrapper>
   );
 };
