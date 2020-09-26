@@ -1,8 +1,9 @@
 import styled from "styled-components/macro";
-import { offWhite, offOffWhite } from "../../constants";
+import { Link } from "@reach/router";
+import { offWhite, purp, darkGrey } from "../../constants";
 import { PageTitle } from "./Titles";
 
-export const ListItemContainer = styled.div<{
+export const ListItemContainer = styled(Link)<{
   index: number;
   height: string;
   width: string;
@@ -16,7 +17,7 @@ export const ListItemContainer = styled.div<{
   margin-left: ${(props) => props.horizontalMargin};
   margin-right: ${(props) => props.horizontalMargin};
   margin-top: ${(props) => (props.index < 1 ? "0" : props.topMargin)};
-  border-top: 1px solid black;
+  border-top: 1px solid ${darkGrey};
   border-bottom: 1px solid black;
   @media only screen and (max-width: 600px) {
     flex-direction: column;
@@ -34,8 +35,9 @@ export const MetaInfoContainer = styled.div<{ index: number; width: string }>`
   align-items: center;
   width: ${(props) => props.width};
   position: relative;
+  padding-top: 2.5rem;
   background-color: ${(props) =>
-    props.index < 1 ? `${offWhite}` : `${offOffWhite}`};
+    props.index < 1 ? `${darkGrey}` : `${darkGrey}`};
   @media only screen and (max-width: 600px) {
     width: 100%;
   }
@@ -46,13 +48,16 @@ export const ListItemTitle = styled.h3`
   text-align: center;
   padding-top: 1rem;
   padding-bottom: 0.1rem;
+  color: ${offWhite};
 `;
 
 export const ListItemSubtitle = styled.h4`
-  padding-top: 0.1rem;
+  padding-top: 0.5rem;
   padding-bottom: 1rem;
   width: 100%;
   text-align: center;
+  font-weight: 100;
+  color: ${offWhite};
 `;
 
 export const ListItemPhotoWrap = styled.div<{ width: string }>`
