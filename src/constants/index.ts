@@ -43,8 +43,10 @@ export const initialState = {
 };
 
 //COLOURS
-export const offWhite = "#eef0f2";
+export const offWhite = "#FAFAFA";
 export const offOffWhite = "#ebebeb";
+export const purp = "#02003D";
+export const darkGrey = "#141414";
 
 //URLS
 export const mainImageUrl = `https://www.richjames.co.uk/img/`;
