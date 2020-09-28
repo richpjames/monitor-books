@@ -42,11 +42,15 @@ export const initialState = {
   videos: { byId: {}, visibleIds: [] },
 };
 
-//COLOURS
-export const offWhite = "#FAFAFA";
-export const offOffWhite = "#ebebeb";
-export const purp = "#02003D";
-export const darkGrey = "#141414";
+//COLOUR DEFINITIONS
+export const _offWhite = "#FAFAFA";
+export const _offOffWhite = "#ebebeb";
+export const _purp = "#02003D";
+export const _darkGrey = "#141414";
+
+//COLOUR USAGE
+export const text = _offWhite;
+export const background = _darkGrey;
 
 //URLS
 export const mainImageUrl = `https://www.richjames.co.uk/img/`;

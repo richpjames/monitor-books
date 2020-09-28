@@ -1,5 +1,5 @@
 import styled from "styled-components/macro";
-import { darkGrey } from "../../constants";
+import { text } from "../../constants";
 
 export const PageSubtitle = styled.h1`
   font-family: "Caslon", sans-serif;
@@ -16,7 +16,7 @@ export const PageTitleBold = styled(PageTitle)`
 `;
 
 export const TitleWrapper = styled.div`
-  border-bottom: 1px solid ${darkGrey};
+  border-bottom: 1px solid ${text};
   padding-top: 2rem;
   padding-bottom: 1.5rem;
   @media only screen and (min-width: 600px) {

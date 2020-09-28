@@ -3,7 +3,7 @@ import styled from "styled-components/macro";
 import { connect } from "react-redux";
 
 import { Basket } from "grommet-icons";
-import { darkGrey } from "../../constants";
+import { text, background } from "../../constants";
 
 const Container = styled.div`
   display: flex;
@@ -24,8 +24,8 @@ const Number = styled.p`
   width: 7.5px;
   height: 10.5px;
   line-height: 10px;
-  background-color: ${darkGrey};
-  color: white;
+  background-color: ${background};
+  color: ${text};
   border-radius: 50%;
   position: absolute;
   z-index: 1;
@@ -46,7 +46,7 @@ const BasketIcon = ({ totalQuantity }) => {
     <Container>
       <IconWrapper>
         <Number>{totalQuantity}</Number>
-        <Icon />
+        <Icon color={text} />
       </IconWrapper>
     </Container>
   );

@@ -3,15 +3,16 @@ import styled from "styled-components/macro";
 import { navigate } from "@reach/router";
 import { connect } from "react-redux";
 
-import { darkGrey, purp } from "./../../constants/";
+import { background, text } from "./../../constants/";
 import { addToBasket } from "../../actions";
 
 const ButtonStyles = styled.button`
   width: 150px;
   height: 40px;
-  background: ${darkGrey};
+  background: ${background};
+  color: ${text};
   border: ${({ borderColour }) =>
-    `1px solid ${borderColour ? borderColour : purp}`};
+    `1px solid ${borderColour ? borderColour : text}`};
 `;
 
 const ButtonWrapper = styled.div`

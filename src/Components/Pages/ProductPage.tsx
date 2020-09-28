@@ -11,7 +11,7 @@ import {
   InfoSection,
 } from "../Common";
 import {
-  darkGrey,
+  text,
   productPageImageHeight,
   productPageImageWidth,
 } from "../../constants";
@@ -52,7 +52,7 @@ const ProductPage = ({
         <Title title={author} subtitle={title} />
         <Text leftText={leftDescription} rightText={rightDescription} />
       </InfoSection>
-      <AddToBasketButton id={id} borderColour={darkGrey} linkTo={path} />
+      <AddToBasketButton id={id} borderColour={text} linkTo={path} />
     </ProductPageWrapper>
   );
 };

@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components/macro";
 import { navigate } from "@reach/router";
 
-import { offWhite, darkGrey } from "../../constants";
 import { PageTitle } from "./Titles";
+import { background, text } from "../../constants";
 
 interface ListItemContainerProps {
   index: number;
@@ -23,8 +23,8 @@ export const ListItemContainerWrap = styled.div<ListItemContainerProps>`
   margin-left: ${(props) => props.horizontalMargin};
   margin-right: ${(props) => props.horizontalMargin};
   margin-top: ${(props) => (props.index < 1 ? "0" : props.topMargin)};
-  border-top: 1px solid ${darkGrey};
-  border-bottom: 1px solid black;
+  border-top: 1px solid ${text};
+  border-bottom: 1px solid ${text};
   @media only screen and (max-width: 600px) {
     flex-direction: column;
     padding-left: 0;
@@ -69,7 +69,6 @@ export const ListItemSubtitle = styled.h4`
   padding-bottom: 1rem;
   width: 100%;
   text-align: center;
-  font-weight: 100;
 `;
 
 export const ListItemPhotoWrap = styled.div<{ width: string }>`
@@ -78,7 +77,7 @@ export const ListItemPhotoWrap = styled.div<{ width: string }>`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${offWhite};
+  background-color: ${background};
   @media only screen and (max-width: 600px) {
     width: 100%;
   }

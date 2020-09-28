@@ -8,7 +8,7 @@ import { BasketTotal } from "./BasketTotal";
 import { ShippingCost } from "./ShippingCost";
 import { PageWrapper } from "../../Common/Common";
 import { ListTitle } from "../../Common/ListComponents";
-import { mainImageUrl } from "../../../constants/index";
+import { mainImageUrl, text } from "../../../constants/";
 
 const CheckoutSection = styled.section`
   display: flex;
@@ -30,7 +30,20 @@ const EmptyCartMessage = styled.div`
   padding-bottom: 25%;
 `;
 
-const ShippingSelector = styled.select``;
+const ShippingWrapper = styled.section`
+  display: flex;
+  flex-wrap: wrap;
+  width: 17.5rem;
+`;
+
+const ShippingLabel = styled.label`
+  padding-right: 0.5rem;
+  color: ${text};
+`;
+
+const ShippingSelector = styled.select`
+  width: 7.5rem;
+`;
 
 type IProps = {
   hasItems: boolean;
@@ -86,19 +99,24 @@ const Basket = ({
             <>
               <BasketItemsSection>{cartItems}</BasketItemsSection>
               <CheckoutSection>
-                <label htmlFor="shipping">Postal region:</label>
-                <ShippingSelector
-                  onChange={(event) => {
-                    setShipping(+event.target.value);
-                  }}
-                >
-                  {shippingOptions.map((shippingRegion, index) => (
-                    <option value={index} key={index}>
-                      {shippingRegion.region}
-                    </option>
-                  ))}
-                </ShippingSelector>
-                <ShippingCost total={`${twoDecimalPlaces(shipping.price)}`} />
+                <ShippingWrapper>
+                  <ShippingLabel htmlFor="shipping">
+                    Postal region:
+                  </ShippingLabel>
+                  <ShippingSelector
+                    onChange={(event) => {
+                      setShipping(+event.target.value);
+                    }}
+                  >
+                    {shippingOptions.map((shippingRegion, index) => (
+                      <option value={index} key={index}>
+                        {shippingRegion.region}
+                      </option>
+                    ))}
+                  </ShippingSelector>
+                  <ShippingCost total={`${twoDecimalPlaces(shipping.price)}`} />
+                </ShippingWrapper>
+
                 <BasketTotal
                   total={`${twoDecimalPlaces(+total + shipping.price)}`}
                 />

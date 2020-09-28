@@ -2,7 +2,7 @@ import React, { FunctionComponent } from "react";
 import { RouteComponentProps } from "@reach/router";
 import styled from "styled-components/macro";
 
-import { mainImageUrl, productsPageName, offWhite } from "../../constants";
+import { mainImageUrl, productsPageName, text } from "../../constants";
 import {
   ListItemContainer,
   ListItemPhotoWrap,
@@ -61,7 +61,7 @@ export const ProductsPage: FunctionComponent<Props> = ({ books, bookIds }) => {
                 <ButtonWrap>
                   <AddToBasketButton
                     id={id}
-                    borderColour={offWhite}
+                    borderColour={text}
                     linkTo="/books"
                   />
                 </ButtonWrap>

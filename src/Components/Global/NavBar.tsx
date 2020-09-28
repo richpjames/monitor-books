@@ -5,13 +5,13 @@ import { Link } from "@reach/router";
 import BasketNav from "./BasketNav";
 
 import Logo from "./Logo";
-import { darkGrey } from "../../constants";
+import { text } from "../../constants";
 
 const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  border-bottom: 1px solid ${darkGrey};
+  border-bottom: 1px solid ${text};
   padding-bottom: 0.5rem;
   @media only screen and (min-width: 600px) {
     margin-top: 5vh;

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components/macro";
 
-import { offWhite, darkGrey } from "../../../constants/index";
+import { text, background } from "../../../constants/index";
 
 const Wrap = styled.section`
   display: flex;
@@ -25,12 +25,15 @@ const ButtonWrapper = styled.div`
 const Quantity = styled.h5`
   margin-left: 0.5rem;
   margin-right: 0.5rem;
+  color: ${text};
 `;
+
 const QuantityLabel = styled(Quantity)``;
+
 const Button = styled.button`
-  color: ${darkGrey};
-  border: 1px solid ${darkGrey};
-  background: ${offWhite};
+  color: ${text};
+  border: 1px solid ${text};
+  background: ${background};
 `;
 
 interface Props {
@@ -39,6 +42,7 @@ interface Props {
   outOfStock: boolean;
   quantity: number;
 }
+
 export const QuantityPanel = ({
   addToCart,
   decrementInCart,

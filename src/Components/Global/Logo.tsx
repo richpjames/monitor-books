@@ -1,10 +1,13 @@
 import React from "react";
 import styled from "styled-components/macro";
 
+import { text } from "../../constants";
+
 const LogoWrap = styled.div`
   width: 100px;
   top: 15px;
   position: relative;
+  fill: ${text};
   @media only screen and (max-width: 600px) {
     padding-top: 5vh;
     width: 75px;
