@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from "react";
-import { RouteComponentProps, navigate, Link } from "@reach/router";
+import { RouteComponentProps } from "@reach/router";
 import styled from "styled-components/macro";
 
-import { mainImageUrl, offWhite } from "../../constants";
+import { mainImageUrl, productsPageName, offWhite } from "../../constants";
 import {
   ListItemContainer,
   ListItemPhotoWrap,
@@ -32,12 +32,8 @@ const ListWrap = styled.section`
 `;
 
 export const ProductsPage: FunctionComponent<Props> = ({ books, bookIds }) => {
-  const bookDetails = bookIds
-    .map((bookId) => books[bookId])
-    .sort(
-      (a, b) =>
-        new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()
-    );
+  const bookDetails = bookIds.map((bookId) => books[bookId]);
+
   return (
     <PageWrapper>
       <PageTitle>Books</PageTitle>
@@ -52,7 +48,7 @@ export const ProductsPage: FunctionComponent<Props> = ({ books, bookIds }) => {
               horizontalMargin="0rem"
               topMargin="1rem"
               key={index}
-              to={slug}
+              to={`${productsPageName}/${slug}`}
             >
               <ListItemPhotoWrap width="40%">
                 <ListItemPhoto
