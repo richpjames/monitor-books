@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components/macro";
 
+import { offWhite, darkGrey } from "../../../constants/index";
+
 const Wrap = styled.section`
   display: flex;
   padding-bottom: 2.5rem;
@@ -14,7 +16,8 @@ const Wrap = styled.section`
 
 const ButtonWrapper = styled.div`
   display: flex;
-  width: 6rem;
+  width: 1rem;
+  height: 1.5rem;
   @media only screen and (max-width: 600px) {
   }
 `;
@@ -24,7 +27,11 @@ const Quantity = styled.h5`
   margin-right: 0.5rem;
 `;
 const QuantityLabel = styled(Quantity)``;
-const Button = styled.button``;
+const Button = styled.button`
+  color: ${darkGrey};
+  border: 1px solid ${darkGrey};
+  background: ${offWhite};
+`;
 
 interface Props {
   addToCart: (event: React.MouseEvent) => void;
