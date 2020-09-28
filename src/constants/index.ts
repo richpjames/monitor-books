@@ -50,6 +50,8 @@ export const darkGrey = "#141414";
 
 //URLS
 export const mainImageUrl = `https://www.richjames.co.uk/img/`;
+export const homePage = "/books/propositions";
+export const productsPageName = "books";
 
 //IMAGES
 export const productPageImageHeight = "15vw";
