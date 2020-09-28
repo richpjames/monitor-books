@@ -1,15 +1,21 @@
+import React from "react";
 import styled from "styled-components/macro";
-import { Link } from "@reach/router";
-import { offWhite, purp, darkGrey } from "../../constants";
+import { navigate } from "@reach/router";
+
+import { offWhite, darkGrey } from "../../constants";
 import { PageTitle } from "./Titles";
 
-export const ListItemContainer = styled(Link)<{
+interface ListItemContainerProps {
   index: number;
   height: string;
   width: string;
   horizontalMargin: string;
   topMargin: string;
-}>`
+  to: string;
+  className?: string;
+}
+
+export const ListItemContainerWrap = styled.div<ListItemContainerProps>`
   display: flex;
   justify-content: center;
   height: ${(props) => props.height};
@@ -29,6 +35,15 @@ export const ListItemContainer = styled(Link)<{
   }
 `;
 
+export const ListItemContainer: React.FunctionComponent<ListItemContainerProps> = ({
+  to,
+  children,
+  ...rest
+}) => (
+  <ListItemContainerWrap onClick={() => navigate(to)} to={to} {...rest}>
+    {children}
+  </ListItemContainerWrap>
+);
 export const MetaInfoContainer = styled.div<{ index: number; width: string }>`
   display: flex;
   flex-direction: column;
@@ -36,8 +51,7 @@ export const MetaInfoContainer = styled.div<{ index: number; width: string }>`
   width: ${(props) => props.width};
   position: relative;
   padding-top: 2.5rem;
-  background-color: ${(props) =>
-    props.index < 1 ? `${darkGrey}` : `${darkGrey}`};
+
   @media only screen and (max-width: 600px) {
     width: 100%;
   }
@@ -48,7 +62,6 @@ export const ListItemTitle = styled.h3`
   text-align: center;
   padding-top: 1rem;
   padding-bottom: 0.1rem;
-  color: ${offWhite};
 `;
 
 export const ListItemSubtitle = styled.h4`
@@ -57,7 +70,6 @@ export const ListItemSubtitle = styled.h4`
   width: 100%;
   text-align: center;
   font-weight: 100;
-  color: ${offWhite};
 `;
 
 export const ListItemPhotoWrap = styled.div<{ width: string }>`
