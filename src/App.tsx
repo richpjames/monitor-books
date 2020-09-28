@@ -6,7 +6,7 @@ import "./App.css";
 import Slideshow from "./Components/Global/Slideshow";
 import MainPage from "./Components/Pages/MainPage";
 import { fetchVideos, fetchProducts } from "./actions/index";
-import { introTimer } from "./constants/";
+import { introTimer, homePage } from "./constants/";
 
 const introTimerMilliseconds = introTimer * 1000;
 
@@ -25,7 +25,7 @@ const App = ({ fetchVideos, fetchProducts }: Props) => {
     setTimeout(() => {
       if (showImage) {
         setShowImage(false);
-        navigate("propositions");
+        navigate(homePage);
       }
     }, introTimerMilliseconds);
   }, [fetchProducts, fetchVideos, showImage]);
