@@ -14,6 +14,7 @@ import { Success } from "./Success";
 import { ProductsPage } from "./ProductsPage";
 import { VideosPage } from "./VideosPage";
 import { ProductsContainer } from "./ProductsContainer";
+import { homePage } from "../../constants";
 
 const PageWrap = styled.div<{ hide: boolean }>`
   margin-left: auto;
@@ -58,7 +59,6 @@ const MainPage = ({
                 slug,
                 imagePath,
               } = books[bookId];
-
               return (
                 <ProductPage
                   id={bookId}
@@ -69,7 +69,7 @@ const MainPage = ({
                   rightDescription={blurb2}
                   imagePath={imagePath}
                   path={`:${slug}`}
-                  default={slug === "propositions"}
+                  default={slug === homePage}
                   key={bookId}
                 />
               );
