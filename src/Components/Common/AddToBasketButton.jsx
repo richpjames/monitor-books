@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
-import { navigate, Link } from "@reach/router";
+import { navigate } from "@reach/router";
 import { connect } from "react-redux";
 
 import { darkGrey, purp } from "./../../constants/";
@@ -35,20 +35,18 @@ const AddToBasketButton = ({
   }
 
   return (
-    <Link to={linkTo}>
-      <ButtonWrapper>
-        <ButtonStyles
-          onClick={
-            cartQuantity > 0 ? () => navigate("basket") : () => addToBasket(id)
-          }
-          disabled={false}
-          className="add-to-basket"
-          borderColour={borderColour}
-        >
-          {buttonMessage}
-        </ButtonStyles>
-      </ButtonWrapper>
-    </Link>
+    <ButtonWrapper>
+      <ButtonStyles
+        onClick={
+          cartQuantity > 0 ? () => navigate(linkTo) : () => addToBasket(id)
+        }
+        disabled={false}
+        className="add-to-basket"
+        borderColour={borderColour}
+      >
+        {buttonMessage}
+      </ButtonStyles>
+    </ButtonWrapper>
   );
 };
 
