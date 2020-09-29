@@ -13,7 +13,7 @@ import { mainImageUrl, text } from "../../../constants/";
 const CheckoutSection = styled.section`
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  align-items: center;
 `;
 
 const BasketItemsSection = styled.section`
@@ -28,12 +28,6 @@ const BasketItemsSection = styled.section`
 const EmptyCartMessage = styled.div`
   padding-top: 25%;
   padding-bottom: 25%;
-`;
-
-const ShippingWrapper = styled.section`
-  display: flex;
-  flex-wrap: wrap;
-  width: 17.5rem;
 `;
 
 const ShippingLabel = styled.label`
@@ -99,24 +93,19 @@ const Basket = ({
             <>
               <BasketItemsSection>{cartItems}</BasketItemsSection>
               <CheckoutSection>
-                <ShippingWrapper>
-                  <ShippingLabel htmlFor="shipping">
-                    Postal region:
-                  </ShippingLabel>
-                  <ShippingSelector
-                    onChange={(event) => {
-                      setShipping(+event.target.value);
-                    }}
-                  >
-                    {shippingOptions.map((shippingRegion, index) => (
-                      <option value={index} key={index}>
-                        {shippingRegion.region}
-                      </option>
-                    ))}
-                  </ShippingSelector>
-                  <ShippingCost total={`${twoDecimalPlaces(shipping.price)}`} />
-                </ShippingWrapper>
-
+                <ShippingLabel htmlFor="shipping">Postal region:</ShippingLabel>
+                <ShippingSelector
+                  onChange={(event) => {
+                    setShipping(+event.target.value);
+                  }}
+                >
+                  {shippingOptions.map((shippingRegion, index) => (
+                    <option value={index} key={index}>
+                      {shippingRegion.region}
+                    </option>
+                  ))}
+                </ShippingSelector>
+                <ShippingCost total={`${twoDecimalPlaces(shipping.price)}`} />
                 <BasketTotal
                   total={`${twoDecimalPlaces(+total + shipping.price)}`}
                 />
