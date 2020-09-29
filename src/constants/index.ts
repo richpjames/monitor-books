@@ -49,8 +49,8 @@ export const _purp = "#02003D";
 export const _darkGrey = "#141414";
 
 //COLOUR USAGE
-export const text = _offWhite;
-export const background = _darkGrey;
+export const text = _darkGrey;
+export const background = _offWhite;
 
 //URLS
 export const mainImageUrl = `https://www.richjames.co.uk/img/`;
