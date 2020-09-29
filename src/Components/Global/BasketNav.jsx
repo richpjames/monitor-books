@@ -26,10 +26,11 @@ const Number = styled.p`
   line-height: 10px;
   background-color: ${background};
   color: ${text};
+  font-size: 15px;
   border-radius: 50%;
   position: absolute;
   z-index: 1;
-  padding: 4px;
+  padding: 2px;
 `;
 
 const Icon = styled(Basket)`
