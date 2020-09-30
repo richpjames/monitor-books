@@ -1,13 +1,13 @@
 import React from "react";
 import { RouteComponentProps } from "@reach/router";
 
-import { InfoSection, Video, Title, Text } from "../Common";
+import { InfoSection, Video, Title, Text } from "../../Common";
 
-interface IProps extends RouteComponentProps {
+interface Props extends RouteComponentProps {
   video: Video;
 }
 
-export default function VideoPage(props: IProps) {
+export default function VideoPage(props: Props) {
   const { url, title, creator, description1, description2 } = props.video;
   return (
     <>

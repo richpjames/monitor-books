@@ -5,15 +5,15 @@ import { Router } from "@reach/router";
 import { connect } from "react-redux";
 import About from "./About";
 import BasketContainer from "./Basket/BasketContainer";
-import ProductPage from "./ProductPage";
+import ProductPage from "./Products/ProductPage";
 import Footer from "../Global/Footer";
 import NavBar from "../Global/NavBar";
-import VideoPage from "./VideoPage";
+import VideoPage from "./Videos/VideoPage";
 import OnRouteChange from "../Global/ScrollToTop";
 import { Success } from "./Success";
-import { ProductsPage } from "./ProductsPage";
-import { VideosPage } from "./VideosPage";
-import { ProductsContainer } from "./ProductsContainer";
+import { ProductsPage } from "./Products/ProductsPage";
+import { VideosPage } from "./Videos/VideosPage";
+import { ProductsContainer } from "./Products/ProductsContainer";
 import { homePage } from "../../constants";
 
 const PageWrap = styled.div<{ hide: boolean }>`

@@ -9,12 +9,12 @@ import {
   Text,
   PageWrapper,
   InfoSection,
-} from "../Common";
+} from "../../Common";
 import {
   text,
   productPageImageHeight,
   productPageImageWidth,
-} from "../../constants";
+} from "../../../constants";
 
 const ProductPageWrapper = styled(PageWrapper)`
   padding-top: 2rem;

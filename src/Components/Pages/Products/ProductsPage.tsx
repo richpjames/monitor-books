@@ -2,7 +2,7 @@ import React, { FunctionComponent } from "react";
 import { RouteComponentProps } from "@reach/router";
 import styled from "styled-components/macro";
 
-import { mainImageUrl, productsPageName, text } from "../../constants";
+import { mainImageUrl, productsPageName, text } from "../../../constants";
 import {
   ListItemContainer,
   ListItemPhotoWrap,
@@ -12,8 +12,8 @@ import {
   ListItemSubtitle,
   PageWrapper,
   AddToBasketButton,
-} from "../Common";
-import { PageTitle } from "../Common/Titles";
+} from "../../Common";
+import { PageTitle } from "../../Common/Titles";
 
 interface Props extends RouteComponentProps {
   books: byId<Product>;
