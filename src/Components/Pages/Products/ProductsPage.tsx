@@ -2,7 +2,7 @@ import React, { FunctionComponent } from "react";
 import { RouteComponentProps } from "@reach/router";
 import styled from "styled-components/macro";
 
-import { mainImageUrl, productsPageName, text } from "../../../constants";
+import { mainImageUrl, productsPageName } from "../../../constants";
 import {
   ListItemContainer,
   ListItemPhotoWrap,
@@ -11,7 +11,6 @@ import {
   ListItemTitle,
   ListItemSubtitle,
   PageWrapper,
-  AddToBasketButton,
 } from "../../Common";
 import { PageTitle } from "../../Common/Titles";
 
@@ -34,7 +33,7 @@ export const ProductsPage: FunctionComponent<Props> = ({ books, bookIds }) => {
       <PageTitle>Books</PageTitle>
       <ListWrap>
         {bookDetails.map((book, index) => {
-          const { slug, title, author, thumbnail, imagePath, id } = book;
+          const { slug, title, author, thumbnail, imagePath } = book;
           return (
             <ListItemContainer
               index={index}
