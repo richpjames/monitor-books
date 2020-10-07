@@ -71,6 +71,7 @@ export const checkout = (products) => (dispatch, getState) => {
   const productsById = state.products.byId;
   const { shipping } = state.cart;
   const ids = Object.keys(products);
+
   const quantityByPriceId = ids.map((id) => {
     const priceAndQuantity = {
       id: id,
@@ -79,11 +80,13 @@ export const checkout = (products) => (dispatch, getState) => {
     };
     return priceAndQuantity;
   }, []);
+
   quantityByPriceId.push({
     id: "shipping",
     priceId: shipping.priceId,
     quantity: 1,
   });
+
   shop.buyProducts(quantityByPriceId);
   // dispatch({
   //   type: types.CHECKOUT_REQUEST,
