@@ -11,7 +11,11 @@ import {
 const initialState: InitialState = {
   addedIds: [],
   quantityById: {},
-  shipping: { price: 2, priceId: "foo", region: "space" },
+  shipping: {
+    price: 2,
+    priceId: "price_1HMwTgJs9ciiqN7OnYGR5rOp",
+    region: "UK",
+  },
 };
 
 interface InitialState {
@@ -84,7 +88,7 @@ const cart = (state = initialState, action: CartAction) => {
     case CHECKOUT_FAILURE:
       return action.cart;
     case CHECKOUT_SUCCESS:
-      return initialState;
+      return state;
     default:
       return {
         addedIds: addedIds(state.addedIds, action),
