@@ -11,7 +11,7 @@ interface ListItemContainerProps {
   width: string;
   horizontalMargin: string;
   topMargin: string;
-  to: string;
+  to?: string;
   className?: string;
 }
 
@@ -35,12 +35,21 @@ export const ListItemContainerWrap = styled.div<ListItemContainerProps>`
   }
 `;
 
-export const ListItemContainer: React.FunctionComponent<ListItemContainerProps> = ({
+export const ListItemContainer: React.FC<ListItemContainerProps> = ({
   to,
   children,
   ...rest
 }) => (
-  <ListItemContainerWrap onClick={() => navigate(to)} to={to} {...rest}>
+  <ListItemContainerWrap
+    onClick={
+      to
+        ? () => {
+            navigate(to);
+          }
+        : undefined
+    }
+    {...rest}
+  >
     {children}
   </ListItemContainerWrap>
 );
@@ -51,7 +60,7 @@ export const MetaInfoContainer = styled.div<{ index: number; width: string }>`
   width: ${(props) => props.width};
   position: relative;
   padding-top: 2.5rem;
-
+  padding-bottom: 2.5rem;
   @media only screen and (max-width: 600px) {
     width: 100%;
   }
