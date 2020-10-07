@@ -20,11 +20,6 @@ interface Props extends RouteComponentProps {
   bookIds: visibileIds;
 }
 
-const ButtonWrap = styled.div`
-  margin-top: auto;
-  padding-bottom: 2.5rem;
-`;
-
 const ListWrap = styled.section`
   display: flex;
   flex-wrap: wrap;
@@ -58,13 +53,6 @@ export const ProductsPage: FunctionComponent<Props> = ({ books, bookIds }) => {
               <MetaInfoContainer index={index} width="40%">
                 <ListItemTitle>{title}</ListItemTitle>
                 <ListItemSubtitle>{author}</ListItemSubtitle>
-                <ButtonWrap>
-                  <AddToBasketButton
-                    id={id}
-                    borderColour={text}
-                    linkTo="/books"
-                  />
-                </ButtonWrap>
               </MetaInfoContainer>
             </ListItemContainer>
           );
