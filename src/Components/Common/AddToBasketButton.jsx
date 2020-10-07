@@ -27,11 +27,14 @@ const AddToBasketButton = ({
   borderColour,
   linkTo,
 }) => {
-  let buttonMessage = "Add to basket";
   const inCart = cartQuantity > 0;
+
+  let buttonMessage = "Add to basket";
+  let onClick = () => addToBasket(id);
 
   if (inCart) {
     buttonMessage = "In basket";
+    onClick = () => navigate(linkTo);
   } else if (inventoryQuantity < 1) {
     buttonMessage = "Out of stock";
   }
@@ -39,9 +42,7 @@ const AddToBasketButton = ({
   return (
     <ButtonWrapper>
       <ButtonStyles
-        onClick={() =>
-          inCart ? () => navigate(linkTo) : () => addToBasket(id)
-        }
+        onClick={onClick}
         disabled={false}
         className="add-to-basket"
         borderColour={borderColour}
