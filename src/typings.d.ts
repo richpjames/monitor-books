@@ -35,11 +35,16 @@ interface Shipping {
   priceId: string;
 }
 
+interface Config {
+  showSlideshow: boolean;
+}
+
 interface State {
   products: Products;
   videos: Videos;
   cart: Cart;
   shippingCosts: Shipping[];
+  config: Config;
 }
 
 type byId<T> = { [id: string]: T };
