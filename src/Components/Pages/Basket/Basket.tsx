@@ -11,6 +11,7 @@ import { ListTitle } from "../../Common/ListComponents";
 import { mainImageUrl, text } from "../../../constants/";
 
 const CheckoutSection = styled.section`
+  padding-top: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -32,11 +33,14 @@ const EmptyCartMessage = styled.div`
 
 const ShippingLabel = styled.label`
   padding-right: 0.5rem;
+  padding-bottom: 0.25rem;
   color: ${text};
 `;
 
 const ShippingSelector = styled.select`
   width: 7.5rem;
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
 `;
 
 type IProps = {
