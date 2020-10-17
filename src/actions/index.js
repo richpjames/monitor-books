@@ -1,6 +1,10 @@
 import shop from "../api/shop";
 import * as types from "../constants/actionTypes";
 
+export const setShowSlideshow = (showSlideshow) => {
+  return { type: types.SHOWN_INTRO_SLIDE, showSlideshow };
+};
+
 const receiveProducts = (products) => {
   return {
     type: types.RECEIVE_PRODUCTS,
