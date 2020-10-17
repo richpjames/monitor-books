@@ -46,7 +46,7 @@ const BasketIcon = ({ totalQuantity }) => {
   return (
     <Container>
       <IconWrapper>
-        <Number>{totalQuantity}</Number>
+        <Number className="header-basket-items">{totalQuantity}</Number>
         <Icon color={text} />
       </IconWrapper>
     </Container>
