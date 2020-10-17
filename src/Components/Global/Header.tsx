@@ -33,7 +33,7 @@ const NavItem = styled.li`
   height: 20px;
 `;
 
-const NavBar = () => {
+export const Header = () => {
   return (
     <Nav>
       <Link to="/about">
@@ -41,7 +41,12 @@ const NavBar = () => {
       </Link>
       <NavLinks>
         {navItems.map((navItem, index) => (
-          <Link to={navItem.link} aria-label={navItem.ariaLabel} key={index}>
+          <Link
+            to={navItem.link}
+            aria-label={navItem.ariaLabel}
+            key={index}
+            className={navItem.className}
+          >
             <NavItem>
               {navItem.content}
               {navItem.component}
@@ -53,23 +58,24 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
-
 const navItems = [
   {
     link: "/basket",
     ariaLabel: "Basket link",
     content: "",
     component: <BasketNav />,
+    className: "basket",
   },
   {
     link: "/books",
     ariaLabel: "Books link",
     content: "Books",
+    className: "books",
   },
   {
     link: "/murmur-episode-one",
     ariaLabel: "Video link",
     content: "Murmur Reading Series",
+    className: "videos",
   },
 ];
