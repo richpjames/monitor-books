@@ -3,12 +3,14 @@ import { shippingCosts } from "../constants";
 import cart, * as fromCart from "./cart";
 import products, * as fromProducts from "./products";
 import videos from "./videos";
+import { slideshow as config } from "./config";
 
 export default combineReducers({
   cart,
   products,
   videos,
   shippingCosts: (state = shippingCosts) => state,
+  config,
 });
 
 const getAddedIds = (state) => fromCart.getAddedIds(state.cart);
