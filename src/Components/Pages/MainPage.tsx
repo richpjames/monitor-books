@@ -7,7 +7,7 @@ import About from "./About";
 import BasketContainer from "./Basket/BasketContainer";
 import ProductPage from "./Products/ProductPage";
 import Footer from "../Global/Footer";
-import NavBar from "../Global/NavBar";
+import { Header } from "../Global/Header";
 import VideoPage from "./Videos/VideoPage";
 import OnRouteChange from "../Global/ScrollToTop";
 import { Success } from "./Success";
@@ -45,7 +45,7 @@ const MainPage = ({
   return (
     <>
       <PageWrap hide={hide}>
-        <NavBar />
+        <Header />
         <Router>
           <ProductsContainer path="books">
             <ProductsPage bookIds={bookIds} books={books} path="/" />
@@ -96,11 +96,13 @@ const MainPage = ({
 };
 
 const mapStateToProps = (state: State) => {
+  const { products, videos, config } = state;
   return {
-    bookIds: state.products.visibleIds,
-    books: state.products.byId,
-    videoIds: state.videos.visibleIds,
-    videos: state.videos.byId,
+    bookIds: products.visibleIds,
+    books: products.byId,
+    videoIds: videos.visibleIds,
+    videos: videos.byId,
+    showSlideshow: config.showSlideshow,
   };
 };
 
