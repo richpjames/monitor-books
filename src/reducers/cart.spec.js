@@ -5,7 +5,11 @@ describe("reducers", () => {
     const initialState = {
       addedIds: [],
       quantityById: {},
-      shipping: { price: 2, priceId: "foo", region: "space" },
+      shipping: {
+        price: 2,
+        priceId: "price_1HMwTgJs9ciiqN7OnYGR5rOp",
+        region: "UK",
+      },
     };
 
     it("should provide the initial state", () => {
@@ -29,7 +33,11 @@ describe("reducers", () => {
         {
           addedIds: [1],
           quantityById: { 1: 1 },
-          shipping: { price: 2, priceId: "foo", region: "space" },
+          shipping: {
+            price: 2,
+            priceId: "price_1HMwTgJs9ciiqN7OnYGR5rOp",
+            region: "UK",
+          },
         }
       );
     });
