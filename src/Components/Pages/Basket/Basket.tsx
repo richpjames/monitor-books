@@ -3,19 +3,12 @@ import styled from "styled-components/macro";
 
 import BasketListItem from "./BasketListItem";
 import { LoadingSpinner } from "../../Common/LoadingSpinner";
-import { CTAButton } from "../../Common/";
-import { BasketTotal } from "./BasketTotal";
-import { ShippingCost } from "./ShippingCost";
+
 import { PageWrapper } from "../../Common/Common";
 import { ListTitle } from "../../Common/ListComponents";
-import { mainImageUrl, text } from "../../../constants/";
+import { mainImageUrl } from "../../../constants/";
 
-const CheckoutSection = styled.section`
-  padding-top: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
+import { CheckoutSection } from "./CheckoutSection";
 
 const BasketItemsSection = styled.section`
   padding-left: 5%;
@@ -29,18 +22,6 @@ const BasketItemsSection = styled.section`
 const EmptyCartMessage = styled.div`
   padding-top: 25%;
   padding-bottom: 25%;
-`;
-
-const ShippingLabel = styled.label`
-  padding-right: 0.5rem;
-  padding-bottom: 0.25rem;
-  color: ${text};
-`;
-
-const ShippingSelector = styled.select`
-  width: 7.5rem;
-  padding-bottom: 0.5rem;
-  padding-top: 0.5rem;
 `;
 
 type IProps = {
@@ -70,9 +51,6 @@ const Basket = ({
 }: IProps): React.ReactElement => {
   const hasProducts = productIds?.length > 0;
 
-  const twoDecimalPlaces = (number: number) =>
-    (Math.round(number * 100) / 100).toFixed(2);
-
   const cartItems = productIds.map((productId: string, index: number) => (
     <BasketListItem
       title={productsById[productId].author}
@@ -96,27 +74,14 @@ const Basket = ({
           {hasProducts ? (
             <>
               <BasketItemsSection>{cartItems}</BasketItemsSection>
-              <CheckoutSection>
-                <ShippingLabel htmlFor="shipping">Postal region:</ShippingLabel>
-                <ShippingSelector
-                  onChange={(event) => {
-                    setShipping(+event.target.value);
-                  }}
-                >
-                  {shippingOptions.map((shippingRegion, index) => (
-                    <option value={index} key={index}>
-                      {shippingRegion.region}
-                    </option>
-                  ))}
-                </ShippingSelector>
-                <ShippingCost total={`${twoDecimalPlaces(shipping.price)}`} />
-                <BasketTotal
-                  total={`${twoDecimalPlaces(+total + shipping.price)}`}
-                />
-                <CTAButton onClick={onCheckoutClicked} disabled={!hasItems}>
-                  Checkout
-                </CTAButton>
-              </CheckoutSection>
+              <CheckoutSection
+                hasItems={hasItems}
+                onCheckoutClicked={onCheckoutClicked}
+                setShipping={setShipping}
+                shipping={shipping}
+                shippingOptions={shippingOptions}
+                total={total}
+              />
             </>
           ) : (
             <EmptyCartMessage>
