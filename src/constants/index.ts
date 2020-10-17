@@ -31,7 +31,7 @@ export const shippingCosts: Shipping[] =
     ? productionShippingCosts
     : devShippingCosts;
 
-export const initialState = {
+export const initialState: State = {
   cart: {
     addedIds: [],
     quantityById: {},
@@ -40,6 +40,7 @@ export const initialState = {
   shippingCosts: shippingCosts,
   products: { byId: {}, visibleIds: [] },
   videos: { byId: {}, visibleIds: [] },
+  config: { showSlideshow: true },
 };
 
 //COLOUR DEFINITIONS
