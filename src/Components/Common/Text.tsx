@@ -1,9 +1,8 @@
 import React from "react";
 import styled from "styled-components/macro";
+import { sanitize } from "dompurify";
 
-import { paragraphSplitter } from "../../utils";
-
-const LeftSection = styled.div`
+const LeftSection = styled.section`
   width: 45%;
   text-align: justify;
   @media only screen and (max-width: 600px) {
@@ -23,7 +22,6 @@ const RightSection = styled(LeftSection)`
 
 const TextWrapper = styled.section`
   display: flex;
-  font-size: 0.75em;
   flex-direction: column;
   padding-top: 2.5%;
   @media only screen and (min-width: 600px) {
@@ -31,21 +29,27 @@ const TextWrapper = styled.section`
   }
 `;
 
-interface IProps {
+interface Props {
   leftText: string;
   rightText: string;
 }
 
-export const Text = (props: IProps) => {
+export const SplitText = (props: Props) => {
   const { leftText, rightText } = props;
   return (
     <TextWrapper className="TextWrapper">
-      <LeftSection className="LeftSection">
-        {paragraphSplitter(leftText)}
-      </LeftSection>
-      <RightSection className="RightSection">
-        {paragraphSplitter(rightText)}
-      </RightSection>
+      <LeftSection
+        className="LeftSection"
+        dangerouslySetInnerHTML={{ __html: sanitize(leftText) }}
+      />
+      <RightSection
+        className="RightSection"
+        dangerouslySetInnerHTML={{ __html: sanitize(rightText) }}
+      />
     </TextWrapper>
   );
 };
+
+export const Text: React.FC<{ text: string }> = ({ text }) => (
+  <TextWrapper dangerouslySetInnerHTML={{ __html: sanitize(text) }} />
+);
