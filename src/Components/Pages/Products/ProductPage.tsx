@@ -6,7 +6,7 @@ import {
   AddToBasketButton,
   Photos,
   Title,
-  Text,
+  SplitText,
   PageWrapper,
   InfoSection,
 } from "../../Common";
@@ -49,8 +49,8 @@ const ProductPage = ({
         imageThumbnailWidth={productPageImageWidth}
       />
       <InfoSection>
-        <Title title={author} subtitle={title} />
-        <Text leftText={leftDescription} rightText={rightDescription} />
+        <Title title={author} subtitle={title} bold />
+        <SplitText leftText={leftDescription} rightText={rightDescription} />
       </InfoSection>
       <AddToBasketButton id={id} borderColour={text} linkTo={path} />
     </ProductPageWrapper>
