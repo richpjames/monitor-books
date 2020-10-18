@@ -3,15 +3,13 @@ import { RouteComponentProps } from "@reach/router";
 
 import { InfoSection, PageWrapper, Title, Text } from "../Common";
 
-interface Props extends RouteComponentProps {}
-export const Success = (props: Props) => {
+export const Success: React.FC<RouteComponentProps> = () => {
   return (
     <PageWrapper>
       <InfoSection>
         <Title title="Success" />
         <Text
-          leftText={"payment confirmed.\n everything went through ok"}
-          rightText={"maybe display order here?"}
+          text={`Everything went through ok. Thanks for your order. \n You will receive an email with details of your order. \n For enquiries contact@monitorbooks.co.uk`}
         />
       </InfoSection>
     </PageWrapper>
