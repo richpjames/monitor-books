@@ -14,8 +14,6 @@ const ShippingLabel = styled.label`
 
 const ShippingSelector = styled.select`
   width: 7.5rem;
-  padding-bottom: 0.5rem;
-  padding-top: 0.5rem;
 `;
 interface Props {
   setShipping: (index: number) => void;
