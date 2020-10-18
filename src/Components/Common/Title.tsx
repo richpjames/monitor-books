@@ -2,22 +2,27 @@ import React from "react";
 
 import { PageSubtitle, PageTitle, PageTitleBold, TitleWrapper } from "./Titles";
 
-interface IProps {
+interface Props {
   title: string;
   subtitle?: string;
   bold?: boolean;
 }
 
-export function Title(props: IProps) {
+export function Title(props: Props) {
   const { title, subtitle, bold } = props;
   return (
     <TitleWrapper>
-      <PageTitle>{title} </PageTitle>
+      {!bold && <PageTitle>{title} </PageTitle>}
       {bold ? (
-        <PageTitleBold>{subtitle}</PageTitleBold>
+        <>
+          {" "}
+          <PageTitleBold>{subtitle}</PageTitleBold>
+          <br></br>
+        </>
       ) : (
         <PageSubtitle>{subtitle}</PageSubtitle>
       )}
+      {bold && <PageTitle>{title}</PageTitle>}
     </TitleWrapper>
   );
 }
