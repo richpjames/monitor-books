@@ -18,7 +18,7 @@ export const PageTitleBold = styled(PageTitle)`
 export const TitleWrapper = styled.div`
   border-bottom: 1px solid ${text};
   padding-top: 2rem;
-  padding-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
   @media only screen and (min-width: 600px) {
     padding-bottom: 0.5rem;
     padding-top: 2rem;
