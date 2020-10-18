@@ -13,6 +13,7 @@ const Nav = styled.nav`
   align-items: flex-end;
   border-bottom: 1px solid ${text};
   padding-bottom: 0.5rem;
+  padding-left: 0.5rem;
   @media only screen and (min-width: 600px) {
     margin-top: 5vh;
   }
@@ -67,6 +68,12 @@ const navItems = [
     className: "basket",
   },
   {
+    link: "/about",
+    ariaLabel: "About page",
+    content: "About",
+    className: "about",
+  },
+  {
     link: "/books",
     ariaLabel: "Books link",
     content: "Books",
@@ -75,7 +82,7 @@ const navItems = [
   {
     link: "/murmur-episode-one",
     ariaLabel: "Video link",
-    content: "Murmur Reading Series",
+    content: "Videos",
     className: "videos",
   },
 ];
