@@ -11,7 +11,7 @@ exports.handler = async (event) => {
     shipping_address_collection: {
       allowed_countries: SUPPORTED_LOCATIONS,
     },
-    success_url: `${process.env.URL}/success?session_id={CHECKOUT_SESSION_ID}`,
+    success_url: `${process.env.URL}/success`,
     cancel_url: process.env.URL,
 
     line_items: products.map((product) => {
