@@ -12,7 +12,7 @@ import {
   ListItemTitle,
 } from "./ListComponents";
 import { LoadingSpinner } from "./LoadingSpinner";
-import { Text } from "./Text";
+import { SplitText, Text } from "./Text";
 import { Title } from "./Title";
 import { PageSubtitle, PageTitle, PageTitleBold, TitleWrapper } from "./Titles";
 import { Video } from "./Video";
@@ -34,6 +34,7 @@ export {
   PageTitleBold,
   PageWrapper,
   Photos,
+  SplitText,
   Text,
   Title,
   TitleWrapper,
