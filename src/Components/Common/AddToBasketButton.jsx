@@ -26,10 +26,16 @@ const AddToBasketButton = ({
   id,
   borderColour,
   linkTo,
+  publishDate,
 }) => {
   const inCart = cartQuantity > 0;
 
   let buttonMessage = "Add to basket";
+
+  if (new Date(publishDate).getTime() > new Date().getTime()) {
+    buttonMessage = "Pre-order";
+  }
+
   let onClick = () => addToBasket(id);
 
   if (inCart) {
@@ -57,6 +63,7 @@ const mapStateToProps = (state, { id }) => ({
   cartQuantity: state.cart.quantityById[id],
   inventoryQuantity: state.products.byId[id].inventory,
   id: id,
+  publishDate: state.products.byId[id].publishDate,
 });
 
 export default connect(mapStateToProps, { addToBasket })(AddToBasketButton);
