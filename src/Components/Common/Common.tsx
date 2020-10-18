@@ -11,8 +11,8 @@ export const PageWrapper = styled.div`
   @media only screen and (max-width: 600px) {
     padding-top: 2.5rem;
     padding-bottom: 2.5rem;
-    padding-left: 0;
-    padding-right: 0;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
   }
 `;
 
