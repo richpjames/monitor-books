@@ -5,7 +5,7 @@ import styled from "styled-components/macro";
 import {
   AddToBasketButton,
   Photos,
-  Title,
+  ProductTitle,
   SplitText,
   PageWrapper,
   InfoSection,
@@ -49,7 +49,7 @@ const ProductPage = ({
         imageThumbnailWidth={productPageImageWidth}
       />
       <InfoSection>
-        <Title title={author} subtitle={title} bold />
+        <ProductTitle title={author} subtitle={title} />
         <SplitText leftText={leftDescription} rightText={rightDescription} />
       </InfoSection>
       <AddToBasketButton id={id} borderColour={text} linkTo={path} />
