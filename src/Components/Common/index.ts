@@ -13,7 +13,8 @@ import {
 } from "./ListComponents";
 import { LoadingSpinner } from "./LoadingSpinner";
 import { SplitText, Text } from "./Text";
-import { Title } from "./Title";
+import { ProductTitle } from "./ProductTitle";
+import { VideoTitle } from "./VideoTitle";
 import { PageSubtitle, PageTitle, PageTitleBold, TitleWrapper } from "./Titles";
 import { Video } from "./Video";
 
@@ -36,7 +37,8 @@ export {
   Photos,
   SplitText,
   Text,
-  Title,
+  ProductTitle,
+  VideoTitle,
   TitleWrapper,
   Video,
 };
