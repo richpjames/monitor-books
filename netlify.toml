@@ -21,7 +21,6 @@
 # will inherit these settings.
 [context.deploy-preview.environment]
   NODE_ENV = "production"
-  publish = "build/"
 
 
 # Branch deploy context:
