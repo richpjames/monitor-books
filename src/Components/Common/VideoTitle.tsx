@@ -1,6 +1,6 @@
 import React from "react";
 
-import { PageSubtitle, PageTitle, PageTitleBold, TitleWrapper } from "./Titles";
+import { PageSubtitle, PageTitle, TitleWrapper } from "./Titles";
 
 interface Props {
   title: string;
