@@ -24,7 +24,9 @@ const NavLinks = styled.ul`
   text-align: right;
   padding-top: 2px;
   margin-top: 7.5vh;
+  display: inline;
   @media only screen and (min-width: 600px) {
+    display: flex;
     margin-top: 2.5vh;
   }
 `;
@@ -32,6 +34,12 @@ const NavItem = styled.li`
   display: flex;
   justify-content: flex-end;
   height: 20px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  @media only screen and (min-width: 600px) {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
 `;
 
 export const Header = () => {
@@ -42,17 +50,17 @@ export const Header = () => {
       </Link>
       <NavLinks>
         {navItems.map((navItem, index) => (
-          <Link
-            to={navItem.link}
-            aria-label={navItem.ariaLabel}
-            key={index}
-            className={navItem.className}
-          >
-            <NavItem>
+          <NavItem>
+            <Link
+              to={navItem.link}
+              aria-label={navItem.ariaLabel}
+              key={index}
+              className={navItem.className}
+            >
               {navItem.content}
               {navItem.component}
-            </NavItem>
-          </Link>
+            </Link>
+          </NavItem>
         ))}
       </NavLinks>
     </Nav>
@@ -61,11 +69,10 @@ export const Header = () => {
 
 const navItems = [
   {
-    link: "/basket",
-    ariaLabel: "Basket link",
-    content: "",
-    component: <BasketNav />,
-    className: "basket",
+    link: "/murmur-episode-one",
+    ariaLabel: "Video link",
+    content: "Videos",
+    className: "videos",
   },
   {
     link: "/about",
@@ -80,9 +87,10 @@ const navItems = [
     className: "books",
   },
   {
-    link: "/murmur-episode-one",
-    ariaLabel: "Video link",
-    content: "Videos",
-    className: "videos",
+    link: "/basket",
+    ariaLabel: "Basket link",
+    content: "",
+    component: <BasketNav />,
+    className: "basket",
   },
 ];
