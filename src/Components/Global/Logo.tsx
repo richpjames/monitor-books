@@ -5,8 +5,6 @@ import { text } from "../../constants";
 
 const LogoWrap = styled.div`
   width: 100px;
-  top: 15px;
-  position: relative;
   fill: ${text};
   @media only screen and (max-width: 600px) {
     padding-top: 2.5vh;
@@ -21,7 +19,7 @@ const Logo = () => {
         id="Layer_1"
         data-name="Layer 1"
         xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 291.35 245.68"
+        viewBox="0 0 300 165"
       >
         <title>Monitor Logo</title>
         <polygon points="138.07 46.33 138.11 51.17 119.5 59.42 119.5 82.32 115.4 84.14 115.4 55.78 138.07 46.33" />
