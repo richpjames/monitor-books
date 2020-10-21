@@ -18,6 +18,7 @@ import {
 
 const ProductPageWrapper = styled(PageWrapper)`
   padding-top: 2rem;
+  display: grid;
 `;
 
 interface Props extends RouteComponentProps {
