@@ -50,11 +50,10 @@ export const Header = () => {
       </Link>
       <NavLinks>
         {navItems.map((navItem, index) => (
-          <NavItem>
+          <NavItem key={index}>
             <Link
               to={navItem.link}
               aria-label={navItem.ariaLabel}
-              key={index}
               className={navItem.className}
             >
               {navItem.content}
