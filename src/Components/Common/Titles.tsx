@@ -2,7 +2,7 @@ import styled from "styled-components/macro";
 import { text } from "../../constants";
 
 export const PageSubtitle = styled.h1`
-  font-family: "Caslon", sans-serif;
+  font-family: "GT America", sans-serif;
   font-weight: 300;
 `;
 
