@@ -68,7 +68,7 @@ const MainPage = ({
                   leftDescription={blurb1}
                   rightDescription={blurb2}
                   imagePath={imagePath}
-                  path={`:${slug}`}
+                  path={slug}
                   default={slug === homePage}
                   key={bookId}
                 />
