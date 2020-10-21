@@ -69,6 +69,12 @@ export const Header = () => {
 
 const navItems = [
   {
+    link: "/books",
+    ariaLabel: "Books link",
+    content: "Books",
+    className: "books",
+  },
+  {
     link: "/murmur-episode-one",
     ariaLabel: "Video link",
     content: "Videos",
@@ -79,12 +85,6 @@ const navItems = [
     ariaLabel: "About page",
     content: "About",
     className: "about",
-  },
-  {
-    link: "/books",
-    ariaLabel: "Books link",
-    content: "Books",
-    className: "books",
   },
   {
     link: "/basket",
