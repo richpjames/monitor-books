@@ -19,7 +19,7 @@ const BasketItemsSection = styled.section`
   padding-top: 2.5rem;
 `;
 
-const EmptyCartMessage = styled.div`
+const EmptyCartMessage = styled.p`
   padding-top: 25%;
   padding-bottom: 25%;
 `;
