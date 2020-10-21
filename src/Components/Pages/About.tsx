@@ -2,6 +2,8 @@ import React from "react";
 import { RouteComponentProps } from "@reach/router";
 import styled from "styled-components/macro";
 
+import Logo from "../../assets/img/logo.png";
+
 const TextWrap = styled.p`
   margin-left: auto;
   margin-right: auto;
@@ -28,16 +30,11 @@ const BannerWrap = styled.div`
   position: relative;
 `;
 
-interface IProps extends RouteComponentProps {}
-
-const About = (props: IProps) => {
+const About: React.FC<RouteComponentProps> = () => {
   return (
     <>
       <BannerWrap>
-        <Banner
-          src="https://www.richjames.co.uk/img/logo_black.jpeg"
-          className="Banner"
-        />
+        <Banner src={Logo} className="Banner" />
       </BannerWrap>
       <TextWrap>
         Monitor is a publication platform for poetry, innovative writing and
@@ -46,7 +43,7 @@ const About = (props: IProps) => {
         forthcoming from Summer 2020.
       </TextWrap>
       <TextWrap>
-        For submissions and contact, please email:{" "}
+        For submissions and contact, please email:
         <a href="mailto:editor@monitorbooks.co.uk">editor@monitorbooks.co.uk</a>
       </TextWrap>
     </>
