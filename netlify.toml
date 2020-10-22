@@ -1,43 +1,5 @@
 [build]
-  command = "npm run functions"
+  command = "yarn build"
   publish = "build/"
-  functions = "functions"
+  functions = "functions/"
 
-[dev]
-  publish = "build/"
-  functions = "functions"
-
-
-# Production context:
-# All deploys from the main repository branch
-# will inherit these settings.
-[context.production]
-  command = "make production"
-  NODE_ENV = "prod"
-  [context.production.environment]
- 
-# Deploy Preview context:
-# All deploys generated from a pull/merge request
-# will inherit these settings.
-[context.deploy-preview.environment]
-  NODE_ENV = "production"
-
-
-# Branch deploy context:
-# All deploys that are not from a pull/merge request
-# or from the production branch will inherit these settings.
-[context.branch-deploy]
-  command = "yarn build"
-  NODE_ENV = "production"
-
-# Specific branch context:
-# Deploys from this branch will take these settings
-# and override their current ones.
-[context.feature]
-  command = "yarn build"
-  NODE_ENV = "production"
-
-[context."features/branch"]
-  command = "yarn build"
-  NODE_ENV = "production"
-  
