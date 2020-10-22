@@ -23,11 +23,10 @@ const NavLinks = styled.ul`
   list-style: none;
   text-align: right;
   padding-top: 2px;
-  margin-top: 7.5vh;
+  margin-top: 2.5vh;
   display: inline;
   @media only screen and (min-width: 600px) {
     display: flex;
-    margin-top: 2.5vh;
   }
 `;
 const NavItem = styled.li`
