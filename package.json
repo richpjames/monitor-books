@@ -2,6 +2,7 @@
   "name": "monitor-books",
   "version": "0.1.0",
   "private": false,
+  "license": "MIT",
   "homepage": ".",
   "main": "./src/index.tsx",
   "dependencies": {
@@ -39,7 +40,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "buildDev": "NODE_ENV=development react-scripts build",
+    "buildProd": "NODE_ENV=production react-scripts build",
     "functions": "cd functions && npm i && cd ..",
     "dev": "netlify dev",
     "test": "react-scripts test --env=jest-environment-jsdom-sixteen",
