@@ -3,50 +3,39 @@ import { RouteComponentProps } from "@reach/router";
 import styled from "styled-components/macro";
 
 import Logo from "../../assets/img/logo.png";
-
-const TextWrap = styled.p`
-  margin-left: auto;
-  margin-right: auto;
-  text-align: justify;
-  width: 60%;
-`;
+import { PageWrapper, Text } from "../Common";
 
 const Banner = styled.img`
-  position: relative;
-  margin-top: 5vh;
-  margin-bottom: 5vh;
   width: 100%;
-  height: 100%;
-  max-height: 100%;
   @media only screen and (max-width: 600px) {
-    margin-top: 10vh;
-    margin-bottom: 10vh;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
 `;
 
 const BannerWrap = styled.div`
-  width: 35%;
+  width: 100%;
   margin: 0 auto;
   position: relative;
 `;
 
 const About: React.FC<RouteComponentProps> = () => {
   return (
-    <>
+    <PageWrapper>
       <BannerWrap>
         <Banner src={Logo} className="Banner" />
       </BannerWrap>
-      <TextWrap>
-        Monitor is a publication platform for poetry, innovative writing and
+      <Text
+        text="<p>Monitor is a publication platform for poetry, innovative writing and
         criticism based in Manchester, UK. Its first publication, Murmur
         Anthology #1, was published September 2019; single-author releases are
-        forthcoming from Summer 2020.
-      </TextWrap>
-      <TextWrap>
-        For submissions and contact, please email:
-        <a href="mailto:editor@monitorbooks.co.uk">editor@monitorbooks.co.uk</a>
-      </TextWrap>
-    </>
+        forthcoming from Summer 2020.</p>"
+      ></Text>
+      <Text
+        text="<p>For submissions and contact, please email:
+        <a href='mailto:editor@monitorbooks.co.uk'>editor@monitorbooks.co.uk</a></p>"
+      ></Text>
+    </PageWrapper>
   );
 };
 
