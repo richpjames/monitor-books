@@ -9,6 +9,8 @@ interface Props extends RouteComponentProps {
 
 export default function VideoPage(props: Props) {
   const { url, title, creator, description1, description2 } = props.video;
+  React.useEffect(() => window.scrollTo(0, 0), []);
+
   return (
     <>
       <Video url={url} title={title} />
