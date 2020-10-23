@@ -7,4 +7,4 @@
   command = "yarn buildProd"
 
 [context.branch-deploy]
-  command = "yarn buildDev"
+  command = "yarn buildProd"
