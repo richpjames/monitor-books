@@ -8,17 +8,20 @@ export const setShowSlideshow = (showSlideshow) => {
 const receiveProducts = (products) => {
   return {
     type: types.RECEIVE_PRODUCTS,
-    products: products.sort(
-      (a, b) =>
-        new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()
-    ),
+    products: products
+      ? products.sort(
+          (a, b) =>
+            new Date(b.publishDate).getTime() -
+            new Date(a.publishDate).getTime()
+        )
+      : [],
   };
 };
 
 const receiveVideos = (videos) => {
   return {
     type: types.RECEIVE_VIDEOS,
-    videos: videos,
+    videos: videos ? videos : [],
   };
 };
 
