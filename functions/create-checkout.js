@@ -6,10 +6,11 @@ const prodStripe = require("stripe")(
   process.env.REACT_APP_PROD_STRIPE_SECRET_KEY
 );
 
-const stripe = process.env.NODE_ENV === "production" ? prodStripe : devStripe;
+const stripe =
+  process.env.REACT_APP_RUN_ENV === "production" ? prodStripe : devStripe;
 
 const publishableKey =
-  process.env.NODE_ENV === "production"
+  process.env.REACT_APP_RUN_ENV === "production"
     ? process.env.REACT_APP_PROD_STRIPE_PUBLISHABLE_KEY
     : process.env.REACT_APP_DEV_STRIPE_PUBLISHABLE_KEY;
 
