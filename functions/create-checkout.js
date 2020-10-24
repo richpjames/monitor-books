@@ -1,12 +1,18 @@
 const SUPPORTED_LOCATIONS = require("./constants");
+const devStripe = require("stripe")(
+  process.env.REACT_APP_DEV_STRIPE_SECRET_KEY
+);
+const prodStripe = require("stripe")(
+  process.env.REACT_APP_PROD_STRIPE_SECRET_KEY
+);
+
 const stripe =
-  process.env.environment === "production"
-    ? require("stripe")(process.env.REACT_APP_PROD_STRIPE_SECRET_KEY)
-    : require("stripe")(process.env.REACT_APP_DEV_STRIPE_SECRET_KEY);
+  process.env.environment === "production" ? prodStripe : devStripe;
+
 const publishableKey =
   process.env.environment === "production"
-    ? require("stripe")(process.env.REACT_APP_PROD_STRIPE_PUBLISHABLE_KEY)
-    : require("stripe")(process.env.REACT_APP_DEV_STRIPE_PUBLISHABLE_KEY);
+    ? process.env.REACT_APP_PROD_STRIPE_PUBLISHABLE_KEY
+    : process.env.REACT_APP_DEV_STRIPE_PUBLISHABLE_KEY;
 
 exports.handler = async (event) => {
   const products = JSON.parse(event.body);
