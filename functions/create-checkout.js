@@ -8,17 +8,14 @@ const prodStripe = require("stripe")(
 
 exports.handler = async (event) => {
   const data = JSON.parse(event.body);
-  const products = data.products;
+  const products = data.data;
   const env = data.env;
-  console.log(data, "data");
-  const stripe = env === "production" ? prodStripe : devStripe;
-  console.log(process.env, "logging");
-  const publishableKey =
-    env === "production"
-      ? process.env.REACT_APP_PROD_STRIPE_PUBLISHABLE_KEY
-      : process.env.REACT_APP_DEV_STRIPE_PUBLISHABLE_KEY;
-
-  console.log(env, "processy");
+  let stripe = devStripe;
+  let publishableKey = process.env.REACT_APP_DEV_STRIPE_PUBLISHABLE_KEY;
+  if (env === "production") {
+    stripe = prodStripe;
+    publishableKey = process.env.REACT_APP_PROD_STRIPE_PUBLISHABLE_KEY;
+  }
 
   const session = await stripe.checkout.sessions.create({
     mode: "payment",
