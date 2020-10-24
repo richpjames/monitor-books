@@ -5,19 +5,21 @@ const devStripe = require("stripe")(
 const prodStripe = require("stripe")(
   process.env.REACT_APP_PROD_STRIPE_SECRET_KEY
 );
-console.log(process.env, "logging");
-
-const stripe = process.env.NODE_ENV === "production" ? prodStripe : devStripe;
-console.log(process.env, "logging");
-const publishableKey =
-  process.env.NODE_ENV === "production"
-    ? process.env.REACT_APP_PROD_STRIPE_PUBLISHABLE_KEY
-    : process.env.REACT_APP_DEV_STRIPE_PUBLISHABLE_KEY;
-
-console.log(process.env, "processy");
 
 exports.handler = async (event) => {
-  const products = JSON.parse(event.body);
+  const data = JSON.parse(event.body);
+  const products = data.products;
+  const env = data.env;
+  console.log(data, "data");
+  const stripe = env === "production" ? prodStripe : devStripe;
+  console.log(process.env, "logging");
+  const publishableKey =
+    env === "production"
+      ? process.env.REACT_APP_PROD_STRIPE_PUBLISHABLE_KEY
+      : process.env.REACT_APP_DEV_STRIPE_PUBLISHABLE_KEY;
+
+  console.log(env, "processy");
+
   const session = await stripe.checkout.sessions.create({
     mode: "payment",
     payment_method_types: ["card"],

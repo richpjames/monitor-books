@@ -15,7 +15,7 @@ export async function handleCheckout(data: any) {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(data),
+    body: JSON.stringify({ data: data, env: process.env.NODE_ENV }),
   }).then((res) => res.json());
 
   if (stripe) {
