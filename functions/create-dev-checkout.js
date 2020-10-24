@@ -1,5 +1,5 @@
 const SUPPORTED_LOCATIONS = require("./constants");
-const stripe = require("stripe")(process.env.REACT_APP_STRIPE_SECRET_KEY);
+const stripe = require("stripe")(process.env.REACT_APP_DEV_STRIPE_SECRET_KEY);
 
 exports.handler = async (event) => {
   const products = JSON.parse(event.body);
@@ -29,7 +29,7 @@ exports.handler = async (event) => {
     statusCode: 200,
     body: JSON.stringify({
       sessionId: session.id,
-      publishableKey: process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY,
+      publishableKey: process.env.REACT_APP_DEV_STRIPE_PUBLISHABLE_KEY,
     }),
   };
 };
