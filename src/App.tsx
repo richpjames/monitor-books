@@ -24,9 +24,11 @@ const App = ({
   showSlideshow,
 }: Props) => {
   useEffect(() => {
+    setTimeout(() => {
+      setShowSlideshow(false);
+    }, introTimerMilliseconds);
     if (window.location.pathname === "/") {
       setTimeout(() => {
-        setShowSlideshow(false);
         navigate(homePage);
       }, introTimerMilliseconds);
     }
