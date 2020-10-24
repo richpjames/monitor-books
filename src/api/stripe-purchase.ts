@@ -1,7 +1,7 @@
 import { StripeError, loadStripe } from "@stripe/stripe-js";
 
 const publishableKey =
-  process.env.REACT_APP_RUN_ENV !== "production"
+  process.env.NODE_ENV !== "production"
     ? process.env.REACT_APP_PROD_STRIPE_PUBLISHABLE_KEY
     : process.env.REACT_APP_DEV_STRIPE_PUBLISHABLE_KEY;
 
