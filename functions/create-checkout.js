@@ -1,5 +1,12 @@
 const SUPPORTED_LOCATIONS = require("./constants");
-const stripe = require("stripe")(process.env.REACT_APP_DEV_STRIPE_SECRET_KEY);
+const stripe =
+  process.env.environment === "production"
+    ? require("stripe")(process.env.REACT_APP_PROD_STRIPE_SECRET_KEY)
+    : require("stripe")(process.env.REACT_APP_DEV_STRIPE_SECRET_KEY);
+const publishableKey =
+  process.env.environment === "production"
+    ? require("stripe")(process.env.REACT_APP_PROD_STRIPE_PUBLISHABLE_KEY)
+    : require("stripe")(process.env.REACT_APP_DEV_STRIPE_PUBLISHABLE_KEY);
 
 exports.handler = async (event) => {
   const products = JSON.parse(event.body);
@@ -25,11 +32,12 @@ exports.handler = async (event) => {
       return lineItem;
     }),
   });
+
   return {
     statusCode: 200,
     body: JSON.stringify({
       sessionId: session.id,
-      publishableKey: process.env.REACT_APP_DEV_STRIPE_PUBLISHABLE_KEY,
+      publishableKey: publishableKey,
     }),
   };
 };

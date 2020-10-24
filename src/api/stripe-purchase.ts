@@ -3,18 +3,10 @@ import { StripeError, loadStripe } from "@stripe/stripe-js";
 type stripeResponse = undefined | { error: StripeError };
 
 export async function handleCheckout(data: any) {
-  let publishableKey;
-  let endpoint;
-  if (process.env.NODE_ENV === "production") {
-    publishableKey = process.env.REACT_APP_PROD_PUBLISHABLE_KEY;
-    endpoint = "/.netlify/functions/create-prod-checkout";
-  } else {
-    publishableKey = process.env.REACT_APP_DEV_PUBLISHABLE_KEY;
-    endpoint = "/.netlify/functions/create-dev-checkout";
-  }
-
-  const stripe = await loadStripe(publishableKey || "");
-  const response = await fetch(endpoint, {
+  const stripe = await loadStripe(
+    process.env.REACT_APP_PROD_STRIPE_PUBLISHABLE_KEY || ""
+  );
+  const response = await fetch("/.netlify/functions/create-checkout", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
