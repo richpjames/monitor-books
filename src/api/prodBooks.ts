@@ -1,6 +1,6 @@
-export const getBooks = async () => {
+export const getProdBooks = async () => {
   try {
-    return await fetch("/.netlify/functions/get-books")
+    return await fetch("/.netlify/functions/get-prod-books")
       .then((res) => res.json())
       .catch((err) => console.error(err));
   } catch (e) {
