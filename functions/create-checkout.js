@@ -5,6 +5,7 @@ const devStripe = require("stripe")(
 const prodStripe = require("stripe")(
   process.env.REACT_APP_PROD_STRIPE_SECRET_KEY
 );
+console.log(process.env, "logging");
 
 const stripe = process.env.NODE_ENV === "production" ? prodStripe : devStripe;
 console.log(process.env, "logging");
