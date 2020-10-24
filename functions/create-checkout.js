@@ -10,7 +10,7 @@ const publishableKey =
 
 exports.handler = async (event) => {
   const products = JSON.parse(event.body);
-
+  console.log("stripe ripe", process.env);
   const session = await stripe.checkout.sessions.create({
     mode: "payment",
     payment_method_types: ["card"],
