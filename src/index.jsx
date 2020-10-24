@@ -24,8 +24,6 @@ store.subscribe(() => {
   saveState(store.getState());
 });
 
-console.log(process.env.NODE_ENV, "proccess env");
-
 // expose store when run in Cypress
 if (window.Cypress) {
   window.store = store;
