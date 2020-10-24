@@ -31,13 +31,13 @@
     "react-scripts": "^3.4.4",
     "react-visibility-sensor": "^5.1.1",
     "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
     "reset-css": "^5.0.1",
     "stripe": "^8.89.0",
     "styled-components": "^4.4.1",
-    "typescript": "^3.9.5",
-    "redux-devtools-extension": "^2.13.8"
+    "typescript": "^3.9.5"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -74,6 +74,7 @@
     "@testing-library/cypress": "^7.0.0",
     "@testing-library/jest-dom": "^5.11.0",
     "@testing-library/react": "^10.4.3",
+    "@types/testing-library__cypress": "^5.0.8",
     "cypress": "^5.1.0",
     "dotenv": "^8.1.0",
     "eslint-config-prettier": "^6.1.0",
