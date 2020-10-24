@@ -7,7 +7,7 @@ const prodStripe = require("stripe")(
 );
 
 const stripe = process.env.NODE_ENV === "production" ? prodStripe : devStripe;
-
+console.log(process.env, "logging");
 const publishableKey =
   process.env.NODE_ENV === "production"
     ? process.env.REACT_APP_PROD_STRIPE_PUBLISHABLE_KEY
