@@ -51,9 +51,14 @@ const ProductPage = ({
       />
       <InfoSection>
         <ProductTitle title={author} subtitle={title} />
-        <SplitText leftText={leftDescription} rightText={rightDescription} />
+        <SplitText
+          leftText={leftDescription}
+          rightText={rightDescription}
+          addToBasketButton={
+            <AddToBasketButton id={id} borderColour={text} linkTo={path} />
+          }
+        />
       </InfoSection>
-      <AddToBasketButton id={id} borderColour={text} linkTo={path} />
     </ProductPageWrapper>
   );
 };

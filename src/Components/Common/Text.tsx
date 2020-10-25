@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components/macro";
 import { sanitize } from "dompurify";
 
-const LeftSection = styled.section`
+const LeftSection = styled.div`
   width: 45%;
   text-align: justify;
   @media only screen and (max-width: 600px) {
@@ -32,20 +32,24 @@ const TextWrapper = styled.section`
 interface Props {
   leftText: string;
   rightText: string;
+  addToBasketButton?: JSX.Element;
 }
 
 export const SplitText = (props: Props) => {
-  const { leftText, rightText } = props;
+  const { leftText, rightText, addToBasketButton } = props;
   return (
     <TextWrapper className="TextWrapper">
       <LeftSection
         className="LeftSection"
         dangerouslySetInnerHTML={{ __html: sanitize(leftText) }}
       />
-      <RightSection
-        className="RightSection"
-        dangerouslySetInnerHTML={{ __html: sanitize(rightText) }}
-      />
+      <RightSection>
+        <div
+          className="RightSection"
+          dangerouslySetInnerHTML={{ __html: sanitize(rightText) }}
+        />
+        {addToBasketButton}
+      </RightSection>
     </TextWrapper>
   );
 };
