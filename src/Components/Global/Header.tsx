@@ -48,18 +48,25 @@ export const Header = () => {
         <Logo />
       </Link>
       <NavLinks>
-        {navItems.map((navItem, index) => (
-          <NavItem key={index}>
-            <Link
-              to={navItem.link}
-              aria-label={navItem.ariaLabel}
-              className={navItem.className}
-            >
-              {navItem.content}
-              {navItem.component}
-            </Link>
-          </NavItem>
-        ))}
+        {navItems.map((navItem, index) => {
+          return (
+            <>
+              {index !== 0 &&
+                index <= navItems.length - 2 &&
+                String.fromCharCode(8226)}
+              <NavItem key={index}>
+                <Link
+                  to={navItem.link}
+                  aria-label={navItem.ariaLabel}
+                  className={navItem.className}
+                >
+                  {navItem.content}
+                  {navItem.component}
+                </Link>
+              </NavItem>
+            </>
+          );
+        })}
       </NavLinks>
     </Nav>
   );
@@ -75,7 +82,7 @@ const navItems = [
   {
     link: "/murmur-episode-one",
     ariaLabel: "Video link",
-    content: "Videos",
+    content: "Murmur Reading Series",
     className: "videos",
   },
   {
