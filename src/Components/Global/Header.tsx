@@ -41,6 +41,13 @@ const NavItem = styled.li`
   }
 `;
 
+const Seperator = styled.span`
+  display: none;
+  @media only screen and (min-width: 600px) {
+    display: block;
+  }
+`;
+
 export const Header = () => {
   return (
     <Nav>
@@ -51,9 +58,9 @@ export const Header = () => {
         {navItems.map((navItem, index) => {
           return (
             <>
-              {index !== 0 &&
-                index <= navItems.length - 2 &&
-                String.fromCharCode(8226)}
+              {index !== 0 && index <= navItems.length - 2 && (
+                <Seperator>{String.fromCharCode(8226)}</Seperator>
+              )}
               <NavItem key={index}>
                 <Link
                   to={navItem.link}
