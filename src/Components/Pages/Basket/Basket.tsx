@@ -85,7 +85,10 @@ const Basket = ({
             </>
           ) : (
             <EmptyCartMessage>
-              Please add some products to cart.
+              Your basket is empty{" "}
+              <span role="img" aria-label="unhappy face">
+                😢
+              </span>
             </EmptyCartMessage>
           )}
         </>
