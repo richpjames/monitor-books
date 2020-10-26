@@ -44,7 +44,7 @@ export const ProductsPage: FunctionComponent<Props> = ({ books, bookIds }) => {
               key={index}
               to={`${productsPageName}/${slug}`}
             >
-              <ListItemPhotoWrap width="40%">
+              <ListItemPhotoWrap width="30%">
                 <ListItemPhoto
                   src={`${mainImageUrl}${imagePath}/thumbnails/${thumbnail}`}
                 />
