@@ -28,8 +28,7 @@ const About: React.FC<RouteComponentProps> = () => {
       <Text
         text="<p>Monitor is a publication platform for poetry, innovative writing and
         criticism based in Manchester, UK. Its first publication, Murmur
-        Anthology #1, was published September 2019; single-author releases are
-        forthcoming from Summer 2020.</p>"
+        Anthology #1, was published September 2019, and its second book is Amy McCauley’s Propositions, which is published this November.</p>"
       ></Text>
       <Text
         text="<p>For submissions and contact, please email:
