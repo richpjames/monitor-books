@@ -10,3 +10,9 @@
 [context.branch-deploy]
   command = "yarn buildProd"
   environment = { NODE_ENV = "production"}
+
+[[redirects]]
+  from = "/*"
+  to = "/"
+  status = 301
+  force = false
