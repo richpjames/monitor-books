@@ -3,7 +3,8 @@ import styled from "styled-components/macro";
 import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css";
 
-import IndividualPhoto from "./IndividualPhoto";
+import { mainImageUrl } from "../../constants";
+import { IndividualPhoto } from "./index";
 
 const PhotoWrap = styled.section`
   display: grid;
@@ -20,21 +21,26 @@ const PhotoContainer = styled.div`
   align-items: center;
 `;
 
-const mainURL = `https://www.richjames.co.uk/img/ant_img/`;
-const thumbURL = `${mainURL}thumbnails/`;
-
-const photoNumbers = [2, 3, 5, 6];
-
-const imageURLs = photoNumbers.map((photo) => `${mainURL}${photo}.jpg`);
-const thumbURLs = photoNumbers.map((photo) => `${thumbURL}${photo}.jpg`);
-
 interface IProps {
   photos: number[];
+  url: string;
+  imageThumbnailHeight: string;
+  imageThumbnailWidth: string;
 }
 
-const Photos = (props: IProps) => {
+export const Photos = (props: IProps) => {
+  const { url, photos, imageThumbnailHeight, imageThumbnailWidth } = props;
   const [photoIndex, setPhotoIndex] = useState(0);
   const [galleryOpen, setGalleyOpen] = useState(false);
+
+  const mainURL = `${mainImageUrl}${url}/`;
+
+  const thumbURL = `${mainURL}thumbnails/`;
+
+  const photoNumbers = photos;
+
+  const imageURLs = photoNumbers.map((photo) => `${mainURL}${photo}.jpg`);
+  const thumbURLs = photoNumbers.map((photo) => `${thumbURL}${photo}.jpg`);
 
   const openLightbox = (i: number) => {
     setPhotoIndex(i);
@@ -49,6 +55,8 @@ const Photos = (props: IProps) => {
           index={i}
           src={url}
           altText="a photo of murmur anthology"
+          height={imageThumbnailHeight}
+          width={imageThumbnailWidth}
         />
       </PhotoContainer>
     );
@@ -78,5 +86,3 @@ const Photos = (props: IProps) => {
     </>
   );
 };
-
-export default Photos;

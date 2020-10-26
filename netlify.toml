@@ -1,0 +1,12 @@
+[build]
+  command = "yarn buildProd"
+  publish = "build/"
+  functions = "functions/"
+
+[context.production]
+  command = "yarn buildProd"
+  environment = { NODE_ENV = "production"}
+
+[context.branch-deploy]
+  command = "yarn buildProd"
+  environment = { NODE_ENV = "production"}

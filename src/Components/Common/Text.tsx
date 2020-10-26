@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
-
-import { paragraphSplitter } from "../../utils";
+import { sanitize } from "dompurify";
 
 const LeftSection = styled.div`
   width: 45%;
@@ -23,7 +22,6 @@ const RightSection = styled(LeftSection)`
 
 const TextWrapper = styled.section`
   display: flex;
-  font-size: 0.75em;
   flex-direction: column;
   padding-top: 2.5%;
   @media only screen and (min-width: 600px) {
@@ -31,23 +29,31 @@ const TextWrapper = styled.section`
   }
 `;
 
-interface IProps {
+interface Props {
   leftText: string;
   rightText: string;
+  addToBasketButton?: JSX.Element;
 }
 
-const Text = (props: IProps) => {
-  const { leftText, rightText } = props;
+export const SplitText = (props: Props) => {
+  const { leftText, rightText, addToBasketButton } = props;
   return (
     <TextWrapper className="TextWrapper">
-      <LeftSection className="LeftSection">
-        {paragraphSplitter(leftText)}
-      </LeftSection>
-      <RightSection className="RightSection">
-        {paragraphSplitter(rightText)}
+      <LeftSection
+        className="LeftSection"
+        dangerouslySetInnerHTML={{ __html: sanitize(leftText) }}
+      />
+      <RightSection>
+        <div
+          className="RightSection"
+          dangerouslySetInnerHTML={{ __html: sanitize(rightText) }}
+        />
+        {addToBasketButton}
       </RightSection>
     </TextWrapper>
   );
 };
 
-export default Text;
+export const Text: React.FC<{ text: string }> = ({ text }) => (
+  <TextWrapper dangerouslySetInnerHTML={{ __html: sanitize(text) }} />
+);

@@ -1,18 +1,62 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import { navigate } from "@reach/router";
+
 import "./App.css";
-import MainPage from "./Components/MainPage";
-import Slideshow from "./Components/Slideshow";
+import Slideshow from "./Components/Global/Slideshow";
+import MainPage from "./Components/Pages/MainPage";
+import { fetchVideos, fetchProducts, setShowSlideshow } from "./actions/index";
+import { introTimer, homePage } from "./constants/";
 
-const App = () => {
-  const [showImage, setShowImage] = useState(true);
+const introTimerMilliseconds = introTimer * 1000;
 
+interface Props {
+  fetchVideos: () => void;
+  fetchProducts: () => void;
+  setShowSlideshow: (showSlideshow: boolean) => void;
+  showSlideshow: boolean;
+}
+
+const App = ({
+  fetchVideos,
+  fetchProducts,
+  setShowSlideshow,
+  showSlideshow,
+}: Props) => {
   useEffect(() => {
     setTimeout(() => {
-      setShowImage(false);
-    }, 3000);
-  }, []);
+      setShowSlideshow(false);
+    }, introTimerMilliseconds);
+    if (window.location.pathname === "/") {
+      setTimeout(() => {
+        navigate(homePage);
+      }, introTimerMilliseconds);
+    }
+  }, [setShowSlideshow, showSlideshow]);
 
-  return <>{showImage ? <Slideshow /> : <MainPage />}</>;
+  useEffect(() => {
+    fetchProducts();
+    fetchVideos();
+  }, [fetchProducts, fetchVideos, setShowSlideshow]);
+
+  return (
+    <>
+      {showSlideshow && <Slideshow />}
+      {<MainPage hide={showSlideshow} />}
+    </>
+  );
 };
 
-export default App;
+const mapStateToProps = ({
+  config,
+}: {
+  config: { showSlideshow: boolean };
+}) => {
+  return { showSlideshow: config.showSlideshow };
+};
+
+export default connect(mapStateToProps, {
+  fetchVideos,
+  fetchProducts,
+  setShowSlideshow,
+})(App);

@@ -16,7 +16,7 @@ const Iframe = styled.iframe`
   display: block;
 `;
 
-const Video = ({ url, title }) => {
+export const Video = ({ url, title }) => {
   return (
     <VideoWrap>
       <Iframe
@@ -32,5 +32,3 @@ const Video = ({ url, title }) => {
     </VideoWrap>
   );
 };
-
-export default Video;

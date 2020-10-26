@@ -1,6 +1,8 @@
 node_modules
+**/.DS_Store/**
 .DS_Store
-src/.DS_Store
-src/Components/.DS_Store
 build/static/*
 applitools_key.ts
+# Local Netlify folder
+.netlify
+cypress/videos/*
