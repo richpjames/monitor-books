@@ -57,7 +57,7 @@ export const Header = () => {
       <NavLinks>
         {navItems.map((navItem, index) => {
           return (
-            <>
+            <React.Fragment key={index}>
               {index !== 0 && index <= navItems.length - 2 && (
                 <Seperator>{String.fromCharCode(8226)}</Seperator>
               )}
@@ -71,7 +71,7 @@ export const Header = () => {
                   {navItem.component}
                 </Link>
               </NavItem>
-            </>
+            </React.Fragment>
           );
         })}
       </NavLinks>
