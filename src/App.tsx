@@ -29,7 +29,7 @@ const App = ({
     }, introTimerMilliseconds);
     if (window.location.pathname === "/") {
       setTimeout(() => {
-        navigate(homePage);
+        navigate(`books/${homePage}`);
       }, introTimerMilliseconds);
     }
   }, [setShowSlideshow, showSlideshow]);
