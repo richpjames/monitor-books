@@ -55,7 +55,7 @@ export const background = "#000000";
 
 //URLS
 export const mainImageUrl = `https://www.richjames.co.uk/img/`;
-export const homePage = "/books/propositions";
+export const homePage = "propositions";
 export const productsPageName = "books";
 
 //IMAGES
