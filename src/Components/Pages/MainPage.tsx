@@ -14,7 +14,7 @@ import { Success } from "./Success";
 import { ProductsPage } from "./Products/ProductsPage";
 import { VideosPage } from "./Videos/VideosPage";
 import { ProductsContainer } from "./Products/ProductsContainer";
-import { homePage } from "../../constants";
+import { homePage, productsPageName } from "../../constants";
 
 const PageWrap = styled.div<{ hide: boolean }>`
   margin-left: auto;
@@ -47,7 +47,7 @@ const MainPage = ({
       <PageWrap hide={hide}>
         <Header />
         <Router>
-          <ProductsContainer path="books">
+          <ProductsContainer path={productsPageName}>
             <ProductsPage bookIds={bookIds} books={books} path="/" />
             {bookIds.map((bookId) => {
               const {
