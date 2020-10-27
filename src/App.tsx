@@ -6,7 +6,7 @@ import "./App.css";
 import Slideshow from "./Components/Global/Slideshow";
 import MainPage from "./Components/Pages/MainPage";
 import { fetchVideos, fetchProducts, setShowSlideshow } from "./actions/index";
-import { introTimer, homePage } from "./constants/";
+import { introTimer, homePage, productsPageName } from "./constants/";
 
 const introTimerMilliseconds = introTimer * 1000;
 
@@ -24,20 +24,15 @@ const App = ({
   showSlideshow,
 }: Props) => {
   useEffect(() => {
-    setTimeout(() => {
-      setShowSlideshow(false);
-    }, introTimerMilliseconds);
-    if (window.location.pathname === "/") {
+    if (window.location.pathname === "/" && showSlideshow) {
       setTimeout(() => {
-        navigate(`books/${homePage}`);
+        navigate(`${productsPageName}/${homePage}`);
+        setShowSlideshow(false);
       }, introTimerMilliseconds);
     }
-  }, [setShowSlideshow, showSlideshow]);
-
-  useEffect(() => {
     fetchProducts();
     fetchVideos();
-  }, [fetchProducts, fetchVideos, setShowSlideshow]);
+  }, [fetchProducts, fetchVideos, showSlideshow, setShowSlideshow]);
 
   return (
     <>
