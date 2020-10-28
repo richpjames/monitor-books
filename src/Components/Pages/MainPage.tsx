@@ -47,32 +47,12 @@ const MainPage = ({
       <PageWrap hide={hide}>
         <Header />
         <Router>
+          <ProductPage id="9T65B28LLM2MD" path="/" default />
           <ProductsContainer path={productsPageName}>
             <ProductsPage bookIds={bookIds} books={books} path="/" />
             {bookIds.map((bookId) => {
-              const {
-                photos,
-                title,
-                author,
-                blurb1,
-                blurb2,
-                slug,
-                imagePath,
-              } = books[bookId];
-              return (
-                <ProductPage
-                  id={bookId}
-                  photos={photos}
-                  title={title}
-                  author={author}
-                  leftDescription={blurb1}
-                  rightDescription={blurb2}
-                  imagePath={imagePath}
-                  path={slug}
-                  default={slug === homePage}
-                  key={bookId}
-                />
-              );
+              const { slug } = books[bookId];
+              return <ProductPage id={bookId} path={slug} key={bookId} />;
             })}
           </ProductsContainer>
           <VideosPage path="videos" />
