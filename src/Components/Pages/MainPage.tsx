@@ -14,7 +14,7 @@ import { Success } from "./Success";
 import { ProductsPage } from "./Products/ProductsPage";
 import { VideosPage } from "./Videos/VideosPage";
 import { ProductsContainer } from "./Products/ProductsContainer";
-import { homePage, productsPageName } from "../../constants";
+import { productsPageName } from "../../constants";
 
 const PageWrap = styled.div<{ hide: boolean }>`
   margin-left: auto;
