@@ -35,10 +35,7 @@ const App = ({
   }, [fetchProducts, fetchVideos, showSlideshow, setShowSlideshow]);
 
   return (
-    <>
-      {showSlideshow && <Slideshow />}
-      {<MainPage hide={showSlideshow} />}
-    </>
+    <>{showSlideshow ? <Slideshow /> : <MainPage hide={showSlideshow} />}</>
   );
 };
 
