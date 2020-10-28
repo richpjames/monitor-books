@@ -76,5 +76,6 @@
       }
     },
     "visibleIds": ["430660074"]
-  }
+  },
+  "config": { "showSlideshow": true }
 }
