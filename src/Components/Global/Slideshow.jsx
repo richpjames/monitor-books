@@ -34,7 +34,7 @@ const Banner = styled.img`
 const Slideshow = () => {
   return (
     <Background>
-      <Banner src={Logo} className="Banner" />
+      <Banner src={Logo} className="Banner" alt="Monitor Books Logo" />
     </Background>
   );
 };
