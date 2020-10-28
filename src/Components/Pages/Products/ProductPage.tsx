@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from "react-redux";
+
 import { RouteComponentProps } from "@reach/router";
 import styled from "styled-components/macro";
 
@@ -63,4 +65,19 @@ const ProductPage = ({
   );
 };
 
-export default ProductPage;
+const mapStateToProps = (state: State, ownProps: { id: string }) => {
+  const { id } = ownProps;
+  const product = state.products.byId[id];
+  const { photos, title, author, blurb1, blurb2, imagePath } = product;
+  return {
+    photos: photos,
+    title: title,
+    author: author,
+    leftDescription: blurb1,
+    rightDescription: blurb2,
+    id: id,
+    imagePath: imagePath,
+  };
+};
+
+export default connect(mapStateToProps)(ProductPage);
