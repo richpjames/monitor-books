@@ -6,7 +6,7 @@
       "dom.iterable",
       "esnext"
     ],
-    "types": ["cypress", "@testing-library/cypress", "node", "webpack-env"],
+    "types": ["cypress", "@testing-library/cypress", "node"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
