@@ -88,7 +88,7 @@ const cart = (state = initialState, action: CartAction) => {
     case CHECKOUT_FAILURE:
       return action.cart;
     case CHECKOUT_SUCCESS:
-      return state;
+      return initialState;
     default:
       return {
         addedIds: addedIds(state.addedIds, action),
