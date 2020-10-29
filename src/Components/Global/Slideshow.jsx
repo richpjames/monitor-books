@@ -35,7 +35,7 @@ const Slideshow = () => {
   return (
     <Background>
       <Banner
-        src="https://monitorbooks.co.uk/img/logo.png"
+        src="https://richjames.co.uk/img/logo.png"
         className="Banner"
         alt="Monitor Books Logo"
       />
