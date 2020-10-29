@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components/macro";
 
-import Logo from "../../assets/img/logo.png";
+// import Logo from "../../assets/img/logo.png";
 import { introTimer } from "../../constants/";
 
 const fadeOut = ` @keyframes fade-out {
