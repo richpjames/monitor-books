@@ -4,8 +4,7 @@ import { getProdBooks } from "./prodBooks";
 import { handleCheckout } from "./stripe-purchase";
 
 export default {
-  getProducts:
-    process.env.NODE_ENV === "production" ? getProdBooks : getDevBooks,
+  getProducts: getProdBooks,
   getVideos: getVideos,
   buyProducts: handleCheckout,
 };
