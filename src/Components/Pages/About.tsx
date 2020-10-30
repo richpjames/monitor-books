@@ -2,7 +2,6 @@ import React from "react";
 import { RouteComponentProps } from "@reach/router";
 import styled from "styled-components/macro";
 
-import Logo from "../../assets/img/logo.png";
 import { PageWrapper, Text } from "../Common";
 
 const Banner = styled.img`
