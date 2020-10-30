@@ -9,7 +9,7 @@ type stripeResponse = undefined | { error: StripeError };
 
 export async function handleCheckout(data: any) {
   const stripe = await loadStripe(publishableKey || "");
-
+  console.log(process.env.NODE_ENV, "stripeeee");
   const response = await fetch("/.netlify/functions/create-checkout", {
     method: "POST",
     headers: {
