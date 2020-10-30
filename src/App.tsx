@@ -29,6 +29,8 @@ const App = ({
         navigate(`${productsPageName}/${homePage}`);
         setShowSlideshow(false);
       }, introTimerMilliseconds);
+    } else {
+      setShowSlideshow(false);
     }
     fetchProducts();
     fetchVideos();
