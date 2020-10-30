@@ -23,7 +23,10 @@ const About: React.FC<RouteComponentProps> = () => {
   return (
     <PageWrapper>
       <BannerWrap>
-        <Banner src={Logo} className="Banner" />
+        <Banner
+          src="https://monitorbooks.co.uk/img/logo.png"
+          className="Banner"
+        />
       </BannerWrap>
       <Text
         text="<p>Monitor is a publication platform for poetry, innovative writing and
