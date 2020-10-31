@@ -9,7 +9,7 @@ export const Success: React.FC<RouteComponentProps> = () => {
       <InfoSection>
         <PageTitle title="Success" />
         <Text
-          text={`Everything went through ok. Thanks for your order. \n You will receive an email with details of your order. \n For enquiries contact@monitorbooks.co.uk`}
+          text={`<p>Everything went through ok. Thanks for your order. \n You will receive an email with details of your order. \n For enquiries contact@monitorbooks.co.uk</p>`}
         />
       </InfoSection>
     </PageWrapper>
