@@ -34,8 +34,12 @@ const Button = styled.button`
   color: ${text};
   border: 1px solid ${text};
   background: ${background};
+  line-height: 1px;
 `;
 
+const InnerButtonContent = styled.span`
+  line-height: 1px;
+`;
 interface Props {
   addToCart: (event: React.MouseEvent) => void;
   decrementInCart: (event: React.MouseEvent) => void;
@@ -53,11 +57,11 @@ export const QuantityPanel = ({
     <QuantityLabel>Quantity:</QuantityLabel>
     <ButtonWrapper>
       <Button onClick={decrementInCart} disabled={quantity <= 0}>
-        -
+        <InnerButtonContent>-</InnerButtonContent>
       </Button>
       <Quantity className="item-quantity-number">{quantity}</Quantity>
       <Button onClick={addToCart} disabled={outOfStock}>
-        +
+        <InnerButtonContent>+</InnerButtonContent>
       </Button>
     </ButtonWrapper>
   </Wrap>
