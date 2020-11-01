@@ -25,6 +25,9 @@ const PageWrap = styled.div<{ hide: boolean }>`
   @media only screen and (min-width: 600px) {
     width: 60%;
   }
+  @media only screen and (min-width: 400px) {
+    width: 80%;
+  }
 `;
 
 interface Props {
