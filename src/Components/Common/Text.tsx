@@ -20,6 +20,10 @@ const RightSection = styled(LeftSection)`
   }
 `;
 
+const ErrorTextWrapper = styled.p`
+  color: #ec9696;
+`;
+
 const TextWrapper = styled.section`
   display: flex;
   flex-direction: column;
@@ -54,6 +58,10 @@ export const SplitText = (props: Props) => {
   );
 };
 
-export const Text: React.FC<{ text: string }> = ({ text }) => (
+export const Text: React.FC<{ text: string; colour?: string }> = ({ text }) => (
   <TextWrapper dangerouslySetInnerHTML={{ __html: sanitize(text) }} />
+);
+
+export const ErrorText: React.FC<{ text: string }> = ({ text }) => (
+  <ErrorTextWrapper>{text}</ErrorTextWrapper>
 );
