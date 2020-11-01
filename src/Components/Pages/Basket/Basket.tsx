@@ -1,31 +1,17 @@
 import React from "react";
-import styled from "styled-components/macro";
 
 import BasketListItem from "./BasketListItem";
 import { LoadingSpinner } from "../../Common/LoadingSpinner";
 
-import { PageWrapper } from "../../Common/Common";
+import { PageWrapper, ErrorText } from "../../Common/";
 import { ListTitle } from "../../Common/ListComponents";
 import { mainImageUrl } from "../../../constants/";
 
-import { CheckoutSection } from "./CheckoutSection";
-
-const BasketItemsSection = styled.section`
-  padding-left: 5%;
-  padding-right: 5%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 2.5rem;
-`;
-
-const EmptyCartMessage = styled.p`
-  padding-top: 25%;
-  padding-bottom: 25%;
-`;
+import { BasketItems } from "./BasketItems";
 
 type IProps = {
   hasItems: boolean;
+  hasError: boolean;
   loading: boolean;
   onCheckoutClicked: (click: React.MouseEvent) => void;
   productIds: string[];
@@ -38,6 +24,7 @@ type IProps = {
 };
 
 const Basket = ({
+  hasError,
   hasItems,
   loading,
   onCheckoutClicked,
@@ -49,9 +36,7 @@ const Basket = ({
   shippingOptions,
   total,
 }: IProps): React.ReactElement => {
-  const hasProducts = productIds?.length > 0;
-
-  const cartItems = productIds.map((productId: string, index: number) => (
+  const basketItems = productIds.map((productId: string, index: number) => (
     <BasketListItem
       title={productsById[productId].author}
       subtitle={productsById[productId].title}
@@ -66,35 +51,34 @@ const Basket = ({
     />
   ));
 
+  let basketComponent;
+  if (!loading && !hasError) {
+    basketComponent = (
+      <BasketItems
+        basketItems={basketItems}
+        hasItems={hasItems}
+        shipping={shipping}
+        setShipping={setShipping}
+        shippingOptions={shippingOptions}
+        total={total}
+        onCheckoutClicked={onCheckoutClicked}
+      />
+    );
+  } else if (loading && !hasError) {
+    basketComponent = <LoadingSpinner />;
+  } else if (hasError) {
+    basketComponent = (
+      <ErrorText
+        text={`Something has gone wrong :(
+          Please try again or contact contact@monitorbooks.co.uk`}
+      />
+    );
+  }
+
   return (
     <PageWrapper>
       <ListTitle>Basket</ListTitle>
-      {!loading ? (
-        <>
-          {hasProducts ? (
-            <>
-              <BasketItemsSection>{cartItems}</BasketItemsSection>
-              <CheckoutSection
-                hasItems={hasItems}
-                onCheckoutClicked={onCheckoutClicked}
-                setShipping={setShipping}
-                shipping={shipping}
-                shippingOptions={shippingOptions}
-                total={total}
-              />
-            </>
-          ) : (
-            <EmptyCartMessage>
-              Your basket is empty{" "}
-              <span role="img" aria-label="unhappy face">
-                😢
-              </span>
-            </EmptyCartMessage>
-          )}
-        </>
-      ) : (
-        <LoadingSpinner />
-      )}
+      {basketComponent}
     </PageWrapper>
   );
 };
