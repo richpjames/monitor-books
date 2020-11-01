@@ -9,7 +9,7 @@ export const PageWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 400px) {
     padding-top: 2.5rem;
     padding-bottom: 2.5rem;
     padding-left: 0.5rem;
