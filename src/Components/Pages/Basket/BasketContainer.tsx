@@ -1,18 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { RouteComponentProps } from "@reach/router";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
+
+import { shippingCosts } from "../../../constants";
+import {
+  CHECKOUT_FAILURE,
+  CHECKOUT_INITIALISE,
+} from "../../../constants/actionTypes";
 
 import { getTotal } from "../../../reducers";
 import Basket from "./Basket";
-import { checkout, setShipping } from "../../../actions/index";
-import { shippingCosts } from "../../../constants";
+import { checkout, setShipping, setLoading } from "../../../actions/index";
+import { setTimeout } from "timers";
 
-interface IProps extends RouteComponentProps {
+interface BasketContainerProps extends RouteComponentProps {
   checkout: (products: { [key: string]: number }) => void;
+  hasError: boolean;
   hasItems: boolean;
+  loading: boolean;
   productIds: string[];
   productsById: { [key: string]: Product };
   quantityById: { [key: string]: number };
+  setLoading: (loading: boolean) => void;
   setShipping: (shipping: Shipping) => void;
   shipping: Shipping;
   shippingCosts: Shipping[];
@@ -21,16 +30,24 @@ interface IProps extends RouteComponentProps {
 
 const BasketContainer = ({
   checkout,
+  hasError,
   hasItems,
+  loading,
   productIds,
   productsById,
   quantityById,
+  setLoading,
   setShipping,
   shipping,
   shippingCosts,
   total,
-}: IProps) => {
-  const [loading, setLoading] = useState(false);
+}: BasketContainerProps) => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch({ type: CHECKOUT_INITIALISE });
+    setLoading(false);
+  }, [dispatch, setLoading]);
+
   const handleShippingChange = (index: number) => {
     setShipping(shippingCosts[index]);
   };
@@ -38,12 +55,16 @@ const BasketContainer = ({
   const onCheckoutClicked = () => {
     setLoading(true);
     checkout(quantityById);
+    setTimeout(() => {
+      dispatch({ type: CHECKOUT_FAILURE });
+    }, 5000);
   };
 
   return (
     <Basket
       total={total}
       hasItems={hasItems}
+      hasError={hasError}
       onCheckoutClicked={onCheckoutClicked}
       productsById={productsById}
       productIds={productIds}
@@ -64,8 +85,10 @@ const mapStateToProps = (state: State) => ({
   productsById: state.products.byId,
   shipping: state.cart.shipping,
   shippingCosts: shippingCosts,
+  hasError: state.cart.hasError,
+  loading: state.cart.loading,
 });
 
-export default connect(mapStateToProps, { checkout, setShipping })(
+export default connect(mapStateToProps, { checkout, setShipping, setLoading })(
   BasketContainer
 );
