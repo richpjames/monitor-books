@@ -12,21 +12,25 @@ export async function handleCheckout(data: any) {
   console.log(process.env.NODE_ENV, "nodey");
   console.log(publishableKey, "publishable key");
 
-  const response = await fetch("/.netlify/functions/create-checkout", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ data: data, env: process.env.NODE_ENV }),
-  }).then((res) => res.json());
+  try {
+    const response = await fetch("/.netlify/functions/create-checkout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ data: data, env: process.env.NODE_ENV }),
+    }).then((res) => res.json());
 
-  if (stripe) {
-    const stripeResponse: stripeResponse = await stripe.redirectToCheckout({
-      sessionId: response.sessionId,
-    });
+    if (stripe) {
+      const stripeResponse: stripeResponse = await stripe.redirectToCheckout({
+        sessionId: response.sessionId,
+      });
 
-    if (stripeResponse?.error) {
-      console.log(stripeResponse.error);
+      if (stripeResponse?.error) {
+        return stripeResponse?.error;
+      }
     }
+  } catch (e) {
+    return e;
   }
 }
