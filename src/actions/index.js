@@ -5,6 +5,9 @@ export const setShowSlideshow = (showSlideshow) => {
   return { type: types.SHOWN_INTRO_SLIDE, showSlideshow };
 };
 
+export const setLoading = (loadingCheckout) => {
+  return { type: types.LOADING_CHECKOUT, loadingCheckout };
+};
 const receiveProducts = (products) => {
   return {
     type: types.RECEIVE_PRODUCTS,
@@ -47,7 +50,6 @@ export const addToBasket = (productId) => (dispatch, getState) => {
 };
 
 export const setShipping = (shippingInfo) => (dispatch) => {
-  console.log(shippingInfo, "action");
   dispatch({
     type: types.SET_SHIPPING,
     shipping: shippingInfo,
@@ -100,9 +102,7 @@ export const checkout = (products) => (dispatch, getState) => {
   //   what: "what",
   // });
 
-  dispatch({
-    type: types.CHECKOUT_SUCCESS,
-  });
-  // Replace the line above with line below to rollback on failure:
-  // dispatch({ type: types.CHECKOUT_FAILURE, cart })
+  setTimeout(() => {
+    dispatch({ type: types.CHECKOUT_FAILURE });
+  }, 5000);
 };
