@@ -12,7 +12,7 @@ import {
   ListItemTitle,
 } from "./ListComponents";
 import { LoadingSpinner } from "./LoadingSpinner";
-import { SplitText, Text } from "./Text";
+import { SplitText, Text, ErrorText } from "./Text";
 import { ProductTitle } from "./ProductTitle";
 import { VideoTitle } from "./VideoTitle";
 import { PageSubtitle, PageTitle, PageTitleBold, TitleWrapper } from "./Titles";
@@ -21,6 +21,7 @@ import { Video } from "./Video";
 export {
   AddToBasketButton,
   CTAButton,
+  ErrorText,
   IndividualPhoto,
   InfoSection,
   ListItemContainer,
