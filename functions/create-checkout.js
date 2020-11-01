@@ -50,6 +50,9 @@ exports.handler = async (event) => {
       }),
     };
   } catch (e) {
-    console.log("errorror!", session);
+    return {
+      statusCode: 400,
+      body: "something went really wrong",
+    };
   }
 };
