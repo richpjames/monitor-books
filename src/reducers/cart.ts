@@ -3,9 +3,11 @@ import {
   SET_SHIPPING,
   CHECKOUT_REQUEST,
   CHECKOUT_FAILURE,
+  CHECKOUT_INITIALISE,
   REMOVE_FROM_CART,
   DECREMENT_IN_CART,
   CHECKOUT_SUCCESS,
+  LOADING_CHECKOUT,
 } from "../constants/actionTypes";
 
 const initialState: InitialState = {
@@ -16,18 +18,21 @@ const initialState: InitialState = {
     priceId: "price_1HMwTgJs9ciiqN7OnYGR5rOp",
     region: "UK",
   },
+  config: { showSlideshow: false, hasError: false },
 };
 
 interface InitialState {
   addedIds: string[];
   quantityById: { [key: string]: string };
   shipping: Shipping;
+  config: { showSlideshow: boolean; hasError: boolean };
 }
 type CartAction = {
   type: Action;
   productId: string;
   cart: Cart;
   shipping: Shipping;
+  loadingCheckout: boolean;
 };
 
 const addedIds = (state = initialState.addedIds, action: CartAction) => {
@@ -83,10 +88,14 @@ const cart = (state = initialState, action: CartAction) => {
   switch (action.type) {
     case SET_SHIPPING:
       return { ...state, shipping: action.shipping };
+    case CHECKOUT_INITIALISE:
+      return { ...state, hasError: false };
+    case LOADING_CHECKOUT:
+      return { ...state, loading: action.loadingCheckout };
     case CHECKOUT_REQUEST:
       return state;
     case CHECKOUT_FAILURE:
-      return action.cart;
+      return { ...state, hasError: true };
     case CHECKOUT_SUCCESS:
       return initialState;
     default:

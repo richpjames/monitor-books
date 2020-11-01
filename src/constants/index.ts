@@ -36,6 +36,8 @@ export const initialState: State = {
     addedIds: [],
     quantityById: {},
     shipping: shippingCosts[0],
+    hasError: false,
+    loading: false,
   },
   shippingCosts: shippingCosts,
   products: { byId: {}, visibleIds: [] },
