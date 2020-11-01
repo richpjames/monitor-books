@@ -27,6 +27,8 @@ interface Cart {
   addedIds: string[];
   quantityById: { [index as string]: string };
   shipping: Shipping;
+  hasError: boolean;
+  loading: false;
 }
 
 interface Shipping {
@@ -64,7 +66,9 @@ type Action =
   | "CHECKOUT_SUCCESS"
   | "REMOVE_FROM_CART"
   | "DECREMENT_IN_CART"
-  | "SET_SHIPPING";
+  | "SET_SHIPPING"
+  | "LOADING_CHECKOUT"
+  | "CHECKOUT_INITIALISE";
 
 type InitialState = {
   cart: Cart;
