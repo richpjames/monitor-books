@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components/macro";
 import { Router } from "@reach/router";
-
 import { connect } from "react-redux";
+
 import About from "./About";
 import BasketContainer from "./Basket/BasketContainer";
 import ProductPage from "./Products/ProductPage";
@@ -15,6 +15,7 @@ import { ProductsPage } from "./Products/ProductsPage";
 import { VideosPage } from "./Videos/VideosPage";
 import { ProductsContainer } from "./Products/ProductsContainer";
 import { productsPageName } from "../../constants";
+import { fetchVideos, fetchProducts } from "../../actions/index";
 
 const PageWrap = styled.div<{ hide: boolean }>`
   margin-left: auto;
@@ -36,6 +37,8 @@ interface Props {
   bookIds?: visibileIds;
   videoIds?: visibileIds;
   hide: boolean;
+  fetchVideos: () => void;
+  fetchProducts: () => void;
 }
 
 const MainPage = ({
@@ -44,7 +47,13 @@ const MainPage = ({
   videos = {},
   videoIds = [],
   hide,
+  fetchVideos,
+  fetchProducts,
 }: Props) => {
+  React.useEffect(() => {
+    fetchVideos();
+    fetchProducts();
+  }, [fetchProducts, fetchVideos]);
   console.log("main page loaded", videos, books);
 
   return (
@@ -91,4 +100,6 @@ const mapStateToProps = (state: State) => {
   };
 };
 
-export default connect(mapStateToProps)(MainPage);
+export default connect(mapStateToProps, { fetchVideos, fetchProducts })(
+  MainPage
+);
