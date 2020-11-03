@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components/macro";
 import { Router } from "@reach/router";
-import { connect } from "react-redux";
 
+import { connect } from "react-redux";
 import About from "./About";
 import BasketContainer from "./Basket/BasketContainer";
 import ProductPage from "./Products/ProductPage";
@@ -13,9 +13,8 @@ import OnRouteChange from "../Global/ScrollToTop";
 import { Success } from "./Success";
 import { ProductsPage } from "./Products/ProductsPage";
 import { VideosPage } from "./Videos/VideosPage";
-import { ProductsContainer } from "./Products/ProductsContainer";
+import { RoutingContainer } from "../Common/RoutingContainer";
 import { productsPageName } from "../../constants";
-import { fetchVideos, fetchProducts } from "../../actions/index";
 
 const PageWrap = styled.div<{ hide: boolean }>`
   margin-left: auto;
@@ -37,8 +36,6 @@ interface Props {
   bookIds?: visibileIds;
   videoIds?: visibileIds;
   hide: boolean;
-  fetchVideos: () => void;
-  fetchProducts: () => void;
 }
 
 const MainPage = ({
@@ -47,14 +44,8 @@ const MainPage = ({
   videos = {},
   videoIds = [],
   hide,
-  fetchVideos,
-  fetchProducts,
 }: Props) => {
-  React.useEffect(() => {
-    fetchVideos();
-    fetchProducts();
-  }, [fetchProducts, fetchVideos]);
-  console.log("main page loaded", videos, books);
+  console.log("main page loaded", videos);
 
   return (
     <>
@@ -62,21 +53,23 @@ const MainPage = ({
         <Header />
         <Router>
           <ProductPage id="9T65B28LLM2MD" path="/" default />
-          <ProductsContainer path={productsPageName}>
+          <RoutingContainer path={productsPageName}>
             <ProductsPage bookIds={bookIds} books={books} path="/" />
             {bookIds.map((bookId) => {
               const { slug } = books[bookId];
               return <ProductPage id={bookId} path={slug} key={bookId} />;
             })}
-          </ProductsContainer>
-          <VideosPage path="videos" />
-          {videoIds.map((videoId) => (
-            <VideoPage
-              path={videos[videoId].slug}
-              video={videos[videoId]}
-              key={videoId}
-            />
-          ))}
+          </RoutingContainer>
+          <RoutingContainer path="videos">
+            <VideosPage path="/" />
+            {videoIds.map((videoId) => (
+              <VideoPage
+                path={videos[videoId].slug}
+                video={videos[videoId]}
+                key={videoId}
+              />
+            ))}
+          </RoutingContainer>
           <BasketContainer path="/basket" />
           <About path="/about" />
           <Success path="/success" />
@@ -100,6 +93,4 @@ const mapStateToProps = (state: State) => {
   };
 };
 
-export default connect(mapStateToProps, { fetchVideos, fetchProducts })(
-  MainPage
-);
+export default connect(mapStateToProps)(MainPage);
