@@ -45,6 +45,8 @@ const MainPage = ({
   videoIds = [],
   hide,
 }: Props) => {
+  console.log("main page loaded", videos, books);
+
   return (
     <>
       <PageWrap hide={hide}>
