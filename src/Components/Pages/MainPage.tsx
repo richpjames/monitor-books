@@ -59,12 +59,11 @@ const MainPage = ({
             })}
           </ProductsContainer>
           <VideosPage path="videos" />
-          {videoIds.map((videoId, index) => (
+          {videoIds.map((videoId) => (
             <VideoPage
               path={videos[videoId].slug}
               video={videos[videoId]}
               key={videoId}
-              default={index === 0}
             />
           ))}
           <BasketContainer path="/basket" />
