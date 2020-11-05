@@ -9,7 +9,7 @@ type stripeResponse = undefined | { error: StripeError };
 
 export async function handleCheckout(data: any) {
   const stripe = await loadStripe(publishableKey || "");
-  console.log(process.env.NODE_ENV, "nodey");
+  console.log(process.env.NODE_ENV, "node env");
   console.log(publishableKey, "publishable key");
 
   try {

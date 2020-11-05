@@ -10,8 +10,6 @@ exports.handler = async (event) => {
   const data = JSON.parse(event.body);
   const products = data.data;
   const env = data.env;
-  console.log("create checkout env", env);
-  console.log("create checkout prods", products);
 
   let stripe = devStripe;
   let publishableKey = process.env.REACT_APP_DEV_STRIPE_PUBLISHABLE_KEY;
