@@ -3,7 +3,7 @@ import { initialState } from "./constants/";
 export const loadState = (): State => {
   try {
     const serializedState = sessionStorage.getItem("state");
-    if (serializedState === null) {
+    if (!serializedState) {
       return initialState;
     }
     return JSON.parse(serializedState);
