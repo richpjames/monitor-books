@@ -10,8 +10,8 @@ interface Product {
   id: string;
   slug: string;
   inventory: number;
-  path: string;
   thumbnail: string;
+  priceId: string;
 }
 interface Video {
   title: string;
