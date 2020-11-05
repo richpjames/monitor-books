@@ -89,7 +89,7 @@ const navItems = [
     className: "books",
   },
   {
-    link: "/murmur-episode-one",
+    link: "videos/murmur-episode-one",
     ariaLabel: "Video link",
     content: "Murmur Reading Series",
     className: "videos",
