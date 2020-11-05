@@ -12,9 +12,10 @@ import VideoPage from "./Videos/VideoPage";
 import OnRouteChange from "../Global/ScrollToTop";
 import { Success } from "./Success";
 import { ProductsPage } from "./Products/ProductsPage";
-import { VideosPage } from "./Videos/VideosPage";
+// import { VideosPage } from "./Videos/VideosPage";
 import { RoutingContainer } from "../Common/RoutingContainer";
 import { productsPageName } from "../../constants";
+import { NotFound } from "./NotFound";
 
 const PageWrap = styled.div<{ hide: boolean }>`
   margin-left: auto;
@@ -45,14 +46,12 @@ const MainPage = ({
   videoIds = [],
   hide,
 }: Props) => {
-  console.log("main page loaded", videos);
-
   return (
     <>
       <PageWrap hide={hide}>
         <Header />
         <Router>
-          <ProductPage id="9T65B28LLM2MD" path="/" default />
+          <ProductPage id="9T65B28LLM2MD" path="/" />
           <RoutingContainer path={productsPageName}>
             <ProductsPage bookIds={bookIds} books={books} path="/" />
             {bookIds.map((bookId) => {
@@ -60,19 +59,18 @@ const MainPage = ({
               return <ProductPage id={bookId} path={slug} key={bookId} />;
             })}
           </RoutingContainer>
-          <RoutingContainer path="videos">
-            <VideosPage path="/" />
-            {videoIds.map((videoId) => (
-              <VideoPage
-                path={videos[videoId].slug}
-                video={videos[videoId]}
-                key={videoId}
-              />
-            ))}
-          </RoutingContainer>
+          {/* <VideosPage path="/videos" /> */}
+          {videoIds.map((videoId) => (
+            <VideoPage
+              path={videos[videoId].slug}
+              video={videos[videoId]}
+              key={videoId}
+            />
+          ))}
           <BasketContainer path="/basket" />
           <About path="/about" />
           <Success path="/success" />
+          <NotFound default />
         </Router>
         {/* this prevents the page from opening at the centre */}
         <OnRouteChange action={() => window.scrollTo(0, 0)} />
