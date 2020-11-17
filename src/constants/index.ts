@@ -61,7 +61,7 @@ export const homePage = "propositions";
 export const productsPageName = "books";
 
 //IMAGES
-export const productPageImageHeight = "15vw";
-export const productPageImageWidth = "auto";
+export const productPageImageHeight = "auto";
+export const productPageImageWidth = "100%";
 
 export const introTimer = 4;
