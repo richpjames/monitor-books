@@ -16,13 +16,13 @@ const productionShippingCosts = [
   { region: "UK", priceId: "price_1HOpaOJs9ciiqN7OcNEPQA7G", price: 2.5 },
   {
     region: "Europe",
-    priceId: "price_1HOpaOJs9ciiqN7OcRyOPBkG",
-    price: 4,
+    priceId: "price_1HpJWSJs9ciiqN7Olq3WUKe8",
+    price: 4.5,
   },
   {
     region: "Rest Of The World",
-    priceId: "price_1HOpaOJs9ciiqN7Oxtqh00zC",
-    price: 5,
+    priceId: "price_1HpJXPJs9ciiqN7Ob1vNuQcq",
+    price: 6.5,
   },
 ];
 
