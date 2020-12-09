@@ -75,6 +75,10 @@ export const ListItemTitle = styled.h3`
   padding-bottom: 0.1rem;
 `;
 
+export const VideoCreatorName = styled(ListItemTitle)`
+  padding-top: 0rem;
+`;
+
 export const ListItemSubtitle = styled.h4`
   padding-top: 0.5rem;
   padding-bottom: 1rem;
@@ -92,6 +96,10 @@ export const ListItemPhotoWrap = styled.div<{ width: string }>`
   @media only screen and (max-width: 600px) {
     width: 100%;
   }
+`;
+
+export const VideoListItemPhotoWrap = styled(ListItemPhotoWrap)`
+  height: auto;
 `;
 
 export const Photo = styled.img`

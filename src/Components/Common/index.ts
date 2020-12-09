@@ -10,6 +10,8 @@ import {
   ListItemPhotoWrap,
   Photo as ListItemPhoto,
   ListItemTitle,
+  VideoCreatorName,
+  VideoListItemPhotoWrap,
 } from "./ListComponents";
 import { LoadingSpinner } from "./LoadingSpinner";
 import { SplitText, Text, ErrorText } from "./Text";
@@ -40,6 +42,8 @@ export {
   Text,
   ProductTitle,
   VideoTitle,
+  VideoListItemPhotoWrap,
   TitleWrapper,
   Video,
+  VideoCreatorName,
 };
