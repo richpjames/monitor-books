@@ -24,7 +24,13 @@ const receiveProducts = (products) => {
 const receiveVideos = (videos) => {
   return {
     type: types.RECEIVE_VIDEOS,
-    videos: videos ? videos : [],
+    videos: videos
+      ? videos.sort(
+          (a, b) =>
+            new Date(b.publishDate).getTime() -
+            new Date(a.publishDate).getTime()
+        )
+      : [],
   };
 };
 

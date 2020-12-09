@@ -62,8 +62,8 @@ export const MetaInfoContainer = styled.div<{ index: number; width: string }>`
   padding-top: 2.5rem;
   padding-bottom: 2.5rem;
   @media only screen and (max-width: 600px) {
-    padding-top: 0;
-    padding-bottom: 0;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     width: 100%;
   }
 `;
