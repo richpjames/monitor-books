@@ -49,7 +49,7 @@ export const Photos = (props: IProps) => {
 
   const thumbReel = thumbURLs.map((url, i) => {
     return (
-      <PhotoContainer key={url}>
+      <PhotoContainer key={i}>
         <IndividualPhoto
           openLightbox={openLightbox}
           index={i}

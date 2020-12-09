@@ -12,7 +12,7 @@ import VideoPage from "./Videos/VideoPage";
 import OnRouteChange from "../Global/ScrollToTop";
 import { Success } from "./Success";
 import { ProductsPage } from "./Products/ProductsPage";
-// import { VideosPage } from "./Videos/VideosPage";
+import { VideosPage } from "./Videos/VideosPage";
 import { RoutingContainer } from "../Common/RoutingContainer";
 import { productsPageName } from "../../constants";
 import { NotFound } from "./NotFound";
@@ -59,10 +59,14 @@ const MainPage = ({
               return <ProductPage id={bookId} path={slug} key={bookId} />;
             })}
           </RoutingContainer>
-          {/* <VideosPage path="/videos" /> */}
+          <VideosPage
+            videos={videos}
+            videoIds={videoIds}
+            path="/murmur-reading-series"
+          />
           {videoIds.map((videoId) => (
             <VideoPage
-              path={videos[videoId].slug}
+              path={`/murmur-reading-series/${videos[videoId].slug}`}
               video={videos[videoId]}
               key={videoId}
             />

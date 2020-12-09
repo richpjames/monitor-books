@@ -21,6 +21,7 @@ interface Video {
   url: string;
   publishDate: string;
   slug: string;
+  thumbnail;
 }
 
 interface Cart {

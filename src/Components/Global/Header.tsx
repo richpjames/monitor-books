@@ -43,6 +43,11 @@ const NavItem = styled.li`
   }
 `;
 
+const NavLink = styled(Link)`
+  color: ${text};
+  text-decoration: none;
+`;
+
 const Seperator = styled.span`
   display: none;
   @media only screen and (min-width: 600px) {
@@ -64,14 +69,14 @@ export const Header = () => {
                 <Seperator>{String.fromCharCode(8226)}</Seperator>
               )}
               <NavItem key={index}>
-                <Link
+                <NavLink
                   to={navItem.link}
                   aria-label={navItem.ariaLabel}
                   className={navItem.className}
                 >
                   {navItem.content}
                   {navItem.component}
-                </Link>
+                </NavLink>
               </NavItem>
             </React.Fragment>
           );
@@ -89,7 +94,7 @@ const navItems = [
     className: "books",
   },
   {
-    link: "murmur-episode-one",
+    link: "murmur-reading-series",
     ariaLabel: "Video link",
     content: "Murmur Reading Series",
     className: "videos",

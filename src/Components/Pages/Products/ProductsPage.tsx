@@ -26,14 +26,12 @@ const ListWrap = styled.section`
 `;
 
 export const ProductsPage: FunctionComponent<Props> = ({ books, bookIds }) => {
-  const bookDetails = bookIds.map((bookId) => books[bookId]);
-
   return (
     <PageWrapper>
       <PageTitle>Books</PageTitle>
       <ListWrap>
-        {bookDetails.map((book, index) => {
-          const { slug, title, author, thumbnail, imagePath } = book;
+        {bookIds.map((bookId, index) => {
+          const { slug, title, author, thumbnail, imagePath } = books[bookId];
           return (
             <ListItemContainer
               index={index}
