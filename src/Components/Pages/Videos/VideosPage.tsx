@@ -5,11 +5,10 @@ import styled from "styled-components/macro";
 import { mainImageUrl } from "../../../constants";
 import {
   ListItemContainer,
-  ListItemPhotoWrap,
+  VideoListItemPhotoWrap,
   ListItemPhoto,
   MetaInfoContainer,
-  ListItemTitle,
-  // ListItemSubtitle,
+  VideoCreatorName,
   PageWrapper,
 } from "../../Common";
 import { PageTitle } from "../../Common/Titles";
@@ -33,7 +32,7 @@ export const VideosPage: React.FC<VideosPageProps> = ({ videos, videoIds }) => {
       <PageTitle>Murmur Reading Series</PageTitle>
       <ListWrap>
         {videoIds.map((videoId, index) => {
-          const { slug, title, thumbnail } = videos[videoId];
+          const { slug, creators, thumbnail } = videos[videoId];
           return (
             <ListItemContainer
               index={index}
@@ -44,14 +43,15 @@ export const VideosPage: React.FC<VideosPageProps> = ({ videos, videoIds }) => {
               key={index}
               to={`murmur-reading-series/${slug}`}
             >
-              {console.log("photo")}
-              <ListItemPhotoWrap width="30%">
+              <VideoListItemPhotoWrap width="30%">
                 <ListItemPhoto
                   src={`${mainImageUrl}${imagePath}/${thumbnail}`}
                 />
-              </ListItemPhotoWrap>
+              </VideoListItemPhotoWrap>
               <MetaInfoContainer index={index} width="40%">
-                <ListItemTitle>{title}</ListItemTitle>
+                {creators.map((creator) => (
+                  <VideoCreatorName>{creator}</VideoCreatorName>
+                ))}
               </MetaInfoContainer>
             </ListItemContainer>
           );

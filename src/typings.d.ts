@@ -15,7 +15,7 @@ interface Product {
 }
 interface Video {
   title: string;
-  creator: string;
+  creators: [string];
   description1: string;
   description2: string;
   url: string;

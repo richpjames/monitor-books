@@ -4,7 +4,7 @@ import { PageSubtitle, PageTitle, TitleWrapper } from "./Titles";
 
 interface Props {
   title: string;
-  subtitle?: string;
+  subtitle: [string];
 }
 
 export function VideoTitle(props: Props) {
@@ -12,7 +12,9 @@ export function VideoTitle(props: Props) {
   return (
     <TitleWrapper>
       <PageTitle>{title} </PageTitle>
-      <PageSubtitle>{subtitle}</PageSubtitle>
+      {subtitle.map((creator) => (
+        <PageSubtitle>{creator}</PageSubtitle>
+      ))}
     </TitleWrapper>
   );
 }

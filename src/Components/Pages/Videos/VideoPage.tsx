@@ -8,13 +8,13 @@ interface Props extends RouteComponentProps {
 }
 
 export default function VideoPage(props: Props) {
-  const { url, title, creator, description1, description2 } = props.video;
+  const { url, title, creators, description1, description2 } = props.video;
   React.useEffect(() => window.scrollTo(0, 0), []);
   return (
     <>
       <Video url={url} title={title} />
       <InfoSection>
-        <VideoTitle title={`${title}:`} subtitle={creator} />
+        <VideoTitle title={`${title}:`} subtitle={creators} />
         <SplitText leftText={description1} rightText={description2} />
       </InfoSection>
     </>
