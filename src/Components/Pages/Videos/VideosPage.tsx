@@ -24,12 +24,26 @@ const ListWrap = styled.section`
   padding-top: 2.5rem;
 `;
 
+const VideosDescription = styled.section`
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 2.5rem;
+  width: max(55%, 300px);
+`;
+
 const imagePath = "vids";
 
 export const VideosPage: React.FC<VideosPageProps> = ({ videos, videoIds }) => {
   return (
     <PageWrapper>
       <PageTitle>Murmur Reading Series</PageTitle>
+      <VideosDescription>
+        <p>
+          Originally a programme of occasional live events in Manchester between
+          2017-2019, Murmur is a series of video readings showcasing poetry,
+          innovative writing, and performance.
+        </p>
+      </VideosDescription>
       <ListWrap>
         {videoIds.map((videoId, index) => {
           const { slug, creators, thumbnail } = videos[videoId];

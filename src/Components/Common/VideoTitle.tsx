@@ -12,9 +12,14 @@ export function VideoTitle(props: Props) {
   return (
     <TitleWrapper>
       <PageTitle>{title} </PageTitle>
-      {subtitle.map((creator) => (
-        <PageSubtitle>{creator}</PageSubtitle>
-      ))}
+
+      {subtitle.map((creator, i) => {
+        return (
+          <PageSubtitle>{`${creator}${
+            i < subtitle.length - 1 ? ", " : ""
+          }`}</PageSubtitle>
+        );
+      })}
     </TitleWrapper>
   );
 }
