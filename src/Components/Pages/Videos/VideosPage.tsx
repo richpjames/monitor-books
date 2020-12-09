@@ -2,14 +2,14 @@ import React from "react";
 import { RouteComponentProps } from "@reach/router";
 import styled from "styled-components/macro";
 
-import { mainImageUrl, productsPageName } from "../../../constants";
+import { mainImageUrl } from "../../../constants";
 import {
   ListItemContainer,
   ListItemPhotoWrap,
   ListItemPhoto,
   MetaInfoContainer,
   ListItemTitle,
-  ListItemSubtitle,
+  // ListItemSubtitle,
   PageWrapper,
 } from "../../Common";
 import { PageTitle } from "../../Common/Titles";
