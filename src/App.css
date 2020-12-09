@@ -11,6 +11,7 @@
 :root{
     --main-bg-colour: #000000;
     --text-color: #ffffff;
+    --link-color: #6AB3E0;
 }
 
 body {
@@ -55,8 +56,7 @@ h1, h2, h3, h4,h5, h6, p, ul, a {
 }
 
 a {
-    color: var(--text-color);
-    text-decoration: none;
+    color: var(--link-color);
     font-size: clamp(12px, 1rem, 1.2rem);
 }
 
