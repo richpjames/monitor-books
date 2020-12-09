@@ -59,7 +59,7 @@ export const VideosPage: React.FC<VideosPageProps> = ({ videos, videoIds }) => {
             >
               <VideoListItemPhotoWrap width="30%">
                 <ListItemPhoto
-                  src={`${mainImageUrl}${imagePath}/${thumbnail}`}
+                  src={`https://www.richjames.co.uk/img/${imagePath}/${thumbnail}`}
                 />
               </VideoListItemPhotoWrap>
               <MetaInfoContainer index={index} width="40%">
