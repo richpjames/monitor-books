@@ -2,7 +2,7 @@ import React from "react";
 import { RouteComponentProps } from "@reach/router";
 import styled from "styled-components/macro";
 
-import { mainImageUrl } from "../../../constants";
+// import { mainImageUrl } from "../../../constants";
 import {
   ListItemContainer,
   VideoListItemPhotoWrap,
@@ -10,6 +10,7 @@ import {
   MetaInfoContainer,
   VideoCreatorName,
   PageWrapper,
+  VideoCreatorContainer,
 } from "../../Common";
 import { PageTitle } from "../../Common/Titles";
 
@@ -62,11 +63,11 @@ export const VideosPage: React.FC<VideosPageProps> = ({ videos, videoIds }) => {
                   src={`https://www.richjames.co.uk/img/${imagePath}/${thumbnail}`}
                 />
               </VideoListItemPhotoWrap>
-              <MetaInfoContainer index={index} width="40%">
+              <VideoCreatorContainer index={index} width="40%">
                 {creators.map((creator) => (
                   <VideoCreatorName>{creator}</VideoCreatorName>
                 ))}
-              </MetaInfoContainer>
+              </VideoCreatorContainer>
             </ListItemContainer>
           );
         })}

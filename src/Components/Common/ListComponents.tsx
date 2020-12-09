@@ -68,6 +68,10 @@ export const MetaInfoContainer = styled.div<{ index: number; width: string }>`
   }
 `;
 
+export const VideoCreatorContainer = styled(MetaInfoContainer)`
+  justify-content: center;
+`;
+
 export const ListItemTitle = styled.h3`
   width: 100%;
   text-align: center;

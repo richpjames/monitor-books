@@ -12,6 +12,7 @@ import {
   ListItemTitle,
   VideoCreatorName,
   VideoListItemPhotoWrap,
+  VideoCreatorContainer,
 } from "./ListComponents";
 import { LoadingSpinner } from "./LoadingSpinner";
 import { SplitText, Text, ErrorText } from "./Text";
@@ -43,6 +44,7 @@ export {
   ProductTitle,
   VideoTitle,
   VideoListItemPhotoWrap,
+  VideoCreatorContainer,
   TitleWrapper,
   Video,
   VideoCreatorName,
