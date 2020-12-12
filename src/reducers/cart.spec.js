@@ -10,6 +10,7 @@ describe("reducers", () => {
         priceId: "price_1HMwTgJs9ciiqN7OnYGR5rOp",
         region: "UK",
       },
+      config: { showSlideshow: false, hasError: false },
     };
 
     it("should provide the initial state", () => {
@@ -25,21 +26,31 @@ describe("reducers", () => {
     it("should handle CHECKOUT_FAILURE action", () => {
       expect(
         cart({}, { type: "CHECKOUT_FAILURE", cart: "cart state" })
-      ).toEqual("cart state");
+      ).toEqual({
+        ...initialState,
+        config: { ...initialState.config, hasError: true },
+      });
     });
 
     it("should handle ADD_TO_CART action", () => {
-      expect(cart(initialState, { type: "ADD_TO_CART", productId: 1 })).toEqual(
-        {
-          addedIds: [1],
-          quantityById: { 1: 1 },
-          shipping: {
-            price: 2,
-            priceId: "price_1HMwTgJs9ciiqN7OnYGR5rOp",
-            region: "UK",
-          },
-        }
-      );
+      const state = {
+        addedIds: [1],
+        quantityById: { 1: 1 },
+        shipping: {
+          price: 2,
+          priceId: "price_1HMwTgJs9ciiqN7OnYGR5rOp",
+          region: "UK",
+        },
+      };
+      expect(cart(state, { type: "ADD_TO_CART", productId: 1 })).toEqual({
+        addedIds: [1],
+        quantityById: { 1: 2 },
+        shipping: {
+          price: 2,
+          priceId: "price_1HMwTgJs9ciiqN7OnYGR5rOp",
+          region: "UK",
+        },
+      });
     });
     it("should handle DECREMENT_IN_CART action", () => {
       const state = {

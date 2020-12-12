@@ -47,7 +47,6 @@ const addedIds = (state = initialState.addedIds, action: CartAction) => {
         return state.filter((id) => id !== action.productId);
       }
       break;
-
     default:
       return state;
   }
@@ -77,10 +76,10 @@ const quantityById = (
   }
 };
 
-export const getQuantity = (state: InitialState, productId: string) =>
+export const getQuantity = (state = initialState, productId: string) =>
   state.quantityById[productId] || 0;
 
-export const getAddedIds = (state: InitialState) => {
+export const getAddedIds = (state = initialState) => {
   return state.addedIds;
 };
 
@@ -95,7 +94,10 @@ const cart = (state = initialState, action: CartAction) => {
     case CHECKOUT_REQUEST:
       return state;
     case CHECKOUT_FAILURE:
-      return { ...state, hasError: true };
+      return {
+        ...initialState,
+        config: { ...initialState.config, hasError: true },
+      };
     case CHECKOUT_SUCCESS:
       return initialState;
     default:
@@ -103,6 +105,7 @@ const cart = (state = initialState, action: CartAction) => {
         addedIds: addedIds(state.addedIds, action),
         quantityById: quantityById(state.quantityById, action),
         shipping: state.shipping,
+        config: state.config,
       };
   }
 };
