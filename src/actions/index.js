@@ -50,7 +50,8 @@ const addToBasketUnsafe = (productId) => ({
 });
 
 export const addToBasket = (productId) => (dispatch, getState) => {
-  if (getState().products.byId[productId].inventory > 0) {
+  const productsById = getState().products.byId;
+  if (productsById[productId].inventory > 0) {
     dispatch(addToBasketUnsafe(productId));
   }
 };

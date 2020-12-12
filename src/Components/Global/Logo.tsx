@@ -14,7 +14,7 @@ const LogoWrap = styled.div`
 
 const Logo = () => {
   return (
-    <LogoWrap>
+    <LogoWrap id="monitor-logo">
       <svg
         id="Layer_1"
         data-name="Layer 1"

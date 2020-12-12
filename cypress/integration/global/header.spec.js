@@ -1,4 +1,5 @@
 import { addToBasket } from "../../../src/actions";
+import { saveState } from "../../../src/sessionStorage";
 
 const dispatch = (action) =>
   cy.window().its("store").invoke("dispatch", action);
@@ -9,36 +10,34 @@ describe("Header", () => {
     cy.fixture("initialisedState").then((initialisedState) =>
       cy.visit("/basket", {
         onBeforeLoad: (win) => {
-          win.initialState = initialisedState;
+          saveState(initialisedState);
         },
       })
     );
-    it("clicking Books Nav item takes the user to the books page", () => {
-      cy.contains("Books").click();
-      cy.url().should("include", "/books");
-    });
+  });
 
-    it("clicking Videos Nav item takes the user to the video page", () => {
-      cy.contains("Murmur Reading Series").click();
-      cy.url().should("include", "/murmur-episode-one");
-    });
+  it("clicking logo item takes the user to the about page", () => {
+    cy.get(".logo-container").click();
+    cy.url().should("include", "/about");
+  });
+  it("clicking Books Nav item takes the user to the books page", () => {
+    cy.contains("Books").click();
+    cy.url().should("include", "/books");
+  });
 
-    it("clicking Basket Nav item takes the user to the basket page", () => {
-      cy.get(".basket").click();
-      cy.url().should("include", "/basket");
-    });
+  it("clicking Videos Nav item takes the user to the video page", () => {
+    cy.contains("Murmur Reading Series").click();
+    cy.url().should("include", "/murmur-reading-series");
+  });
 
-    it("adding item to basket increases the item count in the basket icon", () => {
-      cy.fixture("initialisedState").then((initialisedState) =>
-        cy.visit("/basket", {
-          onBeforeLoad: (win) => {
-            win.initialState = initialisedState;
-          },
-        })
-      );
-      dispatch(addToBasket("9T65B28LLM2MC"));
-      cy.get(".header-basket-items").contains("1");
-    });
-    //TODO test that when item is added to the basket the number in the basket increases
+  it("clicking Basket Nav item takes the user to the basket page", () => {
+    cy.get(".basket").click();
+    cy.url().should("include", "/basket");
+  });
+
+  it("adding item to basket increases the item count in the basket icon", () => {
+    cy.get(".header-basket-items").contains("0");
+    dispatch(addToBasket("9T65B28LLM2MC"));
+    cy.get(".header-basket-items").contains("1");
   });
 });

@@ -58,7 +58,7 @@ const Seperator = styled.span`
 export const Header = () => {
   return (
     <Nav>
-      <Link to="/about">
+      <Link to="/about" className="logo-container">
         <Logo />
       </Link>
       <NavLinks>
