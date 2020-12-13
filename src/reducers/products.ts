@@ -4,8 +4,9 @@ import {
   ADD_TO_CART,
   REMOVE_FROM_CART,
 } from "../constants/actionTypes";
+import { initialState } from "../constants/";
 
-const products = (state, action) => {
+const products = (state: Product, action: ProductsAction) => {
   switch (action.type) {
     case ADD_TO_CART:
       return {
@@ -22,15 +23,18 @@ const products = (state, action) => {
   }
 };
 
-const byId = (state = {}, action) => {
+const byId = (state = initialState.products.byId, action: ProductsAction) => {
   switch (action.type) {
     case RECEIVE_PRODUCTS:
       return {
         ...state,
-        ...action.products.reduce((obj, product) => {
-          obj[product.id] = product;
-          return obj;
-        }, {}),
+        ...action.products.reduce(
+          (obj: { [key: string]: Product }, product: Product) => {
+            obj[product.id] = product;
+            return obj;
+          },
+          {}
+        ),
       };
     default:
       const { productId } = action;
@@ -44,7 +48,7 @@ const byId = (state = {}, action) => {
   }
 };
 
-const visibleIds = (state = {}, action) => {
+const visibleIds = (state = {}, action: ProductsAction) => {
   switch (action.type) {
     case RECEIVE_PRODUCTS:
       return action.products.map((product) => product.id);
@@ -58,9 +62,9 @@ export default combineReducers({
   visibleIds,
 });
 
-export const getProduct = (state, id) => {
+export const getProduct = (state: Products, id: string) => {
   return state.byId[id];
 };
 
-export const getVisibleProducts = (state) =>
+export const getVisibleProducts = (state: Products) =>
   state.visibleIds.map((id) => getProduct(state, id));

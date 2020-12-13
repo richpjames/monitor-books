@@ -10,7 +10,7 @@ import {
   LOADING_CHECKOUT,
 } from "../constants/actionTypes";
 
-const initialState: InitialState = {
+const initialState: Cart = {
   addedIds: [],
   quantityById: {},
   shipping: {
@@ -18,21 +18,8 @@ const initialState: InitialState = {
     priceId: "price_1HMwTgJs9ciiqN7OnYGR5rOp",
     region: "UK",
   },
+  loading: false,
   config: { showSlideshow: false, hasError: false },
-};
-
-interface InitialState {
-  addedIds: string[];
-  quantityById: { [key: string]: string };
-  shipping: Shipping;
-  config: { showSlideshow: boolean; hasError: boolean };
-}
-type CartAction = {
-  type: Action;
-  productId: string;
-  cart: Cart;
-  shipping: Shipping;
-  loadingCheckout: boolean;
 };
 
 const addedIds = (state = initialState.addedIds, action: CartAction) => {
