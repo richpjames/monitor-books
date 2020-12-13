@@ -3,7 +3,7 @@ import styled from "styled-components/macro";
 
 import { ShippingCost } from "./ShippingCost";
 
-import { text } from "../../../constants/";
+import { text } from "../../../constants";
 import { twoDecimalPlaces } from "../../../utils";
 
 const ShippingLabel = styled.label`

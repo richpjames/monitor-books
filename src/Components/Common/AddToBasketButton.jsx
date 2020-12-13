@@ -3,7 +3,7 @@ import styled from "styled-components/macro";
 import { navigate } from "@reach/router";
 import { connect } from "react-redux";
 
-import { background, text } from "./../../constants/";
+import { background, text } from "../../constants";
 import { addToBasket } from "../../actions";
 
 const ButtonStyles = styled.button`

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components/macro";
 
-import { text, background } from "../../../constants/index";
+import { text, background } from "../../../constants";
 
 const Wrap = styled.section`
   display: flex;

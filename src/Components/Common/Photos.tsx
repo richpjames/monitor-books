@@ -21,14 +21,14 @@ const PhotoContainer = styled.div`
   align-items: center;
 `;
 
-interface IProps {
+interface PhotosProps {
   photos: number[];
   url: string;
   imageThumbnailHeight: string;
   imageThumbnailWidth: string;
 }
 
-export const Photos = (props: IProps) => {
+export const Photos = (props: PhotosProps) => {
   const { url, photos, imageThumbnailHeight, imageThumbnailWidth } = props;
   const [photoIndex, setPhotoIndex] = useState(0);
   const [galleryOpen, setGalleyOpen] = useState(false);

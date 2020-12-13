@@ -13,6 +13,21 @@ interface Product {
   thumbnail: string;
   priceId: string;
 }
+interface Products {
+  byId: ProductsById;
+  visibleIds: VisibileIds;
+}
+type ProductsById = ById<Product>;
+interface ProductsAction {
+  type: PRODUCTS_ACTIONS;
+  products: Product[];
+  quantityToReplace: number;
+  productId: string;
+}
+interface ProductQuantityById {
+  [index: string]: number;
+}
+
 interface Video {
   title: string;
   creators: [string];
@@ -25,13 +40,22 @@ interface Video {
 }
 
 interface Cart {
-  addedIds: string[];
-  quantityById: { [index as string]: string };
+  addedIds: AddedIds;
+  quantityById: ProductQuantityById;
   shipping: Shipping;
-  hasError: boolean;
-  loading: false;
+  loading: boolean;
+  config: { showSlideshow: boolean; hasError: boolean };
 }
 
+type CartAction = {
+  type: CART_ACTIONS | CHECKOUT_ACTIONS;
+  productId: string;
+  cart?: Cart;
+  shipping?: Shipping;
+  loadingCheckout?: boolean;
+};
+
+type AddedIds = string[];
 interface Shipping {
   region: string;
   price: number;
@@ -50,26 +74,12 @@ interface State {
   config: Config;
 }
 
-type byId<T> = { [id: string]: T };
-type visibileIds = string[];
-interface Products {
-  byId: byId<Product>;
-  visibleIds: visibileIds;
-}
-interface Videos extends Products {
-  byId: byId<Video>;
-}
+type ById<T> = { [id: string]: T };
+type VisibileIds = string[];
 
-type Action =
-  | "ADD_TO_CART"
-  | "CHECKOUT_REQUEST"
-  | "CHECKOUT_FAILURE"
-  | "CHECKOUT_SUCCESS"
-  | "REMOVE_FROM_CART"
-  | "DECREMENT_IN_CART"
-  | "SET_SHIPPING"
-  | "LOADING_CHECKOUT"
-  | "CHECKOUT_INITIALISE";
+interface Videos extends Products {
+  byId: ById<Video>;
+}
 
 type InitialState = {
   cart: Cart;
@@ -77,3 +87,39 @@ type InitialState = {
   videos: { byId: {}; visibleIds: [] };
   shippingCosts: Shipping[];
 };
+//CART ACTIONS
+type CART_ACTIONS =
+  | ADD_TO_CART
+  | REMOVE_FROM_CART
+  | DECREMENT_IN_CART
+  | SET_SHIPPING;
+
+type ADD_TO_CART = "ADD_TO_CART";
+type REMOVE_FROM_CART = "REMOVE_FROM_CART";
+type DECREMENT_IN_CART = "DECREMENT_IN_CART";
+type SET_SHIPPING = "SET_SHIPPING";
+
+type PRODUCTS_ACTIONS = RECEIVE_PRODUCTS | ADD_TO_CART | REMOVE_FROM_CART;
+
+//CHECKOUT ACTIONS
+type CHECKOUT_ACTIONS =
+  | CHECKOUT_INITIALISE
+  | CHECKOUT_REQUEST
+  | CHECKOUT_SUCCESS
+  | CHECKOUT_FAILURE
+  | LOADING_CHECKOUT;
+
+type CHECKOUT_INITIALISE = "CHECKOUT_INITIALISE";
+type CHECKOUT_REQUEST = "CHECKOUT_REQUEST";
+type CHECKOUT_SUCCESS = "CHECKOUT_SUCCESS";
+type CHECKOUT_FAILURE = "CHECKOUT_FAILURE";
+type LOADING_CHECKOUT = "LOADING_CHECKOUT";
+
+//DATA ACTIONS
+
+type DATA_ACTIONS = RECEIVE_PRODUCTS | RECEIVE_VIDEOS;
+
+type RECEIVE_PRODUCTS = "RECEIVE_PRODUCTS";
+type RECEIVE_VIDEOS = "RECEIVE_VIDEOS";
+
+type SHOWN_INTRO_SLIDE = "SHOWN_INTRO_SLIDE";

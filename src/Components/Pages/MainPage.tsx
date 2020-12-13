@@ -32,10 +32,10 @@ const PageWrap = styled.div<{ hide: boolean }>`
 `;
 
 interface Props {
-  books?: byId<Product>;
-  videos?: byId<Video>;
-  bookIds?: visibileIds;
-  videoIds?: visibileIds;
+  books?: ById<Product>;
+  videos?: ById<Video>;
+  bookIds?: VisibileIds;
+  videoIds?: VisibileIds;
   hide: boolean;
 }
 

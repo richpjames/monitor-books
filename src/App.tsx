@@ -6,7 +6,7 @@ import "./App.css";
 import Slideshow from "./Components/Global/Slideshow";
 import MainPage from "./Components/Pages/MainPage";
 import { fetchVideos, fetchProducts, setShowSlideshow } from "./actions/index";
-import { introTimer, homePage, productsPageName } from "./constants/";
+import { introTimer, homePage, productsPageName } from "./constants";
 
 const introTimerMilliseconds = introTimer * 1000;
 

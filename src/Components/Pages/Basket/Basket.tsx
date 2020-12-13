@@ -5,7 +5,7 @@ import { LoadingSpinner } from "../../Common/LoadingSpinner";
 
 import { PageWrapper, ErrorText } from "../../Common/";
 import { ListTitle } from "../../Common/ListComponents";
-import { mainImageUrl } from "../../../constants/";
+import { mainImageUrl } from "../../../constants";
 
 import { BasketItems } from "./BasketItems";
 
@@ -15,8 +15,8 @@ type IProps = {
   loading: boolean;
   onCheckoutClicked: (click: React.MouseEvent) => void;
   productIds: string[];
-  productsById: { [index: string]: Product };
-  quantityById: { [key: string]: number };
+  productsById: ById<Product>;
+  quantityById: ProductQuantityById;
   setShipping: (index: number) => void;
   shipping: Shipping;
   shippingOptions: Shipping[];
