@@ -36,7 +36,10 @@ export const initialState: State = {
     addedIds: [],
     quantityById: {},
     shipping: shippingCosts[0],
-    hasError: false,
+    config: {
+      hasError: false,
+      showSlideshow: true,
+    },
     loading: false,
   },
   shippingCosts: shippingCosts,
