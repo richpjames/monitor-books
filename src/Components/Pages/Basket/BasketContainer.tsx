@@ -15,14 +15,14 @@ import { setTimeout } from "timers";
 
 interface BasketContainerProps extends RouteComponentProps {
   checkout: (products: { [key: string]: number }) => void;
+  setLoading: (loading: boolean) => void;
+  setShipping: (shipping: Shipping) => void;
   hasError: boolean;
   hasItems: boolean;
   loading: boolean;
   productIds: string[];
-  productsById: { [key: string]: Product };
-  quantityById: { [key: string]: number };
-  setLoading: (loading: boolean) => void;
-  setShipping: (shipping: Shipping) => void;
+  productsById: ById<Product>;
+  quantityById: ProductQuantityById;
   shipping: Shipping;
   shippingCosts: Shipping[];
   total: string;
@@ -78,15 +78,15 @@ const BasketContainer = ({
 };
 
 const mapStateToProps = (state: State) => ({
-  total: getTotal(state),
+  hasError: state.cart.config.hasError,
   hasItems: +getTotal(state) > 0,
+  loading: state.cart.loading,
   productIds: state.cart.addedIds,
-  quantityById: state.cart.quantityById,
   productsById: state.products.byId,
+  quantityById: state.cart.quantityById,
   shipping: state.cart.shipping,
   shippingCosts: shippingCosts,
-  hasError: state.cart.hasError,
-  loading: state.cart.loading,
+  total: getTotal(state),
 });
 
 export default connect(mapStateToProps, { checkout, setShipping, setLoading })(
