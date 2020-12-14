@@ -17,7 +17,7 @@ const getAddedIds = (cart: Cart) => fromCart.getAddedIds(cart);
 
 const getQuantity = (cart: Cart, id: string) => fromCart.getQuantity(cart, id);
 
-const getProduct = (products: ProductQuantityById, id: string) =>
+const getProduct = (products: Products, id: string) =>
   fromProducts.getProduct(products, id);
 
 export const getTotal = (state: State) => {
@@ -25,14 +25,13 @@ export const getTotal = (state: State) => {
     .reduce(
       (total, id) =>
         total +
-        getProduct(state.cart.quantityById, id).price *
-          getQuantity(state.cart, id),
+        +getProduct(state.products, id).price * getQuantity(state.cart, id),
       0
     )
     .toFixed(2);
 };
 export const getCartProducts = (state: State) =>
   getAddedIds(state.cart).map((id) => ({
-    ...getProduct(state.cart.quantityById, id),
+    ...getProduct(state.products, id),
     quantity: getQuantity(state.cart, id),
   }));
