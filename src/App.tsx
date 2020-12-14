@@ -36,9 +36,7 @@ const App = ({
     fetchVideos();
   }, [fetchProducts, fetchVideos, showSlideshow, setShowSlideshow]);
 
-  return (
-    <>{showSlideshow ? <Slideshow /> : <MainPage hide={showSlideshow} />}</>
-  );
+  return <>{showSlideshow ? <Slideshow /> : <MainPage />}</>;
 };
 
 const mapStateToProps = ({

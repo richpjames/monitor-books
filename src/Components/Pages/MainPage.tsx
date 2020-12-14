@@ -36,7 +36,7 @@ interface Props {
   videos?: ById<Video>;
   bookIds?: VisibileIds;
   videoIds?: VisibileIds;
-  hide: boolean;
+  showSlideshow: boolean;
 }
 
 const MainPage = ({
@@ -44,11 +44,11 @@ const MainPage = ({
   bookIds = [],
   videos = {},
   videoIds = [],
-  hide,
+  showSlideshow,
 }: Props) => {
   return (
     <>
-      <PageWrap hide={hide}>
+      <PageWrap hide={showSlideshow}>
         <Header />
         <Router>
           <ProductPage id="9T65B28LLM2MD" path="/" />
@@ -85,13 +85,17 @@ const MainPage = ({
 };
 
 const mapStateToProps = (state: State) => {
-  const { products, videos, config } = state;
+  const { products, config } = state;
+  const bookIds: VisibileIds = products.visibleIds;
+  const books: ProductsById = products.byId;
+  const videoIds: VisibileIds = state.videos.visibleIds;
+  const videos: VideosById = state.videos.byId;
   return {
-    bookIds: products.visibleIds,
-    books: products.byId,
-    videoIds: videos.visibleIds,
-    videos: videos.byId,
-    showSlideshow: config.showSlideshow,
+    bookIds,
+    books,
+    videoIds,
+    videos,
+    showSlideshow: state.config.showSlideshow,
   };
 };
 

@@ -93,6 +93,7 @@ const cart = (state = initialState, action: CartAction) => {
         quantityById: quantityById(state.quantityById, action),
         shipping: state.shipping,
         config: state.config,
+        loading: false,
       };
   }
 };

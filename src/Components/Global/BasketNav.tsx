@@ -38,11 +38,11 @@ const Icon = styled(Basket)`
   z-index: 0;
 `;
 
-// interface IProps {
-//   totalQuantity: number;
-// }
+interface BasketIconProps {
+  totalQuantity: number;
+}
 
-const BasketIcon = ({ totalQuantity }) => {
+const BasketIcon: React.FC<BasketIconProps> = ({ totalQuantity }) => {
   return (
     <Container>
       <IconWrapper>
@@ -53,7 +53,7 @@ const BasketIcon = ({ totalQuantity }) => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: State) => {
   const { addedIds, quantityById } = state.cart;
   return {
     totalQuantity: addedIds.reduce((previousValue, currentValue) => {
