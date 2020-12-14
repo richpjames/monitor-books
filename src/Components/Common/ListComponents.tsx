@@ -92,7 +92,6 @@ export const ListItemSubtitle = styled.h4`
 
 export const ListItemPhotoWrap = styled.div<{ width: string }>`
   width: ${(props) => props.width};
-  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -102,13 +101,8 @@ export const ListItemPhotoWrap = styled.div<{ width: string }>`
   }
 `;
 
-export const VideoListItemPhotoWrap = styled(ListItemPhotoWrap)`
-  height: auto;
-`;
-
 export const Photo = styled.img`
   width: 100%;
-  height: 100%;
   object-fit: cover;
   overflow: hidden;
 

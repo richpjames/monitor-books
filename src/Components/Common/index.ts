@@ -11,7 +11,6 @@ import {
   Photo as ListItemPhoto,
   ListItemTitle,
   VideoCreatorName,
-  VideoListItemPhotoWrap,
   VideoCreatorContainer,
 } from "./ListComponents";
 import { LoadingSpinner } from "./LoadingSpinner";
@@ -43,7 +42,6 @@ export {
   Text,
   ProductTitle,
   VideoTitle,
-  VideoListItemPhotoWrap,
   VideoCreatorContainer,
   TitleWrapper,
   Video,

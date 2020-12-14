@@ -5,11 +5,12 @@ import styled from "styled-components/macro";
 // import { mainImageUrl } from "../../../constants";
 import {
   ListItemContainer,
-  VideoListItemPhotoWrap,
+  // VideoListItemPhotoWrap,
   ListItemPhoto,
   VideoCreatorName,
   PageWrapper,
   VideoCreatorContainer,
+  ListItemPhotoWrap,
 } from "../../Common";
 import { PageTitle } from "../../Common/Titles";
 
@@ -41,11 +42,11 @@ export const VideosPage: React.FC<VideosPageProps> = ({ videos, videoIds }) => {
               key={index}
               to={`murmur-reading-series/${slug}`}
             >
-              <VideoListItemPhotoWrap width="30%">
+              <ListItemPhotoWrap width="max(30%, 10rem)">
                 <ListItemPhoto
                   src={`https://www.richjames.co.uk/img/vids/${thumbnail}`}
                 />
-              </VideoListItemPhotoWrap>
+              </ListItemPhotoWrap>
               <VideoCreatorContainer index={index} width="40%">
                 {creators.map((creator) => (
                   <VideoCreatorName>{creator}</VideoCreatorName>
