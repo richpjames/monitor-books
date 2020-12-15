@@ -5,7 +5,6 @@ import styled from "styled-components/macro";
 import { mainImageUrl } from "../../../constants";
 import {
   ListItemContainer,
-  VideoListItemPhotoWrap,
   ListItemPhoto,
   VideoCreatorName,
   PageWrapper,
@@ -42,9 +41,9 @@ export const VideosPage: React.FC<VideosPageProps> = ({ videos, videoIds }) => {
               key={index}
               to={`murmur-reading-series/${slug}`}
             >
-              <VideoListItemPhotoWrap width="30%">
+              <ListItemPhotoWrap width="30%">
                 <ListItemPhoto src={`${mainImageUrl}/vids/${thumbnail}`} />
-              </VideoListItemPhotoWrap>
+              </ListItemPhotoWrap>
               <VideoCreatorContainer index={index} width="40%">
                 {creators.map((creator) => (
                   <VideoCreatorName>{creator}</VideoCreatorName>
