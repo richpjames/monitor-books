@@ -95,7 +95,7 @@ const mapStateToProps = (state: State) => {
     books,
     videoIds,
     videos,
-    showSlideshow: state.config.showSlideshow,
+    showSlideshow: config.showSlideshow,
   };
 };
 
