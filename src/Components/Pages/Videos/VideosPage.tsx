@@ -2,7 +2,7 @@ import React from "react";
 import { RouteComponentProps } from "@reach/router";
 import styled from "styled-components/macro";
 
-// import { mainImageUrl } from "../../../constants";
+import { mainImageUrl } from "../../../constants";
 import {
   ListItemContainer,
   VideoListItemPhotoWrap,
@@ -42,9 +42,7 @@ export const VideosPage: React.FC<VideosPageProps> = ({ videos, videoIds }) => {
               to={`murmur-reading-series/${slug}`}
             >
               <VideoListItemPhotoWrap width="30%">
-                <ListItemPhoto
-                  src={`https://www.richjames.co.uk/img/vids/${thumbnail}`}
-                />
+                <ListItemPhoto src={`${mainImageUrl}/vids/${thumbnail}`} />
               </VideoListItemPhotoWrap>
               <VideoCreatorContainer index={index} width="40%">
                 {creators.map((creator) => (
