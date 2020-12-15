@@ -9,6 +9,10 @@ const Container = styled.div`
   display: flex;
   justify-content: flex-end;
   padding-left: 10px;
+  height: 10px;
+  @media only screen and (max-width: 600px) {
+    height: auto;
+  }
 `;
 
 const IconWrapper = styled.div`
