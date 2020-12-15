@@ -15,7 +15,7 @@ export function VideoTitle(props: Props) {
 
       {subtitle.map((creator, i) => {
         return (
-          <PageSubtitle>{`${creator}${
+          <PageSubtitle key={i}>{`${creator}${
             i < subtitle.length - 1 ? ", " : ""
           }`}</PageSubtitle>
         );
