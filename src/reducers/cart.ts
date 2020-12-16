@@ -19,7 +19,7 @@ const initialState: Cart = {
     region: "UK",
   },
   loading: false,
-  config: { showSlideshow: false, hasError: false },
+  config: { hasError: false },
 };
 
 const addedIds = (state = initialState.addedIds, action: CartAction) => {
