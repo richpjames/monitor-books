@@ -18,10 +18,11 @@ type VideoAction = {
 type VideosById = ById<Video>;
 
 type Videos = { byId: VideosById; visibleIds: VisibileIds };
+
 interface Cart {
   addedIds: AddedIds;
   quantityById: ProductQuantityById;
   shipping: Shipping;
   loading: boolean;
-  config: { showSlideshow: boolean; hasError: boolean };
+  config: { hasError: boolean };
 }
