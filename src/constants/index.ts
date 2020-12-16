@@ -38,7 +38,6 @@ export const initialState: State = {
     shipping: shippingCosts[0],
     config: {
       hasError: false,
-      showSlideshow: true,
     },
     loading: false,
   },
@@ -68,3 +67,5 @@ export const productPageImageHeight = "auto";
 export const productPageImageWidth = "100%";
 
 export const introTimer = 4;
+
+export const introTimerMilliseconds = introTimer * 1000;
