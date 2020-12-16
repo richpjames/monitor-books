@@ -1,17 +1,4 @@
 {
-  "cart": {
-    "addedIds": [],
-    "quantityById": {},
-    "shipping": {
-      "region": "UK",
-      "priceId": "price_1HMwTgJs9ciiqN7OnYGR5rOp",
-      "price": 2.5
-    },
-    "config": {
-      "hasError": false
-    },
-    "loading": false
-  },
   "products": {
     "byId": {
       "9T65B28LLM2MD": {
