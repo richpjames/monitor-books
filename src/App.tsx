@@ -6,9 +6,11 @@ import "./App.css";
 import Slideshow from "./Components/Global/Slideshow";
 import MainPage from "./Components/Pages/MainPage";
 import { fetchVideos, fetchProducts, setShowSlideshow } from "./actions/index";
-import { introTimer, homePage, productsPageName } from "./constants";
-
-const introTimerMilliseconds = introTimer * 1000;
+import {
+  introTimerMilliseconds,
+  homePage,
+  productsPageName,
+} from "./constants";
 
 interface Props {
   fetchVideos: () => void;
@@ -39,11 +41,7 @@ const App = ({
   return <>{showSlideshow ? <Slideshow /> : <MainPage />}</>;
 };
 
-const mapStateToProps = ({
-  config,
-}: {
-  config: { showSlideshow: boolean };
-}) => {
+const mapStateToProps = ({ config }: State) => {
   return { showSlideshow: config.showSlideshow };
 };
 
