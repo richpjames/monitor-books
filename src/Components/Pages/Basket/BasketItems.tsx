@@ -51,7 +51,7 @@ export const BasketItems: React.FC<BasketItemsProps> = ({
       />
     </>
   ) : (
-    <EmptyCartMessage>
+    <EmptyCartMessage id="empty-basket-message">
       Your basket is empty
       <br />
       <span role="img" aria-label="unhappy face">

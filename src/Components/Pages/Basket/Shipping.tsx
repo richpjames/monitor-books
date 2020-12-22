@@ -30,6 +30,7 @@ export const Shipping: React.FC<Props> = ({
     <>
       <ShippingLabel htmlFor="shipping">Postal region:</ShippingLabel>
       <ShippingSelector
+        id="shipping-selector"
         onChange={(event) => {
           setShipping(+event.target.value);
         }}
