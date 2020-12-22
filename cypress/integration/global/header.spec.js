@@ -9,7 +9,7 @@ describe("Header", () => {
     cy.visit("/propositions");
     cy.fixture("initialisedState").then((initialisedState) =>
       cy.visit("/basket", {
-        onBeforeLoad: (win) => {
+        onBeforeLoad: (_) => {
           saveState(initialisedState);
         },
       })
