@@ -53,6 +53,7 @@ const BasketListItem = ({
   title,
   slug,
 }: Props) => {
+  const basketItemLabel = title.toLowerCase();
   return (
     <ListItemContainer
       index={index}
@@ -66,18 +67,22 @@ const BasketListItem = ({
         <ListItemPhoto src={imageSrc} />
       </ListItemPhotoWrap>
       <MetaInfoContainer index={index} width="40%">
-        <ListItemTitle>{title}</ListItemTitle>
-        <ListItemSubtitle>{subtitle}</ListItemSubtitle>
+        <ListItemTitle id={`${basketItemLabel}-title`}>{title}</ListItemTitle>
+        <ListItemSubtitle id={`${basketItemLabel}-subtitle`}>
+          {subtitle}
+        </ListItemSubtitle>
         <QuantityPanel
           addToCart={() => addToBasket(id)}
           decrementInCart={() => decrementInCart(id)}
           outOfStock={stock < 0}
           quantity={quantity}
+          id={`${basketItemLabel}-quantity-panel`}
         />
         <RemoveFromCartButton
           onClick={() => removeFromBasket(id, quantity)}
           name="Remove from basket"
           type="button"
+          id={`${basketItemLabel}-remove-button`}
         >
           X
         </RemoveFromCartButton>

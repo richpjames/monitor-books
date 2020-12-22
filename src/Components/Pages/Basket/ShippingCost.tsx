@@ -10,9 +10,9 @@ interface Props {
   total: string;
 }
 
-export const ShippingCost = ({ total }: Props) => {
+export const ShippingCost: React.FC<Props> = ({ total }) => {
   return (
-    <ShippingCostWrapper className="shipping-cost">
+    <ShippingCostWrapper id="shipping-cost">
       Shipping: £{total}
     </ShippingCostWrapper>
   );
