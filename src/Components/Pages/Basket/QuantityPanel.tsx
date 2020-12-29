@@ -46,7 +46,7 @@ interface QuantityPanelProps {
   decrementInCart: (event: React.MouseEvent) => void;
   outOfStock: boolean;
   quantity: number;
-  id: string;
+  label: string;
 }
 
 export const QuantityPanel: React.FC<QuantityPanelProps> = ({
@@ -54,16 +54,26 @@ export const QuantityPanel: React.FC<QuantityPanelProps> = ({
   decrementInCart,
   outOfStock,
   quantity,
-  id,
+  label,
 }) => (
-  <Wrap className="item-quantity-container" id={id}>
+  <Wrap className="item-quantity-container" id={`${label}-quantity-panel`}>
     <QuantityLabel>Quantity:</QuantityLabel>
     <ButtonWrapper>
-      <Button onClick={decrementInCart} disabled={quantity <= 0} id="#">
+      <Button
+        onClick={decrementInCart}
+        disabled={quantity <= 0}
+        id={`${label}-decrease-quantity-button`}
+      >
         <InnerButtonContent>-</InnerButtonContent>
       </Button>
-      <Quantity className="item-quantity-number">{quantity}</Quantity>
-      <Button onClick={addToCart} disabled={outOfStock}>
+      <Quantity id={`${label}-quantity`} className="item-quantity-number">
+        {quantity}
+      </Quantity>
+      <Button
+        id={`${label}-increase-quantity-button`}
+        onClick={addToCart}
+        disabled={outOfStock}
+      >
         <InnerButtonContent>+</InnerButtonContent>
       </Button>
     </ButtonWrapper>

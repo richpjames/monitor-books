@@ -33,16 +33,23 @@ const ButtonStyles = styled.button`
 const ButtonWrapper = styled.div`
   padding-top: 1rem;
 `;
-interface IProps {
+interface CTAButtonProps {
   onClick: (click: React.MouseEvent) => void;
   disabled: boolean;
   children: string;
   className?: string;
+  id?: string;
 }
 
-export function CTAButton({ onClick, disabled, children, className }: IProps) {
+export function CTAButton({
+  onClick,
+  disabled,
+  children,
+  className,
+  id,
+}: CTAButtonProps) {
   return (
-    <ButtonWrapper>
+    <ButtonWrapper id={id}>
       <ButtonStyles onClick={onClick} disabled={disabled} className={className}>
         {children}
       </ButtonStyles>
