@@ -6,7 +6,12 @@
       "region": "UK",
       "priceId": "price_1HMwTgJs9ciiqN7OnYGR5rOp",
       "price": 2.5
-    }
+    },
+    "config": {
+      "hasError": false,
+      "showSlideshow": true
+    },
+    "loading": false
   },
   "shippingCosts": [
     {
