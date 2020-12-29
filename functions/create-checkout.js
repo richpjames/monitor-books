@@ -13,6 +13,7 @@ exports.handler = async (event) => {
 
   let stripe = devStripe;
   let publishableKey = process.env.REACT_APP_DEV_STRIPE_PUBLISHABLE_KEY;
+
   if (env === "production") {
     stripe = prodStripe;
     publishableKey = process.env.REACT_APP_PROD_STRIPE_PUBLISHABLE_KEY;
