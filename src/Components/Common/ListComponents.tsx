@@ -85,7 +85,6 @@ export const VideoCreatorName = styled(ListItemTitle)`
 
 export const ListItemSubtitle = styled.h4`
   padding-top: 0.5rem;
-  padding-bottom: 1rem;
   width: 100%;
   text-align: center;
 `;
