@@ -15,7 +15,7 @@
         "slug": "propositions",
         "inventory": 20,
         "currency": "GBP",
-        "priceId": "price_1Hnt5cJs9ciiqN7OVvlJanor"
+        "priceId": "price_1Ho2ZQJs9ciiqN7O7i3XGV6r"
       },
       "9T65B28LLM2MC": {
         "title": "MURMUR ANTHOLOGY 1",
@@ -31,7 +31,7 @@
         "slug": "anthology",
         "inventory": 20,
         "currency": "GBP",
-        "priceId": "price_1HdcjyJs9ciiqN7OWAHUyKRy"
+        "priceId": "price_1HdckTJs9ciiqN7O218PIefo"
       }
     },
     "visibleIds": ["9T65B28LLM2MD", "9T65B28LLM2MC"]

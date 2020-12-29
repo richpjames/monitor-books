@@ -1,4 +1,4 @@
-import { addToBasket } from "../../../src/actions";
+import { addToBasket, decrementInCart } from "../../../src/actions";
 import { saveState } from "../../../src/sessionStorage";
 
 const dispatch = (action) =>
@@ -15,13 +15,13 @@ describe("Basket", () => {
     )
   );
 
-  it(" correct items are shown in basket", () => {
+  it("correct items are shown in basket", () => {
     dispatch(addToBasket("9T65B28LLM2MC"));
-    cy.get("#various-title")
+    cy.get("#anthology-title")
       .contains("Various")
-      .get("#various-subtitle")
+      .get("#anthology-subtitle")
       .contains("MURMUR ANTHOLOGY 1")
-      .get("#various-quantity-panel")
+      .get("#anthology-quantity-panel")
       .contains("1");
   });
 
@@ -29,22 +29,68 @@ describe("Basket", () => {
     cy.get("#empty-basket-message").contains("Your basket is empty");
   });
 
-  //"displays all items in basket page"
-
   it("increasing quantity of a book increases the price accordingly", () => {
     dispatch(addToBasket("9T65B28LLM2MC"));
-    cy.get();
+    cy.get("#basket-total")
+      .contains("£12")
+      .get("#anthology-increase-quantity-button")
+      .click()
+      .get("#basket-total")
+      .contains("£22");
   });
 
-  //test decreasing quantity of a book decreases the price accordingly
+  it("decreasing quantity of a book increases the price accordingly", () => {
+    dispatch(addToBasket("9T65B28LLM2MC"));
+    cy.get("#basket-total")
+      .contains("£12")
+      .get("#anthology-decrease-quantity-button")
+      .click()
+      .get("#basket-total")
+      .contains("£2.00");
+  });
 
-  //test descreasing/increasing quantity of different book
+  it("test descreasing/increasing quantity of different book increases the basket total accordingly", () => {
+    dispatch(addToBasket("9T65B28LLM2MD"));
+    dispatch(addToBasket("9T65B28LLM2MC"));
+    cy.get("#basket-total")
+      .contains("£22")
+      .get("#propositions-decrease-quantity-button")
+      .click()
+      .get("#basket-total")
+      .contains("£12")
+      .get("#anthology-increase-quantity-button")
+      .click()
+      .get("#basket-total")
+      .contains("£22")
+      .get("#propositions-increase-quantity-button")
+      .click()
+      .click()
+      .get("#basket-total")
+      .contains("£42");
+  });
 
-  //test that quantity of book doesn't go below 0
+  it("test that when quantity is 0 decreasing is disabled and quantity is 0", () => {
+    dispatch(addToBasket("9T65B28LLM2MC"));
+    cy.get("#basket-total")
+      .contains("£12")
+      .get("#anthology-decrease-quantity-button")
+      .click()
+      .get("#basket-total")
+      .contains("£2.00")
+      .get("#anthology-quantity")
+      .eq("0")
+      .get("#anthology-decrease-quantity-button")
+      .should("be.disabled");
+  });
+  it("test removing a book removes it from the basket", () => {
+    dispatch(addToBasket("9T65B28LLM2MD"));
+    cy.get("#propositions-remove-button")
+      .click()
+      .get("#empty-basket-message")
+      .contains("Your basket is empty");
+  });
 
-  //test removing a book removes it from the basket
-
-  it("changing the postal region and check the price reflects this", () => {
+  it("changes to the postal region are show in the shipping price and basket total", () => {
     dispatch(addToBasket("9T65B28LLM2MC"));
 
     cy.get("#shipping-selector")
@@ -66,9 +112,9 @@ describe("Basket", () => {
       .get("#basket-total")
       .contains("£12.50");
   });
+
+  // it.only("test checkout button takes user to stripe", () => {
+  //   dispatch(addToBasket("9T65B28LLM2MC"));
+  //   cy.get("#checkout-button").click().wait(5000).url();
+  // });
 });
-
-//test that with no items in the cart the options to buy/postal charges are removed
-
-//test checkout button takes user to stripe
-// });
