@@ -5,7 +5,7 @@ import styled from "styled-components/macro";
 import { PageWrapper, Text } from "../Common";
 
 const Banner = styled.img`
-  width: 100%;
+  width: min(100%, 500px);
   @media only screen and (max-width: 600px) {
     margin-top: 1rem;
     margin-bottom: 1rem;
@@ -13,9 +13,12 @@ const Banner = styled.img`
 `;
 
 const BannerWrap = styled.div`
-  width: 100%;
-  margin: 0 auto;
-  position: relative;
+  display: flex;
+  justify-content: center;
+`;
+
+const TextWrap = styled.div`
+  width: min(100%, 750px);
 `;
 
 const About: React.FC<RouteComponentProps> = () => {
@@ -27,15 +30,17 @@ const About: React.FC<RouteComponentProps> = () => {
           className="Banner"
         />
       </BannerWrap>
-      <Text
-        text="<p>Monitor is a publication platform for poetry, innovative writing and
+      <TextWrap>
+        <Text
+          text="<p>Monitor is a publication platform for poetry, innovative writing and
         criticism based in Manchester, UK. Its first publication, Murmur
         Anthology #1, was published September 2019, and its second book is Amy McCauley’s Propositions, which is published this November.</p>"
-      ></Text>
-      <Text
-        text="<p>For submissions and contact, please email:
+        ></Text>
+        <Text
+          text="<p>For submissions and contact, please email:
         <a href='mailto:editor@monitorbooks.co.uk'>editor@monitorbooks.co.uk</a></p>"
-      ></Text>
+        ></Text>
+      </TextWrap>
     </PageWrapper>
   );
 };
