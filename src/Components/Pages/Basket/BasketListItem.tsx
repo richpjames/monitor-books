@@ -25,6 +25,12 @@ const RemoveFromCartButton = styled.button`
   font-size: 0.75em;
 `;
 
+const PriceWrapper = styled.div`
+  height: 100%;
+  display: flex;
+  align-items: center;
+`;
+
 interface Props {
   addToBasket: (id: string) => void;
   decrementInCart: (id: string) => void;
@@ -48,12 +54,13 @@ const BasketListItem = ({
   index,
   quantity,
   removeFromBasket,
+  price,
   stock,
   subtitle,
   title,
   slug,
 }: Props) => {
-  const basketItemLabel = title.toLowerCase();
+  const basketItemLabel = slug.toLowerCase();
   return (
     <ListItemContainer
       index={index}
@@ -61,7 +68,6 @@ const BasketListItem = ({
       width="100%"
       horizontalMargin="5rem"
       topMargin="2rem"
-      className={subtitle}
     >
       <ListItemPhotoWrap width="40%" onClick={() => navigate(slug)}>
         <ListItemPhoto src={imageSrc} />
@@ -71,6 +77,9 @@ const BasketListItem = ({
         <ListItemSubtitle id={`${basketItemLabel}-subtitle`}>
           {subtitle}
         </ListItemSubtitle>
+        <PriceWrapper>
+          <p>£{price}</p>
+        </PriceWrapper>
         <QuantityPanel
           addToCart={() => addToBasket(id)}
           decrementInCart={() => decrementInCart(id)}
