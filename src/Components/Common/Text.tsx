@@ -20,7 +20,7 @@ const RightSection = styled(LeftSection)`
   }
 `;
 
-const ErrorTextWrapper = styled.p`
+const ErrorTextWrapper = styled.span`
   color: #ec9696;
 `;
 
@@ -62,6 +62,12 @@ export const Text: React.FC<{ text: string; colour?: string }> = ({ text }) => (
   <TextWrapper dangerouslySetInnerHTML={{ __html: sanitize(text) }} />
 );
 
-export const ErrorText: React.FC<{ text: string }> = ({ text }) => (
-  <ErrorTextWrapper>{text}</ErrorTextWrapper>
+export const ErrorText: React.FC<{ line1: string; line2: string }> = ({
+  line1,
+  line2,
+}) => (
+  <>
+    <ErrorTextWrapper>{line1}</ErrorTextWrapper>
+    <ErrorTextWrapper>{line2}</ErrorTextWrapper>
+  </>
 );

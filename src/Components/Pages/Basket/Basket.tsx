@@ -69,8 +69,8 @@ const Basket = ({
   } else if (hasError) {
     basketComponent = (
       <ErrorText
-        text={`Something has gone wrong :(
-          Please try again or contact contact@monitorbooks.co.uk`}
+        line1="Something has gone wrong :("
+        line2="Please try again or contact contact@monitorbooks.co.uk"
       />
     );
   }

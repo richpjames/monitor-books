@@ -85,7 +85,7 @@ const BasketListItem = ({
           decrementInCart={() => decrementInCart(id)}
           outOfStock={stock < 0}
           quantity={quantity}
-          id={`${basketItemLabel}-quantity-panel`}
+          label={basketItemLabel}
         />
         <RemoveFromCartButton
           onClick={() => removeFromBasket(id, quantity)}

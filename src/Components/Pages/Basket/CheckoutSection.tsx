@@ -39,7 +39,11 @@ export const CheckoutSection: React.FC<Props> = ({
         shippingOptions={shippingOptions}
       />
       <BasketTotal total={`${twoDecimalPlaces(+total + shipping.price)}`} />
-      <CTAButton onClick={onCheckoutClicked} disabled={!hasItems}>
+      <CTAButton
+        onClick={onCheckoutClicked}
+        disabled={!hasItems}
+        id="checkout-button"
+      >
         Checkout
       </CTAButton>
     </CheckoutSectionWrap>
