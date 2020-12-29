@@ -77,17 +77,20 @@ const BasketContainer = ({
   );
 };
 
-const mapStateToProps = (state: State) => ({
-  hasError: state.cart.config.hasError,
-  hasItems: +getTotal(state) > 0,
-  loading: state.cart.loading,
-  productIds: state.cart.addedIds,
-  productsById: state.products.byId,
-  quantityById: state.cart.quantityById,
-  shipping: state.cart.shipping,
-  shippingCosts: shippingCosts,
-  total: getTotal(state),
-});
+const mapStateToProps = (state: State) => {
+  const { cart, products } = state;
+  return {
+    hasError: cart.config.hasError,
+    hasItems: +getTotal(state) > 0,
+    loading: cart.loading,
+    productIds: cart.addedIds,
+    productsById: products.byId,
+    quantityById: cart.quantityById,
+    shipping: cart.shipping,
+    shippingCosts: shippingCosts,
+    total: getTotal(state),
+  };
+};
 
 export default connect(mapStateToProps, { checkout, setShipping, setLoading })(
   BasketContainer
