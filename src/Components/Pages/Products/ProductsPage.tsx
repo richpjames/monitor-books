@@ -32,6 +32,8 @@ export const ProductsPage: FunctionComponent<Props> = ({ books, bookIds }) => {
       <ListWrap>
         {bookIds.map((bookId, index) => {
           const { slug, title, author, thumbnail, imagePath } = books[bookId];
+          const lowercaseTitle = title.toLocaleLowerCase();
+
           return (
             <ListItemContainer
               index={index}
@@ -40,13 +42,14 @@ export const ProductsPage: FunctionComponent<Props> = ({ books, bookIds }) => {
               horizontalMargin="0rem"
               topMargin="1rem"
               key={index}
-              to={`${productsPageName}/${slug}`}
+              to={slug}
               id={`${slug}-container`}
             >
               <ListItemPhotoWrap width="30%">
                 <ListItemPhoto
                   id={`${slug}-photo`}
                   src={`${mainImageUrl}${imagePath}/thumbnails/${thumbnail}`}
+                  alt={`a photo of the book ${lowercaseTitle} by ${author}`}
                 />
               </ListItemPhotoWrap>
               <MetaInfoContainer index={index} width="40%">
