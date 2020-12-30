@@ -41,15 +41,19 @@ export const ProductsPage: FunctionComponent<Props> = ({ books, bookIds }) => {
               topMargin="1rem"
               key={index}
               to={`${productsPageName}/${slug}`}
+              id={`${slug}-container`}
             >
               <ListItemPhotoWrap width="30%">
                 <ListItemPhoto
+                  id={`${slug}-photo`}
                   src={`${mainImageUrl}${imagePath}/thumbnails/${thumbnail}`}
                 />
               </ListItemPhotoWrap>
               <MetaInfoContainer index={index} width="40%">
-                <ListItemTitle>{title}</ListItemTitle>
-                <ListItemSubtitle>{author}</ListItemSubtitle>
+                <ListItemTitle id={`${slug}-title`}>{title}</ListItemTitle>
+                <ListItemSubtitle id={`${slug}-subtitle`}>
+                  {author}
+                </ListItemSubtitle>
               </MetaInfoContainer>
             </ListItemContainer>
           );
