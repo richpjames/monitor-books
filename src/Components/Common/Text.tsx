@@ -44,12 +44,12 @@ export const SplitText = (props: Props) => {
   return (
     <TextWrapper className="TextWrapper">
       <LeftSection
-        className="LeftSection"
+        className="left-section"
         dangerouslySetInnerHTML={{ __html: sanitize(leftText) }}
       />
       <RightSection>
         <div
-          className="RightSection"
+          className="right-section"
           dangerouslySetInnerHTML={{ __html: sanitize(rightText) }}
         />
         {addToBasketButton}
