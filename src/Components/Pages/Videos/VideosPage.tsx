@@ -40,6 +40,7 @@ export const VideosPage: React.FC<VideosPageProps> = ({ videos, videoIds }) => {
               topMargin="1rem"
               key={index}
               to={`murmur-reading-series/${slug}`}
+              id={`${slug}-video-list-container`}
             >
               <ListItemPhotoWrap width="30%">
                 <ListItemPhoto src={`${mainImageUrl}/vids/${thumbnail}`} />
