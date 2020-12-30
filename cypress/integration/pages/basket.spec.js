@@ -1,4 +1,4 @@
-import { addToBasket, decrementInCart } from "../../../src/actions";
+import { addToBasket } from "../../../src/actions";
 import { saveState } from "../../../src/sessionStorage";
 
 const dispatch = (action) =>
