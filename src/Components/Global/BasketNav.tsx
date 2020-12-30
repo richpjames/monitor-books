@@ -50,7 +50,7 @@ const BasketIcon: React.FC<BasketIconProps> = ({ totalQuantity }) => {
   return (
     <Container>
       <IconWrapper>
-        <Number className="header-basket-items">{totalQuantity}</Number>
+        <Number id="header-basket-items">{totalQuantity}</Number>
         <Icon color={text} />
       </IconWrapper>
     </Container>
