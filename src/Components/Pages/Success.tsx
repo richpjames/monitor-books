@@ -13,7 +13,7 @@ export const Success: React.FC<RouteComponentProps> = () => {
   return (
     <PageWrapper>
       <InfoSection>
-        <PageTitle>Success</PageTitle>
+        <PageTitle>Order Successful</PageTitle>
         <Text
           text={`<p>Everything went through ok.<br /> Thanks for your order. <br /> You will receive an email with details. <br /> For enquiries contact@monitorbooks.co.uk</p>`}
         />
