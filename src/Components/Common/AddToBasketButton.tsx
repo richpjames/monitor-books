@@ -25,7 +25,6 @@ interface AddToBasketButtonProps {
   addToBasket: (id: string) => void;
   id: string;
   borderColour: string;
-  linkTo: string;
   publishDate: string;
 }
 
@@ -35,7 +34,6 @@ const AddToBasketButton: React.FC<AddToBasketButtonProps> = ({
   addToBasket,
   id,
   borderColour,
-  linkTo,
   publishDate,
 }) => {
   const inCart = cartQuantity > 0;
@@ -48,12 +46,12 @@ const AddToBasketButton: React.FC<AddToBasketButtonProps> = ({
 
   let onClick = () => {
     if (!inCart) return addToBasket(id);
-    else return navigate("linkTo");
+    else return navigate("/basket");
   };
 
   if (inCart) {
     buttonMessage = "In basket";
-    onClick = () => navigate(linkTo);
+    onClick = () => navigate("/basket");
   } else if (inventoryQuantity < 1) {
     buttonMessage = "Out of stock";
   }
