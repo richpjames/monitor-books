@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import { background, text } from "../../constants";
 import { addToBasket } from "../../actions";
 
-const ButtonStyles = styled.button`
+const ButtonStyles = styled.button<{ borderColour: string }>`
   width: 150px;
   height: 40px;
   background: ${background};
@@ -19,7 +19,17 @@ const ButtonWrapper = styled.div`
   padding-top: 1rem;
 `;
 
-const AddToBasketButton = ({
+interface AddToBasketButtonProps {
+  cartQuantity: number;
+  inventoryQuantity: number;
+  addToBasket: (id: string) => void;
+  id: string;
+  borderColour: string;
+  linkTo: string;
+  publishDate: string;
+}
+
+const AddToBasketButton: React.FC<AddToBasketButtonProps> = ({
   cartQuantity,
   inventoryQuantity,
   addToBasket,
@@ -36,7 +46,10 @@ const AddToBasketButton = ({
     buttonMessage = "Pre-order";
   }
 
-  let onClick = () => addToBasket(id);
+  let onClick = () => {
+    if (!inCart) return addToBasket(id);
+    else return navigate("linkTo");
+  };
 
   if (inCart) {
     buttonMessage = "In basket";
@@ -59,7 +72,7 @@ const AddToBasketButton = ({
   );
 };
 
-const mapStateToProps = (state, { id }) => ({
+const mapStateToProps = (state: State, { id }: { id: string }) => ({
   cartQuantity: state.cart.quantityById[id],
   inventoryQuantity: state.products.byId[id].inventory,
   id: id,
