@@ -41,7 +41,6 @@ const ProductPage = ({
   rightDescription,
   id,
   imagePath,
-  path,
 }: Props) => {
   return (
     <ProductPageWrapper>
@@ -56,9 +55,7 @@ const ProductPage = ({
         <SplitText
           leftText={leftDescription}
           rightText={rightDescription}
-          addToBasketButton={
-            <AddToBasketButton id={id} borderColour={text} linkTo={path} />
-          }
+          addToBasketButton={<AddToBasketButton id={id} borderColour={text} />}
         />
       </InfoSection>
     </ProductPageWrapper>
