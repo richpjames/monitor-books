@@ -42,5 +42,5 @@ describe("Product Page", () => {
       .contains("Basket");
   });
 
-  //test lightbox
+  //test images
 });
