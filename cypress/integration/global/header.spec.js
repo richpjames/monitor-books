@@ -36,8 +36,8 @@ describe("Header", () => {
   });
 
   it("adding item to basket increases the item count in the basket icon", () => {
-    cy.get(".header-basket-items").contains("0");
+    cy.get("#header-basket-items").contains("0");
     dispatch(addToBasket("9T65B28LLM2MC"));
-    cy.get(".header-basket-items").contains("1");
+    cy.get("#header-basket-items").contains("1");
   });
 });
