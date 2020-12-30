@@ -22,6 +22,8 @@ describe("Basket", () => {
       .get("#anthology-subtitle")
       .contains("MURMUR ANTHOLOGY 1")
       .get("#anthology-quantity-panel")
+      .get("#anthology-price")
+      .contains("£10")
       .contains("1");
   });
 

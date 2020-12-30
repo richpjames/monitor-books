@@ -25,8 +25,8 @@ const RemoveFromCartButton = styled.button`
   font-size: 0.75em;
 `;
 
-const PriceWrapper = styled.div`
-  height: 100%;
+const PriceWrapper = styled.p`
+  padding-top: 0.5rem;
   display: flex;
   align-items: center;
 `;
@@ -77,9 +77,7 @@ const BasketListItem = ({
         <ListItemSubtitle id={`${basketItemLabel}-subtitle`}>
           {subtitle}
         </ListItemSubtitle>
-        <PriceWrapper>
-          <p>£{price}</p>
-        </PriceWrapper>
+        <PriceWrapper id={`${basketItemLabel}-price`}>£{price}</PriceWrapper>
         <QuantityPanel
           addToCart={() => addToBasket(id)}
           decrementInCart={() => decrementInCart(id)}
