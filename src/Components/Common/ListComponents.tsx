@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
-import { navigate } from "@reach/router";
+import { Link } from "@reach/router";
 
 import { PageTitle } from "./Titles";
 import { background, text } from "../../constants";
@@ -16,7 +16,7 @@ interface ListItemContainerProps {
   id: string;
 }
 
-export const ListItemContainerWrap = styled.div<ListItemContainerProps>`
+export const ListItemContainerWrap = styled(Link)<ListItemContainerProps>`
   display: flex;
   justify-content: center;
   height: ${(props) => props.height};
@@ -40,20 +40,14 @@ export const ListItemContainer: React.FC<ListItemContainerProps> = ({
   to,
   children,
   ...rest
-}) => (
-  <ListItemContainerWrap
-    onClick={
-      to
-        ? () => {
-            navigate(to);
-          }
-        : undefined
-    }
-    {...rest}
-  >
-    {children}
-  </ListItemContainerWrap>
-);
+}) => {
+  to = to || "";
+  return (
+    <ListItemContainerWrap to={to} {...rest}>
+      {children}
+    </ListItemContainerWrap>
+  );
+};
 export const MetaInfoContainer = styled.div<{ index: number; width: string }>`
   display: flex;
   flex-direction: column;
