@@ -26,6 +26,7 @@ export const ListItemContainerWrap = styled(Link)<ListItemContainerProps>`
   margin-top: ${(props) => (props.index < 1 ? "0" : props.topMargin)};
   border-top: 1px solid ${text};
   border-bottom: 1px solid ${text};
+  text-decoration: none;
   @media only screen and (max-width: 600px) {
     flex-direction: column;
     padding-left: 0;
