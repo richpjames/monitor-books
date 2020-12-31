@@ -55,7 +55,7 @@ describe("Basket", () => {
     dispatch(addToBasket("9T65B28LLM2MD"));
     dispatch(addToBasket("9T65B28LLM2MC"));
     cy.get("#basket-total")
-      .contains("£22")
+      .contains("£20")
       .get("#propositions-decrease-quantity-button")
       .click()
       .get("#basket-total")
@@ -68,7 +68,7 @@ describe("Basket", () => {
       .click()
       .click()
       .get("#basket-total")
-      .contains("£42");
+      .contains("£38");
   });
 
   it("test that when quantity is 0 decreasing is disabled and quantity is 0", () => {
