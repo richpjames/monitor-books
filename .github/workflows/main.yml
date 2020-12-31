@@ -33,6 +33,16 @@ jobs:
       - name: Run buildProd
         run: yarn run buildProd
 
+      - name: Wait for Netlify Deployment
+        # You may pin to the exact commit or the version.
+        # uses: probablyup/wait-for-netlify-action@0855dade13fa1445d67907d2b5b2ce470e38c468
+        uses: probablyup/wait-for-netlify-action@3.2.0
+        with:
+          # The Netlify site ID to test against, get this from the Netlify UI under site settings.
+          site_id: e389ca06-6eb8-4e58-b33c-9817182f8d2d
+          # The max time to wait after the deployment is ready for a valid HTTP status code.
+          max_timeout: 20
+
       - name: Cypress.io
        # You may pin to the exact commit or the version.
        # uses: cypress-io/github-action@6e6d77eeb1dda289679ea46f13aff1ec4d879d55
