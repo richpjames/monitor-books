@@ -4,7 +4,7 @@ import styled from "styled-components/macro";
 
 import { mainImageUrl } from "../../../constants";
 import {
-  ListItemContainer,
+  ListItemContainerWrap,
   ListItemPhoto,
   VideoCreatorName,
   PageWrapper,
@@ -32,7 +32,7 @@ export const VideosPage: React.FC<VideosPageProps> = ({ videos, videoIds }) => {
         {videoIds.map((videoId, index) => {
           const { slug, creators, thumbnail, title } = videos[videoId];
           return (
-            <ListItemContainer
+            <ListItemContainerWrap
               index={index}
               height="50%"
               width="100%"
@@ -59,7 +59,7 @@ export const VideosPage: React.FC<VideosPageProps> = ({ videos, videoIds }) => {
                   </VideoCreatorName>
                 ))}
               </VideoCreatorContainer>
-            </ListItemContainer>
+            </ListItemContainerWrap>
           );
         })}
       </ListWrap>

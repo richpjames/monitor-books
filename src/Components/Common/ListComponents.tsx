@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components/macro";
 import { Link } from "@reach/router";
 
@@ -11,7 +10,6 @@ interface ListItemContainerProps {
   width: string;
   horizontalMargin: string;
   topMargin: string;
-  to?: string;
   className?: string;
   id: string;
 }
@@ -37,18 +35,27 @@ export const ListItemContainerWrap = styled(Link)<ListItemContainerProps>`
   }
 `;
 
-export const ListItemContainer: React.FC<ListItemContainerProps> = ({
-  to,
-  children,
-  ...rest
-}) => {
-  to = to || "";
-  return (
-    <ListItemContainerWrap to={to} {...rest}>
-      {children}
-    </ListItemContainerWrap>
-  );
-};
+export const BasketListItemContainerWrap = styled.div<ListItemContainerProps>`
+  display: flex;
+  justify-content: center;
+  height: ${(props) => props.height};
+  width: ${(props) => props.width};
+  margin-left: ${(props) => props.horizontalMargin};
+  margin-right: ${(props) => props.horizontalMargin};
+  margin-top: ${(props) => (props.index < 1 ? "0" : props.topMargin)};
+  border-top: 1px solid ${text};
+  border-bottom: 1px solid ${text};
+  text-decoration: none;
+  @media only screen and (max-width: 600px) {
+    flex-direction: column;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+  }
+`;
+
 export const MetaInfoContainer = styled.div<{ index: number; width: string }>`
   display: flex;
   flex-direction: column;

@@ -10,7 +10,7 @@ import {
 } from "../../../actions";
 import { QuantityPanel } from "./QuantityPanel";
 import {
-  ListItemContainer,
+  BasketListItemContainerWrap,
   MetaInfoContainer,
   ListItemTitle,
   ListItemSubtitle,
@@ -60,9 +60,11 @@ const BasketListItem = ({
   title,
   slug,
 }: Props) => {
+  console.log(stock, "outOfStock");
+
   const basketItemLabel = slug.toLowerCase();
   return (
-    <ListItemContainer
+    <BasketListItemContainerWrap
       index={index}
       height="20%"
       width="100%"
@@ -95,7 +97,7 @@ const BasketListItem = ({
           X
         </RemoveFromCartButton>
       </MetaInfoContainer>
-    </ListItemContainer>
+    </BasketListItemContainerWrap>
   );
 };
 

@@ -2,9 +2,9 @@ import React, { FunctionComponent } from "react";
 import { RouteComponentProps } from "@reach/router";
 import styled from "styled-components/macro";
 
-import { mainImageUrl, productsPageName } from "../../../constants";
+import { mainImageUrl } from "../../../constants";
 import {
-  ListItemContainer,
+  ListItemContainerWrap,
   ListItemPhotoWrap,
   ListItemPhoto,
   MetaInfoContainer,
@@ -35,7 +35,7 @@ export const ProductsPage: FunctionComponent<Props> = ({ books, bookIds }) => {
           const lowercaseTitle = title.toLocaleLowerCase();
 
           return (
-            <ListItemContainer
+            <ListItemContainerWrap
               index={index}
               height="50%"
               width="100%"
@@ -58,7 +58,7 @@ export const ProductsPage: FunctionComponent<Props> = ({ books, bookIds }) => {
                   {author}
                 </ListItemSubtitle>
               </MetaInfoContainer>
-            </ListItemContainer>
+            </ListItemContainerWrap>
           );
         })}
       </ListWrap>

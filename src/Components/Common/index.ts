@@ -4,10 +4,11 @@ import { IndividualPhoto } from "./IndividualPhoto";
 import { CTAButton } from "./CTAButton";
 import { Photos } from "./Photos";
 import {
-  ListItemContainer,
+  BasketListItemContainerWrap,
   MetaInfoContainer,
   ListItemSubtitle,
   ListItemPhotoWrap,
+  ListItemContainerWrap,
   Photo as ListItemPhoto,
   ListItemTitle,
   VideoCreatorName,
@@ -26,7 +27,8 @@ export {
   ErrorText,
   IndividualPhoto,
   InfoSection,
-  ListItemContainer,
+  BasketListItemContainerWrap,
+  ListItemContainerWrap,
   ListItemPhoto,
   ListItemPhotoWrap,
   ListItemSubtitle,
