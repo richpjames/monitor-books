@@ -24,10 +24,14 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+        
+      # does an install 
+      - name: Run install
+        run: yarn install
 
-      # Runs a single command using the runners shell
+# Runs a single command using the runners shell
       - name: Run buildProd
-        run: npm run buildProd
+        run: yarn run buildProd
 
       - name: Cypress.io
        # You may pin to the exact commit or the version.
