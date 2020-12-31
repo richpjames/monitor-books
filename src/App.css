@@ -36,6 +36,7 @@ h2 {
 h3 {
     font-size:  1.45rem;
     font-family: 'GT America', sans-serif;
+    text-decoration: none;
  }
 
 
@@ -43,7 +44,6 @@ h4 {
     font-size: 1.4em;
     font-family: 'GT America', sans-serif;
     font-weight: 100;
-
     }
 
 h5 {  font-size: .95em;    }
