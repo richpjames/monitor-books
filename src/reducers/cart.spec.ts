@@ -13,7 +13,7 @@ describe("reducers", () => {
       quantityById: {},
       shipping: defaultShipping,
       loading: false,
-      config: { showSlideshow: false, hasError: false },
+      config: { hasError: false },
     };
 
     it("should provide the initial state", () => {
@@ -38,15 +38,9 @@ describe("reducers", () => {
     it("should handle ADD_TO_CART action", () => {
       const state = { ...initialState, addedIds: [1], quantityById: { 1: 1 } };
       expect(cart(state, { type: "ADD_TO_CART", productId: 1 })).toEqual({
+        ...initialState,
         addedIds: [1],
         quantityById: { 1: 2 },
-        shipping: {
-          price: 2,
-          priceId: "price_1HMwTgJs9ciiqN7OnYGR5rOp",
-          region: "UK",
-        },
-        loading: false,
-        config: { showSlideshow: false, hasError: false },
       });
     });
     it("should handle DECREMENT_IN_CART action", () => {
@@ -56,15 +50,9 @@ describe("reducers", () => {
         quantityById: { 1: 1 },
       };
       expect(cart(state, { type: "DECREMENT_IN_CART", productId: 1 })).toEqual({
+        ...initialState,
         addedIds: [1],
         quantityById: { 1: 0 },
-        shipping: {
-          price: 2,
-          priceId: "price_1HMwTgJs9ciiqN7OnYGR5rOp",
-          region: "UK",
-        },
-        loading: false,
-        config: { showSlideshow: false, hasError: false },
       });
     });
 
