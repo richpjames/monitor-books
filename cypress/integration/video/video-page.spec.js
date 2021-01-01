@@ -1,9 +1,9 @@
 import { saveState } from "../../../src/sessionStorage";
 
-describe("Product Page", () => {
+describe("Video Page", () => {
   beforeEach(() =>
     cy.fixture("initialisedState").then((initialisedState) =>
-      cy.visit("/books/propositions", {
+      cy.visit("/murmur-reading-series/murmur-episode-two", {
         onBeforeLoad: (win) => {
           saveState(initialisedState);
         },
@@ -11,36 +11,13 @@ describe("Product Page", () => {
     )
   );
   it("test correct information is shown for product", () => {
-    cy.url()
-      .should("include", "/propositions")
-      .get("h1")
-      .contains("Amy")
-      .get("h1")
-      .contains("PROPOSITIONS")
+    cy.get("h1")
+      .contains("Murmur Reading Series #2")
       .get(".left-section")
-      .contains(
-        "A fragmentary treatise on desire and its consequences, Propositions is a playful examination of how we constitute and disassemble the self in language"
-      )
+      .contains("Originally a programme of occasional live events")
       .get(".right-section")
-      .contains("Designed by John Newton and Rory Cook");
-  });
-  it("Clicking on Add to basket button adds item to basket", () => {
-    return cy
-      .get(".add-to-basket")
-      .click()
-      .get("#header-basket-items")
-      .contains("1");
+      .contains("Nisha Ramayya grew up in Glasgow and is based in London.");
   });
 
-  it("Clicking add to basket button for a second time takes customer to basket", () => {
-    cy.get(".add-to-basket")
-      .click()
-      .click()
-      .url()
-      .should("include", "/basket")
-      .get("h1")
-      .contains("Basket");
-  });
-
-  //test images
+  //test video is shown
 });
