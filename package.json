@@ -44,11 +44,8 @@
     "functions": "cd functions && npm i && cd ..",
     "dev": "netlify dev",
     "ci-unit-tests": "react-scripts test --watchAll=false --env=jest-environment-jsdom-sixteen",
-    "cypress": "npx cypress run",
-    "test": "yarn cypress",
-    "cypressLink": "npx cypress run --record --key f21a23f6-c018-4a0e-94ba-00b643cd0256",
-    "ci2": "start-server-and-test dev http://localhost:8888 cypressLink",
-    "ci": "start-server-and-test dev http://localhost:8888 test",
+    "cypress": "npx cypress run --record --key f21a23f6-c018-4a0e-94ba-00b643cd0256",
+    "ci": "start-server-and-test dev http://localhost:8888 cypress",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
