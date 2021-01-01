@@ -38,7 +38,7 @@ describe("Product Page", () => {
       .click()
       .url()
       .should("include", "/basket")
-      .get("h1")
+      .get("#basket-title")
       .contains("Basket");
   });
 

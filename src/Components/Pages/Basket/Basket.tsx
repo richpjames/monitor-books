@@ -77,7 +77,7 @@ const Basket = ({
 
   return (
     <PageWrapper>
-      <ListTitle>Basket</ListTitle>
+      <ListTitle id="basket-title">Basket</ListTitle>
       {basketComponent}
     </PageWrapper>
   );
