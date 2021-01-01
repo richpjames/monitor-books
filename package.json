@@ -45,7 +45,7 @@
     "dev": "netlify dev",
     "ci-unit-tests": "react-scripts test --watchAll=false --env=jest-environment-jsdom-sixteen",
     "cypress": "npx cypress run",
-    "test": "yarn ci-unit-tests && yarn cypress",
+    "test": "yarn cypress",
     "ci": "start-server-and-test dev http://localhost:8888 test",
     "eject": "react-scripts eject"
   },
