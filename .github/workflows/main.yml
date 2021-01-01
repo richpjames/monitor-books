@@ -33,6 +33,10 @@ jobs:
       - name: Run buildProd
         run: yarn run buildProd
 
-# runs tests
-      - name: run tests
+# run unit tests
+      - name: run unit tests
+        run: yarn ci-unit-tests
+        
+# run e2e tests
+      - name: run e2e tests
         run: yarn ci
