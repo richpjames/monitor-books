@@ -39,7 +39,7 @@ jobs:
     needs: [setup]
     steps:
       - name: run e2e tests
-        uses: ./
+        working-directory: client
         run: yarn ci
         
 
@@ -48,7 +48,7 @@ jobs:
     needs: [setup] 
     steps:  
     - name: Run buildProd
-      uses: ./
+      working-directory: client
       run: yarn run buildProd
 
 
