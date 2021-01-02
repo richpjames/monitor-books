@@ -31,6 +31,7 @@ jobs:
     needs: [setup]
     steps:
       - name: run unit tests
+        uses: ./
         run: yarn ci-unit-tests
 
   e2e_tests:
@@ -38,6 +39,7 @@ jobs:
     needs: [setup]
     steps:
       - name: run e2e tests
+        uses: ./
         run: yarn ci
         
 
@@ -46,6 +48,7 @@ jobs:
     needs: [setup] 
     steps:  
     - name: Run buildProd
+      uses: ./
       run: yarn run buildProd
 
 
