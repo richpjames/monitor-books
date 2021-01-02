@@ -33,7 +33,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: run unit tests
-        working-directory: ./
         run: yarn ci-unit-tests
 
   e2e_tests:
@@ -42,7 +41,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: run e2e tests
-        working-directory: client
+        
         run: yarn ci
         
 
@@ -52,7 +51,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Run buildProd
-      working-directory: client
+      
       run: yarn run buildProd
 
 
