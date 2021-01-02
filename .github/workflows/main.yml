@@ -31,7 +31,7 @@ jobs:
     needs: [setup]
     steps:
       - name: run unit tests
-        uses: ./
+        working-directory: client
         run: yarn ci-unit-tests
 
   e2e_tests:
