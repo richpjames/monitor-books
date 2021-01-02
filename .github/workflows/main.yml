@@ -16,42 +16,36 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
 
-  setup:
-    runs-on: ubuntu-latest
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-        
-      # does an install 
-      - name: Run install
-        run: yarn install
-
   cypress_tests: 
     runs-on: ubuntu-latest
-    
-    needs: [setup]
     steps:
       - uses: actions/checkout@v2
+          # does an install 
+      - name: Run install
+        run: yarn install
       - name: run unit tests
         run: yarn ci-unit-tests
 
   e2e_tests:
     runs-on: ubuntu-latest
-    needs: [setup]
     steps:
       - uses: actions/checkout@v2
+          # does an install 
+      - name: Run install
+        run: yarn install
       - name: run e2e tests
-        
         run: yarn ci
         
 
   build:
     runs-on: ubuntu-latest
-    needs: [setup] 
     steps:
     - uses: actions/checkout@v2
-    - name: Run buildProd
+          # does an install 
+    - name: Run install
+      run: yarn install
       
+    - name: Run buildProd
       run: yarn run buildProd
 
 
