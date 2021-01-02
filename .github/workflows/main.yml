@@ -16,7 +16,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
 
-  cypress_tests: 
+  unit_tests: 
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -44,7 +44,7 @@ jobs:
           # does an install 
     - name: Run install
       run: yarn install
-      
+
     - name: Run buildProd
       run: yarn run buildProd
 
