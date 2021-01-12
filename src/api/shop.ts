@@ -3,6 +3,7 @@ import { getDevBooks } from "./devBooks";
 import { getProdBooks } from "./prodBooks";
 import { handleCheckout } from "./stripe-purchase";
 
+//eslint-disable-next-line
 export default {
   getProducts:
     process.env.NODE_ENV === "development" ? getDevBooks : getProdBooks,
