@@ -24,7 +24,7 @@ const ProductPageWrapper = styled(PageWrapper)`
 `;
 
 interface Props extends RouteComponentProps {
-  photos: number[];
+  photos: string[];
   title: string;
   author: string;
   leftDescription: string;

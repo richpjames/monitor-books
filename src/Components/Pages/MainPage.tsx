@@ -52,7 +52,7 @@ const MainPage = ({
         <Header />
         <Router>
           <ProductPage id="9T65B28LLM2MD" path="/" />
-          {/* <RoutingContainer path={productsPageName}>
+          <RoutingContainer path={productsPageName}>
             <ProductsPage bookIds={bookIds} books={books} path="/" />
             {bookIds.map((bookId) => {
               const { slug } = books[bookId];
@@ -74,7 +74,7 @@ const MainPage = ({
           <BasketContainer path="/basket" />
           <About path="/about" />
           <Success path="/success" />
-          <NotFound default /> */}
+          <NotFound default />
         </Router>
         {/* this prevents the page from opening at the centre */}
         <OnRouteChange action={() => window.scrollTo(0, 0)} />

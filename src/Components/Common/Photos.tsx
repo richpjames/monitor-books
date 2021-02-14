@@ -22,7 +22,7 @@ const PhotoContainer = styled.div`
 `;
 
 interface PhotosProps {
-  photos: number[];
+  photos: string[];
   url: string;
   imageThumbnailHeight: string;
   imageThumbnailWidth: string;
@@ -33,14 +33,8 @@ export const Photos = (props: PhotosProps) => {
   const [photoIndex, setPhotoIndex] = useState(0);
   const [galleryOpen, setGalleyOpen] = useState(false);
 
-  const mainURL = `${mainImageUrl}${url}/`;
-
-  const thumbURL = `${mainURL}thumbnails/`;
-
-  const photoNumbers = photos;
-
-  const imageURLs = photoNumbers.map((photo) => `${mainURL}${photo}.jpg`);
-  const thumbURLs = photoNumbers.map((photo) => `${thumbURL}${photo}.jpg`);
+  const imageURLs = photos;
+  const thumbURLs = photos;
 
   const openLightbox = (i: number) => {
     setPhotoIndex(i);

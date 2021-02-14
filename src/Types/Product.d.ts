@@ -1,7 +1,7 @@
 interface Product {
   title: string;
   author: string;
-  photos: number[];
+  photos: string[];
   blurb1: string;
   blurb2: string;
   price: string;
