@@ -34,8 +34,8 @@ const PageWrap = styled.div<{ hide: boolean }>`
 interface Props {
   books?: ById<Product>;
   videos?: ById<Video>;
-  bookIds?: VisibileIds;
-  videoIds?: VisibileIds;
+  bookIds?: VisibleIds;
+  videoIds?: VisibleIds;
   showSlideshow: boolean;
 }
 
@@ -52,7 +52,7 @@ const MainPage = ({
         <Header />
         <Router>
           <ProductPage id="9T65B28LLM2MD" path="/" />
-          <RoutingContainer path={productsPageName}>
+          {/* <RoutingContainer path={productsPageName}>
             <ProductsPage bookIds={bookIds} books={books} path="/" />
             {bookIds.map((bookId) => {
               const { slug } = books[bookId];
@@ -74,7 +74,7 @@ const MainPage = ({
           <BasketContainer path="/basket" />
           <About path="/about" />
           <Success path="/success" />
-          <NotFound default />
+          <NotFound default /> */}
         </Router>
         {/* this prevents the page from opening at the centre */}
         <OnRouteChange action={() => window.scrollTo(0, 0)} />
@@ -86,9 +86,9 @@ const MainPage = ({
 
 const mapStateToProps = (state: State) => {
   const { products, config } = state;
-  const bookIds: VisibileIds = products.visibleIds;
+  const bookIds: VisibleIds = products.visibleIds;
   const books: ProductsById = products.byId;
-  const videoIds: VisibileIds = state.videos.visibleIds;
+  const videoIds: VisibleIds = state.videos.visibleIds;
   const videos: VideosById = state.videos.byId;
   return {
     bookIds,

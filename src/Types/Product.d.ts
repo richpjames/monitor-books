@@ -15,7 +15,7 @@ interface Product {
 }
 interface Products {
   byId: ProductsById;
-  visibleIds: VisibileIds;
+  visibleIds: VisibleIds;
 }
 type ProductsById = ById<Product>;
 interface ProductsAction {

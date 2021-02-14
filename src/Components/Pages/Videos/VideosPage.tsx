@@ -15,7 +15,7 @@ import { PageTitle } from "../../Common/Titles";
 
 interface VideosPageProps extends RouteComponentProps {
   videos: ById<Video>;
-  videoIds: VisibileIds;
+  videoIds: VisibleIds;
 }
 
 const ListWrap = styled.section`

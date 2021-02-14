@@ -16,7 +16,7 @@ import { PageTitle } from "../../Common/Titles";
 
 interface Props extends RouteComponentProps {
   books: ById<Product>;
-  bookIds: VisibileIds;
+  bookIds: VisibleIds;
 }
 
 const ListWrap = styled.section`

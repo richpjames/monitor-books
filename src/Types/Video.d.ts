@@ -17,7 +17,7 @@ type VideoAction = {
 
 type VideosById = ById<Video>;
 
-type Videos = { byId: VideosById; visibleIds: VisibileIds };
+type Videos = { byId: VideosById; visibleIds: VisibleIds };
 
 interface Cart {
   addedIds: AddedIds;

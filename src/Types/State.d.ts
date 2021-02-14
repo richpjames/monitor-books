@@ -8,7 +8,7 @@ interface State {
 
 type AddedIds = string[];
 type ById<T> = { [id: string]: T };
-type VisibileIds = string[];
+type VisibleIds = string[];
 
 type InitialState = {
   cart: Cart;
