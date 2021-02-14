@@ -1,3 +1,4 @@
+import { productMapper } from "../api/mappers";
 import shop from "../api/shop";
 import * as types from "../constants/actionTypes";
 
@@ -12,11 +13,13 @@ const receiveProducts = (products) => {
   return {
     type: types.RECEIVE_PRODUCTS,
     products: products
-      ? products.sort(
-          (a, b) =>
-            new Date(b.publishDate).getTime() -
-            new Date(a.publishDate).getTime()
-        )
+      ? products
+          .map(productMapper)
+          .sort(
+            (a, b) =>
+              new Date(b.publishDate).getTime() -
+              new Date(a.publishDate).getTime()
+          )
       : [],
   };
 };
