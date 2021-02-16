@@ -4,7 +4,7 @@ interface Video {
   blurb1: string;
   blurb2: string;
   url: string;
-  publishedDate: string;
+  publishedDate: Date;
   slug: string;
   thumbnail: string;
   id: string;

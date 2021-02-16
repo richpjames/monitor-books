@@ -5,7 +5,7 @@ interface Product {
   blurb1: string;
   blurb2: string;
   price: number;
-  publishedDate: string;
+  publishedDate: Date;
   id: string;
   slug: string;
   inventory: number;

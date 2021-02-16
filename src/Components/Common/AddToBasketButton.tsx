@@ -25,7 +25,7 @@ interface AddToBasketButtonProps {
   addToBasket: (id: string) => void;
   id: string;
   borderColour: string;
-  publishedDate: string;
+  publishedDate: Date;
 }
 
 const AddToBasketButton: React.FC<AddToBasketButtonProps> = ({

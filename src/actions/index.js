@@ -15,11 +15,7 @@ const receiveProducts = (products) => {
     products: products
       ? products
           .map(productMapper)
-          .sort(
-            (a, b) =>
-              new Date(b.publishDate).getTime() -
-              new Date(a.publishDate).getTime()
-          )
+          .sort((a, b) => b.publishedDate.getTime() - a.publishedDate.getTime())
       : [],
   };
 };
@@ -30,11 +26,7 @@ const receiveVideos = (videos) => {
     videos: videos
       ? videos
           .map(videoMapper)
-          .sort(
-            (a, b) =>
-              new Date(b.publishDate).getTime() -
-              new Date(a.publishDate).getTime()
-          )
+          .sort((a, b) => b.publishedDate.getTime() - a.publishedDate.getTime())
       : [],
   };
 };

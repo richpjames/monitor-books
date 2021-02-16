@@ -30,7 +30,7 @@ interface Props extends RouteComponentProps {
   leftDescription: string;
   rightDescription: string;
   id: string;
-  publishedDate: string;
+  publishedDate: Date;
 }
 
 const ProductPage = ({
