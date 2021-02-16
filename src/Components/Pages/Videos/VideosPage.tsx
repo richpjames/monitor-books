@@ -2,7 +2,6 @@ import React from "react";
 import { RouteComponentProps } from "@reach/router";
 import styled from "styled-components/macro";
 
-import { mainImageUrl } from "../../../constants";
 import {
   ListItemContainerWrap,
   ListItemPhoto,
@@ -30,7 +29,7 @@ export const VideosPage: React.FC<VideosPageProps> = ({ videos, videoIds }) => {
       <PageTitle>Murmur Reading Series</PageTitle>
       <ListWrap>
         {videoIds.map((videoId, index) => {
-          const { slug, creators, thumbnail, title } = videos[videoId];
+          const { slug, artistNames, thumbnail, title } = videos[videoId];
           return (
             <ListItemContainerWrap
               index={index}
@@ -44,7 +43,7 @@ export const VideosPage: React.FC<VideosPageProps> = ({ videos, videoIds }) => {
             >
               <ListItemPhotoWrap width="30%">
                 <ListItemPhoto
-                  src={`${mainImageUrl}/vids/${thumbnail}`}
+                  src={thumbnail}
                   alt={`thumbnail image for ${title} video`}
                 />
               </ListItemPhotoWrap>
@@ -53,7 +52,7 @@ export const VideosPage: React.FC<VideosPageProps> = ({ videos, videoIds }) => {
                 width="40%"
                 id={`${slug}-creators`}
               >
-                {creators.map((creator, index) => (
+                {artistNames.map((creator, index) => (
                   <VideoCreatorName id={`${slug}-creator-${index}`}>
                     {creator}
                   </VideoCreatorName>

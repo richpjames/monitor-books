@@ -19,15 +19,15 @@ const VideoPageWrapper = styled(PageWrapper)`
 `;
 
 export default function VideoPage(props: Props) {
-  const { url, title, creators, description1, description2 } = props.video;
+  const { url, title, artistNames, blurb1, blurb2 } = props.video;
   React.useEffect(() => window.scrollTo(0, 0), []);
   return (
     <VideoPageWrapper>
       <>
         <Video url={url} title={title} />
         <InfoSection>
-          <VideoTitle title={`${title}:`} subtitle={creators} />
-          <SplitText leftText={description1} rightText={description2} />
+          <VideoTitle title={`${title}:`} subtitle={artistNames} />
+          <SplitText leftText={blurb1} rightText={blurb2} />
         </InfoSection>
       </>
     </VideoPageWrapper>

@@ -4,9 +4,8 @@ interface Product {
   photos: string[];
   blurb1: string;
   blurb2: string;
-  price: string;
-  publishDate: string;
-  imagePath: string;
+  price: number;
+  publishedDate: string;
   id: string;
   slug: string;
   inventory: number;

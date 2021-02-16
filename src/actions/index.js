@@ -1,4 +1,4 @@
-import { productMapper } from "../api/mappers";
+import { productMapper, videoMapper } from "../api/mappers";
 import shop from "../api/shop";
 import * as types from "../constants/actionTypes";
 
@@ -28,19 +28,22 @@ const receiveVideos = (videos) => {
   return {
     type: types.RECEIVE_VIDEOS,
     videos: videos
-      ? videos.sort(
-          (a, b) =>
-            new Date(b.publishDate).getTime() -
-            new Date(a.publishDate).getTime()
-        )
+      ? videos
+          .map(videoMapper)
+          .sort(
+            (a, b) =>
+              new Date(b.publishDate).getTime() -
+              new Date(a.publishDate).getTime()
+          )
       : [],
   };
 };
 
-export const fetchVideos = () => (dispatch) =>
+export const fetchVideos = () => (dispatch) => {
   shop.getVideos().then((videos) => {
     dispatch(receiveVideos(videos));
   });
+};
 
 export const fetchProducts = () => (dispatch) =>
   shop.getProducts().then((products) => {

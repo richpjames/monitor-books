@@ -1,10 +1,10 @@
 interface Video {
   title: string;
-  creators: [string, string, string];
-  description1: string;
-  description2: string;
+  artistNames: [string, string, string];
+  blurb1: string;
+  blurb2: string;
   url: string;
-  publishDate: string;
+  publishedDate: string;
   slug: string;
   thumbnail: string;
   id: string;

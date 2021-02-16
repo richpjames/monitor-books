@@ -3,7 +3,6 @@ import styled from "styled-components/macro";
 import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css";
 
-import { mainImageUrl } from "../../constants";
 import { IndividualPhoto } from "./index";
 
 const PhotoWrap = styled.section`
@@ -23,13 +22,12 @@ const PhotoContainer = styled.div`
 
 interface PhotosProps {
   photos: string[];
-  url: string;
   imageThumbnailHeight: string;
   imageThumbnailWidth: string;
 }
 
 export const Photos = (props: PhotosProps) => {
-  const { url, photos, imageThumbnailHeight, imageThumbnailWidth } = props;
+  const { photos, imageThumbnailHeight, imageThumbnailWidth } = props;
   const [photoIndex, setPhotoIndex] = useState(0);
   const [galleryOpen, setGalleyOpen] = useState(false);
 

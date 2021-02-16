@@ -30,7 +30,7 @@ interface Props extends RouteComponentProps {
   leftDescription: string;
   rightDescription: string;
   id: string;
-  imagePath: string;
+  publishedDate: string;
 }
 
 const ProductPage = ({
@@ -40,13 +40,12 @@ const ProductPage = ({
   leftDescription,
   rightDescription,
   id,
-  imagePath,
+  publishedDate,
 }: Props) => {
   return (
     <ProductPageWrapper>
       <Photos
         photos={photos}
-        url={imagePath}
         imageThumbnailHeight={productPageImageHeight}
         imageThumbnailWidth={productPageImageWidth}
       />
@@ -55,7 +54,13 @@ const ProductPage = ({
         <SplitText
           leftText={leftDescription}
           rightText={rightDescription}
-          addToBasketButton={<AddToBasketButton id={id} borderColour={text} />}
+          addToBasketButton={
+            <AddToBasketButton
+              id={id}
+              borderColour={text}
+              publishedDate={publishedDate}
+            />
+          }
         />
       </InfoSection>
     </ProductPageWrapper>
@@ -65,7 +70,7 @@ const ProductPage = ({
 const mapStateToProps = (state: State, ownProps: { id: string }) => {
   const { id } = ownProps;
   const product = state.products.byId[id];
-  const { photos, title, author, blurb1, blurb2, imagePath } = product;
+  const { photos, title, author, blurb1, blurb2, publishedDate } = product;
   return {
     photos: photos,
     title: title,
@@ -73,7 +78,7 @@ const mapStateToProps = (state: State, ownProps: { id: string }) => {
     leftDescription: blurb1,
     rightDescription: blurb2,
     id: id,
-    imagePath: imagePath,
+    publishedDate: publishedDate,
   };
 };
 

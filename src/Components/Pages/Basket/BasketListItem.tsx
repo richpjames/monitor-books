@@ -35,9 +35,9 @@ interface Props {
   addToBasket: (id: string) => void;
   decrementInCart: (id: string) => void;
   id: string;
-  imageSrc: string;
+  thumbnail: string;
   index: number;
-  price: string;
+  price: number;
   quantity: number;
   removeFromBasket: (id: string, quantityToReplace: number) => void;
   stock: number;
@@ -50,7 +50,7 @@ const BasketListItem = ({
   addToBasket,
   decrementInCart,
   id,
-  imageSrc,
+  thumbnail,
   index,
   quantity,
   removeFromBasket,
@@ -73,7 +73,7 @@ const BasketListItem = ({
       id={`${slug}-basket-item`}
     >
       <ListItemPhotoWrap width="40%" onClick={() => navigate(slug)}>
-        <ListItemPhoto src={imageSrc} />
+        <ListItemPhoto src={thumbnail} />
       </ListItemPhotoWrap>
       <MetaInfoContainer index={index} width="40%">
         <ListItemTitle id={`${basketItemLabel}-title`}>{title}</ListItemTitle>

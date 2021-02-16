@@ -2,7 +2,6 @@ import React, { FunctionComponent } from "react";
 import { RouteComponentProps } from "@reach/router";
 import styled from "styled-components/macro";
 
-import { mainImageUrl } from "../../../constants";
 import {
   ListItemContainerWrap,
   ListItemPhotoWrap,
@@ -31,7 +30,7 @@ export const ProductsPage: FunctionComponent<Props> = ({ books, bookIds }) => {
       <PageTitle>Books</PageTitle>
       <ListWrap>
         {bookIds.map((bookId, index) => {
-          const { slug, title, author, thumbnail, imagePath } = books[bookId];
+          const { slug, title, author, thumbnail } = books[bookId];
           const lowercaseTitle = title.toLocaleLowerCase();
 
           return (
@@ -48,7 +47,7 @@ export const ProductsPage: FunctionComponent<Props> = ({ books, bookIds }) => {
               <ListItemPhotoWrap width="30%">
                 <ListItemPhoto
                   id={`${slug}-photo`}
-                  src={`${mainImageUrl}${imagePath}/thumbnails/${thumbnail}`}
+                  src={thumbnail}
                   alt={`a photo of the book ${lowercaseTitle} by ${author}`}
                 />
               </ListItemPhotoWrap>
