@@ -1,15 +1,16 @@
 import { productMapper, videoMapper } from "../api/mappers";
+import { Dispatch } from "redux";
 import shop from "../api/shop";
 import * as types from "../constants/actionTypes";
 
-export const setShowSlideshow = (showSlideshow) => {
+export const setShowSlideshow = (showSlideshow: boolean) => {
   return { type: types.SHOWN_INTRO_SLIDE, showSlideshow };
 };
 
-export const setLoading = (loadingCheckout) => {
+export const setLoading = (loadingCheckout: boolean) => {
   return { type: types.LOADING_CHECKOUT, loadingCheckout };
 };
-const receiveProducts = (products) => {
+const receiveProducts = (products: ApiProduct[]) => {
   return {
     type: types.RECEIVE_PRODUCTS,
     products: products
@@ -20,7 +21,7 @@ const receiveProducts = (products) => {
   };
 };
 
-const receiveVideos = (videos) => {
+const receiveVideos = (videos: ApiVideo[]) => {
   return {
     type: types.RECEIVE_VIDEOS,
     videos: videos
@@ -30,57 +31,69 @@ const receiveVideos = (videos) => {
       : [],
   };
 };
+type receiveVideos = (videos: ApiVideo) => { type: string; videos: Video[] };
 
-export const fetchVideos = () => (dispatch) => {
-  shop.getVideos().then((videos) => {
+export const fetchVideos = () => (dispatch: Dispatch) => {
+  shop.getVideos().then((videos: ApiVideo[]) => {
     dispatch(receiveVideos(videos));
   });
 };
+type fetchVideos = () => () => void;
 
-export const fetchProducts = () => (dispatch) =>
+export const fetchProducts = () => (dispatch: Dispatch) =>
   shop.getProducts().then((products) => {
     dispatch(receiveProducts(products));
   });
 
-const addToBasketUnsafe = (productId) => ({
+const addToBasketUnsafe = (productId: string) => ({
   type: types.ADD_TO_CART,
   productId,
 });
 
-export const addToBasket = (productId) => (dispatch, getState) => {
+export const addToBasket = (productId: string) => (
+  dispatch: Dispatch,
+  getState: GetState
+) => {
   const productsById = getState().products.byId;
   if (productsById[productId].inventory > 0) {
     dispatch(addToBasketUnsafe(productId));
   }
 };
 
-export const setShipping = (shippingInfo) => (dispatch) => {
+export const setShipping = (shippingInfo: Shipping) => (dispatch: Dispatch) => {
   dispatch({
     type: types.SET_SHIPPING,
     shipping: shippingInfo,
   });
 };
 
-const isInBasket = (cart, productId) => cart.addedIds.indexOf(productId) !== -1;
+const isInBasket = (cart: Cart, productId: string) =>
+  cart.addedIds.indexOf(productId) !== -1;
 
-export const decrementInCart = (productId) => (dispatch, getState) => {
+export const decrementInCart = (productId: string) => (
+  dispatch: Dispatch,
+  getState: GetState
+) => {
   const state = getState();
   if (isInBasket(state.cart, productId)) {
     dispatch({ type: types.DECREMENT_IN_CART, productId });
   }
 };
 
-export const removeFromBasket = (productId, quantityToReplace) => (
-  dispatch,
-  getState
-) => {
+export const removeFromBasket = (
+  productId: string,
+  quantityToReplace: number
+) => (dispatch: Dispatch, getState: GetState) => {
   const state = getState();
   if (isInBasket(state.cart, productId)) {
     dispatch({ type: types.REMOVE_FROM_CART, productId, quantityToReplace });
   }
 };
 
-export const checkout = (products) => (dispatch, getState) => {
+export const checkout = (products: any) => (
+  dispatch: Dispatch,
+  getState: GetState
+) => {
   const state = getState();
   const productsById = state.products.byId;
   const { shipping } = state.cart;

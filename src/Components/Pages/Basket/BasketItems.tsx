@@ -23,7 +23,7 @@ type BasketItemsProps = {
   shipping: Shipping;
   setShipping: (index: number) => void;
   shippingOptions: Shipping[];
-  total: string;
+  total: number;
   onCheckoutClicked: (click: React.MouseEvent) => void;
 };
 

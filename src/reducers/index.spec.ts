@@ -30,7 +30,7 @@ describe("selectors", () => {
         },
         videos: [],
       };
-      expect(getTotal(state)).toBe("27.93");
+      expect(getTotal(state)).toBe(27.93);
     });
   });
 

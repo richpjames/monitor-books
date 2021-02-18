@@ -12,6 +12,27 @@ interface Product {
   thumbnail: string;
   priceId: string;
 }
+
+interface ApiProduct {
+  id: number;
+  lefttext: string;
+  righttext: string;
+  published_at: string;
+  created_at: string;
+  updated_at: string;
+  title: string;
+  author: string;
+  publishedDate: string;
+  slug: string;
+  inventory: number;
+  devPriceId: string;
+  prodPriceId: string;
+  thumbnail: string;
+  price: number;
+  images: {
+    fullSize: string[];
+  };
+}
 interface Products {
   byId: ProductsById;
   visibleIds: VisibleIds;

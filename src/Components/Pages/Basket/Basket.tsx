@@ -19,7 +19,7 @@ type IProps = {
   setShipping: (index: number) => void;
   shipping: Shipping;
   shippingOptions: Shipping[];
-  total: string;
+  total: number;
 };
 
 const Basket = ({

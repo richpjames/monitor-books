@@ -25,7 +25,7 @@ interface BasketContainerProps extends RouteComponentProps {
   quantityById: ProductQuantityById;
   shipping: Shipping;
   shippingCosts: Shipping[];
-  total: string;
+  total: number;
 }
 
 const BasketContainer = ({
@@ -81,7 +81,7 @@ const mapStateToProps = (state: State) => {
   const { cart, products } = state;
   return {
     hasError: cart.config.hasError,
-    hasItems: +getTotal(state) > 0,
+    hasItems: getTotal(state) > 0,
     loading: cart.loading,
     productIds: cart.addedIds,
     productsById: products.byId,

@@ -1,22 +1,4 @@
-export const productMapper = (product: {
-  id: number;
-  lefttext: string;
-  righttext: string;
-  published_at: string;
-  created_at: string;
-  updated_at: string;
-  title: string;
-  author: string;
-  publishedDate: string;
-  slug: string;
-  inventory: number;
-  devPriceId: string;
-  prodPriceId: string;
-  thumbnail: string;
-  images: {
-    fullSize: string[];
-  };
-}) => {
+export const productMapper = (product: ApiProduct) => {
   const {
     title,
     author,
@@ -29,12 +11,14 @@ export const productMapper = (product: {
     thumbnail,
     devPriceId,
     prodPriceId,
+    price,
   } = product;
   return {
     title,
     author,
     images,
     slug,
+    price,
     inventory,
     thumbnail,
     devPriceId,
@@ -48,19 +32,8 @@ export const productMapper = (product: {
   };
 };
 
-export const videoMapper = (video: {
-  id: number;
-  title: string;
-  publishedDate: string;
-  slug: string;
-  url: string;
-  thumbnail: string;
-  blurb1: string;
-  blurb2: string;
-  artists: { id: number; Name: string; Description: string }[];
-}) => {
+export const videoMapper = (video: ApiVideo) => {
   const {
-    id,
     title,
     publishedDate,
     slug,
@@ -72,9 +45,9 @@ export const videoMapper = (video: {
   } = video;
   const artistNames = artists.map((artist) => artist.Name);
   return {
-    id,
     title,
     publishedDate: new Date(publishedDate),
+    id: url,
     slug,
     url,
     thumbnail,

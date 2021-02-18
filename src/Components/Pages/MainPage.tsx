@@ -51,7 +51,7 @@ const MainPage = ({
       <PageWrap hide={showSlideshow}>
         <Header />
         <Router>
-          <ProductPage id="9T65B28LLM2MD" path="/" />
+          <ProductPage id="price_1HdckTJs9ciiqN7O218PIefo" path="/" />
           <RoutingContainer path={productsPageName}>
             <ProductsPage bookIds={bookIds} books={books} path="/" />
             {bookIds.map((bookId) => {
