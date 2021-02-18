@@ -9,6 +9,17 @@ interface Video {
   thumbnail: string;
   id: string;
 }
+interface ApiVideo {
+  id: number;
+  title: string;
+  publishedDate: string;
+  slug: string;
+  url: string;
+  thumbnail: string;
+  blurb1: string;
+  blurb2: string;
+  artists: { id: number; Name: string; Description: string }[];
+}
 
 type VideoAction = {
   type: RECEIVE_VIDEOS;

@@ -9,6 +9,7 @@ interface State {
 type AddedIds = string[];
 type ById<T> = { [id: string]: T };
 type VisibleIds = string[];
+type GetState = () => State;
 
 type InitialState = {
   cart: Cart;

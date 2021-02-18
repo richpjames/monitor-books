@@ -39,6 +39,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "test": "react-scripts test",
     "buildDev": "NODE_ENV=development react-scripts build",
     "buildProd": "NODE_ENV=production react-scripts build",
     "functions": "cd functions && npm i && cd ..",

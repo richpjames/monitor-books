@@ -16,7 +16,7 @@ describe("Basket", () => {
   );
 
   it("correct items are shown in basket", () => {
-    dispatch(addToBasket("9T65B28LLM2MC"));
+    dispatch(addToBasket("price_1HdckTJs9ciiqN7O218PIefo"));
     cy.get("#anthology-title")
       .contains("Various")
       .get("#anthology-subtitle")
