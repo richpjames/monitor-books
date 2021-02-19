@@ -29,7 +29,7 @@ export const CheckoutSection: React.FC<Props> = ({
   shippingOptions,
   total,
 }) => {
-  const grandTotal = (total + shipping.price).toString();
+  const grandTotal = total + shipping.price;
   return (
     <CheckoutSectionWrap>
       <Shipping

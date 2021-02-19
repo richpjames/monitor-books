@@ -21,22 +21,12 @@ const getProduct = (products: Products, id: string) => {
   return fromProducts.getProduct(products, id);
 };
 export const getTotal = (state: State) => {
-  console.log(
-    "stupid fucking",
-    getAddedIds(state.cart),
-    "thing",
-    getProduct(state.products, state.cart.addedIds[0])
-  );
+  const total = getAddedIds(state.cart).reduce((total, id) => {
+    return (
+      total + getProduct(state.products, id).price * getQuantity(state.cart, id)
+    );
+  }, 0);
 
-  const total = getAddedIds(state.cart)
-    .reduce((total, id) => {
-      return (
-        total +
-        getProduct(state.products, id).price * getQuantity(state.cart, id)
-      );
-    }, 0)
-    .toFixed(2);
-  console.log(`total here: ${total}`);
   return Number(total);
 };
 export const getCartProducts = (state: State) =>
