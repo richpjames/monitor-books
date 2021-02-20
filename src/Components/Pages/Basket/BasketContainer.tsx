@@ -58,6 +58,9 @@ const BasketContainer = ({
     setTimeout(() => {
       dispatch({ type: CHECKOUT_FAILURE });
     }, 5000);
+    setTimeout(() => {
+      dispatch({ type: CHECKOUT_INITIALISE });
+    }, 10000);
   };
 
   return (

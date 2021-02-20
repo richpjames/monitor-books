@@ -26,7 +26,7 @@ export const productMapper = (product: ApiProduct) => {
     prodPriceId,
     id,
     publishedDate: new Date(publishedDate),
-    priceId: devPriceId,
+    priceId: process.env.NODE_ENV === "production" ? prodPriceId : devPriceId,
     blurb1: lefttext,
     blurb2: righttext,
     photos: images?.fullSize,
