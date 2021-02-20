@@ -78,7 +78,7 @@ describe("Basket", () => {
       .click()
       .get("#basket-total")
       .contains("£22.50")
-      .get("#propositions-increase-quantity-button")
+      .get("#anthology-increase-quantity-button")
       .click()
       .click()
       .get("#basket-total")

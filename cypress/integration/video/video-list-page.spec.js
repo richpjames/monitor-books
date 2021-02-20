@@ -14,41 +14,35 @@ describe("Video List Page", () => {
   it("shows title", () => {
     cy.get("h1").contains("Murmur Reading Series");
   });
-  it("shows all the books", () => {
-    cy.get("#murmur-episode-two-creator-0")
+  it("shows all the videos", () => {
+    cy.get("#episode-two-creator-0")
       .contains("Nisha Ramayya")
-      .get("#murmur-episode-two-creator-1")
+      .get("#episode-two-creator-1")
       .contains("Will Harris")
-      .get("#murmur-episode-two-creator-2")
+      .get("#episode-two-creator-2")
       .contains("Sophie Collins")
       .get('[alt="thumbnail image for Murmur Reading Series #2 video"]')
       .should("be.visible");
 
-    cy.get("#murmur-episode-one-creator-0")
+    cy.get("#episode-one-creator-0")
       .contains("Alan Fielden")
-      .get("#murmur-episode-one-creator-1")
+      .get("#episode-one-creator-1")
       .contains("Aurelia Guo")
-      .get("#murmur-episode-one-creator-2")
+      .get("#episode-one-creator-2")
       .contains("Mónica de la Torre")
       .get('[alt="thumbnail image for Murmur Reading Series #1 video"]')
       .should("be.visible");
   });
   it("clicking on a book takes the user to the correct page", () => {
-    cy.get("#murmur-episode-two-video-list-container")
+    cy.get("#episode-two-video-list-container")
       .click()
       .url()
-      .should(
-        "eq",
-        "http://localhost:8888/murmur-reading-series/murmur-episode-two"
-      );
+      .should("eq", "http://localhost:8888/murmur-reading-series/episode-two");
 
     cy.visit("/murmur-reading-series")
-      .get("#murmur-episode-one-video-list-container")
+      .get("#episode-one-video-list-container")
       .click()
       .url()
-      .should(
-        "eq",
-        "http://localhost:8888/murmur-reading-series/murmur-episode-one"
-      );
+      .should("eq", "http://localhost:8888/murmur-reading-series/episode-one");
   });
 });

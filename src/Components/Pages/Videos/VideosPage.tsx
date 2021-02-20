@@ -53,7 +53,7 @@ export const VideosPage: React.FC<VideosPageProps> = ({ videos, videoIds }) => {
                 id={`${slug}-creators`}
               >
                 {artistNames.map((creator, index) => (
-                  <VideoCreatorName id={`${slug}-creator-${index}`}>
+                  <VideoCreatorName id={`${slug}-creator-${index}`} key={index}>
                     {creator}
                   </VideoCreatorName>
                 ))}

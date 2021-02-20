@@ -3,7 +3,7 @@ import { saveState } from "../../../src/sessionStorage";
 describe("Video Page", () => {
   beforeEach(() =>
     cy.fixture("initialisedState").then((initialisedState) =>
-      cy.visit("/murmur-reading-series/murmur-episode-two", {
+      cy.visit("/murmur-reading-series/episode-two", {
         onBeforeLoad: (win) => {
           saveState(initialisedState);
         },
