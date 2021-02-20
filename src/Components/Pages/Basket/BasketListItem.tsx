@@ -60,20 +60,18 @@ const BasketListItem = ({
   title,
   slug,
 }: Props) => {
-  console.log(stock, "outOfStock");
-
   const basketItemLabel = slug.toLowerCase();
   return (
     <BasketListItemContainerWrap
       index={index}
       height="20%"
       width="100%"
-      horizontalMargin="5rem"
-      topMargin="2rem"
+      horizontalmargin="5rem"
+      topmargin="2rem"
       id={`${slug}-basket-item`}
     >
-      <ListItemPhotoWrap width="40%" onClick={() => navigate(slug)}>
-        <ListItemPhoto src={thumbnail} />
+      <ListItemPhotoWrap width="40%" onClick={() => navigate(`books/${slug}`)}>
+        <ListItemPhoto src={thumbnail} alt={`thumbnail image of ${title}`} />
       </ListItemPhotoWrap>
       <MetaInfoContainer index={index} width="40%">
         <ListItemTitle id={`${basketItemLabel}-title`}>{title}</ListItemTitle>

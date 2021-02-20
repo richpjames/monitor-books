@@ -14,7 +14,7 @@
   },
   "products": {
     "byId": {
-      "price_1HdckTJs9ciiqN7O218PIefo": {
+      "1": {
         "title": "MURMUR ANTHOLOGY 1",
         "author": "Various",
         "images": {
@@ -26,10 +26,12 @@
           ]
         },
         "slug": "anthology",
+        "price": 10,
         "inventory": 20,
+        "thumbnail": "https://res.cloudinary.com/hngylvknd/image/upload/v1613423920/monitor/book_thumbnails/anthology_thumb.jpg",
         "devPriceId": "price_1HdckTJs9ciiqN7O218PIefo",
         "prodPriceId": "price_1HdcjyJs9ciiqN7OWAHUyKRy",
-        "id": "price_1HdckTJs9ciiqN7O218PIefo",
+        "id": 1,
         "publishedDate": "2019-09-30T00:00:00.000Z",
         "priceId": "price_1HdckTJs9ciiqN7O218PIefo",
         "blurb1": "<p>Monitor Books is proud to present: Murmur Anthology #1. Featuring new writing from contributors to the Murmur Reading Series in Manchester, this anthology is a varied and exciting collection of innovative poetry, prose, and drama from seventeen international authors.<br /><br />Authors: Rachael Allen, Bryony Bates, Jen Calleja, Alan Fielden, Joey Frances, Aurelia Guo, Tessa Harris, Tom Jenks, Barbara Juch, Sophie Jung, Shiv Kotecha, Jazmine Linklater, Amy McCauley, Lila Matsumoto, Sam Riviere, Michelle Steinbeck, Mónica de la Torre.</p>",
@@ -41,7 +43,7 @@
           "https://res.cloudinary.com/hngylvknd/image/upload/v1613420722/monitor/anthology/anthology_4.jpg"
         ]
       },
-      "price_1Ho2ZQJs9ciiqN7O7i3XGV6r": {
+      "2": {
         "title": "PROPOSITIONS",
         "author": "Amy McCauley",
         "images": {
@@ -53,10 +55,12 @@
           ]
         },
         "slug": "propositions",
-        "inventory": 0,
+        "price": 10,
+        "inventory": 20,
+        "thumbnail": "https://res.cloudinary.com/hngylvknd/image/upload/v1613423907/monitor/book_thumbnails/propositions_thumb.jpg",
         "devPriceId": "price_1Ho2ZQJs9ciiqN7O7i3XGV6r",
         "prodPriceId": "price_1Hnt5cJs9ciiqN7OVvlJanor",
-        "id": "price_1Ho2ZQJs9ciiqN7O7i3XGV6r",
+        "id": 2,
         "publishedDate": "2020-10-16T00:00:00.000Z",
         "priceId": "price_1Ho2ZQJs9ciiqN7O7i3XGV6r",
         "blurb1": "<p>A fragmentary treatise on desire and its consequences, Propositions is a playful examination of how we constitute and disassemble the self in language.</p><br /><p>‘Adroit aphorisms coiling around their own warping structure, filled with historic echoes and utterly recognisable voices. R.D. Laing minus the surplus arrogance, Sarah Kane with the lights on, Antigone in her cell waiting slyly for the men to return—a penetrable delight.’ — <b>Melissa Lee-Houghton</b></p><br /><p>‘It's exhilarating to read McCauley go into battle full-tilt with words against language, using as a weapon her very own body of vocabulary.’ — <b>Joanna Walsh</b></p><br /><p>‘A document of constellatory flesh from this cardinal supplier of horror-comedy.’ — <b>Alan Fielden</b> </p>\n",
@@ -69,17 +73,14 @@
         ]
       }
     },
-    "visibleIds": [
-      "price_1Ho2ZQJs9ciiqN7O7i3XGV6r",
-      "price_1HdckTJs9ciiqN7O218PIefo"
-    ]
+    "visibleIds": [2, 1]
   },
   "videos": {
     "byId": {
-      "2": {
-        "id": 2,
+      "430660074": {
         "title": "Murmur Reading Series #1",
         "publishedDate": "2020-06-26T00:00:00.000Z",
+        "id": "430660074",
         "slug": "episode-one",
         "url": "430660074",
         "thumbnail": "https://res.cloudinary.com/hngylvknd/image/upload/v1613423294/monitor/video_thumbnail/reading_series_1.jpg",
@@ -87,10 +88,10 @@
         "blurb2": "<p><b>Alan Fielden</b> is a writer, director, poet and performer. He was born in Seoul and lives in London, where he makes work with JAMS and ROOM. Marathon, a play, ran at the Barbican Centre in September 2018 having won the Oxford Samuel Beckett Theatre Trust Award. His fiction and poetry have appeared in Minor Literatures, 404ink, The Literateur, Der Grief and Allotrope Press.</p><br /><p><b>Aurelia Guo</b> is an artist, writer and researcher based in London. She is the author of the chapbooks NYT (Gauss PDF, 2018), 2016 (After Hours Ltd., 2016) and HOME INTRUDER EDITION (Publishing-House.me, 2015). Her writing and editing have also appeared in How To Sleep Faster, The Fanzine and Imperial Matters.</p><br /><p><b>Mónica De La Torre</b> works with and between languages. Her most recent poetry book is Repetition Nineteen (Nightboat Books, 2020). Born and raised in Mexico City, she lives in New York and teaches Literary Arts at Brooklyn College.</p>\n",
         "artistNames": []
       },
-      "3": {
-        "id": 3,
+      "478497873": {
         "title": "Murmur Reading Series #2",
         "publishedDate": "2020-12-10T00:00:00.000Z",
+        "id": "478497873",
         "slug": "episode-two",
         "url": "478497873",
         "thumbnail": "https://res.cloudinary.com/hngylvknd/image/upload/v1613423313/monitor/video_thumbnail/reading_series_2.jpg",
@@ -99,7 +100,7 @@
         "artistNames": ["Nisha Ramayya", "Will Harris", "Sophie Collins"]
       }
     },
-    "visibleIds": [3, 2]
+    "visibleIds": ["478497873", "430660074"]
   },
   "shippingCosts": [
     {
@@ -119,6 +120,6 @@
     }
   ],
   "config": {
-    "showSlideshow": false
+    "showSlideshow": true
   }
 }

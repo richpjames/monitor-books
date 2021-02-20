@@ -35,8 +35,8 @@ export const VideosPage: React.FC<VideosPageProps> = ({ videos, videoIds }) => {
               index={index}
               height="50%"
               width="100%"
-              horizontalMargin="0rem"
-              topMargin="1rem"
+              horizontalmargin="0rem"
+              topmargin="1rem"
               key={index}
               to={slug}
               id={`${slug}-video-list-container`}

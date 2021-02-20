@@ -38,8 +38,8 @@ export const ProductsPage: FunctionComponent<Props> = ({ books, bookIds }) => {
               index={index}
               height="50%"
               width="100%"
-              horizontalMargin="0rem"
-              topMargin="1rem"
+              horizontalmargin="0rem"
+              topmargin="1rem"
               key={index}
               to={slug}
               id={`${slug}-container`}
