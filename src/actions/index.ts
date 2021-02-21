@@ -10,6 +10,27 @@ export const setShowSlideshow = (showSlideshow: boolean) => {
 export const setLoading = (loadingCheckout: boolean) => {
   return { type: types.LOADING_CHECKOUT, loadingCheckout };
 };
+// export const set
+const receiveVideos = (videos: ApiVideo[]) => {
+  return {
+    type: types.RECEIVE_VIDEOS,
+    videos: videos
+      ? videos
+          .map(videoMapper)
+          .sort((a, b) => b.publishedDate.getTime() - a.publishedDate.getTime())
+      : [],
+  };
+};
+
+export const fetchVideos = () => (dispatch: Dispatch, getState: GetState) => {
+  const { videos } = getState();
+  if (videos.visibleIds.length < 1) {
+    shop.getVideos().then((videos: ApiVideo[]) => {
+      dispatch(receiveVideos(videos));
+    });
+  }
+};
+
 const receiveProducts = (products: ApiProduct[]) => {
   return {
     type: types.RECEIVE_PRODUCTS,
@@ -21,29 +42,14 @@ const receiveProducts = (products: ApiProduct[]) => {
   };
 };
 
-const receiveVideos = (videos: ApiVideo[]) => {
-  return {
-    type: types.RECEIVE_VIDEOS,
-    videos: videos
-      ? videos
-          .map(videoMapper)
-          .sort((a, b) => b.publishedDate.getTime() - a.publishedDate.getTime())
-      : [],
-  };
+export const fetchProducts = () => (dispatch: Dispatch, getState: GetState) => {
+  const { products } = getState();
+  if (products.visibleIds.length < 1) {
+    shop.getProducts().then((products) => {
+      dispatch(receiveProducts(products));
+    });
+  }
 };
-type receiveVideos = (videos: ApiVideo) => { type: string; videos: Video[] };
-
-export const fetchVideos = () => (dispatch: Dispatch) => {
-  shop.getVideos().then((videos: ApiVideo[]) => {
-    dispatch(receiveVideos(videos));
-  });
-};
-type fetchVideos = () => () => void;
-
-export const fetchProducts = () => (dispatch: Dispatch) =>
-  shop.getProducts().then((products) => {
-    dispatch(receiveProducts(products));
-  });
 
 const addToBasketUnsafe = (productId: string) => ({
   type: types.ADD_TO_CART,
