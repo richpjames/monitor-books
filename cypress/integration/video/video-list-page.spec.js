@@ -29,7 +29,7 @@ describe("Video List Page", () => {
       .get("#episode-one-creator-1")
       .contains("Aurelia Guo")
       .get("#episode-one-creator-2")
-      .contains("Mónica de la Torre")
+      .contains("Mónica De La Torre")
       .get('[alt="thumbnail image for Murmur Reading Series #1 video"]')
       .should("be.visible");
   });
