@@ -1,8 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 
-import { twoDecimalPlaces } from "../../../utils";
-
 import { Shipping } from "./Shipping";
 import { CTAButton } from "../../Common/";
 import { BasketTotal } from "./BasketTotal";
@@ -20,7 +18,7 @@ interface Props {
   shippingOptions: Shipping[];
   onCheckoutClicked: (click: React.MouseEvent) => void;
   hasItems: boolean;
-  total: string;
+  total: number;
 }
 
 export const CheckoutSection: React.FC<Props> = ({
@@ -31,6 +29,7 @@ export const CheckoutSection: React.FC<Props> = ({
   shippingOptions,
   total,
 }) => {
+  const grandTotal = total + shipping.price;
   return (
     <CheckoutSectionWrap>
       <Shipping
@@ -38,7 +37,7 @@ export const CheckoutSection: React.FC<Props> = ({
         setShipping={setShipping}
         shippingOptions={shippingOptions}
       />
-      <BasketTotal total={`${twoDecimalPlaces(+total + shipping.price)}`} />
+      <BasketTotal total={grandTotal} />
       <CTAButton
         onClick={onCheckoutClicked}
         disabled={!hasItems}

@@ -9,6 +9,10 @@ const TotalWrapper = styled.h3`
   border-top: 1px solid ${text};
 `;
 
-export const BasketTotal = ({ total }: { total: string }) => {
-  return <TotalWrapper id="basket-total">Total: £{total}</TotalWrapper>;
+export const BasketTotal = ({ total }: { total: number }) => {
+  return (
+    <TotalWrapper id="basket-total">
+      Total: £{(Math.round(total * 100) / 100).toFixed(2)}
+    </TotalWrapper>
+  );
 };

@@ -8,8 +8,8 @@ interface ListItemContainerProps {
   index: number;
   height: string;
   width: string;
-  horizontalMargin: string;
-  topMargin: string;
+  horizontalmargin: string;
+  topmargin: string;
   className?: string;
   id: string;
 }
@@ -19,9 +19,9 @@ export const ListItemContainerWrap = styled(Link)<ListItemContainerProps>`
   justify-content: center;
   height: ${(props) => props.height};
   width: ${(props) => props.width};
-  margin-left: ${(props) => props.horizontalMargin};
-  margin-right: ${(props) => props.horizontalMargin};
-  margin-top: ${(props) => (props.index < 1 ? "0" : props.topMargin)};
+  margin-left: ${(props) => props.horizontalmargin};
+  margin-right: ${(props) => props.horizontalmargin};
+  margin-top: ${(props) => (props.index < 1 ? "0" : props.topmargin)};
   border-top: 1px solid ${text};
   border-bottom: 1px solid ${text};
   text-decoration: none;
@@ -40,9 +40,9 @@ export const BasketListItemContainerWrap = styled.div<ListItemContainerProps>`
   justify-content: center;
   height: ${(props) => props.height};
   width: ${(props) => props.width};
-  margin-left: ${(props) => props.horizontalMargin};
-  margin-right: ${(props) => props.horizontalMargin};
-  margin-top: ${(props) => (props.index < 1 ? "0" : props.topMargin)};
+  margin-left: ${(props) => props.horizontalmargin};
+  margin-right: ${(props) => props.horizontalmargin};
+  margin-top: ${(props) => (props.index < 1 ? "0" : props.topmargin)};
   border-top: 1px solid ${text};
   border-bottom: 1px solid ${text};
   text-decoration: none;

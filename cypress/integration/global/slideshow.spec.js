@@ -25,14 +25,12 @@ describe("Slideshow", () => {
   });
   it("When a user naviates to any url other than root the slideshow should not show", () => {
     cy.visit(`http://localhost:8888/books/propositions`)
-      .get("h1", { timeout: 50 })
+      .get("h1")
       .contains("PROPOSITIONS");
   });
   it("When a user navigates to the root for the second time in a session the slideshow should not show", () => {
     testSlideshowShows();
-    cy.visit("http://localhost:8888")
-      .get("h1", { timeout: 50 })
-      .contains("PROPOSITIONS");
+    cy.visit("http://localhost:8888").get("h1").contains("PROPOSITIONS");
   });
   it("When a user navigates to the root for the first time the slideshow should show but when a user goes back it shouldn't show", () => {
     testSlideshowShows();

@@ -15,7 +15,16 @@
 /**
  * @type {Cypress.PluginConfig}
  */
+
 module.exports = (on, config) => {
-  // `on` is used to hook into various events Cypress emits
-  // `config` is the resolved Cypress config
-}
+  on("before:browser:launch", (browser = {}, launchOptions) => {
+    if (browser.family === "chromium") {
+      if (!launchOptions.args) launchOptions.args = [];
+      launchOptions.args.push(
+        "--load-extension=Users/rich/Library/Application%20Support/Google/Chrome/Default/Extensions/lmhkpmbekcpmknklioeibfkpmmfibljd/2.17.0_0/"
+      );
+      return launchOptions;
+    }
+    return null;
+  });
+};

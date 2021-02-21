@@ -8,9 +8,9 @@ const publishableKey =
 type stripeResponse = undefined | { error: StripeError };
 
 export async function handleCheckout(data: any) {
-  const stripe = await loadStripe(publishableKey || "");
   console.log(process.env.NODE_ENV, "node env");
-  console.log(publishableKey, "publishable key");
+  console.log(process.env, "publishable key");
+  const stripe = await loadStripe(publishableKey || "");
 
   try {
     const response = await fetch("/.netlify/functions/create-checkout", {

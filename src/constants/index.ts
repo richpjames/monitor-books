@@ -58,7 +58,6 @@ export const text = "#ffffff";
 export const background = "#000000";
 
 //URLS
-export const mainImageUrl = `https://www.monitorbooks.co.uk/img/`;
 export const homePage = "propositions";
 export const productsPageName = "books";
 

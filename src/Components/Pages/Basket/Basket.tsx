@@ -5,7 +5,6 @@ import { LoadingSpinner } from "../../Common/LoadingSpinner";
 
 import { PageWrapper, ErrorText } from "../../Common/";
 import { ListTitle } from "../../Common/ListComponents";
-import { mainImageUrl } from "../../../constants";
 
 import { BasketItems } from "./BasketItems";
 
@@ -20,7 +19,7 @@ type IProps = {
   setShipping: (index: number) => void;
   shipping: Shipping;
   shippingOptions: Shipping[];
-  total: string;
+  total: number;
 };
 
 const Basket = ({
@@ -42,8 +41,8 @@ const Basket = ({
       subtitle={productsById[productId].title}
       price={productsById[productId].price}
       quantity={quantityById[productId]}
+      thumbnail={productsById[productId].thumbnail}
       id={productId}
-      imageSrc={`${mainImageUrl}${productsById[productId].imagePath}/thumbnails/${productsById[productId].thumbnail}`}
       stock={productsById[productId].inventory}
       key={productsById[productId].id}
       index={index}

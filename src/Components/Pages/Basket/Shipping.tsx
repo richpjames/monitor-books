@@ -4,7 +4,6 @@ import styled from "styled-components/macro";
 import { ShippingCost } from "./ShippingCost";
 
 import { text } from "../../../constants";
-import { twoDecimalPlaces } from "../../../utils";
 
 const ShippingLabel = styled.label`
   padding-right: 0.5rem;
@@ -41,7 +40,9 @@ export const Shipping: React.FC<Props> = ({
           </option>
         ))}
       </ShippingSelector>
-      <ShippingCost total={`${twoDecimalPlaces(shipping.price)}`} />
+      <ShippingCost
+        total={(Math.round(shipping.price * 100) / 100).toFixed(2)}
+      />
     </>
   );
 };

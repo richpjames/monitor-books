@@ -10,7 +10,6 @@ import App from "./App";
 import { loadState, saveState } from "./sessionStorage";
 
 const middleware = [thunk];
-// expose store when run in Cypress
 
 const initialState = loadState();
 

@@ -1,13 +1,24 @@
 interface Video {
   title: string;
-  creators: [string, string, string];
-  description1: string;
-  description2: string;
+  artistNames: [string, string, string];
+  blurb1: string;
+  blurb2: string;
   url: string;
-  publishDate: string;
+  publishedDate: Date;
   slug: string;
   thumbnail: string;
   id: string;
+}
+interface ApiVideo {
+  id: number;
+  title: string;
+  publishedDate: string;
+  slug: string;
+  url: string;
+  thumbnail: string;
+  blurb1: string;
+  blurb2: string;
+  artists: { id: number; Name: string; Description: string }[];
 }
 
 type VideoAction = {
@@ -17,7 +28,7 @@ type VideoAction = {
 
 type VideosById = ById<Video>;
 
-type Videos = { byId: VideosById; visibleIds: VisibileIds };
+type Videos = { byId: VideosById; visibleIds: VisibleIds };
 
 interface Cart {
   addedIds: AddedIds;

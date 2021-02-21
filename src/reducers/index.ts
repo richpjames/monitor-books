@@ -17,18 +17,17 @@ const getAddedIds = (cart: Cart) => fromCart.getAddedIds(cart);
 
 const getQuantity = (cart: Cart, id: string) => fromCart.getQuantity(cart, id);
 
-const getProduct = (products: Products, id: string) =>
-  fromProducts.getProduct(products, id);
-
+const getProduct = (products: Products, id: string) => {
+  return fromProducts.getProduct(products, id);
+};
 export const getTotal = (state: State) => {
-  return getAddedIds(state.cart)
-    .reduce(
-      (total, id) =>
-        total +
-        +getProduct(state.products, id).price * getQuantity(state.cart, id),
-      0
-    )
-    .toFixed(2);
+  const total = getAddedIds(state.cart).reduce((total, id) => {
+    return (
+      total + getProduct(state.products, id).price * getQuantity(state.cart, id)
+    );
+  }, 0);
+
+  return Number(total);
 };
 export const getCartProducts = (state: State) =>
   getAddedIds(state.cart).map((id) => ({
