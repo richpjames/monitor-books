@@ -15,8 +15,8 @@ interface Product {
 
 interface ApiProduct {
   id: number;
-  lefttext: string;
-  righttext: string;
+  blurb1: string;
+  blurb2: string;
   published_at: string;
   created_at: string;
   updated_at: string;

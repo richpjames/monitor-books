@@ -3,8 +3,8 @@ export const productMapper = (product: ApiProduct) => {
     title,
     author,
     images,
-    lefttext,
-    righttext,
+    blurb1,
+    blurb2,
     publishedDate,
     slug,
     id,
@@ -25,10 +25,10 @@ export const productMapper = (product: ApiProduct) => {
     devPriceId,
     prodPriceId,
     id,
+    blurb1,
+    blurb2,
     publishedDate: new Date(publishedDate),
     priceId: process.env.NODE_ENV === "production" ? prodPriceId : devPriceId,
-    blurb1: lefttext,
-    blurb2: righttext,
     photos: images?.fullSize,
   };
 };

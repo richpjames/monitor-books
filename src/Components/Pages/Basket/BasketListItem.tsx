@@ -16,7 +16,7 @@ import {
   ListItemSubtitle,
   ListItemPhotoWrap,
   ListItemPhoto,
-} from "../../Common/";
+} from "../../Common";
 
 const RemoveFromCartButton = styled.button`
   right: 0;
