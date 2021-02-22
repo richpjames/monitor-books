@@ -4,7 +4,7 @@ import { navigate } from "@reach/router";
 
 import "./App.css";
 import Slideshow from "./Components/Global/Slideshow";
-import MainPage from "./Components/Pages/MainPage";
+import MainPage from "./Components/pages/MainPage";
 import { fetchVideos, fetchProducts, setShowSlideshow } from "./actions/index";
 import {
   introTimerMilliseconds,
