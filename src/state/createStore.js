@@ -1,15 +1,18 @@
-import { createStore as reduxCreateStore } from "redux"
+import { createStore as reduxCreateStore, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
+import { composeWithDevTools } from "redux-devtools-extension";
+import reducer from "./reducers";
+const middleware = [thunk];
+import { loadState, saveState } from "./sessionStorage";
 
-const reducer = (state, action) => {
-  if (action.type === `INCREMENT`) {
-    return Object.assign({}, state, {
-      count: state.count + 1,
-    })
-  }
-  return state
-}
+const initialState = loadState();
 
-const initialState = { count: 0 }
+export const createStore = reduxCreateStore(
+  reducer,
+  initialState,
+  composeWithDevTools(applyMiddleware(...middleware))
+);
 
-const createStore = () => reduxCreateStore(reducer, initialState)
-export default createStore
+// const createStore = () => reduxCreateStore(reducer, initialState);
+console.log(createStore().getState());
+export default createStore;
