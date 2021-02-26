@@ -1,5 +1,5 @@
 import styled from "styled-components/macro";
-import { Link } from "@reach/router";
+import { Link } from "gatsby";
 
 import { PageTitle } from "./Titles";
 import { background, text } from "../../constants";

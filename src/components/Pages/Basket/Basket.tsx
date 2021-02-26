@@ -3,7 +3,7 @@ import React from "react";
 import BasketListItem from "./BasketListItem";
 import { LoadingSpinner } from "../../Common/LoadingSpinner";
 
-import { PageWrapper, ErrorText } from "../../Common/";
+import { PageWrapper, ErrorText } from "../../Common";
 import { ListTitle } from "../../Common/ListComponents";
 
 import { BasketItems } from "./BasketItems";

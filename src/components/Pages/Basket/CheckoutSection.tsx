@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import { Shipping } from "./Shipping";
-import { CTAButton } from "../../Common/";
+import { CTAButton } from "../../Common";
 import { BasketTotal } from "./BasketTotal";
 
 const CheckoutSectionWrap = styled.section`

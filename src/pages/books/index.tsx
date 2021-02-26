@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from "react";
+import { useStaticQuery, graphql } from "gatsby";
 import { RouteComponentProps } from "@reach/router";
 import styled from "styled-components/macro";
 
@@ -9,9 +10,10 @@ import {
   MetaInfoContainer,
   ListItemTitle,
   ListItemSubtitle,
-  PageWrapper,
-} from "../../Common";
-import { PageTitle } from "../../Common/Titles";
+} from "../../Components/Common";
+import { PageTitle } from "../../Components/Common/Titles";
+import Layout from "../../Components/layout";
+import { productMapper } from "../../api/mappers";
 
 interface Props extends RouteComponentProps {
   books: ById<Product>;
@@ -24,13 +26,25 @@ const ListWrap = styled.section`
   padding-top: 2.5rem;
 `;
 
-export const ProductsPage: FunctionComponent<Props> = ({ books, bookIds }) => {
+const ProductsPage: FunctionComponent<Props> = ({ books, bookIds }) => {
+  const { allStrapiBooks } = useStaticQuery(graphql`
+    query {
+      allStrapiBooks {
+        nodes {
+          slug
+          title
+          author
+          thumbnail
+        }
+      }
+    }
+  `);
   return (
-    <PageWrapper>
+    <Layout>
       <PageTitle>Books</PageTitle>
       <ListWrap>
-        {bookIds.map((bookId, index) => {
-          const { slug, title, author, thumbnail } = books[bookId];
+        {allStrapiBooks.nodes.map((book, index) => {
+          const { slug, title, author, thumbnail } = productMapper(book);
           const lowercaseTitle = title.toLocaleLowerCase();
 
           return (
@@ -61,6 +75,7 @@ export const ProductsPage: FunctionComponent<Props> = ({ books, bookIds }) => {
           );
         })}
       </ListWrap>
-    </PageWrapper>
+    </Layout>
   );
 };
+export default ProductsPage;
