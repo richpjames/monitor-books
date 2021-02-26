@@ -2,7 +2,8 @@ import React from "react";
 import { RouteComponentProps } from "@reach/router";
 import styled from "styled-components/macro";
 
-import { PageWrapper, Text } from "../Common";
+import { Text } from "../Components/Common";
+import Layout from "../Components/layout";
 
 const Banner = styled.img`
   width: min(100%, 500px);
@@ -23,7 +24,7 @@ const TextWrap = styled.div`
 
 const About: React.FC<RouteComponentProps> = () => {
   return (
-    <PageWrapper>
+    <Layout>
       <BannerWrap>
         <Banner
           src="https://monitorbooks.co.uk/img/logo.png"
@@ -41,7 +42,7 @@ const About: React.FC<RouteComponentProps> = () => {
         <a href='mailto:editor@monitorbooks.co.uk'>editor@monitorbooks.co.uk</a></p>"
         ></Text>
       </TextWrap>
-    </PageWrapper>
+    </Layout>
   );
 };
 

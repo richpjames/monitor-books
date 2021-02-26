@@ -7,12 +7,12 @@ import { loadState, saveState } from "./sessionStorage";
 
 const initialState = loadState();
 
-export const createStore = reduxCreateStore(
-  reducer,
-  initialState,
-  composeWithDevTools(applyMiddleware(...middleware))
-);
+export const createStore = () =>
+  reduxCreateStore(
+    reducer,
+    initialState,
+    composeWithDevTools(applyMiddleware(...middleware))
+  );
 
-// const createStore = () => reduxCreateStore(reducer, initialState);
 console.log(createStore().getState());
 export default createStore;

@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components/macro";
-import VisibilitySensor from "react-visibility-sensor";
 
 const Photo = styled.img<{ width?: string; height?: string }>`
   max-height: 100%;
@@ -27,14 +26,12 @@ interface IProps {
 export const IndividualPhoto = (props: IProps) => {
   const { openLightbox, src, index, altText, height, width } = props;
   return (
-    <VisibilitySensor>
-      <Photo
-        onClick={() => openLightbox(index)}
-        src={src}
-        alt={altText}
-        height={height}
-        width={width}
-      />
-    </VisibilitySensor>
+    <Photo
+      onClick={() => openLightbox(index)}
+      src={src}
+      alt={altText}
+      height={height}
+      width={width}
+    />
   );
 };

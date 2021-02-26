@@ -4,7 +4,7 @@ import { navigate } from "@reach/router";
 import { connect } from "react-redux";
 
 import { background, text } from "../../constants";
-import { addToBasket } from "../../actions";
+import { addToBasket } from "../../state/actions";
 
 const ButtonStyles = styled.button<{ borderColour: string }>`
   width: 150px;
