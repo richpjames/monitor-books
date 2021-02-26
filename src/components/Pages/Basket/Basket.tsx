@@ -3,7 +3,8 @@ import React from "react";
 import BasketListItem from "./BasketListItem";
 import { LoadingSpinner } from "../../Common/LoadingSpinner";
 
-import { PageWrapper, ErrorText } from "../../Common";
+import { ErrorText } from "../../Common";
+import Layout from "../../layout";
 import { ListTitle } from "../../Common/ListComponents";
 
 import { BasketItems } from "./BasketItems";
@@ -75,10 +76,10 @@ const Basket = ({
   }
 
   return (
-    <PageWrapper>
+    <Layout>
       <ListTitle id="basket-title">Basket</ListTitle>
       {basketComponent}
-    </PageWrapper>
+    </Layout>
   );
 };
 export default Basket;

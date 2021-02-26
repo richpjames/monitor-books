@@ -7,7 +7,7 @@ import {
   addToBasket,
   decrementInCart,
   removeFromBasket,
-} from "../../../actions";
+} from "../../../state/actions";
 import { QuantityPanel } from "./QuantityPanel";
 import {
   BasketListItemContainerWrap,
