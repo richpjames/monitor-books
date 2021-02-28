@@ -6,6 +6,8 @@ import BasketNav from "./BasketNav";
 
 import Logo from "./Logo";
 import { text } from "../../constants";
+import CartProvider from "../../state/CartProvider";
+import ProductsProvider from "../../state/ProductsProvider";
 
 const Nav = styled.nav`
   display: flex;
@@ -62,25 +64,29 @@ export const Header = () => {
         <Logo />
       </Link>
       <NavLinks>
-        {navItems.map((navItem, index) => {
-          return (
-            <React.Fragment key={index}>
-              {index !== 0 && index <= navItems.length - 2 && (
-                <Seperator>{String.fromCharCode(8226)}</Seperator>
-              )}
-              <NavItem key={index}>
-                <NavLink
-                  to={navItem.link}
-                  aria-label={navItem.ariaLabel}
-                  className={navItem.className}
-                >
-                  {navItem.content}
-                  {navItem.component}
-                </NavLink>
-              </NavItem>
-            </React.Fragment>
-          );
-        })}
+        <ProductsProvider>
+          <CartProvider>
+            {navItems.map((navItem, index) => {
+              return (
+                <React.Fragment key={index}>
+                  {index !== 0 && index <= navItems.length - 2 && (
+                    <Seperator>{String.fromCharCode(8226)}</Seperator>
+                  )}
+                  <NavItem key={index}>
+                    <NavLink
+                      to={navItem.link}
+                      aria-label={navItem.ariaLabel}
+                      className={navItem.className}
+                    >
+                      {navItem.content}
+                      {navItem.component}
+                    </NavLink>
+                  </NavItem>
+                </React.Fragment>
+              );
+            })}
+          </CartProvider>
+        </ProductsProvider>
       </NavLinks>
     </Nav>
   );

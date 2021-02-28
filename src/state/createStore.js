@@ -14,5 +14,4 @@ export const createStore = () =>
     composeWithDevTools(applyMiddleware(...middleware))
   );
 
-console.log(createStore().getState());
 export default createStore;

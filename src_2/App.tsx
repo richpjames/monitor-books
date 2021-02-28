@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { navigate } from "@reach/router";
+import { navigate, useStaticQuery, graphql } from "gatsby";
 
 import "./App.css";
 import Slideshow from "./Components/Global/Slideshow";

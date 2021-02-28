@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components/macro";
 import { connect } from "react-redux";
 
 import { Basket } from "grommet-icons";
 import { text, background } from "../../constants";
+import { CartContext } from "../../state/CartProvider";
 
 const Container = styled.div`
   display: flex;
@@ -47,10 +48,12 @@ interface BasketIconProps {
 }
 
 const BasketIcon: React.FC<BasketIconProps> = ({ totalQuantity }) => {
+  const products = useContext(CartContext);
   return (
     <Container>
       <IconWrapper>
         <Number id="header-basket-items">{totalQuantity}</Number>
+        {console.log(products, "undef")}
         <Icon color={text} />
       </IconWrapper>
     </Container>

@@ -31,7 +31,7 @@ export const fetchVideos = () => (dispatch: Dispatch, getState: GetState) => {
   }
 };
 
-const receiveProducts = (products: ApiProduct[]) => {
+export const receiveProducts = (products: ApiProduct[]) => {
   return {
     type: types.RECEIVE_PRODUCTS,
     products: products

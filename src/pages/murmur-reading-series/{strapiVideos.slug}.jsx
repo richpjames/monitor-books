@@ -35,7 +35,6 @@ const VideoPageWrapper = styled(Layout)`
 function VideoPage({ data }) {
   const video = videoMapper(data.strapiVideos);
   const { title, url, artistNames, blurb1, blurb2 } = video;
-  console.log(artistNames, "lol");
   React.useEffect(() => window.scrollTo(0, 0), []);
   return (
     <VideoPageWrapper>
