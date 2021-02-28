@@ -3,7 +3,7 @@ import styled from "styled-components/macro";
 
 import { ShippingCost } from "./ShippingCost";
 
-import { text } from "../../../constants";
+import { text, shippingCosts } from "../../../constants";
 
 const ShippingLabel = styled.label`
   padding-right: 0.5rem;
@@ -15,7 +15,7 @@ const ShippingSelector = styled.select`
   width: 7.5rem;
 `;
 interface Props {
-  setShipping: (index: number) => void;
+  setShipping: (index: any) => void;
   shipping: Shipping;
   shippingOptions: Shipping[];
 }
@@ -31,7 +31,8 @@ export const Shipping: React.FC<Props> = ({
       <ShippingSelector
         id="shipping-selector"
         onChange={(event) => {
-          setShipping(+event.target.value);
+          const index = +event.target.value;
+          setShipping(shippingCosts[index]);
         }}
       >
         {shippingOptions.map((shippingRegion, index) => (

@@ -1,10 +1,9 @@
 import React from "react";
-import { RouteComponentProps } from "@reach/router";
 
 import { InfoSection, PageTitle, Text } from "../Components/Common";
 import Layout from "../Components/layout";
 
-const NotFound: React.FC<RouteComponentProps> = () => {
+const NotFound: React.FC = () => {
   return (
     <Layout>
       <InfoSection>

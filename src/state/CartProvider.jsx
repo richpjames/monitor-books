@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
-import PropTypes from "prop-types";
-import ProductsProvider, { ProductsContext } from "./ProductsProvider";
+import { ProductsContext } from "./ProductsProvider";
+import { shippingCosts } from "../constants";
 
 export const CartContext = React.createContext();
 
@@ -9,9 +9,9 @@ export const CartContext = React.createContext();
  * The cart and related methods are shared through context.
  */
 const CartProvider = ({ children }) => {
-  console.log("cart");
   const { products } = useContext(ProductsContext);
   const [mode, setMode] = useState(false);
+  const [shipping, setShipping] = useState(shippingCosts[0]);
 
   const [contents, setContents] = useState(() => {
     // Load cart from local storage. Initialize if not present or incorrect.
@@ -138,7 +138,6 @@ const CartProvider = ({ children }) => {
       return false;
     }
   }
-
   /**
    * Toggles cart display, or sets to `mode` if provided.
    * @param {boolean} [mode] Force cart into mode. `true` for open; `false` for closed.
@@ -146,6 +145,8 @@ const CartProvider = ({ children }) => {
   function toggle(mode) {
     setMode((prev) => mode || !prev);
   }
+  const onClickoutClicked = () => {};
+  const hasItems = contents.length > 1;
 
   const ctx = {
     contents,
@@ -157,9 +158,12 @@ const CartProvider = ({ children }) => {
     remove,
     available,
     toggle,
+    hasItems,
     count,
     total,
     mode,
+    shipping,
+    setShipping,
   };
 
   return (

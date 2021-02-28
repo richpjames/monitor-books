@@ -1,13 +1,13 @@
 import React from "react";
 
-import BasketListItem from "./BasketListItem";
-import { LoadingSpinner } from "../../Common/LoadingSpinner";
+import BasketListItem from "../Components/Pages/Basket/BasketListItem";
+import { LoadingSpinner } from "../Components/Common/LoadingSpinner";
 
-import { ErrorText } from "../../Common";
-import Layout from "../../layout";
-import { ListTitle } from "../../Common/ListComponents";
+import { ErrorText } from "../Components/Common";
+import Layout from "../Components/layout";
+import { ListTitle } from "../Components/Common/ListComponents";
 
-import { BasketItems } from "./BasketItems";
+import { BasketItems } from "../Components/Pages/Basket/BasketItems";
 
 type IProps = {
   hasItems: boolean;

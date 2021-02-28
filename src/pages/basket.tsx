@@ -1,100 +1,50 @@
-import React, { useEffect } from "react";
-import { RouteComponentProps } from "@reach/router";
-import { connect, useDispatch } from "react-redux";
+import React, { useState } from "react";
+import styled from "styled-components/macro";
 
-import { shippingCosts } from "../constants";
-import {
-  CHECKOUT_FAILURE,
-  CHECKOUT_INITIALISE,
-} from "../state/actions/actionTypes";
+import CartProvider from "../state/CartProvider";
+import ProductsProvider from "../state/ProductsProvider";
 
-import { getTotal } from "../state/reducers/";
-import Basket from "../Components/Pages/Basket/Basket";
-import { checkout, setShipping, setLoading } from "../state/actions/";
-import { setTimeout } from "timers";
+import { LoadingSpinner } from "../Components/Common/LoadingSpinner";
 
-interface BasketContainerProps extends RouteComponentProps {
-  checkout: (products: { [key: string]: number }) => void;
-  setLoading: (loading: boolean) => void;
-  setShipping: (shipping: Shipping) => void;
-  hasError: boolean;
-  hasItems: boolean;
-  loading: boolean;
-  productIds: string[];
-  productsById: ById<Product>;
-  quantityById: ProductQuantityById;
-  shipping: Shipping;
-  shippingCosts: Shipping[];
-  total: number;
-}
+import { ErrorText } from "../Components/Common";
+import Layout from "../Components/layout";
+import { ListTitle } from "../Components/Common/ListComponents";
 
-const BasketContainer = ({
-  checkout,
-  hasError,
-  hasItems,
-  loading,
-  productIds,
-  productsById,
-  quantityById,
-  setLoading,
-  setShipping,
-  shipping,
-  shippingCosts,
-  total,
-}: BasketContainerProps) => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch({ type: CHECKOUT_INITIALISE });
-    setLoading(false);
-  }, [dispatch, setLoading]);
+import { CheckoutSection } from "../Components/Pages/Basket/CheckoutSection";
+import { BasketItemsList } from "../Components/Pages/Basket/BasketItemsList";
 
-  const handleShippingChange = (index: number) => {
-    setShipping(shippingCosts[index]);
-  };
+const Basket = () => {
+  const [loading, setLoading] = useState(false);
+  const [hasError, setHasError] = useState(false);
 
-  const onCheckoutClicked = () => {
-    setLoading(true);
-    checkout(quantityById);
-    setTimeout(() => {
-      dispatch({ type: CHECKOUT_FAILURE });
-    }, 5000);
-    setTimeout(() => {
-      dispatch({ type: CHECKOUT_INITIALISE });
-    }, 10000);
-  };
+  let basketComponent;
+  if (!loading && !hasError) {
+    basketComponent = (
+      <>
+        <BasketItemsList />
+        <CheckoutSection />
+      </>
+    );
+  } else if (loading && !hasError) {
+    basketComponent = <LoadingSpinner />;
+  } else if (hasError) {
+    basketComponent = (
+      <ErrorText
+        line1="Something has gone wrong :("
+        line2="Please try again or contact contact@monitorbooks.co.uk"
+      />
+    );
+  }
 
   return (
-    <Basket
-      total={total}
-      hasItems={hasItems}
-      hasError={hasError}
-      onCheckoutClicked={onCheckoutClicked}
-      productsById={productsById}
-      productIds={productIds}
-      quantityById={quantityById}
-      loading={loading}
-      shipping={shipping}
-      shippingOptions={shippingCosts}
-      setShipping={handleShippingChange}
-    />
+    <Layout>
+      <ProductsProvider>
+        <CartProvider>
+          <ListTitle id="basket-title">Basket</ListTitle>
+          {basketComponent}
+        </CartProvider>
+      </ProductsProvider>
+    </Layout>
   );
 };
-
-const mapStateToProps = (state: State) => {
-  const { cart, products } = state;
-  return {
-    hasError: cart.config.hasError,
-    hasItems: getTotal(state) > 0,
-    loading: cart.loading,
-    productIds: cart.addedIds,
-    productsById: products.byId,
-    quantityById: cart.quantityById,
-    shipping: cart.shipping,
-    shippingCosts: shippingCosts,
-    total: getTotal(state),
-  };
-};
-
-export default connect(mapStateToProps, { checkout, setShipping, setLoading })(
-  BasketContainer
-);
+export default Basket;

@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 
 import { Shipping } from "./Shipping";
 import { CTAButton } from "../../Common";
 import { BasketTotal } from "./BasketTotal";
-
+import { CartContext } from "../../../state/CartProvider";
+import { shippingCosts } from "../../../constants";
 const CheckoutSectionWrap = styled.section`
   padding-top: 2rem;
   display: flex;
@@ -12,30 +13,21 @@ const CheckoutSectionWrap = styled.section`
   align-items: center;
 `;
 
-interface Props {
-  setShipping: (index: number) => void;
-  shipping: Shipping;
-  shippingOptions: Shipping[];
-  onCheckoutClicked: (click: React.MouseEvent) => void;
-  hasItems: boolean;
-  total: number;
-}
-
-export const CheckoutSection: React.FC<Props> = ({
-  hasItems,
-  onCheckoutClicked,
-  setShipping,
-  shipping,
-  shippingOptions,
-  total,
-}) => {
+export const CheckoutSection: React.FC = () => {
+  const {
+    shipping,
+    setShipping,
+    hasItems,
+    total,
+    onCheckoutClicked,
+  } = useContext(CartContext);
   const grandTotal = total + shipping.price;
   return (
     <CheckoutSectionWrap>
       <Shipping
         shipping={shipping}
         setShipping={setShipping}
-        shippingOptions={shippingOptions}
+        shippingOptions={shippingCosts}
       />
       <BasketTotal total={grandTotal} />
       <CTAButton

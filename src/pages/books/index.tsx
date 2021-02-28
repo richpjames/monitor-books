@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from "react";
 import { useStaticQuery, graphql } from "gatsby";
-import { RouteComponentProps } from "@reach/router";
 import styled from "styled-components/macro";
 
 import {
@@ -15,7 +14,7 @@ import { PageTitle } from "../../Components/Common/Titles";
 import Layout from "../../Components/layout";
 import { productMapper } from "../../api/mappers";
 
-interface Props extends RouteComponentProps {
+interface Props {
   books: ById<Product>;
   bookIds: VisibleIds;
 }

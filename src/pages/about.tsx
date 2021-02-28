@@ -1,5 +1,4 @@
 import React from "react";
-import { RouteComponentProps } from "@reach/router";
 import styled from "styled-components/macro";
 
 import { Text } from "../Components/Common";
@@ -22,7 +21,7 @@ const TextWrap = styled.div`
   width: min(100%, 750px);
 `;
 
-const About: React.FC<RouteComponentProps> = () => {
+const About: React.FC = () => {
   return (
     <Layout>
       <BannerWrap>

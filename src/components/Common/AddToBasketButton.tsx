@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
-import { navigate } from "@reach/router";
+import { navigate } from "gatsby";
 import { connect } from "react-redux";
 
 import { background, text } from "../../constants";

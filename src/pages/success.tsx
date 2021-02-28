@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { RouteComponentProps } from "@reach/router";
 import { CHECKOUT_SUCCESS } from "../state/actions/actionTypes";
 
 import {
@@ -11,7 +10,7 @@ import {
 } from "../Components/Common";
 import Layout from "../Components/layout";
 
-const Success: React.FC<RouteComponentProps> = () => {
+const Success: React.FC = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch({ type: CHECKOUT_SUCCESS });

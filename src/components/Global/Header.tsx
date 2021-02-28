@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
-import { Link } from "@reach/router";
+import { Link } from "gatsby";
 
 import BasketNav from "./BasketNav";
 

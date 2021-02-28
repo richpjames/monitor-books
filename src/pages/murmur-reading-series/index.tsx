@@ -1,6 +1,5 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
-import { RouteComponentProps } from "@reach/router";
 import styled from "styled-components/macro";
 
 import {
@@ -15,7 +14,7 @@ import { PageTitle } from "../../Components/Common/Titles";
 import Layout from "../../Components/layout";
 import { videoMapper } from "../../api/mappers";
 
-interface VideosPageProps extends RouteComponentProps {
+interface VideosPageProps {
   videos: ById<Video>;
   videoIds: VisibleIds;
 }
