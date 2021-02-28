@@ -9,8 +9,6 @@ describe("Basket", () => {
     cy.fixture("initialisedState").then((initialisedState) =>
       cy.visit("/basket", {
         onBeforeLoad: (win) => {
-          console.log("before", initialisedState);
-
           saveState(initialisedState);
         },
       })

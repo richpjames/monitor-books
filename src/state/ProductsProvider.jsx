@@ -10,7 +10,6 @@ export const ProductsContext = React.createContext();
  * Wrapper to give Provider access to Sku nodes from Gatsby's GraphQL store.
  */
 const ProductsProvider = ({ children }) => {
-  console.log("prods");
   const { allStrapiBooks } = useStaticQuery(skusQuery);
   return <Provider data={allStrapiBooks}>{children}</Provider>;
 };
@@ -21,7 +20,6 @@ const ProductsProvider = ({ children }) => {
  * current information from Stripe.
  */
 const Provider = ({ data, children }) => {
-  console.log("prods");
   // Load product data from Gatsby store
   const products = data.nodes.map(productMapper);
 
