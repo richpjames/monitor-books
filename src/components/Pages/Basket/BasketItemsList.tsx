@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { CartContext } from "../../../state/CartProvider";
+import { ProductsContext } from "../../../state/ProductsProvider";
 import styled from "styled-components/macro";
 
 import BasketListItem from "./BasketListItem";
@@ -19,25 +20,21 @@ const EmptyCartMessage = styled.p`
 
 export const BasketItemsList = () => {
   const { contents } = useContext(CartContext);
-  const basketItems = contents.map((product, index: number) => {
-    const {
-      author,
-      title,
-      price,
-      quantity,
-      thumbnail,
-      id,
-      inventory,
-      slug,
-    } = product;
+  const { skus } = useContext(ProductsContext);
+
+  const basketItems = contents.map((cartItem, index) => {
+    const { author, title, price, thumbnail, id, inventory, slug } = skus[
+      cartItem[0]
+    ];
+    console.log();
     return (
       <BasketListItem
         title={author}
         subtitle={title}
         price={price}
-        quantity={quantity}
+        quantity={cartItem[1]}
         thumbnail={thumbnail}
-        id={id}
+        id={cartItem[0]}
         stock={inventory}
         key={id}
         index={index}

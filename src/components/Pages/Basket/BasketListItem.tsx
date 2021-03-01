@@ -1,13 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components/macro";
-import { connect } from "react-redux";
 import { navigate } from "gatsby";
 
-import {
-  addToBasket,
-  decrementInCart,
-  removeFromBasket,
-} from "../../../state/actions";
 import { QuantityPanel } from "./QuantityPanel";
 import {
   BasketListItemContainerWrap,
@@ -17,6 +11,7 @@ import {
   ListItemPhotoWrap,
   ListItemPhoto,
 } from "../../Common";
+import { CartContext } from "../../../state/CartProvider";
 
 const RemoveFromCartButton = styled.button`
   right: 0;
@@ -32,14 +27,11 @@ const PriceWrapper = styled.p`
 `;
 
 interface Props {
-  addToBasket: (id: string) => void;
-  decrementInCart: (id: string) => void;
   id: string;
   thumbnail: string;
   index: number;
   price: number;
   quantity: number;
-  removeFromBasket: (id: string, quantityToReplace: number) => void;
   stock: number;
   subtitle: string;
   title: string;
@@ -47,19 +39,18 @@ interface Props {
 }
 
 const BasketListItem = ({
-  addToBasket,
-  decrementInCart,
   id,
   thumbnail,
   index,
   quantity,
-  removeFromBasket,
   price,
   stock,
   subtitle,
   title,
   slug,
 }: Props) => {
+  const { add, subtract, remove } = useContext(CartContext);
+
   const basketItemLabel = slug.toLowerCase();
   return (
     <BasketListItemContainerWrap
@@ -80,14 +71,14 @@ const BasketListItem = ({
         </ListItemSubtitle>
         <PriceWrapper id={`${basketItemLabel}-price`}>£{price}</PriceWrapper>
         <QuantityPanel
-          addToCart={() => addToBasket(id)}
-          decrementInCart={() => decrementInCart(id)}
+          addToCart={() => add(id)}
+          decrementInCart={() => subtract(id)}
           outOfStock={stock < 0}
           quantity={quantity}
           label={basketItemLabel}
         />
         <RemoveFromCartButton
-          onClick={() => removeFromBasket(id, quantity)}
+          onClick={() => remove(id)}
           name="Remove from basket"
           type="button"
           id={`${basketItemLabel}-remove-button`}
@@ -99,8 +90,4 @@ const BasketListItem = ({
   );
 };
 
-export default connect(null, {
-  addToBasket,
-  removeFromBasket,
-  decrementInCart,
-})(BasketListItem);
+export default BasketListItem;

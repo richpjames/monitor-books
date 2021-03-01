@@ -9,7 +9,7 @@ export const CartContext = React.createContext();
  * The cart and related methods are shared through context.
  */
 const CartProvider = ({ children }) => {
-  const { products } = useContext(ProductsContext);
+  const { skus } = useContext(ProductsContext);
   const [mode, setMode] = useState(false);
   const [shipping, setShipping] = useState(shippingCosts[0]);
 
@@ -17,7 +17,7 @@ const CartProvider = ({ children }) => {
     // Load cart from local storage. Initialize if not present or incorrect.
     let localCart;
     try {
-      // localCart = JSON.parse(localStorage.getItem("cart"));
+      localCart = JSON.parse(localStorage.getItem("cart"));
     } catch (err) {
       console.error(err.message);
     }
@@ -36,7 +36,7 @@ const CartProvider = ({ children }) => {
 
   /** An array representing cart items in the form of [{sku}, quantity] */
   const cart = contents.map(([id, quantity]) => {
-    return [products[id], quantity];
+    return [skus[id], quantity];
   });
 
   /** The number of items in the cart */
@@ -44,7 +44,7 @@ const CartProvider = ({ children }) => {
 
   /** The total cost of the items in the cart */
   const total = contents.reduce(
-    (sum, [id, quantity]) => sum + products[id].price * quantity,
+    (sum, [id, quantity]) => sum + skus[id].price * quantity,
     0
   );
 
@@ -99,7 +99,7 @@ const CartProvider = ({ children }) => {
    */
   function subtract(id, quantity = 1) {
     const currentQuantity = get(id);
-    const newQuantity = Math.max(0, quantity - currentQuantity);
+    const newQuantity = Math.max(0, currentQuantity - quantity);
     return set(id, newQuantity);
   }
 
@@ -122,18 +122,12 @@ const CartProvider = ({ children }) => {
    */
   function available(id, quantity = 1) {
     const cartQuantity = get(id);
-    const sku = products[id];
+    const sku = skus[id];
     if (!sku) {
       console.error(`Sku with id ${id} not found`);
       return false;
-    } else if (sku.active === false) {
-      return false;
-    } else if (sku.inventory.type === "infinite") {
-      return true;
-    } else if (sku.inventory.type === "bucket") {
-      return ["in_stock", "limited"].includes(sku.inventory.type);
-    } else if (sku.inventory.type === "finite") {
-      return sku.inventory.quantity - cartQuantity >= quantity;
+    } else if (sku.inventory) {
+      return sku.inventory - cartQuantity >= quantity;
     } else {
       return false;
     }

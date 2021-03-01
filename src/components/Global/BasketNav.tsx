@@ -47,12 +47,12 @@ interface BasketIconProps {
   totalQuantity: number;
 }
 
-const BasketIcon: React.FC<BasketIconProps> = ({ totalQuantity }) => {
-  const products = useContext(CartContext);
+const BasketIcon: React.FC<BasketIconProps> = () => {
+  const { count } = useContext(CartContext);
   return (
     <Container>
       <IconWrapper>
-        <Number id="header-basket-items">{totalQuantity}</Number>
+        <Number id="header-basket-items">{count}</Number>
         <Icon color={text} />
       </IconWrapper>
     </Container>

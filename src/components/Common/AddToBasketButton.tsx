@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components/macro";
 import { navigate } from "gatsby";
 import { connect } from "react-redux";
 
 import { background, text } from "../../constants";
 import { addToBasket } from "../../state/actions";
+import { CartContext } from "../../state/CartProvider";
 
 const ButtonStyles = styled.button<{ borderColour: string }>`
   width: 150px;
@@ -20,24 +21,20 @@ const ButtonWrapper = styled.div`
 `;
 
 interface AddToBasketButtonProps {
-  cartQuantity: number;
-  inventoryQuantity: number;
-  addToBasket: (id: string) => void;
   id: string;
   borderColour: string;
   publishedDate: Date;
 }
 
-const AddToBasketButton: React.FC<AddToBasketButtonProps> = ({
-  cartQuantity,
-  inventoryQuantity,
-  addToBasket,
+export const AddToBasketButton: React.FC<AddToBasketButtonProps> = ({
   id,
   borderColour,
   publishedDate,
 }) => {
-  const inCart = cartQuantity > 0;
-
+  const { get, add, available } = useContext(CartContext);
+  console.log(CartContext);
+  const inCart = get(id) > 0;
+  const outOfStock = !available(id);
   let buttonMessage = "Add to basket";
 
   if (new Date(publishedDate).getTime() > new Date().getTime()) {
@@ -45,14 +42,14 @@ const AddToBasketButton: React.FC<AddToBasketButtonProps> = ({
   }
 
   let onClick = () => {
-    if (!inCart) return addToBasket(id);
+    if (!inCart) return add(id);
     else return navigate("/basket");
   };
 
   if (inCart) {
     buttonMessage = "In basket";
     onClick = () => navigate("/basket");
-  } else if (inventoryQuantity < 1) {
+  } else if (outOfStock) {
     buttonMessage = "Out of stock";
   }
 
@@ -60,7 +57,7 @@ const AddToBasketButton: React.FC<AddToBasketButtonProps> = ({
     <ButtonWrapper>
       <ButtonStyles
         onClick={onClick}
-        disabled={false}
+        disabled={outOfStock || inCart}
         className="add-to-basket"
         borderColour={borderColour}
       >
@@ -69,12 +66,3 @@ const AddToBasketButton: React.FC<AddToBasketButtonProps> = ({
     </ButtonWrapper>
   );
 };
-
-const mapStateToProps = (state: State, { id }: { id: string }) => ({
-  cartQuantity: state.cart.quantityById[id],
-  inventoryQuantity: state.products.byId[id].inventory,
-  id: id,
-  publishDate: state.products.byId[id].publishedDate,
-});
-
-export default connect(mapStateToProps, { addToBasket })(AddToBasketButton);

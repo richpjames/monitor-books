@@ -28,7 +28,7 @@ export const productMapper = (product: ApiProduct) => {
     blurb1,
     blurb2,
     publishedDate: new Date(publishedDate),
-    priceId: process.env.NODE_ENV === "production" ? prodPriceId : devPriceId,
+    priceId: process.env.NODE_ENV === "development" ? devPriceId : prodPriceId,
     photos: images?.fullSize,
   };
 };

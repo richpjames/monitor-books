@@ -16,6 +16,8 @@ import {
   productPageImageHeight,
   productPageImageWidth,
 } from "../../constants";
+import CartProvider from "../../state/CartProvider";
+import ProductsProvider from "../../state/ProductsProvider";
 
 export const query = graphql`
   query BookQuery($slug: String!) {
@@ -46,7 +48,15 @@ const ProductPageWrapper = styled(Layout)`
 
 const ProductPage = ({ data }) => {
   const product = productMapper(data.strapiBooks);
-  const { photos, title, author, blurb1, blurb2, id, publishedDate } = product;
+  const {
+    photos,
+    title,
+    author,
+    blurb1,
+    blurb2,
+    priceId,
+    publishedDate,
+  } = product;
   return (
     <ProductPageWrapper>
       <Photos
@@ -59,13 +69,17 @@ const ProductPage = ({ data }) => {
         <SplitText
           leftText={blurb1}
           rightText={blurb2}
-          //   addToBasketButton={
-          //     <AddToBasketButton
-          //       id={id}
-          //       borderColour={text}
-          //       publishedDate={publishedDate}
-          //     />
-          //   }
+          addToBasketButton={
+            <ProductsProvider>
+              <CartProvider>
+                <AddToBasketButton
+                  id={priceId}
+                  borderColour={text}
+                  publishedDate={publishedDate}
+                />
+              </CartProvider>
+            </ProductsProvider>
+          }
         />
       </InfoSection>
     </ProductPageWrapper>

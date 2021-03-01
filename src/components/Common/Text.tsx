@@ -41,16 +41,18 @@ interface Props {
 
 export const SplitText = (props: Props) => {
   const { leftText, rightText, addToBasketButton } = props;
+  const sanitizedLeftText = sanitize(leftText);
+  const sanitizedRightText = sanitize(rightText);
   return (
     <TextWrapper className="TextWrapper">
       <LeftSection
         className="left-section"
-        dangerouslySetInnerHTML={{ __html: sanitize(leftText) }}
+        dangerouslySetInnerHTML={{ __html: sanitizedLeftText }}
       />
       <RightSection>
         <div
           className="right-section"
-          dangerouslySetInnerHTML={{ __html: sanitize(rightText) }}
+          dangerouslySetInnerHTML={{ __html: sanitizedRightText }}
         />
         {addToBasketButton}
       </RightSection>

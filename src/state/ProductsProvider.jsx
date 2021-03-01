@@ -1,6 +1,5 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
-
 import { productMapper } from "../api/mappers";
 
 export const ProductsContext = React.createContext();
@@ -9,8 +8,8 @@ export const ProductsContext = React.createContext();
  * Wrapper to give Provider access to Sku nodes from Gatsby's GraphQL store.
  */
 const ProductsProvider = ({ children }) => {
-  const { allStrapiBooks } = useStaticQuery(skusQuery);
-  return <Provider data={allStrapiBooks}>{children}</Provider>;
+  const data = useStaticQuery(skusQuery);
+  return <Provider data={data}>{children}</Provider>;
 };
 
 /**
@@ -20,12 +19,13 @@ const ProductsProvider = ({ children }) => {
  */
 const Provider = ({ data, children }) => {
   // Load product data from Gatsby store
-  const products = data.nodes.map(productMapper);
+
+  const skus = processGatsbyData(data);
 
   return (
     <ProductsContext.Provider
       value={{
-        products,
+        skus,
         listProducts: (sortFn) => {
           const fn = sortFn || ((a, b) => a.publishedDate - b.publishedDate);
           return Object.values(products).sort(fn);
@@ -37,17 +37,34 @@ const Provider = ({ data, children }) => {
   );
 };
 
+/** Normalize structure of data sourced from Gatsby's GraphQL store */
+const processGatsbyData = (data) => {
+  const skus = {};
+  // Sku nodes are grouped by product
+  data.allStrapiBooks.nodes.forEach((book) => {
+    const { prodPriceId, devPriceId } = book;
+    const sku =
+      process.env.NODE_ENV === "development" ? devPriceId : prodPriceId;
+    skus[sku] = productMapper(book);
+  });
+  return skus;
+};
 const skusQuery = graphql`
   {
     allStrapiBooks {
       nodes {
+        title
         author
+        blurb1
+        blurb2
+        publishedDate
+        slug
+        id
+        inventory
+        thumbnail
         devPriceId
         prodPriceId
         price
-        thumbnail
-        slug
-        Title
       }
     }
   }
