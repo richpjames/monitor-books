@@ -1,10 +1,8 @@
 import React, { useContext } from "react";
 import styled from "styled-components/macro";
 import { navigate } from "gatsby";
-import { connect } from "react-redux";
 
 import { background, text } from "../../constants";
-import { addToBasket } from "../../state/actions";
 import { CartContext } from "../../state/CartProvider";
 
 const ButtonStyles = styled.button<{ borderColour: string }>`

@@ -70,15 +70,11 @@ const ProductPage = ({ data }) => {
           leftText={blurb1}
           rightText={blurb2}
           addToBasketButton={
-            <ProductsProvider>
-              <CartProvider>
-                <AddToBasketButton
-                  id={priceId}
-                  borderColour={text}
-                  publishedDate={publishedDate}
-                />
-              </CartProvider>
-            </ProductsProvider>
+            <AddToBasketButton
+              id={priceId}
+              borderColour={text}
+              publishedDate={publishedDate}
+            />
           }
         />
       </InfoSection>

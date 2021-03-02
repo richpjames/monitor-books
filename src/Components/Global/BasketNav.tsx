@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import styled from "styled-components/macro";
-import { connect } from "react-redux";
 
 import { Basket } from "grommet-icons";
 import { text, background } from "../../constants";
@@ -58,14 +57,4 @@ const BasketIcon: React.FC<BasketIconProps> = () => {
     </Container>
   );
 };
-
-const mapStateToProps = (state: State) => {
-  const { addedIds, quantityById } = state.cart;
-  return {
-    totalQuantity: addedIds.reduce((previousValue, currentValue) => {
-      return previousValue + quantityById[currentValue];
-    }, 0),
-  };
-};
-
-export default connect(mapStateToProps)(BasketIcon);
+export default BasketIcon;
