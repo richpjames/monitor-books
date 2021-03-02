@@ -38,12 +38,8 @@ const Basket = () => {
 
   return (
     <Layout>
-      <ProductsProvider>
-        <CartProvider>
-          <ListTitle id="basket-title">Basket</ListTitle>
-          {basketComponent}
-        </CartProvider>
-      </ProductsProvider>
+      <ListTitle id="basket-title">Basket</ListTitle>
+      {basketComponent}
     </Layout>
   );
 };
