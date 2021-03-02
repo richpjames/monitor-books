@@ -46,7 +46,7 @@
     "start": "gatsby develop",
     "test": "react-scripts test",
     "buildDev": "NODE_ENV=development gatsby build",
-    "buildProd": "NODE_ENV=production react-scripts build",
+    "buildProd": "NODE_ENV=production gatsby build",
     "functions": "cd functions && npm i && cd ..",
     "dev": "netlify dev",
     "ci-unit-tests": "react-scripts test --watchAll=false --env=jest-environment-jsdom-sixteen",
