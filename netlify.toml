@@ -9,6 +9,7 @@
 
 [context.branch-deploy]
   command = "yarn buildProd"
+  publish = "public/"
   environment = { NODE_ENV = "production"}
 
 [[redirects]]
