@@ -26,7 +26,6 @@ export const BasketItemsList = () => {
     const { author, title, price, thumbnail, id, inventory, slug } = skus[
       cartItem[0]
     ];
-    console.log();
     return (
       <BasketListItem
         title={author}

@@ -32,7 +32,7 @@ export const AddToBasketButton: React.FC<AddToBasketButtonProps> = ({
   publishedDate,
 }) => {
   const { get, add, available } = useContext(CartContext);
-  console.log(CartContext);
+
   const inCart = get(id) > 0;
   const outOfStock = !available(id);
   let buttonMessage = "Add to basket";

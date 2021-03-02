@@ -31,15 +31,18 @@ const About: React.FC = () => {
         />
       </BannerWrap>
       <TextWrap>
-        <Text
-          text="<p>Monitor is a publication platform for poetry, innovative writing and
-        criticism based in Manchester, UK. Its first publication, Murmur
-        Anthology #1, was published September 2019, and its second book is Amy McCauley’s Propositions, which is published this November.</p>"
-        ></Text>
-        <Text
-          text="<p>For submissions and contact, please email:
-        <a href='mailto:editor@monitorbooks.co.uk'>editor@monitorbooks.co.uk</a></p>"
-        ></Text>
+        <p>
+          Monitor is a publication platform for poetry, innovative writing and
+          criticism based in Manchester, UK. Its first publication, Murmur
+          Anthology #1, was published September 2019, and its second book is Amy
+          McCauley’s Propositions, which is published this November.
+        </p>
+        <p>
+          For submissions and contact, please email:
+          <a href="mailto:editor@monitorbooks.co.uk">
+            editor@monitorbooks.co.uk
+          </a>
+        </p>
       </TextWrap>
     </Layout>
   );

@@ -19,9 +19,11 @@ const Success: React.FC = () => {
     <Layout>
       <InfoSection>
         <PageTitle>Order Successful</PageTitle>
-        <Text
-          text={`<p>Everything went through ok.<br /> Thanks for your order. <br /> You will receive an email with details. <br /> For enquiries contact@monitorbooks.co.uk</p>`}
-        />
+        <p>
+          Everything went through ok.
+          <br /> Thanks for your order. <br /> You will receive an email with
+          details. <br /> For enquiries contact@monitorbooks.co.uk
+        </p>
       </InfoSection>
     </Layout>
   );
