@@ -68,3 +68,9 @@ export const productPageImageWidth = "100%";
 export const introTimer = 4;
 
 export const introTimerMilliseconds = introTimer * 1000;
+
+//STRIPE
+export const stripePublishableKey =
+  process.env.GATSBY_ENV === "production"
+    ? process.env.GATSBY_PROD_STRIPE_PUBLISHABLE_KEY
+    : process.env.GATSBY_DEV_STRIPE_PUBLISHABLE_KEY;

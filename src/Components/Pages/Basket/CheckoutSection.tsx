@@ -32,7 +32,7 @@ export const CheckoutSection: React.FC = () => {
       <BasketTotal total={grandTotal} />
       <CTAButton
         onClick={onCheckoutClicked}
-        disabled={!hasItems}
+        disabled={false}
         id="checkout-button"
       >
         Checkout

@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { ProductsContext } from "./ProductsProvider";
-import { shippingCosts } from "../constants";
+import { shippingCosts, stripePublishableKey } from "../constants";
+import { StripeError, loadStripe } from "@stripe/stripe-js";
 
 export const CartContext = React.createContext();
 
@@ -139,8 +140,39 @@ const CartProvider = ({ children }) => {
   function toggle(mode) {
     setMode((prev) => mode || !prev);
   }
-  const onClickoutClicked = () => {};
-  const hasItems = contents.length > 1;
+  const onCheckoutClicked = () => {
+    const lineItems = cart.map(([sku, quantity]) => ({
+      price: sku.id,
+      quantity: quantity,
+    }));
+    lineItems.push({ price: shipping.priceId, quantity: "1" });
+
+    const stripePromise = loadStripe(stripePublishableKey || "");
+
+    fetch("/.netlify/functions/create-checkout", {
+      method: "POST",
+      body: JSON.stringify({ lineItems, env: process.env.GATSBY_ENV }),
+    })
+      .then(async (response) => {
+        const { sessionId } = await response.json();
+        typeof window !== undefined && localStorage.setItem("cart", "{}");
+        const stripe = await stripePromise;
+        if (stripe) {
+          const stripeResponse = await stripe.redirectToCheckout({
+            sessionId: sessionId,
+          });
+
+          if (stripeResponse.error) {
+            alert(stripeResponse.error.message);
+          }
+          // If `redirectToCheckout` fails due to a browser or network
+          // error, display the localized error message to your customer
+          // using `error.message`.
+        }
+      })
+      .catch((err) => alert(err.message));
+  };
+  const hasItems = contents.length > 0;
 
   const ctx = {
     contents,
@@ -158,6 +190,7 @@ const CartProvider = ({ children }) => {
     mode,
     shipping,
     setShipping,
+    onCheckoutClicked,
   };
 
   return (
