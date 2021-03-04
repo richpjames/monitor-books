@@ -142,16 +142,16 @@ const CartProvider = ({ children }) => {
   }
   const onCheckoutClicked = () => {
     const lineItems = cart.map(([sku, quantity]) => ({
-      price: sku.id,
+      price: sku.priceId,
       quantity: quantity,
     }));
     lineItems.push({ price: shipping.priceId, quantity: "1" });
-
+    console.log(stripePublishableKey, process.env.GATSBY_ENV, "env");
     const stripePromise = loadStripe(stripePublishableKey || "");
 
     fetch("/.netlify/functions/create-checkout", {
       method: "POST",
-      body: JSON.stringify({ lineItems, env: process.env.GATSBY_ENV }),
+      body: JSON.stringify({ lineItems, env: process.env.NODE_ENV }),
     })
       .then(async (response) => {
         const { sessionId } = await response.json();

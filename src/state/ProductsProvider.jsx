@@ -42,10 +42,9 @@ const processGatsbyData = (data) => {
   const skus = {};
   // Sku nodes are grouped by product
   data.allStrapiBooks.nodes.forEach((book) => {
-    const { prodPriceId, devPriceId } = book;
-    const sku =
-      process.env.NODE_ENV === "development" ? devPriceId : prodPriceId;
-    skus[sku] = productMapper(book);
+    const mappedBook = productMapper(book);
+    const sku = mappedBook.priceId;
+    skus[sku] = mappedBook;
   });
   return skus;
 };

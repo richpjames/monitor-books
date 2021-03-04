@@ -5,12 +5,12 @@
 
 [context.production]
   command = "yarn buildProd"
-  environment = { NODE_ENV = "production"}
+  environment = { NODE_ENV = "production", GATSBY_ENV = "production"}
 
 [context.branch-deploy]
   command = "yarn buildProd"
   publish = "public/"
-  environment = { NODE_ENV = "production"}
+  environment = { NODE_ENV = "production", GATSBY_ENV = "production"}
 
 [[redirects]]
   from = "/*"
