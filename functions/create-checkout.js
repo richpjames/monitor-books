@@ -6,7 +6,6 @@ exports.handler = async (event) => {
   const data = JSON.parse(event.body);
   const products = data.lineItems;
   const env = data.env;
-  console.log(data, products, env, "this is it");
   let stripe = devStripe;
   let publishableKey = process.env.GATSBY_DEV_STRIPE_PUBLISHABLE_KEY;
 

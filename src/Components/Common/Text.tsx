@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
-// import { sanitize } from "dompurify";
+import { sanitize } from "dompurify";
 
 const LeftSection = styled.div`
   width: 45%;
@@ -41,19 +41,16 @@ interface Props {
 
 export const SplitText = (props: Props) => {
   const { leftText, rightText, addToBasketButton } = props;
-  // const sanitizedLeftText = sanitize(leftText);
-  // const sanitizedRightText = sanitize(rightText);
-  // console.log("santized", sanitizedLeftText, sanitizedRightText);
   return (
     <TextWrapper className="TextWrapper">
       <LeftSection
         className="left-section"
-        dangerouslySetInnerHTML={{ __html: leftText }}
+        dangerouslySetInnerHTML={{ __html: sanitize(leftText) }}
       />
       <RightSection>
         <div
           className="right-section"
-          dangerouslySetInnerHTML={{ __html: rightText }}
+          dangerouslySetInnerHTML={{ __html: sanitize(rightText) }}
         />
         {addToBasketButton}
       </RightSection>
@@ -62,7 +59,7 @@ export const SplitText = (props: Props) => {
 };
 
 export const Text: React.FC<{ text: string; colour?: string }> = ({ text }) => (
-  <TextWrapper dangerouslySetInnerHTML={{ __html: text }} />
+  <TextWrapper dangerouslySetInnerHTML={{ __html: sanitize(text) }} />
 );
 
 export const ErrorText: React.FC<{ line1: string; line2: string }> = ({

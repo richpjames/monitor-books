@@ -19,7 +19,8 @@ const EmptyCartMessage = styled.p`
 `;
 
 export const BasketItemsList = () => {
-  const { contents } = useContext(CartContext);
+  const { contents, error, setError } = useContext(CartContext);
+
   const { skus } = useContext(ProductsContext);
 
   const basketItems = contents.map((cartItem, index) => {
@@ -42,7 +43,7 @@ export const BasketItemsList = () => {
     );
   });
   return (
-    <div>
+    <>
       {contents.length > 0 ? (
         <BasketItemsSection>{basketItems}</BasketItemsSection>
       ) : (
@@ -54,6 +55,6 @@ export const BasketItemsList = () => {
           </span>
         </EmptyCartMessage>
       )}
-    </div>
+    </>
   );
 };

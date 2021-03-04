@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { ProductsContext } from "./ProductsProvider";
 import { shippingCosts, stripePublishableKey } from "../constants";
-import { StripeError, loadStripe } from "@stripe/stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 
 export const CartContext = React.createContext();
 
@@ -11,7 +11,6 @@ export const CartContext = React.createContext();
  */
 const CartProvider = ({ children }) => {
   const { skus } = useContext(ProductsContext);
-  const [mode, setMode] = useState(false);
   const [shipping, setShipping] = useState(shippingCosts[0]);
 
   const [contents, setContents] = useState(() => {
@@ -133,20 +132,13 @@ const CartProvider = ({ children }) => {
       return false;
     }
   }
-  /**
-   * Toggles cart display, or sets to `mode` if provided.
-   * @param {boolean} [mode] Force cart into mode. `true` for open; `false` for closed.
-   */
-  function toggle(mode) {
-    setMode((prev) => mode || !prev);
-  }
+
   const onCheckoutClicked = () => {
     const lineItems = cart.map(([sku, quantity]) => ({
       price: sku.priceId,
       quantity: quantity,
     }));
     lineItems.push({ price: shipping.priceId, quantity: "1" });
-    console.log(stripePublishableKey, process.env.GATSBY_ENV, "env");
     const stripePromise = loadStripe(stripePublishableKey || "");
 
     fetch("/.netlify/functions/create-checkout", {
@@ -170,7 +162,11 @@ const CartProvider = ({ children }) => {
           // using `error.message`.
         }
       })
-      .catch((err) => alert(err.message));
+      .catch((_) =>
+        alert(
+          "something went wrong. try again or contact editor@monitorbooks.co.uk"
+        )
+      );
   };
   const hasItems = contents.length > 0;
 
@@ -183,11 +179,9 @@ const CartProvider = ({ children }) => {
     set,
     remove,
     available,
-    toggle,
     hasItems,
     count,
     total,
-    mode,
     shipping,
     setShipping,
     onCheckoutClicked,
