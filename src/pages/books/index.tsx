@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react";
-import { useStaticQuery, graphql } from "gatsby";
+import { useStaticQuery, graphql, PageProps } from "gatsby";
 import styled from "styled-components/macro";
 
 import {
@@ -14,19 +14,16 @@ import { PageTitle } from "../../Components/Common/Titles";
 import Layout from "../../Components/layout";
 import { productMapper } from "../../api/mappers";
 
-interface Props {
-  books: ById<Product>;
-  bookIds: VisibleIds;
-}
-
 const ListWrap = styled.section`
   display: flex;
   flex-wrap: wrap;
   padding-top: 2.5rem;
 `;
 
-const ProductsPage: FunctionComponent<Props> = ({ books, bookIds }) => {
-  const { allStrapiBooks } = useStaticQuery(graphql`
+const ProductsPage: FunctionComponent<PageProps> = ({ location }) => {
+  const {
+    allStrapiBooks,
+  }: { allStrapiBooks: { nodes: ApiProduct[] } } = useStaticQuery(graphql`
     query {
       allStrapiBooks {
         nodes {
@@ -39,13 +36,12 @@ const ProductsPage: FunctionComponent<Props> = ({ books, bookIds }) => {
     }
   `);
   return (
-    <Layout>
+    <Layout pathname={location.pathname} backgroundColour="cyan">
       <PageTitle>Books</PageTitle>
       <ListWrap>
         {allStrapiBooks.nodes.map((book, index) => {
           const { slug, title, author, thumbnail } = productMapper(book);
           const lowercaseTitle = title.toLocaleLowerCase();
-
           return (
             <ListItemContainerWrap
               index={index}

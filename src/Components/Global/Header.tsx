@@ -6,8 +6,6 @@ import BasketNav from "./BasketNav";
 
 import Logo from "./Logo";
 import { text } from "../../constants";
-import CartProvider from "../../state/CartProvider";
-import ProductsProvider from "../../state/ProductsProvider";
 
 const Nav = styled.nav`
   display: flex;
@@ -97,7 +95,7 @@ const navItems = [
     className: "books",
   },
   {
-    link: "murmur-reading-series",
+    link: "/murmur-reading-series",
     ariaLabel: "Video link",
     content: "Murmur Reading Series",
     className: "videos",

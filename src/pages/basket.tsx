@@ -15,7 +15,7 @@ const Basket = () => {
   );
 
   return (
-    <Layout>
+    <Layout backgroundColour="pink">
       <ListTitle id="basket-title">Basket</ListTitle>
       {basketComponent}
     </Layout>

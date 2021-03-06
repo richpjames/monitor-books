@@ -1,12 +1,11 @@
 import React from "react";
-import { useStaticQuery, graphql } from "gatsby";
+import { useStaticQuery, graphql, PageProps } from "gatsby";
 import styled from "styled-components/macro";
 
 import {
   ListItemContainerWrap,
   ListItemPhoto,
   VideoCreatorName,
-  PageWrapper,
   VideoCreatorContainer,
   ListItemPhotoWrap,
 } from "../../Components/Common";
@@ -14,19 +13,16 @@ import { PageTitle } from "../../Components/Common/Titles";
 import Layout from "../../Components/layout";
 import { videoMapper } from "../../api/mappers";
 
-interface VideosPageProps {
-  videos: ById<Video>;
-  videoIds: VisibleIds;
-}
-
 const ListWrap = styled.section`
   display: flex;
   flex-wrap: wrap;
   padding-top: 2.5rem;
 `;
 
-const VideosPage: React.FC<VideosPageProps> = () => {
-  const { allStrapiVideos } = useStaticQuery(graphql`
+const VideosPage: React.FC<PageProps> = ({ location }) => {
+  const {
+    allStrapiVideos,
+  }: { allStrapiVideos: { nodes: ApiVideo[] } } = useStaticQuery(graphql`
     query {
       allStrapiVideos {
         nodes {
@@ -41,7 +37,7 @@ const VideosPage: React.FC<VideosPageProps> = () => {
     }
   `);
   return (
-    <Layout>
+    <Layout pathname={location.pathname} backgroundColour="limegreen">
       <PageTitle>Murmur Reading Series</PageTitle>
       <ListWrap>
         {allStrapiVideos.nodes.map((video, index) => {

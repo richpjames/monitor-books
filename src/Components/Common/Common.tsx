@@ -1,14 +1,17 @@
 import styled from "styled-components/macro";
 import { text } from "../../constants";
 
-export const PageWrapper = styled.main`
+export const PageWrapper = styled.main<{ backgroundColour: string }>`
   padding: 2.5rem;
   max-width: 100%;
+  min-height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
+  background-color: ${({ backgroundColour }) =>
+    `${backgroundColour || `purple`}`};
   @media only screen and (max-width: 400px) {
     padding-top: 2.5rem;
     padding-bottom: 2.5rem;

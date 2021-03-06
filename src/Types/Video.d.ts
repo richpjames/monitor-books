@@ -21,15 +21,6 @@ interface ApiVideo {
   artists: { id: number; Name: string; Description: string }[];
 }
 
-type VideoAction = {
-  type: RECEIVE_VIDEOS;
-  videos: Video[];
-};
-
-type VideosById = ById<Video>;
-
-type Videos = { byId: VideosById; visibleIds: VisibleIds };
-
 interface Cart {
   addedIds: AddedIds;
   quantityById: ProductQuantityById;

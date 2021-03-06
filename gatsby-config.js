@@ -12,12 +12,20 @@ module.exports = {
     "gatsby-plugin-react-helmet",
     "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
-    "gatsby-plugin-typescript",
+    {
+      resolve: `gatsby-plugin-typescript`,
+      options: {
+        isTSX: true, // defaults to false
+        jsxPragma: `jsx`, // defaults to "React"
+        allExtensions: true, // defaults to false
+      },
+    },
     {
       resolve: `gatsby-source-strapi`,
       options: {
         apiURL: `https://monitor-books.herokuapp.com`,
         contentTypes: ["books", "videos"],
+        singleTypes: ["about-page", "intro-page"],
       },
     },
   ],

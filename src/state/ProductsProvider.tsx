@@ -1,14 +1,17 @@
-import React from "react";
+import React, { createContext } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import { productMapper } from "../api/mappers";
 
-export const ProductsContext = React.createContext();
+export const ProductsContext = React.createContext<
+  Partial<{ skus: { [index: string]: Product } }>
+>({});
+type skusQuery = { allStrapiBooks: { nodes: ApiProduct[] } };
 
 /**
  * Wrapper to give Provider access to Sku nodes from Gatsby's GraphQL store.
  */
-const ProductsProvider = ({ children }) => {
-  const data = useStaticQuery(skusQuery);
+const ProductsProvider = ({ children }: { children: React.ReactChildren }) => {
+  const data: skusQuery = useStaticQuery(skusQuery);
   return <Provider data={data}>{children}</Provider>;
 };
 
@@ -17,7 +20,13 @@ const ProductsProvider = ({ children }) => {
  * Products are first loaded from Gatsby's GraphQL store and then updated with
  * current information from Stripe.
  */
-const Provider = ({ data, children }) => {
+const Provider = ({
+  data,
+  children,
+}: {
+  children: React.ReactChildren;
+  data: { allStrapiBooks: { nodes: ApiProduct[] } };
+}) => {
   // Load product data from Gatsby store
 
   const skus = processGatsbyData(data);
@@ -26,10 +35,6 @@ const Provider = ({ data, children }) => {
     <ProductsContext.Provider
       value={{
         skus,
-        listProducts: (sortFn) => {
-          const fn = sortFn || ((a, b) => a.publishedDate - b.publishedDate);
-          return Object.values(products).sort(fn);
-        },
       }}
     >
       {children}
@@ -38,8 +43,8 @@ const Provider = ({ data, children }) => {
 };
 
 /** Normalize structure of data sourced from Gatsby's GraphQL store */
-const processGatsbyData = (data) => {
-  const skus = {};
+const processGatsbyData = (data: skusQuery) => {
+  const skus: { [index: string]: Product } = {};
   // Sku nodes are grouped by product
   data.allStrapiBooks.nodes.forEach((book) => {
     const mappedBook = productMapper(book);
@@ -48,6 +53,7 @@ const processGatsbyData = (data) => {
   });
   return skus;
 };
+
 const skusQuery = graphql`
   {
     allStrapiBooks {

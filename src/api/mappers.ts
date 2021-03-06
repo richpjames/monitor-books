@@ -1,4 +1,4 @@
-export const productMapper = (product: ApiProduct) => {
+export const productMapper = (product: ApiProduct): Product => {
   const {
     title,
     author,
@@ -17,13 +17,10 @@ export const productMapper = (product: ApiProduct) => {
   return {
     title,
     author,
-    images,
     slug,
     price,
     inventory,
     thumbnail,
-    devPriceId,
-    prodPriceId,
     id,
     blurb1,
     blurb2,

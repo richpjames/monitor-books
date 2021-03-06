@@ -1,7 +1,8 @@
 import React from "react";
+import { graphql, useStaticQuery, PageProps } from "gatsby";
 import styled from "styled-components/macro";
+import ReactMarkdown from "react-markdown";
 
-import { Text } from "../Components/Common";
 import Layout from "../Components/layout";
 
 const Banner = styled.img`
@@ -17,13 +18,21 @@ const BannerWrap = styled.div`
   justify-content: center;
 `;
 
-const TextWrap = styled.div`
+const TextWrap = styled.section`
   width: min(100%, 750px);
 `;
 
-const About: React.FC = () => {
+const About: React.FC<PageProps> = ({ location }) => {
+  const { strapiAboutPage } = useStaticQuery(graphql`
+    query AboutPageQuery {
+      strapiAboutPage {
+        Description
+      }
+    }
+  `);
+  const { Description } = strapiAboutPage;
   return (
-    <Layout>
+    <Layout backgroundColour="white" pathname={location.pathname}>
       <BannerWrap>
         <Banner
           src="https://monitorbooks.co.uk/img/logo.png"
@@ -31,18 +40,7 @@ const About: React.FC = () => {
         />
       </BannerWrap>
       <TextWrap>
-        <p>
-          Monitor is a publication platform for poetry, innovative writing and
-          criticism based in Manchester, UK. Its first publication, Murmur
-          Anthology #1, was published September 2019, and its second book is Amy
-          McCauley’s Propositions, which is published this November.
-        </p>
-        <p>
-          For submissions and contact, please email:
-          <a href="mailto:editor@monitorbooks.co.uk">
-            editor@monitorbooks.co.uk
-          </a>
-        </p>
+        <ReactMarkdown children={Description} />
       </TextWrap>
     </Layout>
   );

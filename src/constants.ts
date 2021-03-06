@@ -31,22 +31,6 @@ export const shippingCosts: Shipping[] =
     ? productionShippingCosts
     : devShippingCosts;
 
-export const initialState: State = {
-  cart: {
-    addedIds: [],
-    quantityById: {},
-    shipping: shippingCosts[0],
-    config: {
-      hasError: false,
-    },
-    loading: false,
-  },
-  shippingCosts: shippingCosts,
-  products: { byId: {}, visibleIds: [] },
-  videos: { byId: {}, visibleIds: [] },
-  config: { showSlideshow: true },
-};
-
 //COLOUR DEFINITIONS
 export const _offWhite = "#FAFAFA";
 export const _offOffWhite = "#ebebeb";
