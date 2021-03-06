@@ -4,7 +4,7 @@ import { PageSubtitle, PageTitle, TitleWrapper } from "./Titles";
 
 interface Props {
   title: string;
-  subtitle: [string, string, string];
+  subtitle: string[];
 }
 
 export function VideoTitle(props: Props) {

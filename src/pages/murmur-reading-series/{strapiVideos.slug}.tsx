@@ -1,6 +1,6 @@
-import { graphql } from "gatsby";
 import React from "react";
 import styled from "styled-components/macro";
+import { graphql, PageProps } from "gatsby";
 import { videoMapper } from "../../api/mappers";
 
 import {
@@ -32,12 +32,16 @@ const VideoPageWrapper = styled(Layout)`
   display: block;
 `;
 
-function VideoPage({ data }) {
+interface VideoPageProps extends PageProps {
+  data: { strapiVideos: ApiVideo };
+}
+
+const VideoPage: React.FC<VideoPageProps> = ({ data, location }) => {
   const video = videoMapper(data.strapiVideos);
   const { title, url, artistNames, blurb1, blurb2 } = video;
   React.useEffect(() => window.scrollTo(0, 0), []);
   return (
-    <VideoPageWrapper>
+    <VideoPageWrapper backgroundColour="yellow" pathname={location.pathname}>
       <>
         <Video url={url} title={title} />
         <InfoSection>
@@ -47,5 +51,5 @@ function VideoPage({ data }) {
       </>
     </VideoPageWrapper>
   );
-}
+};
 export default VideoPage;

@@ -50,6 +50,9 @@ const BasketListItem = ({
   slug,
 }: Props) => {
   const { add, subtract, remove } = useContext(CartContext);
+  const handleAdd = (id: string) => (add ? add(id) : null);
+  const handleSubtract = (id: string) => (subtract ? subtract(id) : null);
+  const handleRemove = (id: string) => (remove ? remove(id) : null);
 
   const basketItemLabel = slug.toLowerCase();
   return (
@@ -71,14 +74,14 @@ const BasketListItem = ({
         </ListItemSubtitle>
         <PriceWrapper id={`${basketItemLabel}-price`}>£{price}</PriceWrapper>
         <QuantityPanel
-          addToCart={() => add(id)}
-          decrementInCart={() => subtract(id)}
+          addToCart={() => handleAdd(id)}
+          decrementInCart={() => handleSubtract(id)}
           outOfStock={stock < 0}
           quantity={quantity}
           label={basketItemLabel}
         />
         <RemoveFromCartButton
-          onClick={() => remove(id)}
+          onClick={() => handleRemove(id)}
           name="Remove from basket"
           type="button"
           id={`${basketItemLabel}-remove-button`}

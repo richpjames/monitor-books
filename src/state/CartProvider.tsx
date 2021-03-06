@@ -5,6 +5,7 @@ import React, {
   Dispatch,
   createContext,
   SetStateAction,
+  ReactNode,
 } from "react";
 import { ProductsContext } from "./ProductsProvider";
 import { shippingCosts, stripePublishableKey } from "../constants";
@@ -25,12 +26,13 @@ interface CartContextT {
   setShipping: Dispatch<SetStateAction<Shipping>>;
   onCheckoutClicked: onCheckoutClicked;
 }
+type AddOrSubtract = (id: string, quantity?: number) => number;
 type get = (id: string) => number;
 type set = (id: string, quantity: number) => number;
-type add = (id: string, quantity: number) => number;
-type subtract = (id: string, quantity: number) => number;
+type add = AddOrSubtract;
+type subtract = AddOrSubtract;
 type remove = (id: string) => void;
-type available = (id: string, quantity: number) => boolean;
+type available = (id: string, quantity?: number) => boolean;
 type onCheckoutClicked = () => void;
 type CartItem = [string, number];
 type CartContents = CartItem[];
@@ -40,7 +42,7 @@ export const CartContext = createContext<Partial<CartContextT>>({});
  * Manages the shopping cart, which is persisted in local storage.
  * The cart and related methods are shared through context.
  */
-const CartProvider = ({ children }: { children: React.ReactChildren }) => {
+const CartProvider = ({ children }: { children: ReactNode }) => {
   const context = useContext(ProductsContext);
   let skus: Skus = context.skus || {};
   const [shipping, setShipping] = useState<Shipping>(shippingCosts[0]);

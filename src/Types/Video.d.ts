@@ -1,6 +1,6 @@
 interface Video {
   title: string;
-  artistNames: [string, string, string];
+  artistNames: string[];
   blurb1: string;
   blurb2: string;
   url: string;

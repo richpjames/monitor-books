@@ -1,4 +1,4 @@
-import { graphql } from "gatsby";
+import { graphql, PageProps } from "gatsby";
 import React from "react";
 import styled from "styled-components/macro";
 
@@ -16,8 +16,6 @@ import {
   productPageImageHeight,
   productPageImageWidth,
 } from "../../constants";
-import CartProvider from "../../state/CartProvider";
-import ProductsProvider from "../../state/ProductsProvider";
 
 export const query = graphql`
   query BookQuery($slug: String!) {
@@ -46,8 +44,12 @@ const ProductPageWrapper = styled(Layout)`
   display: grid;
 `;
 
-const ProductPage = ({ data }) => {
-  const product = productMapper(data.strapiBooks);
+interface ProductPageProps extends PageProps {
+  data: { strapiBooks: ApiProduct };
+}
+
+const ProductPage: React.FC<ProductPageProps> = ({ data, location }) => {
+  const product: Product = productMapper(data.strapiBooks);
   const {
     photos,
     title,
@@ -58,7 +60,7 @@ const ProductPage = ({ data }) => {
     publishedDate,
   } = product;
   return (
-    <ProductPageWrapper>
+    <ProductPageWrapper backgroundColour="deepred" pathname={location.pathname}>
       <Photos
         photos={photos}
         imageThumbnailHeight={productPageImageHeight}

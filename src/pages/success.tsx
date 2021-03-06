@@ -1,16 +1,11 @@
-import React, { useEffect } from "react";
-
-import {
-  InfoSection,
-  PageWrapper,
-  PageTitle,
-  Text,
-} from "../Components/Common";
+import React from "react";
+import { PageProps } from "gatsby";
+import { InfoSection, PageTitle } from "../Components/Common";
 import Layout from "../Components/layout";
 
-const Success: React.FC = () => {
+const Success: React.FC<PageProps> = ({ location }) => {
   return (
-    <Layout>
+    <Layout pathname={location.pathname} backgroundColour="yellow">
       <InfoSection>
         <PageTitle>Order Successful</PageTitle>
         <p>

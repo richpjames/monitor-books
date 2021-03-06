@@ -29,38 +29,43 @@ export const AddToBasketButton: React.FC<AddToBasketButtonProps> = ({
   borderColour,
   publishedDate,
 }) => {
-  const { get, add, available } = useContext(CartContext);
+  const context = useContext(CartContext);
+  if (context.get && context.add && context.available) {
+    const { get, available, add } = context;
 
-  const inCart = get(id) > 0;
-  const outOfStock = !available(id);
-  let buttonMessage = "Add to basket";
+    const inCart = get(id) > 0;
+    const outOfStock = !available(id, 1);
+    let buttonMessage = "Add to basket";
 
-  if (new Date(publishedDate).getTime() > new Date().getTime()) {
-    buttonMessage = "Pre-order";
+    if (new Date(publishedDate).getTime() > new Date().getTime()) {
+      buttonMessage = "Pre-order";
+    }
+
+    let onClick = () => {
+      if (!inCart) return add(id);
+      else return navigate("/basket");
+    };
+
+    if (inCart) {
+      buttonMessage = "In basket";
+      onClick = () => navigate("/basket");
+    } else if (outOfStock) {
+      buttonMessage = "Out of stock";
+    }
+
+    return (
+      <ButtonWrapper>
+        <ButtonStyles
+          onClick={onClick}
+          disabled={outOfStock || inCart}
+          className="add-to-basket"
+          borderColour={borderColour}
+        >
+          {buttonMessage}
+        </ButtonStyles>
+      </ButtonWrapper>
+    );
+  } else {
+    return <></>;
   }
-
-  let onClick = () => {
-    if (!inCart) return add(id);
-    else return navigate("/basket");
-  };
-
-  if (inCart) {
-    buttonMessage = "In basket";
-    onClick = () => navigate("/basket");
-  } else if (outOfStock) {
-    buttonMessage = "Out of stock";
-  }
-
-  return (
-    <ButtonWrapper>
-      <ButtonStyles
-        onClick={onClick}
-        disabled={outOfStock || inCart}
-        className="add-to-basket"
-        borderColour={borderColour}
-      >
-        {buttonMessage}
-      </ButtonStyles>
-    </ButtonWrapper>
-  );
 };

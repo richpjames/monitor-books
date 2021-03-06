@@ -42,11 +42,7 @@ const Icon = styled(Basket)`
   z-index: 0;
 `;
 
-interface BasketIconProps {
-  totalQuantity: number;
-}
-
-const BasketIcon: React.FC<BasketIconProps> = () => {
+const BasketIcon: React.FC = () => {
   const { count } = useContext(CartContext);
   return (
     <Container>

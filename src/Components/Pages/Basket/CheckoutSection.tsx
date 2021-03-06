@@ -14,24 +14,27 @@ const CheckoutSectionWrap = styled.section`
 `;
 
 export const CheckoutSection: React.FC = () => {
-  const {
-    shipping,
-    setShipping,
-    hasItems,
-    total,
-    onCheckoutClicked,
-  } = useContext(CartContext);
-  const grandTotal = total + shipping.price;
+  const cartContext = useContext(CartContext);
+
+  const calculateGrandTotal = () => {
+    if (cartContext.total && cartContext.shipping) {
+      return cartContext?.total + cartContext?.shipping.price;
+    } else {
+      return 0;
+    }
+  };
+  const grandTotal = calculateGrandTotal();
+
   return (
     <CheckoutSectionWrap>
       <Shipping
-        shipping={shipping}
-        setShipping={setShipping}
+        shipping={cartContext.shipping}
+        setShipping={cartContext.setShipping}
         shippingOptions={shippingCosts}
       />
       <BasketTotal total={grandTotal} />
       <CTAButton
-        onClick={onCheckoutClicked}
+        onClick={cartContext.onCheckoutClicked}
         disabled={false}
         id="checkout-button"
       >

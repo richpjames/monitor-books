@@ -21,16 +21,16 @@ export const productMapper = (product: ApiProduct): Product => {
     price,
     inventory,
     thumbnail,
-    id,
     blurb1,
     blurb2,
+    id: id.toString(),
     publishedDate: new Date(publishedDate),
     priceId: process.env.NODE_ENV === "development" ? devPriceId : prodPriceId,
     photos: images?.fullSize,
   };
 };
 
-export const videoMapper = (video: ApiVideo) => {
+export const videoMapper = (video: ApiVideo): Video => {
   const {
     title,
     publishedDate,

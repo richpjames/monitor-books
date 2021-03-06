@@ -42,8 +42,8 @@ const InnerButtonContent = styled.span`
   line-height: 1px;
 `;
 interface QuantityPanelProps {
-  addToCart: (event: React.MouseEvent) => void;
-  decrementInCart: (event: React.MouseEvent) => void;
+  addToCart: (event: React.MouseEvent) => void | any;
+  decrementInCart: (event: React.MouseEvent) => void | any;
   outOfStock: boolean;
   quantity: number;
   label: string;

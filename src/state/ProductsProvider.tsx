@@ -1,4 +1,4 @@
-import React, { createContext, ReactChildren } from "react";
+import React, { createContext, ReactNode } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import { productMapper } from "../api/mappers";
 
@@ -8,7 +8,7 @@ type skusQuery = { allStrapiBooks: { nodes: ApiProduct[] } };
 /**
  * Wrapper to give Provider access to Sku nodes from Gatsby's GraphQL store.
  */
-const ProductsProvider = ({ children }: { children: ReactChildren }) => {
+const ProductsProvider = ({ children }: { children: ReactNode }) => {
   const data: skusQuery = useStaticQuery(skusQuery);
   return <Provider data={data}>{children}</Provider>;
 };
@@ -22,7 +22,7 @@ const Provider = ({
   data,
   children,
 }: {
-  children: React.ReactChildren;
+  children: ReactNode;
   data: { allStrapiBooks: { nodes: ApiProduct[] } };
 }) => {
   // Load product data from Gatsby store

@@ -15,9 +15,9 @@ const ShippingSelector = styled.select`
   width: 7.5rem;
 `;
 interface Props {
-  setShipping: (index: any) => void;
-  shipping: Shipping;
-  shippingOptions: Shipping[];
+  setShipping?: (index: any) => void;
+  shipping?: Shipping;
+  shippingOptions?: Shipping[];
 }
 
 export const Shipping: React.FC<Props> = ({
@@ -25,25 +25,27 @@ export const Shipping: React.FC<Props> = ({
   shipping,
   shippingOptions,
 }) => {
+  const shippingPrice = (shipping && shipping.price) || 0;
+  const total = (Math.round(shippingPrice * 100) / 100).toFixed(2) || "0";
   return (
     <>
       <ShippingLabel htmlFor="shipping">Postal region:</ShippingLabel>
       <ShippingSelector
         id="shipping-selector"
         onChange={(event) => {
+          if (!setShipping) return;
           const index = +event.target.value;
           setShipping(shippingCosts[index]);
         }}
       >
-        {shippingOptions.map((shippingRegion, index) => (
-          <option value={index} key={index}>
-            {shippingRegion.region}
-          </option>
-        ))}
+        {shippingOptions &&
+          shippingOptions.map((shippingRegion, index) => (
+            <option value={index} key={index}>
+              {shippingRegion.region}
+            </option>
+          ))}
       </ShippingSelector>
-      <ShippingCost
-        total={(Math.round(shipping.price * 100) / 100).toFixed(2)}
-      />
+      <ShippingCost total={total} />
     </>
   );
 };

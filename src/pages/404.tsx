@@ -1,11 +1,12 @@
 import React from "react";
+import { PageProps } from "gatsby";
 
-import { InfoSection, PageTitle, Text } from "../Components/Common";
+import { InfoSection, PageTitle } from "../Components/Common";
 import Layout from "../Components/layout";
 
-const NotFound: React.FC = () => {
+const NotFound: React.FC<PageProps> = ({ location }) => {
   return (
-    <Layout>
+    <Layout backgroundColour="olive" pathname={location.pathname}>
       <InfoSection>
         <PageTitle>Page Not Found</PageTitle>
         <p>
