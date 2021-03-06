@@ -20,11 +20,3 @@ interface ApiVideo {
   blurb2: string;
   artists: { id: number; Name: string; Description: string }[];
 }
-
-interface Cart {
-  addedIds: AddedIds;
-  quantityById: ProductQuantityById;
-  shipping: Shipping;
-  loading: boolean;
-  config: { hasError: boolean };
-}

@@ -1,23 +1,55 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, {
+  useState,
+  useContext,
+  useEffect,
+  Dispatch,
+  createContext,
+  SetStateAction,
+} from "react";
 import { ProductsContext } from "./ProductsProvider";
 import { shippingCosts, stripePublishableKey } from "../constants";
 import { loadStripe } from "@stripe/stripe-js";
 
-export const CartContext = React.createContext();
+interface CartContextT {
+  contents: CartContents;
+  add: add;
+  subtract: subtract;
+  get: get;
+  set: set;
+  remove: remove;
+  available: available;
+  hasItems: boolean;
+  count: number;
+  total: number;
+  shipping: Shipping;
+  setShipping: Dispatch<SetStateAction<Shipping>>;
+  onCheckoutClicked: onCheckoutClicked;
+}
+type get = (id: string) => number;
+type set = (id: string, quantity: number) => number;
+type add = (id: string, quantity: number) => number;
+type subtract = (id: string, quantity: number) => number;
+type remove = (id: string) => void;
+type available = (id: string, quantity: number) => boolean;
+type onCheckoutClicked = () => void;
+type CartItem = [string, number];
+type CartContents = CartItem[];
 
+export const CartContext = createContext<Partial<CartContextT>>({});
 /**
  * Manages the shopping cart, which is persisted in local storage.
  * The cart and related methods are shared through context.
  */
-const CartProvider = ({ children }) => {
-  const { skus } = useContext(ProductsContext);
-  const [shipping, setShipping] = useState(shippingCosts[0]);
+const CartProvider = ({ children }: { children: React.ReactChildren }) => {
+  const context = useContext(ProductsContext);
+  let skus: Skus = context.skus || {};
+  const [shipping, setShipping] = useState<Shipping>(shippingCosts[0]);
 
-  const [contents, setContents] = useState(() => {
+  const [contents, setContents] = useState<CartContents>(() => {
     // Load cart from local storage. Initialize if not present or incorrect.
     let localCart;
     try {
-      localCart = JSON.parse(localStorage.getItem("cart"));
+      localCart = JSON.parse(localStorage.getItem("cart") || "");
     } catch (err) {
       console.error(err.message);
     }
@@ -40,10 +72,13 @@ const CartProvider = ({ children }) => {
   });
 
   /** The number of items in the cart */
-  const count = contents.reduce((sum, [_, quantity]) => sum + quantity, 0);
+  const count: number = contents.reduce(
+    (sum, [_, quantity]) => sum + quantity,
+    0
+  );
 
   /** The total cost of the items in the cart */
-  const total = contents.reduce(
+  const total: number = contents.reduce(
     (sum, [id, quantity]) => sum + skus[id].price * quantity,
     0
   );
@@ -53,11 +88,11 @@ const CartProvider = ({ children }) => {
    * @param {string} id The id of the sku
    * @returns {number}
    */
-  function get(id) {
+  const get: get = function (id) {
     if (!contents.length) return 0;
     const cartItem = contents.find((item) => item[0] === id);
     return cartItem ? cartItem[1] : 0;
-  }
+  };
 
   /**
    * Sets the quantity of a sku in the cart, if available.
@@ -66,7 +101,7 @@ const CartProvider = ({ children }) => {
    *
    * @returns {number} The cart quantity after the operation; `-1` if requested amount unavailable
    */
-  function set(id, quantity) {
+  const set: set = function (id, quantity) {
     if (!available(id, quantity)) return -1;
     const index = contents.findIndex((item) => item[0] === id);
     setContents(([...state]) => {
@@ -78,7 +113,7 @@ const CartProvider = ({ children }) => {
       return state;
     });
     return quantity;
-  }
+  };
 
   /**
    * Increments the quantity of sku in the cart.
@@ -86,10 +121,10 @@ const CartProvider = ({ children }) => {
    * @param {number} [quantity=1] The quantity to add
    * @returns {number} The cart quantity after the operation; `-1` if requested amount unavailable
    */
-  function add(id, quantity = 1) {
+  const add: add = function (id, quantity = 1) {
     const currentQuantity = get(id);
     return set(id, quantity + currentQuantity);
-  }
+  };
 
   /**
    * Decrements the quantity of sku in the cart.
@@ -97,22 +132,22 @@ const CartProvider = ({ children }) => {
    * @param {number} [quantity=1] The quantity to subtract
    * @returns {number} The cart quantity after the operation
    */
-  function subtract(id, quantity = 1) {
+  const subtract: subtract = function subtract(id, quantity = 1) {
     const currentQuantity = get(id);
     const newQuantity = Math.max(0, currentQuantity - quantity);
     return set(id, newQuantity);
-  }
+  };
 
   /**
    * Remove a sku from the cart.
    * @param {string} id The id of the sku
    * @returns {void}
    */
-  function remove(id) {
+  const remove: remove = function (id) {
     setContents((state) => {
       return state.filter((item) => item[0] !== id);
     });
-  }
+  };
 
   /**
    * Checks whether an item is available for purchase.
@@ -120,7 +155,7 @@ const CartProvider = ({ children }) => {
    * @param {number} [quantity=1] The requested quantity
    * @returns {boolean} Whether a purchase of the quantity would be possible
    */
-  function available(id, quantity = 1) {
+  const available: available = function (id, quantity = 1) {
     const cartQuantity = get(id);
     const sku = skus[id];
     if (!sku) {
@@ -131,9 +166,8 @@ const CartProvider = ({ children }) => {
     } else {
       return false;
     }
-  }
-
-  const onCheckoutClicked = () => {
+  };
+  const onCheckoutClicked: onCheckoutClicked = () => {
     const lineItems = cart.map(([sku, quantity]) => ({
       price: sku.priceId,
       quantity: quantity,
@@ -170,9 +204,8 @@ const CartProvider = ({ children }) => {
   };
   const hasItems = contents.length > 0;
 
-  const ctx = {
-    contents,
-    cart,
+  const ctx: CartContextT = {
+    contents: contents,
     add,
     subtract,
     get,

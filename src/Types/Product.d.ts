@@ -6,7 +6,7 @@ interface Product {
   blurb2: string;
   price: number;
   publishedDate: Date;
-  id: number;
+  id: string;
   slug: string;
   inventory: number;
   thumbnail: string;
@@ -33,11 +33,6 @@ interface ApiProduct {
     fullSize: string[];
   };
 }
-interface AllStrapiBooks {
-  nodes: ApiProduct[];
-}
-type ProductsById = ById<Product>;
-
 interface ProductQuantityById {
   [index: string]: number;
 }

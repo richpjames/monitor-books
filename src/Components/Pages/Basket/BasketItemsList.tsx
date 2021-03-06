@@ -19,11 +19,11 @@ const EmptyCartMessage = styled.p`
 `;
 
 export const BasketItemsList = () => {
-  const { contents, error, setError } = useContext(CartContext);
-
-  const { skus } = useContext(ProductsContext);
-
-  const basketItems = contents.map((cartItem, index) => {
+  const cartData = useContext(CartContext);
+  const productsData = useContext(ProductsContext);
+  const cartContents = cartData.contents || [];
+  const skus = productsData.skus || {};
+  const basketItems = cartContents.map((cartItem, index) => {
     const { author, title, price, thumbnail, id, inventory, slug } = skus[
       cartItem[0]
     ];
@@ -44,7 +44,7 @@ export const BasketItemsList = () => {
   });
   return (
     <>
-      {contents.length > 0 ? (
+      {cartContents.length > 0 ? (
         <BasketItemsSection>{basketItems}</BasketItemsSection>
       ) : (
         <EmptyCartMessage id="empty-basket-message">
