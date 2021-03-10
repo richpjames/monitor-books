@@ -6,7 +6,7 @@ import { text } from "../../../constants";
 const TotalWrapper = styled.h3`
   text-align: center;
   padding-top: 0.25rem;
-  border-top: 1px solid ${text};
+  border-top: 1px solid var(--main-border-colour);
 `;
 
 export const BasketTotal = ({ total }: { total: number }) => {

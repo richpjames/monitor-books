@@ -8,7 +8,7 @@ import { text, shippingCosts } from "../../../constants";
 const ShippingLabel = styled.label`
   padding-right: 0.5rem;
   padding-bottom: 0.25rem;
-  color: ${text};
+  color: var(--main-text-colour);
 `;
 
 const ShippingSelector = styled.select`

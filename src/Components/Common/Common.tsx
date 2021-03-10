@@ -1,8 +1,7 @@
 import styled from "styled-components/macro";
-import { text } from "../../constants";
 
 export const PageWrapper = styled.main<{ backgroundColour: string }>`
-  padding: 2.5rem;
+  padding: var(--small-component-spacing);
   max-width: 100%;
   min-height: 100vh;
   width: 100%;
@@ -11,15 +10,11 @@ export const PageWrapper = styled.main<{ backgroundColour: string }>`
   align-items: center;
   box-sizing: border-box;
   background-color: ${({ backgroundColour }) =>
-    `${backgroundColour || `purple`}`};
+    `${backgroundColour || `var(--faded-blue)`}`};
   @media only screen and (max-width: 400px) {
-    padding-top: 2.5rem;
-    padding-bottom: 2.5rem;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    padding: var(--small-component-spacing), var(--small-text-spacing);
   }
 `;
-
 export const InfoSection = styled.div`
   margin-left: auto;
   margin-right: auto;
@@ -38,8 +33,9 @@ export const LoadingAnimation = styled.div`
     height: 64px;
     margin: 8px;
     border-radius: 50%;
-    border: 6px solid ${text};
-    border-color: ${text} transparent ${text} transparent;
+    border: 6px solid var(--main-border-colour);
+    border-color: var(--main-border-colour) transparent
+      var(--main-border-colour) transparent;
     animation: lds-dual-ring 1.2s linear infinite;
   }
   @keyframes lds-dual-ring {

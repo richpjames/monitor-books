@@ -1,21 +1,17 @@
 :root {
     /* colours */
-    --pink: hsl(328, 100%, 54%);
-    --cyan: hsl(168, 100%, 50%);
-    --deep-cyan: hsl(180, 100%, 33%);
-    --orange: hsl(14, 84%, 53%);
-    --peach: hsl(35, 100%, 51%);
-    --brown: hsl(14, 85%, 28%);
+    --deep-blue: hsl(235, 86.8%, 29.8%);
+    --faded-blue: hsl(219, 44.6%, 60.4%);
+    --purple: hsl(232, 40.5%, 59.8%);
+    --grey: hsl(209, 40.3%, 69.8%);
+    --pink: hsl(333, 35%, 76.5%);
+    --green: hsl(177, 35.8%, 68.8%);
   
     /* Base spacing unit. */
     --spacing-unit: 16px;
   
     /* typography - colours*/
-    --main-text-colour: hsl(0, 0%, 17.5%);
-    --main-lighter-text-colour: hsl(0, 0%, 25%);
-    --main-highlight: hsl(14, 84%, 53%);
-    --main-contrast: hsl(195, 100%, 50%);
-    --main-background-colour: hsl(0, 0%, 98%);
+    --main-text-colour: hsl(0, 0%, 0%);
     --main-border-colour: var(--main-text-colour);
   
     /* typography - fonts */

@@ -51,7 +51,8 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
     // Load cart from local storage. Initialize if not present or incorrect.
     let localCart;
     try {
-      localCart = JSON.parse(localStorage.getItem("cart") || "");
+      if (localStorage)
+        localCart = JSON.parse(localStorage.getItem("cart") || "");
     } catch (err) {
       console.error(err.message);
     }
@@ -62,7 +63,7 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
   // Save cart to local storage after load and on update
   useEffect(() => {
     try {
-      localStorage.setItem("cart", JSON.stringify(contents));
+      if (localStorage) localStorage.setItem("cart", JSON.stringify(contents));
     } catch (err) {
       console.error(err);
     }
@@ -183,7 +184,9 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
     })
       .then(async (response) => {
         const { sessionId } = await response.json();
-        typeof window !== undefined && localStorage.setItem("cart", "{}");
+        typeof window !== undefined &&
+          localStorage &&
+          localStorage.setItem("cart", "{}");
         const stripe = await stripePromise;
         if (stripe) {
           const stripeResponse = await stripe.redirectToCheckout({

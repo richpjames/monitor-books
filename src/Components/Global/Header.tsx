@@ -4,84 +4,45 @@ import { Link } from "gatsby";
 
 import BasketNav from "./BasketNav";
 
-import Logo from "./Logo";
-import { text } from "../../constants";
+import { TextLogo } from "./TextLogo";
 
 const Nav = styled.nav`
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  border-bottom: 1px solid ${text};
-  padding-bottom: 0.5rem;
-  padding-left: 0.5rem;
-  @media only screen and (min-width: 600px) {
-    margin-top: 5vh;
-    margin-left: 2.5rem;
-    margin-right: 2.5rem;
-  }
+  flex-direction: column;
+  width: 100%;
 `;
 
 const NavLinks = styled.ul`
-  list-style: none;
-  text-align: right;
-  padding-top: 2px;
-  margin-top: 2.5vh;
-  display: inline;
-  @media only screen and (min-width: 600px) {
-    display: flex;
-  }
-`;
-const NavItem = styled.li`
   display: flex;
-  justify-content: flex-end;
-  height: 20px;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  @media only screen and (min-width: 600px) {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-  }
 `;
 
 const NavLink = styled(Link)`
-  color: ${text};
+  color: var(--main-text-colour);
   text-decoration: none;
-`;
-
-const Seperator = styled.span`
-  display: none;
-  @media only screen and (min-width: 600px) {
-    display: block;
-  }
 `;
 
 export const Header = () => {
   return (
     <Nav>
       <Link to="/about" className="logo-container">
-        <Logo />
+        <TextLogo />
       </Link>
       <NavLinks>
         {navItems.map((navItem, index) => {
           return (
-            <React.Fragment key={index}>
-              {index !== 0 && index <= navItems.length - 2 && (
-                <Seperator>{String.fromCharCode(8226)}</Seperator>
-              )}
-
-              <NavItem key={index}>
-                <NavLink
-                  to={navItem.link}
-                  aria-label={navItem.ariaLabel}
-                  className={navItem.className}
-                >
-                  {navItem.content}
-                  {navItem.component}
-                </NavLink>
-              </NavItem>
-            </React.Fragment>
+            <li key={index}>
+              <NavLink
+                to={navItem.link}
+                aria-label={navItem.ariaLabel}
+                className={navItem.className}
+              >
+                <h4>{navItem.content}</h4>
+                {}
+              </NavLink>
+            </li>
           );
         })}
+        <BasketNav />
       </NavLinks>
     </Nav>
   );
@@ -91,13 +52,13 @@ const navItems = [
   {
     link: "/books",
     ariaLabel: "Books link",
-    content: "Books",
+    content: "Books, ",
     className: "books",
   },
   {
     link: "/murmur-reading-series",
     ariaLabel: "Video link",
-    content: "Murmur Reading Series",
+    content: "Murmur Reading Series, ",
     className: "videos",
   },
   {
@@ -105,12 +66,5 @@ const navItems = [
     ariaLabel: "About page",
     content: "About",
     className: "about",
-  },
-  {
-    link: "/basket",
-    ariaLabel: "Basket link",
-    content: "",
-    component: <BasketNav />,
-    className: "basket",
   },
 ];

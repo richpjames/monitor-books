@@ -6,7 +6,7 @@ import Layout from "../Components/layout";
 
 const NotFound: React.FC<PageProps> = ({ location }) => {
   return (
-    <Layout backgroundColour="olive" pathname={location.pathname}>
+    <Layout backgroundColour="var(--faded-blue)" pathname={location.pathname}>
       <InfoSection>
         <PageTitle>Page Not Found</PageTitle>
         <p>

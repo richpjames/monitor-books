@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { navigate } from "gatsby";
 
 import { PageWrapper } from "../Components/Common";
+import { introTimerMilliseconds } from "../constants";
 const navigateToBooks = () => navigate("/books/propositions");
 
 const Home = () => {
@@ -9,10 +10,10 @@ const Home = () => {
     if (window)
       (window as any).introTimer = setTimeout(() => {
         navigateToBooks();
-      }, 5000);
+      }, introTimerMilliseconds);
   }, []);
   return (
-    <PageWrapper backgroundColour="skyBlue">
+    <PageWrapper backgroundColour="var(--faded-blue)">
       <h1 onClick={() => navigateToBooks()}>Slideshow</h1>
     </PageWrapper>
   );

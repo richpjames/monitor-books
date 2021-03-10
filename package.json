@@ -25,8 +25,7 @@
     "gatsby-plugin-typescript": "^2.12.1",
     "gatsby-source-strapi": "^0.0.12",
     "gatsby-transformer-sharp": "^2.12.0",
-    "grommet-icons": "^4.4.0",
-    "react": "^16.13.1",
+    "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
     "react-image-lightbox": "^5.1.1",
@@ -47,14 +46,13 @@
     "typecheck": "./node_modules/typescript/bin/tsc --noEmit --skipLibCheck",
     "ci-unit-tests": "react-scripts test --watchAll=false --env=jest-environment-jsdom-sixteen",
     "cypress": "npx cypress run --record --key f21a23f6-c018-4a0e-94ba-00b643cd0256",
-    "ci": "start-server-and-test dev http://localhost:8888 cypress",
+    "ci": "start-server-and-test dev http://localhost:8000 cypress",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
-      "plugin:cypress/recommended",
-      "react-app"
+      "plugin:cypress/recommended"
     ]
   },
   "browserslist": {

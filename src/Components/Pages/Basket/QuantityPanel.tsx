@@ -26,14 +26,14 @@ const ButtonWrapper = styled.div`
 const Quantity = styled.h5`
   margin-left: 0.5rem;
   margin-right: 0.5rem;
-  color: ${text};
+  color: var(--main-text-colour);
 `;
 
 const QuantityLabel = styled(Quantity)``;
 
 const Button = styled.button`
-  color: ${text};
-  border: 1px solid ${text};
+  color: var(--main-text-colour);
+  border: 1px solid var(--main-border-colour);
   background: ${background};
   line-height: 1px;
 `;

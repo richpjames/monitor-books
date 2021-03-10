@@ -33,6 +33,15 @@ const TextWrapper = styled.section`
   }
 `;
 
+const sanitizeText = (text: string) => {
+  let safeText;
+  if (!window) {
+    safeText = text;
+  } else {
+    safeText = sanitize(text);
+  }
+  return safeText;
+};
 interface Props {
   leftText: string;
   rightText: string;
@@ -40,17 +49,23 @@ interface Props {
 }
 
 export const SplitText = (props: Props) => {
-  const { leftText, rightText, addToBasketButton } = props;
+  const unsanitizedLeftText = props.leftText;
+  const unsanitizedRightText = props.rightText;
+
+  const { addToBasketButton } = props;
+  const sanitizedText = [unsanitizedLeftText, unsanitizedRightText].map(
+    sanitizeText
+  );
   return (
     <TextWrapper className="TextWrapper">
       <LeftSection
         className="left-section"
-        dangerouslySetInnerHTML={{ __html: sanitize(leftText) }}
+        dangerouslySetInnerHTML={{ __html: sanitizedText[0] }}
       />
       <RightSection>
         <div
           className="right-section"
-          dangerouslySetInnerHTML={{ __html: sanitize(rightText) }}
+          dangerouslySetInnerHTML={{ __html: sanitizedText[1] }}
         />
         {addToBasketButton}
       </RightSection>
@@ -59,7 +74,7 @@ export const SplitText = (props: Props) => {
 };
 
 export const Text: React.FC<{ text: string; colour?: string }> = ({ text }) => (
-  <TextWrapper dangerouslySetInnerHTML={{ __html: sanitize(text) }} />
+  <TextWrapper dangerouslySetInnerHTML={{ __html: sanitizeText(text) }} />
 );
 
 export const ErrorText: React.FC<{ line1: string; line2: string }> = ({

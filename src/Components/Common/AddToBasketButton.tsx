@@ -9,7 +9,7 @@ const ButtonStyles = styled.button<{ borderColour: string }>`
   width: 150px;
   height: 40px;
   background: ${background};
-  color: ${text};
+  color: var(--main-text-colour);
   border: ${({ borderColour }) =>
     `1px solid ${borderColour ? borderColour : text}`};
 `;

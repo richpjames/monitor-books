@@ -16,7 +16,7 @@ const Basket: React.FC<PageProps> = ({ location }) => {
   );
 
   return (
-    <Layout backgroundColour="pink" pathname={location.pathname}>
+    <Layout backgroundColour="var(--green)" pathname={location.pathname}>
       <ListTitle id="basket-title">Basket</ListTitle>
       {basketComponent}
     </Layout>

@@ -32,7 +32,7 @@ const About: React.FC<PageProps> = ({ location }) => {
   `);
   const { Description } = strapiAboutPage;
   return (
-    <Layout backgroundColour="white" pathname={location.pathname}>
+    <Layout backgroundColour="var(--pink)" pathname={location.pathname}>
       <BannerWrap>
         <Banner
           src="https://monitorbooks.co.uk/img/logo.png"

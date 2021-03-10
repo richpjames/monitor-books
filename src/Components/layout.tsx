@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
-import { Header } from "./Global/Header";
-import { PageWrapper } from "./Common";
+
 import "../../app.css";
 import "../../system.css";
+
+import { Header } from "./Global/Header";
 import ProductsProvider from "../state/ProductsProvider";
 import CartProvider from "../state/CartProvider";
-
+import { PageWrapper } from "../Components/Common";
 interface LayoutProps {
   children: any;
   backgroundColour: string;

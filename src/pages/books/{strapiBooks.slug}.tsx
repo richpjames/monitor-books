@@ -60,7 +60,10 @@ const ProductPage: React.FC<ProductPageProps> = ({ data, location }) => {
     publishedDate,
   } = product;
   return (
-    <ProductPageWrapper backgroundColour="deepred" pathname={location.pathname}>
+    <ProductPageWrapper
+      backgroundColour="var(--purple)"
+      pathname={location.pathname}
+    >
       <Photos
         photos={photos}
         imageThumbnailHeight={productPageImageHeight}

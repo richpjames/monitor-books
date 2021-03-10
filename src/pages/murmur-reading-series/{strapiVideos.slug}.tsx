@@ -41,7 +41,10 @@ const VideoPage: React.FC<VideoPageProps> = ({ data, location }) => {
   const { title, url, artistNames, blurb1, blurb2 } = video;
   React.useEffect(() => window.scrollTo(0, 0), []);
   return (
-    <VideoPageWrapper backgroundColour="yellow" pathname={location.pathname}>
+    <VideoPageWrapper
+      backgroundColour="var(--faded-blue)"
+      pathname={location.pathname}
+    >
       <>
         <Video url={url} title={title} />
         <InfoSection>

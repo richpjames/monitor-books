@@ -22,8 +22,8 @@ export const ListItemContainerWrap = styled(Link)<ListItemContainerProps>`
   margin-left: ${(props) => props.horizontalmargin};
   margin-right: ${(props) => props.horizontalmargin};
   margin-top: ${(props) => (props.index < 1 ? "0" : props.topmargin)};
-  border-top: 1px solid ${text};
-  border-bottom: 1px solid ${text};
+  border-top: 1px solid var(--main-border-colour);
+  border-bottom: 1px solid var(--main-border-colour);
   text-decoration: none;
   @media only screen and (max-width: 600px) {
     flex-direction: column;
@@ -43,8 +43,8 @@ export const BasketListItemContainerWrap = styled.div<ListItemContainerProps>`
   margin-left: ${(props) => props.horizontalmargin};
   margin-right: ${(props) => props.horizontalmargin};
   margin-top: ${(props) => (props.index < 1 ? "0" : props.topmargin)};
-  border-top: 1px solid ${text};
-  border-bottom: 1px solid ${text};
+  border-top: 1px solid var(--main-border-colour);
+  border-bottom: 1px solid var(--main-border-colour);
   text-decoration: none;
   @media only screen and (max-width: 600px) {
     flex-direction: column;

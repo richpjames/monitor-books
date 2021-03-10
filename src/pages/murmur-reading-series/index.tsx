@@ -37,7 +37,7 @@ const VideosPage: React.FC<PageProps> = ({ location }) => {
     }
   `);
   return (
-    <Layout pathname={location.pathname} backgroundColour="limegreen">
+    <Layout pathname={location.pathname} backgroundColour="var(--faded-blue)">
       <PageTitle>Murmur Reading Series</PageTitle>
       <ListWrap>
         {allStrapiVideos.nodes.map((video, index) => {

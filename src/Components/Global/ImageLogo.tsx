@@ -1,18 +1,11 @@
 import React from "react";
 import styled from "styled-components/macro";
 
-import { text } from "../../constants";
-
 const LogoWrap = styled.div`
-  width: 100px;
-  fill: ${text};
-  @media only screen and (max-width: 600px) {
-    padding-top: 2.5vh;
-    width: 75px;
-  }
+  fill: var(--main-text-colour);
 `;
 
-const Logo = () => {
+export const ImageLogo = () => {
   return (
     <LogoWrap id="monitor-logo">
       <svg
@@ -20,6 +13,7 @@ const Logo = () => {
         data-name="Layer 1"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 300 165"
+        width="100px"
       >
         <title>Monitor Logo</title>
         <polygon points="138.07 46.33 138.11 51.17 119.5 59.42 119.5 82.32 115.4 84.14 115.4 55.78 138.07 46.33" />
@@ -35,5 +29,3 @@ const Logo = () => {
     </LogoWrap>
   );
 };
-
-export default Logo;

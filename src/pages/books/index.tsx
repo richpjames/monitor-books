@@ -36,7 +36,7 @@ const ProductsPage: FunctionComponent<PageProps> = ({ location }) => {
     }
   `);
   return (
-    <Layout pathname={location.pathname} backgroundColour="cyan">
+    <Layout pathname={location.pathname} backgroundColour="var(--purple)">
       <PageTitle>Books</PageTitle>
       <ListWrap>
         {allStrapiBooks.nodes.map((book, index) => {
