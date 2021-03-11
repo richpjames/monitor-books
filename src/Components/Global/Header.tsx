@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components/macro";
-import { Link } from "gatsby";
+import { Link as GatsbyLink } from "gatsby";
 
-import BasketNav from "./BasketNav";
+import { CartContext } from "../../state/CartProvider";
 
 import { TextLogo } from "./TextLogo";
 
@@ -10,40 +10,61 @@ const Nav = styled.nav`
   display: flex;
   flex-direction: column;
   width: 100%;
+
+  > ul {
+    display: flex;
+    > li {
+      > a {
+      }
+    }
+    > li:last-child {
+      margin-left: auto;
+    }
+  }
 `;
 
-const NavLinks = styled.ul`
-  display: flex;
-`;
-
-const NavLink = styled(Link)`
-  color: var(--main-text-colour);
-  text-decoration: none;
+const Link = styled(GatsbyLink)<{ selected?: boolean }>`
+  text-decoration: ${(props) => (props.selected ? `` : `none`)};
 `;
 
 export const Header = () => {
+  const { count } = useContext(CartContext);
+  let pathname = "";
+  if (window) {
+    pathname = window.location.pathname;
+  }
   return (
     <Nav>
       <Link to="/about" className="logo-container">
         <TextLogo />
       </Link>
-      <NavLinks>
+      <ul>
         {navItems.map((navItem, index) => {
+          const { link, ariaLabel, className, content } = navItem;
           return (
             <li key={index}>
-              <NavLink
-                to={navItem.link}
-                aria-label={navItem.ariaLabel}
-                className={navItem.className}
+              <Link
+                to={link}
+                aria-label={ariaLabel}
+                className={className}
+                selected={new RegExp(link).test(pathname)}
               >
-                <h4>{navItem.content}</h4>
-                {}
-              </NavLink>
+                {content}
+              </Link>
             </li>
           );
         })}
-        <BasketNav />
-      </NavLinks>
+        <li>
+          <Link
+            to="/basket"
+            aria-label="Basket Page"
+            className="basket"
+            selected={/basket/.test(pathname)}
+          >
+            Basket ({count})
+          </Link>
+        </li>
+      </ul>
     </Nav>
   );
 };

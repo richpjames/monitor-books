@@ -4,10 +4,11 @@ export const TextLogo = () => {
   return (
     <div style={{ width: "200px" }}>
       <svg
-        width="400"
-        height="95"
+        width="120"
+        height="30"
         xmlns="http://www.w3.org/2000/svg"
         preserveAspectRatio="xMidYMid meet"
+        viewBox="0 0 400 100"
       >
         <metadata />
 
