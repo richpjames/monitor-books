@@ -9,7 +9,6 @@ import {
   VideoCreatorContainer,
   ListItemPhotoWrap,
 } from "../../Components/Common";
-import { PageTitle } from "../../Components/Common/Titles";
 import Layout from "../../Components/layout";
 import { videoMapper } from "../../api/mappers";
 
@@ -38,7 +37,6 @@ const VideosPage: React.FC<PageProps> = ({ location }) => {
   `);
   return (
     <Layout pathname={location.pathname} backgroundColour="var(--faded-blue)">
-      <PageTitle>Murmur Reading Series</PageTitle>
       <ListWrap>
         {allStrapiVideos.nodes.map((video, index) => {
           const { slug, artistNames, thumbnail, title } = videoMapper(video);

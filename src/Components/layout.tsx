@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import styled from "styled-components/macro";
 
 import "../../app.css";
 import "../../system.css";
@@ -7,11 +8,16 @@ import { Header } from "./Global/Header";
 import ProductsProvider from "../state/ProductsProvider";
 import CartProvider from "../state/CartProvider";
 import { PageWrapper } from "../Components/Common";
+
 interface LayoutProps {
   children: any;
   backgroundColour: string;
   pathname: string;
 }
+
+const Main = styled.main`
+  max-width: var(--max-page-width);
+`;
 
 const Layout: React.FC<LayoutProps> = ({
   children,
@@ -29,7 +35,7 @@ const Layout: React.FC<LayoutProps> = ({
       <ProductsProvider>
         <CartProvider>
           <Header />
-          {children}
+          <Main>{children}</Main>
         </CartProvider>
       </ProductsProvider>
     </PageWrapper>

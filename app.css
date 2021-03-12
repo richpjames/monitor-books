@@ -3,7 +3,6 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu,
       Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     font-size: var(--font-body-small);
-    line-height: 1.5;
     color: var(--main-text-colour);
   }
   
@@ -15,8 +14,6 @@ body {
   h6 {
     margin: 0;
     font-weight: var(--font-weight-regular);
-    line-height: 1.2;
-    text-align: center;
     padding: var(--medium-text-spacing) 0 calc(var(--medium-text-spacing) * 0.8) 0;
     font-family: var(--main-title-font);
   }
@@ -56,6 +53,13 @@ body {
     font-weight: var(--font-weight-heavy);
     padding: var(--medium-text-spacing) 0
       calc(var(--medium-text-spacing) * var(--small)) 0;
+  }
+
+  h5 {
+    font-size: var(--font-title-x-small);
+    font-weight: var(--font-weight-heavy);
+    padding: var(--small-text-spacing) 0
+      calc(var(--small-text-spacing) * var(--small)) 0;
   }
   a {
     color: var(--main-highlight);

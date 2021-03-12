@@ -82,6 +82,13 @@
     --small-component-spacing: calc(var(--xs-medium) * var(--spacing-unit));
     --medium-component-spacing: calc(var(--medium) * var(--spacing-unit));
     --large-component-spacing: calc(var(--l-medium) * var(--spacing-unit));
+    --x-large-component-spacing: calc(var(--m-large) * var(--spacing-unit));
+
+    /* small photo */
+    --medium-component-width: calc(var(--xl-medium) * var(--spacing-unit));
+
+
+    --max-page-width: calc(var(--x-large-component-spacing ) * 1.75);
   
     /* border radius */
     --border-radius: 2px;

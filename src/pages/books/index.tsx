@@ -3,21 +3,35 @@ import { useStaticQuery, graphql, PageProps } from "gatsby";
 import styled from "styled-components/macro";
 
 import {
-  ListItemContainerWrap,
   ListItemPhotoWrap,
   ListItemPhoto,
   MetaInfoContainer,
   ListItemTitle,
   ListItemSubtitle,
 } from "../../Components/Common";
-import { PageTitle } from "../../Components/Common/Titles";
 import Layout from "../../Components/layout";
 import { productMapper } from "../../api/mappers";
 
-const ListWrap = styled.section`
+const ListWrap = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  padding-top: 2.5rem;
+  padding-top: var(--medium-component-spacing);
+`;
+
+const ListItemWrap = styled.li<{
+  index: number;
+  to: string;
+  id: string;
+}>`
+  margin-top: var(--x-small-component-spacing);
+  display: flex;
+  width: 100%;
+`;
+
+const ItemType = styled.h5`
+  border-top: 2px solid var(--main-border-colour);
+  width: 100%;
+  padding: 0;
 `;
 
 const ProductsPage: FunctionComponent<PageProps> = ({ location }) => {
@@ -37,23 +51,18 @@ const ProductsPage: FunctionComponent<PageProps> = ({ location }) => {
   `);
   return (
     <Layout pathname={location.pathname} backgroundColour="var(--purple)">
-      <PageTitle>Books</PageTitle>
       <ListWrap>
         {allStrapiBooks.nodes.map((book, index) => {
           const { slug, title, author, thumbnail } = productMapper(book);
           const lowercaseTitle = title.toLocaleLowerCase();
           return (
-            <ListItemContainerWrap
+            <ListItemWrap
               index={index}
-              height="50%"
-              width="100%"
-              horizontalmargin="0rem"
-              topmargin="1rem"
               key={index}
               to={slug}
               id={`${slug}-container`}
             >
-              <ListItemPhotoWrap width="30%">
+              <ListItemPhotoWrap>
                 <ListItemPhoto
                   id={`${slug}-photo`}
                   src={thumbnail}
@@ -65,8 +74,9 @@ const ProductsPage: FunctionComponent<PageProps> = ({ location }) => {
                 <ListItemSubtitle id={`${slug}-subtitle`}>
                   {author}
                 </ListItemSubtitle>
+                <ItemType>Book, 2020</ItemType>
               </MetaInfoContainer>
-            </ListItemContainerWrap>
+            </ListItemWrap>
           );
         })}
       </ListWrap>

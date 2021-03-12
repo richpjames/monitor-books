@@ -7,7 +7,6 @@ import Layout from "../../Components/layout";
 import {
   AddToBasketButton,
   Photos,
-  ProductTitle,
   SplitText,
   InfoSection,
 } from "../../Components/Common";
@@ -70,7 +69,8 @@ const ProductPage: React.FC<ProductPageProps> = ({ data, location }) => {
         imageThumbnailWidth={productPageImageWidth}
       />
       <InfoSection>
-        <ProductTitle title={author} subtitle={title} />
+        <h1>{title}</h1>
+        <h2>{author}</h2>
         <SplitText
           leftText={blurb1}
           rightText={blurb2}

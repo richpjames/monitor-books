@@ -1,7 +1,5 @@
 import React from "react";
 
-import { PageSubtitle, PageTitle, TitleWrapper } from "./Titles";
-
 interface Props {
   title: string;
   subtitle: string[];
@@ -10,16 +8,14 @@ interface Props {
 export function VideoTitle(props: Props) {
   const { title, subtitle } = props;
   return (
-    <TitleWrapper>
-      <PageTitle>{title} </PageTitle>
+    <>
+      <h1>{title} </h1>
 
       {subtitle.map((creator, i) => {
         return (
-          <PageSubtitle key={i}>{`${creator}${
-            i < subtitle.length - 1 ? ", " : ""
-          }`}</PageSubtitle>
+          <h2 key={i}>{`${creator}${i < subtitle.length - 1 ? ", " : ""}`}</h2>
         );
       })}
-    </TitleWrapper>
+    </>
   );
 }

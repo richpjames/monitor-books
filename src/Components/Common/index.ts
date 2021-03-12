@@ -16,9 +16,7 @@ import {
 } from "./ListComponents";
 import { LoadingSpinner } from "./LoadingSpinner";
 import { SplitText, Text, ErrorText } from "./Text";
-import { ProductTitle } from "./ProductTitle";
 import { VideoTitle } from "./VideoTitle";
-import { PageSubtitle, PageTitle, PageTitleBold, TitleWrapper } from "./Titles";
 import { Video } from "./Video";
 
 export {
@@ -35,17 +33,12 @@ export {
   ListItemTitle,
   LoadingSpinner,
   MetaInfoContainer,
-  PageSubtitle,
-  PageTitle,
-  PageTitleBold,
   PageWrapper,
   Photos,
   SplitText,
   Text,
-  ProductTitle,
   VideoTitle,
   VideoCreatorContainer,
-  TitleWrapper,
   Video,
   VideoCreatorName,
 };
