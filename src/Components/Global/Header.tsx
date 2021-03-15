@@ -13,13 +13,16 @@ const Nav = styled.nav`
 
   > ul {
     display: flex;
-    > li {
-      > a {
-      }
-    }
-    > li:last-child {
-      margin-left: auto;
-    }
+  }
+  li {
+    font-size: var(--font-title-x-small);
+    padding: var(--x-small-text-spacing);
+  }
+  li:last-child {
+    margin-left: auto;
+  }
+  li:first-child {
+    padding-left: 0;
   }
 `;
 
@@ -51,6 +54,7 @@ export const Header = () => {
               >
                 {content}
               </Link>
+              {index < navItems.length - 1 ? `, ` : null}
             </li>
           );
         })}
@@ -73,13 +77,13 @@ const navItems = [
   {
     link: "/books",
     ariaLabel: "Books link",
-    content: "Books, ",
+    content: "Books",
     className: "books",
   },
   {
     link: "/murmur-reading-series",
     ariaLabel: "Video link",
-    content: "Murmur Reading Series, ",
+    content: "Murmur Reading Series",
     className: "videos",
   },
   {

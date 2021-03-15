@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import styled from "styled-components/macro";
 
-import "../../app.css";
-import "../../system.css";
+import "../css/app.css";
+import "../css/system.css";
 
 import { Header } from "./Global/Header";
 import ProductsProvider from "../state/ProductsProvider";

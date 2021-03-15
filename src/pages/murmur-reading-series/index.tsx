@@ -1,22 +1,19 @@
 import React from "react";
-import { useStaticQuery, graphql, PageProps } from "gatsby";
-import styled from "styled-components/macro";
+import { useStaticQuery, graphql, PageProps, Link } from "gatsby";
 
 import {
-  ListItemContainerWrap,
   ListItemPhoto,
-  VideoCreatorName,
-  VideoCreatorContainer,
   ListItemPhotoWrap,
+  ListWrap,
+  ListItemLink,
+  ItemType,
+  MetaInfoContainer,
+  ListItemTitle,
+  ListItemSubtitle,
+  ListItemWrap,
 } from "../../Components/Common";
 import Layout from "../../Components/layout";
 import { videoMapper } from "../../api/mappers";
-
-const ListWrap = styled.section`
-  display: flex;
-  flex-wrap: wrap;
-  padding-top: 2.5rem;
-`;
 
 const VideosPage: React.FC<PageProps> = ({ location }) => {
   const {
@@ -38,37 +35,44 @@ const VideosPage: React.FC<PageProps> = ({ location }) => {
   return (
     <Layout pathname={location.pathname} backgroundColour="var(--faded-blue)">
       <ListWrap>
+        <p>
+          Originally a programme of occasional live events in Manchester between
+          2017 and 2019, Murmur is a series of video readings showcasing poetry,
+          innovative writing, and performance.
+        </p>{" "}
         {allStrapiVideos.nodes.map((video, index) => {
           const { slug, artistNames, thumbnail, title } = videoMapper(video);
           return (
-            <ListItemContainerWrap
-              index={index}
-              height="50%"
-              width="100%"
-              horizontalmargin="0rem"
-              topmargin="1rem"
+            <ListItemLink
               key={index}
               to={slug}
               id={`${slug}-video-list-container`}
             >
-              <ListItemPhotoWrap width="30%">
-                <ListItemPhoto
-                  src={thumbnail}
-                  alt={`thumbnail image for ${title} video`}
-                />
-              </ListItemPhotoWrap>
-              <VideoCreatorContainer
-                index={index}
-                width="40%"
-                id={`${slug}-creators`}
-              >
-                {artistNames.map((creator, index) => (
-                  <VideoCreatorName id={`${slug}-creator-${index}`} key={index}>
-                    {creator}
-                  </VideoCreatorName>
-                ))}
-              </VideoCreatorContainer>
-            </ListItemContainerWrap>
+              <ListItemWrap>
+                <ListItemPhotoWrap>
+                  <ListItemPhoto
+                    src={thumbnail}
+                    alt={`thumbnail image for ${title} video`}
+                  />
+                </ListItemPhotoWrap>
+                <MetaInfoContainer
+                  index={index}
+                  width="40%"
+                  id={`${slug}-creators`}
+                >
+                  <ListItemTitle>{title}</ListItemTitle>
+                  <ListItemSubtitle>
+                    {artistNames.map((creator, index) => (
+                      <span id={`${slug}-creator-${index}`} key={index}>
+                        {creator}
+                        {index < artistNames.length - 1 ? `, ` : ``}
+                      </span>
+                    ))}
+                  </ListItemSubtitle>
+                  <ItemType>Video, 2020</ItemType>
+                </MetaInfoContainer>
+              </ListItemWrap>
+            </ListItemLink>
           );
         })}
       </ListWrap>

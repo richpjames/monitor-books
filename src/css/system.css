@@ -1,3 +1,5 @@
+@import "./typography.css";
+
 :root {
     /* colours */
     --deep-blue: hsl(235, 86.8%, 29.8%);
@@ -15,7 +17,7 @@
     --main-border-colour: var(--main-text-colour);
   
     /* typography - fonts */
-    --main-title-font: "Work Sans", sans-serif;
+    --main-title-font: "Century Schoolbook", sans-serif;
   
     /* typography - weights */
     --font-weight-regular: 400;
@@ -24,6 +26,7 @@
     /* typography - font sizes */
   
     /* title */
+    --font-title-xx-small: calc(var(--font-size-s-medium) * var(--spacing-unit));
     --font-title-x-small: calc(var(--font-size-l-medium) * var(--spacing-unit));
     --font-title-small: calc(var(--font-size-large) * var(--spacing-unit));
     --font-title-medium: calc(var(--font-size-x-large) * var(--spacing-unit));
@@ -86,9 +89,10 @@
 
     /* small photo */
     --medium-component-width: calc(var(--xl-medium) * var(--spacing-unit));
+    --large-component-width: calc(var(--s-large) * var(--spacing-unit));
+    
 
-
-    --max-page-width: calc(var(--x-large-component-spacing ) * 1.75);
+    --max-page-width: calc(var(--x-large-component-spacing ) * 1.85);
   
     /* border radius */
     --border-radius: 2px;

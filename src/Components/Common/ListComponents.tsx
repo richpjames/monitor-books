@@ -80,15 +80,17 @@ export const VideoCreatorContainer = styled(MetaInfoContainer)`
   justify-content: center;
 `;
 
-export const ListItemTitle = styled.h3`
+export const ListItemTitle = styled.h4`
   width: 100%;
-  padding: 0;
   border-top: 2px solid var(--main-border-colour);
+  font-family: "Century Schoolbook";
+  font-size: var(--font-title-xx-small);
+  font-weight: normal;
+  font-style: italic;
 `;
 
 export const ListItemSubtitle = styled.h4`
   width: 100%;
-  padding: 0;
   border-top: 2px solid var(--main-border-colour);
 `;
 
@@ -100,6 +102,7 @@ export const ListItemPhotoWrap = styled.div``;
 
 export const Photo = styled.img`
   width: var(--medium-component-width);
+  height: var(--medium-component-width);
   object-fit: cover;
   overflow: hidden;
   @media only screen and (max-width: 600px) {
@@ -108,4 +111,28 @@ export const Photo = styled.img`
     max-width: 100%;
     height: 100%;
   }
+`;
+
+export const ListWrap = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: var(--small-component-spacing);
+`;
+
+export const ListItemWrap = styled.li`
+  width: 100%;
+  text-decoration: none !important;
+  display: flex;
+`;
+export const ListItemLink = styled(Link)`
+  margin-top: var(--x-small-component-spacing);
+  width: 100%;
+  text-decoration: none;
+`;
+
+export const ItemType = styled.h5`
+  border-top: 2px solid var(--main-border-colour);
+  width: 100%;
+  padding: var(--x-small-text-spacing) 0 var(--x-small-text-spacing) 0;
+  font-size: var(--font-title-xx-small);
 `;

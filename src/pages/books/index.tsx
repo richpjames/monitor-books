@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from "react";
-import { useStaticQuery, graphql, PageProps } from "gatsby";
-import styled from "styled-components/macro";
+import { useStaticQuery, graphql, PageProps, Link } from "gatsby";
 
 import {
   ListItemPhotoWrap,
@@ -8,31 +7,13 @@ import {
   MetaInfoContainer,
   ListItemTitle,
   ListItemSubtitle,
+  ListWrap,
+  ListItemWrap,
+  ItemType,
+  ListItemLink,
 } from "../../Components/Common";
 import Layout from "../../Components/layout";
 import { productMapper } from "../../api/mappers";
-
-const ListWrap = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
-  padding-top: var(--medium-component-spacing);
-`;
-
-const ListItemWrap = styled.li<{
-  index: number;
-  to: string;
-  id: string;
-}>`
-  margin-top: var(--x-small-component-spacing);
-  display: flex;
-  width: 100%;
-`;
-
-const ItemType = styled.h5`
-  border-top: 2px solid var(--main-border-colour);
-  width: 100%;
-  padding: 0;
-`;
 
 const ProductsPage: FunctionComponent<PageProps> = ({ location }) => {
   const {
@@ -45,38 +26,52 @@ const ProductsPage: FunctionComponent<PageProps> = ({ location }) => {
           title
           author
           thumbnail
+          publishedDate
         }
       }
     }
   `);
+
+  const sortedBooks = allStrapiBooks.nodes
+    .map((book) => {
+      const { slug, title, author, thumbnail, publishedDate } = productMapper(
+        book
+      );
+      return { slug, title, author, thumbnail, publishedDate };
+    })
+    .sort((a, b) => (b.publishedDate as any) - (a.publishedDate as any));
   return (
     <Layout pathname={location.pathname} backgroundColour="var(--purple)">
       <ListWrap>
-        {allStrapiBooks.nodes.map((book, index) => {
-          const { slug, title, author, thumbnail } = productMapper(book);
-          const lowercaseTitle = title.toLocaleLowerCase();
+        {sortedBooks.map((book, index) => {
+          const { title, slug, thumbnail, author } = book;
+          const lowercaseTitle = title.toLowerCase();
+          const titleCaseTitle = title
+            .split(" ")
+            .map((word) => `${word[0]}${word.slice(1).toLowerCase()}`)
+            .join(" ");
+
           return (
-            <ListItemWrap
-              index={index}
-              key={index}
-              to={slug}
-              id={`${slug}-container`}
-            >
-              <ListItemPhotoWrap>
-                <ListItemPhoto
-                  id={`${slug}-photo`}
-                  src={thumbnail}
-                  alt={`a photo of the book ${lowercaseTitle} by ${author}`}
-                />
-              </ListItemPhotoWrap>
-              <MetaInfoContainer index={index} width="40%">
-                <ListItemTitle id={`${slug}-title`}>{title}</ListItemTitle>
-                <ListItemSubtitle id={`${slug}-subtitle`}>
-                  {author}
-                </ListItemSubtitle>
-                <ItemType>Book, 2020</ItemType>
-              </MetaInfoContainer>
-            </ListItemWrap>
+            <ListItemLink to={slug} key={slug}>
+              <ListItemWrap id={`${slug}-container`}>
+                <ListItemPhotoWrap>
+                  <ListItemPhoto
+                    id={`${slug}-photo`}
+                    src={thumbnail}
+                    alt={`a photo of the book ${lowercaseTitle} by ${author}`}
+                  />
+                </ListItemPhotoWrap>
+                <MetaInfoContainer index={index} width="40%">
+                  <ListItemTitle id={`${slug}-title`}>
+                    {titleCaseTitle}
+                  </ListItemTitle>
+                  <ListItemSubtitle id={`${slug}-subtitle`}>
+                    {author}
+                  </ListItemSubtitle>
+                  <ItemType>Book, 2020</ItemType>
+                </MetaInfoContainer>
+              </ListItemWrap>
+            </ListItemLink>
           );
         })}
       </ListWrap>

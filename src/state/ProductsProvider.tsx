@@ -26,7 +26,6 @@ const Provider = ({
   data: { allStrapiBooks: { nodes: ApiProduct[] } };
 }) => {
   // Load product data from Gatsby store
-
   const skus = processGatsbyData(data);
 
   return (

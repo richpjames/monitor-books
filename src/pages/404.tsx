@@ -1,14 +1,14 @@
 import React from "react";
 import { PageProps } from "gatsby";
 
-import { InfoSection, PageTitle } from "../Components/Common";
+import { InfoSection } from "../Components/Common";
 import Layout from "../Components/layout";
 
 const NotFound: React.FC<PageProps> = ({ location }) => {
   return (
     <Layout backgroundColour="var(--faded-blue)" pathname={location.pathname}>
       <InfoSection>
-        <PageTitle>Page Not Found</PageTitle>
+        <h1>Page Not Found</h1>
         <p>
           We couldn't find that page. <br />
           Please select an option from the header

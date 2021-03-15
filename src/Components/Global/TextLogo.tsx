@@ -2,10 +2,10 @@ import React from "react";
 
 export const TextLogo = () => {
   return (
-    <div style={{ width: "200px" }}>
+    <div>
       <svg
-        width="120"
-        height="30"
+        width="160"
+        height="39"
         xmlns="http://www.w3.org/2000/svg"
         preserveAspectRatio="xMidYMid meet"
         viewBox="0 0 400 100"
@@ -14,9 +14,8 @@ export const TextLogo = () => {
 
         <g
           id="text-logo"
-          fill="#000000"
+          fill="var(--deep-blue)"
           transform="translate(0.000000,118.000000) scale(0.050000,-0.050000)"
-          xHeight="20px"
         >
           <path
             id="m"
