@@ -2,16 +2,14 @@ import React, { useContext } from "react";
 import styled from "styled-components/macro";
 import { navigate } from "gatsby";
 
-import { background, text } from "../../constants";
 import { CartContext } from "../../state/CartProvider";
 
 const ButtonStyles = styled.button<{ borderColour: string }>`
   width: 150px;
   height: 40px;
-  background: ${background};
-  color: var(--main-text-colour);
-  border: ${({ borderColour }) =>
-    `1px solid ${borderColour ? borderColour : text}`};
+  background: var(--button-colour);
+  color: var(--product-background-colour);
+  border: 0;
 `;
 
 const ButtonWrapper = styled.div`

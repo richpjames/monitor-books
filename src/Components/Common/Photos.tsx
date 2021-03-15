@@ -56,7 +56,7 @@ export const Photos = (props: PhotosProps) => {
 
   return (
     <>
-      <PhotoWrap className="ImagesWrapper">{thumbReel}</PhotoWrap>
+      <PhotoWrap className="ImagesWrapper">{thumbReel[0]}</PhotoWrap>
       {galleryOpen && (
         <Lightbox
           mainSrc={imageURLs[photoIndex]}

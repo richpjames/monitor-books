@@ -42,7 +42,7 @@ const VideoPage: React.FC<VideoPageProps> = ({ data, location }) => {
   React.useEffect(() => window.scrollTo(0, 0), []);
   return (
     <VideoPageWrapper
-      backgroundColour="var(--faded-blue)"
+      backgroundColour="var(--video-background-colour)"
       pathname={location.pathname}
     >
       <>

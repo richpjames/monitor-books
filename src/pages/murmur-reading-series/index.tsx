@@ -33,7 +33,10 @@ const VideosPage: React.FC<PageProps> = ({ location }) => {
     }
   `);
   return (
-    <Layout pathname={location.pathname} backgroundColour="var(--faded-blue)">
+    <Layout
+      pathname={location.pathname}
+      backgroundColour="var(--video-background-colour)"
+    >
       <ListWrap>
         <p>
           Originally a programme of occasional live events in Manchester between

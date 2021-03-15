@@ -41,7 +41,10 @@ const ProductsPage: FunctionComponent<PageProps> = ({ location }) => {
     })
     .sort((a, b) => (b.publishedDate as any) - (a.publishedDate as any));
   return (
-    <Layout pathname={location.pathname} backgroundColour="var(--purple)">
+    <Layout
+      pathname={location.pathname}
+      backgroundColour="var(--product-background-colour)"
+    >
       <ListWrap>
         {sortedBooks.map((book, index) => {
           const { title, slug, thumbnail, author } = book;

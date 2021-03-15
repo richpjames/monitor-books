@@ -38,9 +38,11 @@ export const query = graphql`
   }
 `;
 
-const ProductPageWrapper = styled(Layout)`
-  padding-top: 2rem;
-  display: grid;
+const Container = styled.div`
+  border-top: var(--line-thickness) solid var(--main-text-colour);
+  padding-top: var(--small-component-spacing);
+  padding-bottom: var(--small-component-spacing);
+  border-bottom: var(--line-thickness) solid var(--main-text-colour);
 `;
 
 interface ProductPageProps extends PageProps {
@@ -59,31 +61,33 @@ const ProductPage: React.FC<ProductPageProps> = ({ data, location }) => {
     publishedDate,
   } = product;
   return (
-    <ProductPageWrapper
-      backgroundColour="var(--purple)"
+    <Layout
+      backgroundColour="var(--product-background-colour)"
       pathname={location.pathname}
     >
-      <Photos
-        photos={photos}
-        imageThumbnailHeight={productPageImageHeight}
-        imageThumbnailWidth={productPageImageWidth}
-      />
-      <InfoSection>
-        <h1>{title}</h1>
-        <h2>{author}</h2>
-        <SplitText
-          leftText={blurb1}
-          rightText={blurb2}
-          addToBasketButton={
-            <AddToBasketButton
-              id={priceId}
-              borderColour={text}
-              publishedDate={publishedDate}
-            />
-          }
+      <Container>
+        <Photos
+          photos={photos}
+          imageThumbnailHeight={productPageImageHeight}
+          imageThumbnailWidth={productPageImageWidth}
         />
-      </InfoSection>
-    </ProductPageWrapper>
+        <InfoSection>
+          <h1>{`${title[0]}${title.slice(1).toLowerCase()}`}</h1>
+          <h2>{author}</h2>
+          <SplitText
+            leftText={blurb1}
+            rightText={blurb2}
+            addToBasketButton={
+              <AddToBasketButton
+                id={priceId}
+                borderColour={text}
+                publishedDate={publishedDate}
+              />
+            }
+          />
+        </InfoSection>
+      </Container>
+    </Layout>
   );
 };
 export default ProductPage;

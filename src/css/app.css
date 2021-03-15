@@ -16,48 +16,45 @@ body {
     font-weight: var(--font-weight-regular);
     padding: var(--medium-text-spacing) 0 calc(var(--medium-text-spacing) * 0.8) 0;
     font-family: var(--main-title-font);
-    ;
+    
   }
   p {
     font-size: var(--font-body-large);
-    padding-bottom: var(--large-text-spacing);
+    padding-bottom: var(--small-text-spacing);
     margin: 0;
   }
   nav {
     font-family: var(--main-title-font);
-    font-weight: var(--font-weight-heavy);
   }
   
   h1 {
-    font-size: var(--font-title-x-large);
+    font-size: var(--font-title-large);
     margin: 0;
-    font-weight: var(--font-weight-heavy);
-    padding: var(--x-large-text-spacing) 0 var(--large-text-spacing) 0;
+    padding: var(--x-large-text-spacing) 0 0 0;
+    font-style: italic;
+    line-height: var(--x-large-text-spacing);
   }
   
   h2 {
-    font-size: var(--font-title-large);
-    font-weight: var(--font-weight-heavy);
-    padding: var(--large-text-spacing) 0
-      calc(var(--large-text-spacing) * var(--small)) 0;
+    font-size: var(--font-title-medium);
+    padding: var(--x-small-text-spacing) 0
+      calc(var(--medium-text-spacing) * var(--small)) 0;
   }
   
   h3 {
     font-size: var(--font-title-medium);
-    font-weight: var(--font-weight-heavy);
     padding: var(--medium-text-spacing) 0
       calc(var(--medium-text-spacing) * var(--small)) 0;
   }
   
   h4 {
-    font-size: var(--font-title-xx-small);
-    font-weight: var(--font-weight-regular);
+    font-size: var(--font-title-medium);
     padding: var(--x-small-text-spacing) 0
       var(--x-small-text-spacing) 0;
     }
     
   h5 {
-      font-size: var(--font-title-xx-small);
+      font-size: var(--font-title-medium);
       padding: var(--x-small-text-spacing) 0
       calc(var(--x-small-text-spacing) * var(--small)) 0;
   }
@@ -101,3 +98,14 @@ body {
     background-color: transparent;
     padding: 0;
   }
+  button,
+  input,
+  optgroup,
+  select,
+  textarea {
+    font-family: inherit; /* 1 */
+    font-size: 100%; /* 1 */
+    line-height: 1.15; /* 1 */
+    margin: 0; /* 2 */
+  }
+  

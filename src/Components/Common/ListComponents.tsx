@@ -84,7 +84,7 @@ export const ListItemTitle = styled.h4`
   width: 100%;
   border-top: 2px solid var(--main-border-colour);
   font-family: "Century Schoolbook";
-  font-size: var(--font-title-xx-small);
+  font-size: var(--font-title-medium);
   font-weight: normal;
   font-style: italic;
 `;
@@ -134,5 +134,5 @@ export const ItemType = styled.h5`
   border-top: 2px solid var(--main-border-colour);
   width: 100%;
   padding: var(--x-small-text-spacing) 0 var(--x-small-text-spacing) 0;
-  font-size: var(--font-title-xx-small);
+  font-size: var(--font-title-medium);
 `;

@@ -10,7 +10,7 @@ const Nav = styled.nav`
   display: flex;
   flex-direction: column;
   width: 100%;
-
+  padding-bottom: var(--small-component-spacing);
   > ul {
     display: flex;
   }
@@ -28,6 +28,8 @@ const Nav = styled.nav`
 
 const Link = styled(GatsbyLink)<{ selected?: boolean }>`
   text-decoration: ${(props) => (props.selected ? `` : `none`)};
+  text-decoration-thickness: var(--line-thickness);
+  text-underline-offset: var(--x-small-text-spacing);
 `;
 
 export const Header = () => {

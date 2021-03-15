@@ -9,6 +9,10 @@
     --pink: hsl(333, 35%, 76.5%);
     --green: hsl(177, 35.8%, 68.8%);
   
+    --product-background-colour: var(--purple);
+    --video-background-colour: var(--faded-blue);
+    --button-colour: var(--deep-blue);
+
     /* Base spacing unit. */
     --spacing-unit: 16px;
   
@@ -26,12 +30,12 @@
     /* typography - font sizes */
   
     /* title */
-    --font-title-xx-small: calc(var(--font-size-s-medium) * var(--spacing-unit));
-    --font-title-x-small: calc(var(--font-size-l-medium) * var(--spacing-unit));
-    --font-title-small: calc(var(--font-size-large) * var(--spacing-unit));
-    --font-title-medium: calc(var(--font-size-x-large) * var(--spacing-unit));
-    --font-title-large: calc(var(--font-size-xx-large) * var(--spacing-unit));
-    --font-title-x-large: calc(var(--font-size-xxx-large) * var(--spacing-unit));
+    --font-title-xx-small: calc(var(--font-size-small) * var(--spacing-unit));
+    --font-title-x-small: calc(var(--font-size-s-medium) * var(--spacing-unit));
+    --font-title-small: calc(var(--font-size-medium) * var(--spacing-unit));
+    --font-title-medium: calc(var(--font-size-l-medium) * var(--spacing-unit));
+    --font-title-large: calc(var(--font-size-large) * var(--spacing-unit));
+    --font-title-x-large: calc(var(--font-size-x-large) * var(--spacing-unit));
   
     /* font-size */
     --font-body-small: calc(var(--font-size-xx-small) * var(--spacing-unit));
@@ -87,13 +91,17 @@
     --large-component-spacing: calc(var(--l-medium) * var(--spacing-unit));
     --x-large-component-spacing: calc(var(--m-large) * var(--spacing-unit));
 
-    /* small photo */
+    /* component width photo */
     --medium-component-width: calc(var(--xl-medium) * var(--spacing-unit));
     --large-component-width: calc(var(--s-large) * var(--spacing-unit));
+    --x-large-component-width: calc(var(--m-large) * var(--spacing-unit));
     
 
-    --max-page-width: calc(var(--x-large-component-spacing ) * 1.85);
-  
+
+    /* line thickness */
+    --line-thickness: 2px;
+
+
     /* border radius */
     --border-radius: 2px;
   
@@ -101,7 +109,7 @@
     --medium-opacity: 0.7;
     --almost-full-opacity: 0.85;
   
-    --page-max-width: calc(var(--xx-large) * var(--spacing-unit));
+    --page-max-width: calc(var(--xxx-large) * var(--spacing-unit));
     --page-min-width: 90%;
   }
   
