@@ -15,7 +15,7 @@ const Nav = styled.nav`
     display: flex;
   }
   li {
-    font-size: var(--font-title-x-small);
+    font-size: var(--font-title-medium);
     padding: var(--x-small-text-spacing);
   }
   li:last-child {
