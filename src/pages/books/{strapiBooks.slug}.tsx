@@ -15,6 +15,7 @@ import {
   productPageImageHeight,
   productPageImageWidth,
 } from "../../constants";
+import SEO from "../../Components/seo";
 
 export const query = graphql`
   query BookQuery($slug: String!) {
@@ -65,6 +66,7 @@ const ProductPage: React.FC<ProductPageProps> = ({ data, location }) => {
       backgroundColour="var(--product-background-colour)"
       pathname={location.pathname}
     >
+      <SEO title={`${title} by ${author}`} description={blurb1} />
       <Container>
         <Photos
           photos={photos}

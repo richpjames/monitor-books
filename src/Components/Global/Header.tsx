@@ -32,6 +32,7 @@ const Link = styled(GatsbyLink)<{ selected?: boolean }>`
   text-underline-offset: var(--x-small-text-spacing);
 `;
 
+console.Console;
 export const Header = () => {
   const { count } = useContext(CartContext);
   let pathname = "";

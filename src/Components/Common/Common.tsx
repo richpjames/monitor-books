@@ -14,6 +14,11 @@ export const PageWrapper = styled.div<{ backgroundColour: string }>`
     padding: var(--small-component-spacing), var(--small-text-spacing);
   }
 `;
+
+export const IntroPageWrapper = styled(PageWrapper)`
+  justify-content: center;
+`;
+
 export const InfoSection = styled.div`
   margin-left: auto;
   margin-right: auto;

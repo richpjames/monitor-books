@@ -14,6 +14,7 @@ import {
 } from "../../Components/Common";
 import Layout from "../../Components/layout";
 import { productMapper } from "../../api/mappers";
+import SEO from "../../Components/seo";
 
 const ProductsPage: FunctionComponent<PageProps> = ({ location }) => {
   const {
@@ -45,6 +46,10 @@ const ProductsPage: FunctionComponent<PageProps> = ({ location }) => {
       pathname={location.pathname}
       backgroundColour="var(--product-background-colour)"
     >
+      <SEO
+        title="Monitor books"
+        description="Publications from Monitor books"
+      />
       <ListWrap>
         {sortedBooks.map((book, index) => {
           const { title, slug, thumbnail, author } = book;

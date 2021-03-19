@@ -9,6 +9,7 @@ import {
   VideoTitle,
   SplitText,
 } from "../../Components/Common";
+import SEO from "../../Components/seo";
 import Layout from "../../Components/layout";
 
 export const query = graphql`
@@ -25,6 +26,9 @@ export const query = graphql`
         Name
       }
     }
+    strapiMurmurReadingSeriesDescription {
+      Description
+    }
   }
 `;
 
@@ -33,11 +37,17 @@ const VideoPageWrapper = styled(Layout)`
 `;
 
 interface VideoPageProps extends PageProps {
-  data: { strapiVideos: ApiVideo };
+  data: {
+    strapiVideos: ApiVideo;
+    strapiMurmurReadingSeriesDescription: StrapiMurmurReadingSeriesDescription;
+  };
 }
 
 const VideoPage: React.FC<VideoPageProps> = ({ data, location }) => {
   const video = videoMapper(data.strapiVideos);
+  const readingSeriesDescription =
+    data.strapiMurmurReadingSeriesDescription.Description;
+
   const { title, url, artistNames, blurb1, blurb2 } = video;
   React.useEffect(() => window.scrollTo(0, 0), []);
   return (
@@ -45,13 +55,15 @@ const VideoPage: React.FC<VideoPageProps> = ({ data, location }) => {
       backgroundColour="var(--video-background-colour)"
       pathname={location.pathname}
     >
-      <>
-        <Video url={url} title={title} />
-        <InfoSection>
-          <VideoTitle title={`${title}:`} subtitle={artistNames} />
-          <SplitText leftText={blurb1} rightText={blurb2} />
-        </InfoSection>
-      </>
+      <SEO
+        title={`${title} featuring ${artistNames.join(" ")}`}
+        description={readingSeriesDescription}
+      />
+      <Video url={url} title={title} />
+      <InfoSection>
+        <VideoTitle title={`${title}:`} subtitle={artistNames} />
+        <SplitText leftText={blurb1} rightText={blurb2} />
+      </InfoSection>
     </VideoPageWrapper>
   );
 };

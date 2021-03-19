@@ -1,4 +1,4 @@
-import { InfoSection, PageWrapper } from "./Common";
+import { InfoSection, PageWrapper, IntroPageWrapper } from "./Common";
 import { AddToBasketButton } from "./AddToBasketButton";
 import { IndividualPhoto } from "./IndividualPhoto";
 import { CTAButton } from "./CTAButton";
@@ -35,6 +35,7 @@ export {
   ListItemPhoto,
   ListItemPhotoWrap,
   ListItemSubtitle,
+  IntroPageWrapper,
   ListItemTitle,
   ListWrap,
   ListItemWrap,

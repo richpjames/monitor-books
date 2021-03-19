@@ -1,9 +1,16 @@
 import React, { useEffect } from "react";
 import { navigate } from "gatsby";
-
-import { PageWrapper } from "../Components/Common";
+import styled from "styled-components/macro";
+import { IntroPageWrapper } from "../Components/Common";
 import { introTimerMilliseconds } from "../constants";
+import { TextBoxLogo } from "../Components/Global/TextBoxLogo";
+import SEO from "../Components/seo";
+
 const navigateToBooks = () => navigate("/books/propositions");
+
+const BoxWrapper = styled.div`
+  margin-top: -100px;
+`;
 
 const Home = () => {
   useEffect(() => {
@@ -13,9 +20,12 @@ const Home = () => {
       }, introTimerMilliseconds);
   }, []);
   return (
-    <PageWrapper backgroundColour="var(--faded-blue)">
-      <h1 onClick={() => navigateToBooks()}>Slideshow</h1>
-    </PageWrapper>
+    <IntroPageWrapper backgroundColour="var(--faded-blue)">
+      <SEO title="Monitor Books Home" description="" />
+      <BoxWrapper>
+        <TextBoxLogo />
+      </BoxWrapper>
+    </IntroPageWrapper>
   );
 };
 

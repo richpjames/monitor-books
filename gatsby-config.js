@@ -5,8 +5,10 @@ require(`dotenv`).config({
 module.exports = {
   siteMetadata: {
     title: `Monitor books`,
-    description: `Books.`,
-    author: `Rich James`,
+    siteUrl: "https://monitorbooks.co.uk",
+    social: {
+      instagram: `monitorbooks`,
+    },
   },
   plugins: [
     "gatsby-plugin-react-helmet",
@@ -21,11 +23,24 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-cloudinary`,
+      options: {
+        cloudName: process.env.CLOUDINARY_CLOUD_NAME,
+        apiKey: process.env.CLOUDINARY_API_KEY,
+        apiSecret: process.env.CLOUDINARY_API_SECRET,
+        resourceType: `image`,
+      },
+    },
+    {
       resolve: `gatsby-source-strapi`,
       options: {
         apiURL: `https://monitor-books.herokuapp.com`,
         contentTypes: ["books", "videos"],
-        singleTypes: ["about-page", "intro-page"],
+        singleTypes: [
+          "about-page",
+          "intro-page",
+          "murmur-reading-series-description",
+        ],
       },
     },
   ],

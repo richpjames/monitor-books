@@ -20,3 +20,6 @@ interface ApiVideo {
   blurb2: string;
   artists: { id: number; Name: string; Description: string }[];
 }
+type StrapiMurmurReadingSeriesDescription = {
+  Description: string;
+};

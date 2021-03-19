@@ -1,5 +1,5 @@
 import React from "react";
-import { useStaticQuery, graphql, PageProps, Link } from "gatsby";
+import { useStaticQuery, graphql, PageProps } from "gatsby";
 
 import {
   ListItemPhoto,
@@ -13,12 +13,17 @@ import {
   ListItemWrap,
 } from "../../Components/Common";
 import Layout from "../../Components/layout";
+import SEO from "../../Components/seo";
 import { videoMapper } from "../../api/mappers";
 
 const VideosPage: React.FC<PageProps> = ({ location }) => {
   const {
     allStrapiVideos,
-  }: { allStrapiVideos: { nodes: ApiVideo[] } } = useStaticQuery(graphql`
+    strapiMurmurReadingSeriesDescription,
+  }: {
+    allStrapiVideos: { nodes: ApiVideo[] };
+    strapiMurmurReadingSeriesDescription: StrapiMurmurReadingSeriesDescription;
+  } = useStaticQuery(graphql`
     query {
       allStrapiVideos {
         nodes {
@@ -30,19 +35,24 @@ const VideosPage: React.FC<PageProps> = ({ location }) => {
           thumbnail
         }
       }
+      strapiMurmurReadingSeriesDescription {
+        Description
+      }
     }
   `);
+  const readingSeriesDescription =
+    strapiMurmurReadingSeriesDescription.Description;
   return (
     <Layout
       pathname={location.pathname}
       backgroundColour="var(--video-background-colour)"
     >
+      <SEO
+        title="Murmur Reading Series"
+        description={readingSeriesDescription}
+      />
       <ListWrap>
-        <p>
-          Originally a programme of occasional live events in Manchester between
-          2017 and 2019, Murmur is a series of video readings showcasing poetry,
-          innovative writing, and performance.
-        </p>{" "}
+        <p>{readingSeriesDescription}</p>
         {allStrapiVideos.nodes.map((video, index) => {
           const { slug, artistNames, thumbnail, title } = videoMapper(video);
           return (
