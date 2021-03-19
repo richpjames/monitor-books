@@ -20,7 +20,10 @@ const Home = () => {
       }, introTimerMilliseconds);
   }, []);
   return (
-    <IntroPageWrapper backgroundColour="var(--faded-blue)">
+    <IntroPageWrapper
+      backgroundColour="var(--faded-blue)"
+      onClick={navigateToBooks}
+    >
       <SEO title="Monitor Books Home" description="" />
       <BoxWrapper>
         <TextBoxLogo />

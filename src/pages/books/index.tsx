@@ -1,9 +1,8 @@
 import React, { FunctionComponent } from "react";
-import { useStaticQuery, graphql, PageProps, Link } from "gatsby";
+import { useStaticQuery, graphql, PageProps } from "gatsby";
+import { getImage, GatsbyImage } from "gatsby-plugin-image";
 
 import {
-  ListItemPhotoWrap,
-  ListItemPhoto,
   MetaInfoContainer,
   ListItemTitle,
   ListItemSubtitle,
@@ -28,6 +27,20 @@ const ProductsPage: FunctionComponent<PageProps> = ({ location }) => {
           author
           thumbnail
           publishedDate
+          gallery_images {
+            localFile {
+              childImageSharp {
+                gatsbyImageData
+              }
+            }
+          }
+          thumbnail_image {
+            localFile {
+              childImageSharp {
+                gatsbyImageData(width: 300)
+              }
+            }
+          }
         }
       }
     }
@@ -46,13 +59,12 @@ const ProductsPage: FunctionComponent<PageProps> = ({ location }) => {
       pathname={location.pathname}
       backgroundColour="var(--product-background-colour)"
     >
-      <SEO
-        title="Monitor books"
-        description="Publications from Monitor books"
-      />
+      <SEO title="Books" description="Publications from Monitor books" />
       <ListWrap>
         {sortedBooks.map((book, index) => {
           const { title, slug, thumbnail, author } = book;
+          const image = getImage(thumbnail);
+
           const lowercaseTitle = title.toLowerCase();
           const titleCaseTitle = title
             .split(" ")
@@ -62,13 +74,11 @@ const ProductsPage: FunctionComponent<PageProps> = ({ location }) => {
           return (
             <ListItemLink to={slug} key={slug}>
               <ListItemWrap id={`${slug}-container`}>
-                <ListItemPhotoWrap>
-                  <ListItemPhoto
-                    id={`${slug}-photo`}
-                    src={thumbnail}
-                    alt={`a photo of the book ${lowercaseTitle} by ${author}`}
-                  />
-                </ListItemPhotoWrap>
+                <GatsbyImage
+                  id={`${slug}-photo`}
+                  image={image}
+                  alt={`a photo of the book ${lowercaseTitle} by ${author}`}
+                />
                 <MetaInfoContainer index={index} width="40%">
                   <ListItemTitle id={`${slug}-title`}>
                     {titleCaseTitle}

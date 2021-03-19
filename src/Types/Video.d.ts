@@ -6,7 +6,7 @@ interface Video {
   url: string;
   publishedDate: Date;
   slug: string;
-  thumbnail: string;
+  thumbnail: any;
   id: string;
 }
 interface ApiVideo {
@@ -15,11 +15,18 @@ interface ApiVideo {
   publishedDate: string;
   slug: string;
   url: string;
-  thumbnail: string;
+  thumbnail_img: StrapiGatsbyImage;
   blurb1: string;
   blurb2: string;
   artists: { id: number; Name: string; Description: string }[];
 }
 type StrapiMurmurReadingSeriesDescription = {
   Description: string;
+};
+type StrapiGatsbyImage = {
+  localFile: {
+    childImageSharp: {
+      gatsbyImageData: any;
+    };
+  };
 };

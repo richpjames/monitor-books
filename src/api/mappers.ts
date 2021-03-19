@@ -9,11 +9,14 @@ export const productMapper = (product: ApiProduct): Product => {
     slug,
     id,
     inventory,
-    thumbnail,
     devPriceId,
     prodPriceId,
     price,
+    gallery_images,
+    thumbnail_image,
   } = product;
+  const thumbnail = thumbnail_image?.localFile;
+  const galleryImages = gallery_images;
   return {
     title,
     author,
@@ -21,6 +24,7 @@ export const productMapper = (product: ApiProduct): Product => {
     price,
     inventory,
     thumbnail,
+    galleryImages,
     blurb1,
     blurb2,
     id: `${id}`,
@@ -36,12 +40,14 @@ export const videoMapper = (video: ApiVideo): Video => {
     publishedDate,
     slug,
     url,
-    thumbnail,
+    thumbnail_img,
     blurb1,
     blurb2,
     artists,
   } = video;
   const artistNames = artists.map((artist) => artist.Name);
+  const thumbnail = thumbnail_img?.localFile;
+  console.log("date", publishedDate);
   return {
     title,
     publishedDate: new Date(publishedDate),

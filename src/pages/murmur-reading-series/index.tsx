@@ -1,9 +1,8 @@
 import React from "react";
 import { useStaticQuery, graphql, PageProps } from "gatsby";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 import {
-  ListItemPhoto,
-  ListItemPhotoWrap,
   ListWrap,
   ListItemLink,
   ItemType,
@@ -24,6 +23,9 @@ const VideosPage: React.FC<PageProps> = ({ location }) => {
     allStrapiVideos: { nodes: ApiVideo[] };
     strapiMurmurReadingSeriesDescription: StrapiMurmurReadingSeriesDescription;
   } = useStaticQuery(graphql`
+    type StrapiReadingSeriesImage implements Node {
+      imageFile: File
+    }
     query {
       allStrapiVideos {
         nodes {
@@ -32,7 +34,14 @@ const VideosPage: React.FC<PageProps> = ({ location }) => {
           artists {
             Name
           }
-          thumbnail
+          publishedDate
+          thumbnail_img {
+            localFile {
+              childImageSharp {
+                gatsbyImageData(width: 300)
+              }
+            }
+          }
         }
       }
       strapiMurmurReadingSeriesDescription {
@@ -42,6 +51,10 @@ const VideosPage: React.FC<PageProps> = ({ location }) => {
   `);
   const readingSeriesDescription =
     strapiMurmurReadingSeriesDescription.Description;
+  const sortedVideos = allStrapiVideos.nodes
+    .map(videoMapper)
+    .sort((a, b) => (b.publishedDate as any) - (a.publishedDate as any));
+  console.log(sortedVideos);
   return (
     <Layout
       pathname={location.pathname}
@@ -53,8 +66,10 @@ const VideosPage: React.FC<PageProps> = ({ location }) => {
       />
       <ListWrap>
         <p>{readingSeriesDescription}</p>
-        {allStrapiVideos.nodes.map((video, index) => {
-          const { slug, artistNames, thumbnail, title } = videoMapper(video);
+        {sortedVideos.map((video, index) => {
+          const { slug, thumbnail, title, artistNames } = video;
+          const image = getImage(thumbnail);
+
           return (
             <ListItemLink
               key={index}
@@ -62,12 +77,11 @@ const VideosPage: React.FC<PageProps> = ({ location }) => {
               id={`${slug}-video-list-container`}
             >
               <ListItemWrap>
-                <ListItemPhotoWrap>
-                  <ListItemPhoto
-                    src={thumbnail}
-                    alt={`thumbnail image for ${title} video`}
-                  />
-                </ListItemPhotoWrap>
+                <GatsbyImage
+                  image={image}
+                  alt={`thumbnail image for ${title} video`}
+                  loading="eager"
+                />
                 <MetaInfoContainer
                   index={index}
                   width="40%"

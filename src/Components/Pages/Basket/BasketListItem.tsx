@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import styled from "styled-components/macro";
-import { navigate } from "gatsby";
 
 import { QuantityPanel } from "./QuantityPanel";
 import {
@@ -8,7 +7,6 @@ import {
   MetaInfoContainer,
   ListItemTitle,
   ListItemSubtitle,
-  ListItemPhotoWrap,
   ListItemPhoto,
 } from "../../Common";
 import { CartContext } from "../../../state/CartProvider";
@@ -64,9 +62,7 @@ const BasketListItem = ({
       topmargin="2rem"
       id={`${slug}-basket-item`}
     >
-      <ListItemPhotoWrap width="40%" onClick={() => navigate(`books/${slug}`)}>
-        <ListItemPhoto src={thumbnail} alt={`thumbnail image of ${title}`} />
-      </ListItemPhotoWrap>
+      <ListItemPhoto src={thumbnail} alt={`thumbnail image of ${title}`} />
       <MetaInfoContainer index={index} width="40%">
         <ListItemTitle id={`${basketItemLabel}-title`}>{title}</ListItemTitle>
         <ListItemSubtitle id={`${basketItemLabel}-subtitle`}>

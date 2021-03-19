@@ -6,6 +6,8 @@ interface Product {
   blurb2: string;
   price: number;
   publishedDate: Date;
+  galleryImages: StrapiGatsbyImage[];
+  thumbnail: any;
   id: string;
   slug: string;
   inventory: number;
@@ -20,6 +22,8 @@ interface ApiProduct {
   published_at: string;
   created_at: string;
   updated_at: string;
+  gallery_images: StrapiGatsbyImage[];
+  thumbnail_image: StrapiGatsbyImage;
   title: string;
   author: string;
   publishedDate: string;

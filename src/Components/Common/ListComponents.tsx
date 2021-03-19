@@ -98,8 +98,6 @@ export const VideoCreatorName = styled(ListItemTitle)`
   padding-top: 0rem;
 `;
 
-export const ListItemPhotoWrap = styled.div``;
-
 export const Photo = styled.img`
   width: var(--medium-component-width);
   height: var(--medium-component-width);
