@@ -35,7 +35,7 @@ const TextWrapper = styled.section`
 
 const sanitizeText = (text: string) => {
   let safeText;
-  if (!window) {
+  if (typeof window === "undefined") {
     safeText = text;
   } else {
     safeText = sanitize(text);
