@@ -14,7 +14,7 @@ const BoxWrapper = styled.div`
 
 const Home = () => {
   useEffect(() => {
-    if (window)
+    if (typeof window !== "undefined")
       (window as any).introTimer = setTimeout(() => {
         navigateToBooks();
       }, introTimerMilliseconds);

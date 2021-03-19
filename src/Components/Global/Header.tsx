@@ -36,7 +36,7 @@ console.Console;
 export const Header = () => {
   const { count } = useContext(CartContext);
   let pathname = "";
-  if (window) {
+  if (typeof window !== "undefined") {
     pathname = window.location.pathname;
   }
   return (
