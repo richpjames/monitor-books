@@ -7,7 +7,7 @@ interface BasketListItemContainerProps {
   width: string;
   horizontalmargin: string;
   topmargin: string;
-  className?: string;
+  className: string;
   id: string;
 }
 
