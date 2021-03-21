@@ -1,32 +1,46 @@
 import React, { useContext } from "react";
+import { getImage, GatsbyImage } from "gatsby-plugin-image";
 import styled from "styled-components/macro";
 
 import { QuantityPanel } from "./QuantityPanel";
-import {
-  BasketListItemContainerWrap,
-  MetaInfoContainer,
-  ListItemTitle,
-  ListItemSubtitle,
-  ListItemPhoto,
-} from "../../Common";
+
 import { CartContext } from "../../../state/CartProvider";
 
-const RemoveFromCartButton = styled.button`
-  right: 0;
-  top: 0;
-  position: absolute;
-  font-size: 0.75em;
-`;
-
-const PriceWrapper = styled.p`
-  padding-top: 0.5rem;
+export const BasketListItemContainerWrap = styled.div`
   display: flex;
-  align-items: center;
+
+  text-decoration: none;
+  width: 100%;
 `;
 
+const BasketMetaInfoContainer = styled.div`
+  border-top: 2px solid var(--main-border-colour);
+  border-bottom: 2px solid var(--main-border-colour);
+  display: grid;
+  grid-template-areas:
+    "title title quantity"
+    "price . .";
+  grid-template-rows: var(--x-small-component-width) var(
+      --x-small-component-width
+    );
+  row-gap: var(--small-text-spacing);
+  width: 100%;
+`;
+const PriceWrapper = styled.p`
+  grid-area: price;
+  width: 100%;
+`;
+const TitleWrapper = styled.h4`
+  width: 85%;
+  grid-area: title;
+`;
+const Image = styled(GatsbyImage)`
+  margin-right: var(--x-small-component-spacing);
+  width: var(--medium-component-width);
+`;
 interface Props {
   id: string;
-  thumbnail: string;
+  thumbnail: any;
   index: number;
   price: number;
   quantity: number;
@@ -47,11 +61,11 @@ const BasketListItem = ({
   title,
   slug,
 }: Props) => {
-  const { add, subtract, remove } = useContext(CartContext);
+  const { add, subtract } = useContext(CartContext);
   const handleAdd = (id: string) => (add ? add(id) : null);
   const handleSubtract = (id: string) => (subtract ? subtract(id) : null);
-  const handleRemove = (id: string) => (remove ? remove(id) : null);
 
+  const image = getImage(thumbnail);
   const basketItemLabel = slug.toLowerCase();
   return (
     <BasketListItemContainerWrap
@@ -62,13 +76,17 @@ const BasketListItem = ({
       topmargin="2rem"
       id={`${slug}-basket-item`}
     >
-      <ListItemPhoto src={thumbnail} alt={`thumbnail image of ${title}`} />
-      <MetaInfoContainer index={index} width="40%">
-        <ListItemTitle id={`${basketItemLabel}-title`}>{title}</ListItemTitle>
-        <ListItemSubtitle id={`${basketItemLabel}-subtitle`}>
-          {subtitle}
-        </ListItemSubtitle>
-        <PriceWrapper id={`${basketItemLabel}-price`}>£{price}</PriceWrapper>
+      <Image image={image} alt={`thumbnail image of ${title}`} />
+      <BasketMetaInfoContainer>
+        <TitleWrapper id={`${basketItemLabel}-subtitle`}>
+          <i>
+            {subtitle
+              .split(" ")
+              .map((word) => `${word[0]}${word.slice(1).toLowerCase()}`)
+              .join(" ")}
+          </i>
+          , {title}
+        </TitleWrapper>
         <QuantityPanel
           addToCart={() => handleAdd(id)}
           decrementInCart={() => handleSubtract(id)}
@@ -76,15 +94,8 @@ const BasketListItem = ({
           quantity={quantity}
           label={basketItemLabel}
         />
-        <RemoveFromCartButton
-          onClick={() => handleRemove(id)}
-          name="Remove from basket"
-          type="button"
-          id={`${basketItemLabel}-remove-button`}
-        >
-          X
-        </RemoveFromCartButton>
-      </MetaInfoContainer>
+        <PriceWrapper id={`${basketItemLabel}-price`}>£{price}</PriceWrapper>
+      </BasketMetaInfoContainer>
     </BasketListItemContainerWrap>
   );
 };

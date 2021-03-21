@@ -11,6 +11,7 @@
   
     --product-background-colour: var(--purple);
     --video-background-colour: var(--faded-blue);
+    --basket-background-colour: var(--green);
     --button-colour: var(--deep-blue);
 
     /* Base spacing unit. */
@@ -92,9 +93,13 @@
     --x-large-component-spacing: calc(var(--m-large) * var(--spacing-unit));
 
     /* component width photo */
+    --xx-small-component-width: calc(var(--xl-small) * var(--spacing-unit));
+    --x-small-component-width: calc(var(--base) * var(--spacing-unit));
+    --small-component-width: calc(var(--medium) * var(--spacing-unit));
     --medium-component-width: calc(var(--xl-medium) * var(--spacing-unit));
     --large-component-width: calc(var(--s-large) * var(--spacing-unit));
     --x-large-component-width: calc(var(--m-large) * var(--spacing-unit));
+    --xx-large-component-width: calc(var(--x-large) * var(--spacing-unit));
     
 
 

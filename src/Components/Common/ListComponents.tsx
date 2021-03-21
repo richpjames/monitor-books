@@ -43,14 +43,12 @@ export const ListItemContainerWrap = styled(Link)<ListItemContainerProps>`
 
 export const BasketListItemContainerWrap = styled.div<BasketListItemContainerProps>`
   display: flex;
-  justify-content: center;
+  border-top: 2px solid var(--main-border-colour);
   height: ${(props) => props.height};
   width: ${(props) => props.width};
   margin-left: ${(props) => props.horizontalmargin};
   margin-right: ${(props) => props.horizontalmargin};
   margin-top: ${(props) => (props.index < 1 ? "0" : props.topmargin)};
-  border-top: 1px solid var(--main-border-colour);
-  border-bottom: 1px solid var(--main-border-colour);
   text-decoration: none;
   @media only screen and (max-width: 600px) {
     flex-direction: column;
@@ -90,8 +88,8 @@ export const ListItemTitle = styled.h4`
 `;
 
 export const ListItemSubtitle = styled.h4`
-  width: 100%;
   border-top: 2px solid var(--main-border-colour);
+  width: 100%;
 `;
 
 export const VideoCreatorName = styled(ListItemTitle)`
@@ -113,7 +111,8 @@ export const Photo = styled.img`
 
 export const ListWrap = styled.ul`
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  width: 100%;
   padding-top: var(--small-component-spacing);
 `;
 

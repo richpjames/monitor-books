@@ -5,6 +5,7 @@ import Layout from "../Components/layout";
 
 import { CheckoutSection } from "../Components/Pages/Basket/CheckoutSection";
 import { BasketItemsList } from "../Components/Pages/Basket/BasketItemsList";
+import SEO from "../Components/seo";
 
 const Basket: React.FC<PageProps> = ({ location }) => {
   let basketComponent = (
@@ -15,7 +16,11 @@ const Basket: React.FC<PageProps> = ({ location }) => {
   );
 
   return (
-    <Layout backgroundColour="var(--green)" pathname={location.pathname}>
+    <Layout
+      backgroundColour="var(--basket-background-colour)"
+      pathname={location.pathname}
+    >
+      <SEO title="Basket" description="boook basket" />
       {basketComponent}
     </Layout>
   );

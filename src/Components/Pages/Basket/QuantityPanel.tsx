@@ -1,46 +1,25 @@
 import React from "react";
 import styled from "styled-components/macro";
 
-import { text, background } from "../../../constants";
-
-const Wrap = styled.section`
+const Wrap = styled.div`
+  margin-left: auto;
   display: flex;
-  padding-bottom: 2.5rem;
-  margin-top: auto;
-  width: 10rem;
-  @media only screen and (max-width: 600px) {
-    justify-content: center;
-    width: 100%;
-    margin-top: 0;
-  }
+  grid-area: quantity;
+  padding-top: var(--x-small-text-spacing);
+  height: var(--xx-small-component-width);
 `;
 
-const ButtonWrapper = styled.div`
-  display: flex;
-  width: 1rem;
-  height: 1.5rem;
-  @media only screen and (max-width: 600px) {
-  }
+const Quantity = styled.span`
+  margin-left: var(--x-small-text-spacing);
+  margin-right: var(--x-small-text-spacing);
 `;
-
-const Quantity = styled.h5`
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
-  color: var(--main-text-colour);
-`;
-
-const QuantityLabel = styled(Quantity)``;
 
 const Button = styled.button`
-  color: var(--main-text-colour);
-  border: 1px solid var(--main-border-colour);
-  background: ${background};
-  line-height: 1px;
+  background-color: var(--basket-background-colour);
+  border: none;
 `;
 
-const InnerButtonContent = styled.span`
-  line-height: 1px;
-`;
+const InnerButtonContent = styled.span``;
 interface QuantityPanelProps {
   addToCart: (event: React.MouseEvent) => void | any;
   decrementInCart: (event: React.MouseEvent) => void | any;
@@ -57,25 +36,22 @@ export const QuantityPanel: React.FC<QuantityPanelProps> = ({
   label,
 }) => (
   <Wrap className="item-quantity-container" id={`${label}-quantity-panel`}>
-    <QuantityLabel>Quantity:</QuantityLabel>
-    <ButtonWrapper>
-      <Button
-        onClick={decrementInCart}
-        disabled={quantity <= 0}
-        id={`${label}-decrease-quantity-button`}
-      >
-        <InnerButtonContent>-</InnerButtonContent>
-      </Button>
-      <Quantity id={`${label}-quantity`} className="item-quantity-number">
-        {quantity}
-      </Quantity>
-      <Button
-        id={`${label}-increase-quantity-button`}
-        onClick={addToCart}
-        disabled={outOfStock}
-      >
-        <InnerButtonContent>+</InnerButtonContent>
-      </Button>
-    </ButtonWrapper>
+    <Button
+      onClick={decrementInCart}
+      disabled={quantity <= 0}
+      id={`${label}-decrease-quantity-button`}
+    >
+      <InnerButtonContent>-</InnerButtonContent>
+    </Button>
+    <Quantity id={`${label}-quantity`} className="item-quantity-number">
+      {quantity}
+    </Quantity>
+    <Button
+      id={`${label}-increase-quantity-button`}
+      onClick={addToCart}
+      disabled={outOfStock}
+    >
+      <InnerButtonContent>+</InnerButtonContent>
+    </Button>
   </Wrap>
 );

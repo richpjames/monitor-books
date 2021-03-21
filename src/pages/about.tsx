@@ -6,7 +6,7 @@ import ReactMarkdown from "react-markdown";
 import Layout from "../Components/layout";
 
 const TextWrap = styled.section`
-  width: min(100%, var(--x-large-component-width));
+  width: min(100%, var(--xx-large-component-width));
 `;
 
 const About: React.FC<PageProps> = ({ location }) => {

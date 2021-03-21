@@ -63,7 +63,13 @@ const skusQuery = graphql`
         slug
         id
         inventory
-        thumbnail
+        thumbnail_image {
+          localFile {
+            childImageSharp {
+              gatsbyImageData(width: 300)
+            }
+          }
+        }
         devPriceId
         prodPriceId
         price

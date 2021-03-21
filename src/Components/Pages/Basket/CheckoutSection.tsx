@@ -6,11 +6,13 @@ import { CTAButton } from "../../Common";
 import { BasketTotal } from "./BasketTotal";
 import { CartContext } from "../../../state/CartProvider";
 import { shippingCosts } from "../../../constants";
+
 const CheckoutSectionWrap = styled.section`
   padding-top: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-left: auto;
 `;
 
 export const CheckoutSection: React.FC = () => {

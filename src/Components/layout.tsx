@@ -16,7 +16,7 @@ interface LayoutProps {
 }
 
 const Main = styled.main`
-  max-width: var(--page-max-width);
+  width: var(--page-max-width);
 `;
 
 const Layout: React.FC<LayoutProps> = ({

@@ -11,11 +11,11 @@ export function VideoTitle(props: Props) {
     <>
       <h1>{title} </h1>
 
-      {subtitle.map((creator, i) => {
-        return (
-          <h2 key={i}>{`${creator}${i < subtitle.length - 1 ? ", " : ""}`}</h2>
-        );
-      })}
+      <h2>
+        {subtitle.map((creator, i) => {
+          return <>{`${creator}${i < subtitle.length - 1 ? ", " : ""}`}</>;
+        })}
+      </h2>
     </>
   );
 }

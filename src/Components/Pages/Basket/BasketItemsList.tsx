@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
+import styled from "styled-components/macro";
+
 import { CartContext } from "../../../state/CartProvider";
 import { ProductsContext } from "../../../state/ProductsProvider";
-import styled from "styled-components/macro";
 
 import BasketListItem from "./BasketListItem";
 
