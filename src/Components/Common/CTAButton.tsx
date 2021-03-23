@@ -7,6 +7,7 @@ const ButtonStyles = styled.button`
 `;
 
 const ButtonWrapper = styled.div`
+  grid-area: checkout-button;
   padding-top: 1rem;
 `;
 interface CTAButtonProps {

@@ -1,19 +1,27 @@
 import React from "react";
 import styled from "styled-components/macro";
 
-import { ShippingCost } from "./ShippingCost";
-
-import { text, shippingCosts } from "../../../constants";
+import { shippingCosts } from "../../../constants";
 
 const ShippingLabel = styled.label`
   padding-right: 0.5rem;
   padding-bottom: 0.25rem;
   color: var(--main-text-colour);
+  grid-area: shipping-label;
+  font-size: var(--font-title-medium);
+  font-style: italic;
 `;
 
 const ShippingSelector = styled.select`
-  width: 7.5rem;
+  grid-area: shipping-selector;
 `;
+
+const ShippingCost = styled.h4`
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  grid-area: shipping-cost;
+`;
+
 interface Props {
   setShipping?: (index: any) => void;
   shipping?: Shipping;
@@ -45,7 +53,9 @@ export const Shipping: React.FC<Props> = ({
             </option>
           ))}
       </ShippingSelector>
-      <ShippingCost total={total} />
+      <ShippingCost id="shipping-cost">
+        <i>Shipping:</i> £{total}
+      </ShippingCost>
     </>
   );
 };

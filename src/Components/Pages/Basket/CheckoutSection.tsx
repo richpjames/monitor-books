@@ -3,16 +3,29 @@ import styled from "styled-components";
 
 import { Shipping } from "./Shipping";
 import { CTAButton } from "../../Common";
-import { BasketTotal } from "./BasketTotal";
 import { CartContext } from "../../../state/CartProvider";
 import { shippingCosts } from "../../../constants";
 
 const CheckoutSectionWrap = styled.section`
   padding-top: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  grid-template-areas:
+    "shipping-label shipping-selector"
+    ".                 shipping-cost"
+    ".                 total"
+    ".                 checkout-button";
+  grid-template-columns: var(--medium-component-width) var(
+      --medium-component-width
+    );
+  grid-template-rows: 1fr 1fr 1fr 1fr;
   margin-left: auto;
+  width: var(--x-large-component-width);
+`;
+const TotalWrapper = styled.h4`
+  text-align: center;
+  padding-top: 0.25rem;
+  grid-area: total;
+  border-top: 1px solid var(--main-border-colour);
 `;
 
 export const CheckoutSection: React.FC = () => {
@@ -34,7 +47,9 @@ export const CheckoutSection: React.FC = () => {
         setShipping={cartContext.setShipping}
         shippingOptions={shippingCosts}
       />
-      <BasketTotal total={grandTotal} />
+      <TotalWrapper id="basket-total">
+        <i>Total:</i> £{(Math.round(grandTotal * 100) / 100).toFixed(2)}
+      </TotalWrapper>
       <CTAButton
         onClick={cartContext.onCheckoutClicked}
         disabled={false}
