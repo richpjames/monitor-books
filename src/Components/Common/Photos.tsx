@@ -22,12 +22,10 @@ const PhotoContainer = styled.div`
 
 interface PhotosProps {
   photos: string[];
-  imageThumbnailHeight: string;
-  imageThumbnailWidth: string;
 }
 
 export const Photos = (props: PhotosProps) => {
-  const { photos, imageThumbnailHeight, imageThumbnailWidth } = props;
+  const { photos } = props;
   const [photoIndex, setPhotoIndex] = useState(0);
   const [galleryOpen, setGalleyOpen] = useState(false);
 
@@ -47,8 +45,6 @@ export const Photos = (props: PhotosProps) => {
           index={i}
           src={url}
           altText="a photo of murmur anthology"
-          height={imageThumbnailHeight}
-          width={imageThumbnailWidth}
         />
       </PhotoContainer>
     );

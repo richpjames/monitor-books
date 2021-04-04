@@ -7,7 +7,7 @@ import "../css/system.css";
 import { Header } from "./Global/Header";
 import ProductsProvider from "../state/ProductsProvider";
 import CartProvider from "../state/CartProvider";
-import { PageWrapper } from "../Components/Common";
+import { Footer } from "./Global/Footer";
 
 interface LayoutProps {
   children: any;
@@ -17,6 +17,28 @@ interface LayoutProps {
 
 const Main = styled.main`
   width: var(--page-max-width);
+`;
+export const PageWrapper = styled.div<{ backgroundColour: string }>`
+  padding-top: var(--small-component-spacing);
+  padding-left: var(--small-component-spacing);
+  padding-right: var(--small-component-spacing);
+  padding-bottom: var(--x-small-component-spacing);
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  background-color: ${({ backgroundColour }) =>
+    `${backgroundColour || `var(--faded-blue)`}`};
+  @media only screen and (max-width: 400px) {
+    padding: var(--small-component-spacing), var(--small-text-spacing);
+  }
+`;
+
+export const IntroPageWrapper = styled(PageWrapper)`
+  justify-content: center;
 `;
 
 const Layout: React.FC<LayoutProps> = ({
@@ -36,6 +58,7 @@ const Layout: React.FC<LayoutProps> = ({
         <CartProvider>
           <Header />
           <Main>{children}</Main>
+          <Footer />
         </CartProvider>
       </ProductsProvider>
     </PageWrapper>

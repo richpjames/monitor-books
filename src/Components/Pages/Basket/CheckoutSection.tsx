@@ -2,12 +2,12 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 
 import { Shipping } from "./Shipping";
-import { CTAButton } from "../../Common";
+import { Button } from "../../Common";
 import { CartContext } from "../../../state/CartProvider";
 import { shippingCosts } from "../../../constants";
 
 const CheckoutSectionWrap = styled.section`
-  padding-top: 2rem;
+  padding-top: var(--medium-component-spacing);
   display: grid;
   grid-template-areas:
     "shipping-label shipping-selector"
@@ -17,17 +17,21 @@ const CheckoutSectionWrap = styled.section`
   grid-template-columns: var(--medium-component-width) var(
       --medium-component-width
     );
-  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-rows: var(--x-small-component-spacing) 1fr 1fr 1fr;
   margin-left: auto;
   width: var(--x-large-component-width);
-`;
-const TotalWrapper = styled.h4`
-  text-align: center;
-  padding-top: 0.25rem;
-  grid-area: total;
-  border-top: 1px solid var(--main-border-colour);
+  text-align: end;
 `;
 
+const TotalWrapper = styled.h4`
+  padding-top: 0.25rem;
+  grid-area: total;
+  border-top: var(--line-thickness) solid var(--main-border-colour);
+`;
+
+const ButtonWrapper = styled.div`
+  grid-area:checkout-button;
+`
 export const CheckoutSection: React.FC = () => {
   const cartContext = useContext(CartContext);
 
@@ -50,13 +54,15 @@ export const CheckoutSection: React.FC = () => {
       <TotalWrapper id="basket-total">
         <i>Total:</i> £{(Math.round(grandTotal * 100) / 100).toFixed(2)}
       </TotalWrapper>
-      <CTAButton
-        onClick={cartContext.onCheckoutClicked}
-        disabled={false}
-        id="checkout-button"
-      >
-        Checkout
-      </CTAButton>
+      <ButtonWrapper>
+        <Button
+          onClick={cartContext.onCheckoutClicked}
+          disabled={false}
+          id="checkout-button"
+        >
+          Checkout
+        </Button>
+      </ButtonWrapper>
     </CheckoutSectionWrap>
   );
 };

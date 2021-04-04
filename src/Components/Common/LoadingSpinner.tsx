@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components/macro";
 
-import { LoadingAnimation } from "./Common";
+import { LoadingAnimation } from "./LoadingAnimation";
 
 const LoadingWrapper = styled.div`
   width: 100%;

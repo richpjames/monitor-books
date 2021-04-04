@@ -7,8 +7,6 @@ import { ProductsContext } from "../../../state/ProductsProvider";
 import BasketListItem from "./BasketListItem";
 
 const BasketItemsSection = styled.section`
-  padding-left: 5%;
-  padding-right: 5%;
   display: flex;
   flex-direction: column;
   align-items: center;

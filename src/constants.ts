@@ -37,17 +37,9 @@ export const _offOffWhite = "#ebebeb";
 export const _purp = "#02003D";
 export const _darkGrey = "#141414";
 
-//COLOUR USAGE
-export const text = "#ffffff";
-export const background = "#000000";
-
 //URLS
 export const homePage = "propositions";
 export const productsPageName = "books";
-
-//IMAGES
-export const productPageImageHeight = "auto";
-export const productPageImageWidth = "100%";
 
 export const introTimer = 4;
 

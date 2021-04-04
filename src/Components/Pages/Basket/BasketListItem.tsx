@@ -14,8 +14,8 @@ export const BasketListItemContainerWrap = styled.div`
 `;
 
 const BasketMetaInfoContainer = styled.div`
-  border-top: 2px solid var(--main-border-colour);
-  border-bottom: 2px solid var(--main-border-colour);
+  border-top: var(--line-thickness) solid var(--main-border-colour);
+  border-bottom: var(--line-thickness) solid var(--main-border-colour);
   display: grid;
   grid-template-areas:
     "title title quantity"

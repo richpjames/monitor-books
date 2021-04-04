@@ -4,17 +4,7 @@ import styled from "styled-components/macro";
 
 import { productMapper } from "../../api/mappers";
 import Layout from "../../Components/layout";
-import {
-  AddToBasketButton,
-  Photos,
-  SplitText,
-  InfoSection,
-} from "../../Components/Common";
-import {
-  text,
-  productPageImageHeight,
-  productPageImageWidth,
-} from "../../constants";
+import { AddToBasketButton, Photos, SplitText } from "../../Components/Common";
 import SEO from "../../Components/seo";
 
 export const query = graphql`
@@ -68,26 +58,16 @@ const ProductPage: React.FC<ProductPageProps> = ({ data, location }) => {
     >
       <SEO title={`${title} by ${author}`} description={blurb1} />
       <Container>
-        <Photos
-          photos={photos}
-          imageThumbnailHeight={productPageImageHeight}
-          imageThumbnailWidth={productPageImageWidth}
+        <Photos photos={photos} />
+        <h1>{`${title[0]}${title.slice(1).toLowerCase()}`}</h1>
+        <h2>{author}</h2>
+        <SplitText
+          leftText={blurb1}
+          rightText={blurb2}
+          addToBasketButton={
+            <AddToBasketButton id={priceId} publishedDate={publishedDate} />
+          }
         />
-        <InfoSection>
-          <h1>{`${title[0]}${title.slice(1).toLowerCase()}`}</h1>
-          <h2>{author}</h2>
-          <SplitText
-            leftText={blurb1}
-            rightText={blurb2}
-            addToBasketButton={
-              <AddToBasketButton
-                id={priceId}
-                borderColour={text}
-                publishedDate={publishedDate}
-              />
-            }
-          />
-        </InfoSection>
       </Container>
     </Layout>
   );

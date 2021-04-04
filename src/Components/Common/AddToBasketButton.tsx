@@ -4,13 +4,7 @@ import { navigate } from "gatsby";
 
 import { CartContext } from "../../state/CartProvider";
 
-const ButtonStyles = styled.button<{ borderColour: string }>`
-  width: 150px;
-  height: 40px;
-  background: var(--button-colour);
-  color: var(--product-background-colour);
-  border: 0;
-`;
+import { Button } from "./Button";
 
 const ButtonWrapper = styled.div`
   padding-top: 1rem;
@@ -18,13 +12,11 @@ const ButtonWrapper = styled.div`
 
 interface AddToBasketButtonProps {
   id: string;
-  borderColour: string;
   publishedDate: Date;
 }
 
 export const AddToBasketButton: React.FC<AddToBasketButtonProps> = ({
   id,
-  borderColour,
   publishedDate,
 }) => {
   const context = useContext(CartContext);
@@ -53,14 +45,13 @@ export const AddToBasketButton: React.FC<AddToBasketButtonProps> = ({
 
     return (
       <ButtonWrapper>
-        <ButtonStyles
+        <Button
           onClick={onClick}
           disabled={outOfStock || inCart}
           className="add-to-basket"
-          borderColour={borderColour}
         >
           {buttonMessage}
-        </ButtonStyles>
+        </Button>
       </ButtonWrapper>
     );
   } else {

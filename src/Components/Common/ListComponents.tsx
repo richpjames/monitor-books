@@ -43,7 +43,7 @@ export const ListItemContainerWrap = styled(Link)<ListItemContainerProps>`
 
 export const BasketListItemContainerWrap = styled.div<BasketListItemContainerProps>`
   display: flex;
-  border-top: 2px solid var(--main-border-colour);
+  border-top: var(--line-thickness) solid var(--main-border-colour);
   height: ${(props) => props.height};
   width: ${(props) => props.width};
   margin-left: ${(props) => props.horizontalmargin};
@@ -80,7 +80,7 @@ export const VideoCreatorContainer = styled(MetaInfoContainer)`
 
 export const ListItemTitle = styled.h4`
   width: 100%;
-  border-top: 2px solid var(--main-border-colour);
+  border-top: var(--line-thickness) solid var(--main-border-colour);
   font-family: "Century Schoolbook";
   font-size: var(--font-title-medium);
   font-weight: normal;

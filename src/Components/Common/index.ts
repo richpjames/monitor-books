@@ -1,7 +1,6 @@
-import { InfoSection, PageWrapper, IntroPageWrapper } from "./Common";
 import { AddToBasketButton } from "./AddToBasketButton";
 import { IndividualPhoto } from "./IndividualPhoto";
-import { CTAButton } from "./CTAButton";
+import { Button } from "./Button";
 import { Photos } from "./Photos";
 import {
   BasketListItemContainerWrap,
@@ -24,23 +23,20 @@ import { Video } from "./Video";
 
 export {
   AddToBasketButton,
-  CTAButton,
+  Button,
   ErrorText,
   IndividualPhoto,
-  InfoSection,
   ItemType,
   BasketListItemContainerWrap,
   ListItemContainerWrap,
   ListItemPhoto,
   ListItemSubtitle,
-  IntroPageWrapper,
   ListItemTitle,
   ListWrap,
   ListItemWrap,
   ListItemLink,
   LoadingSpinner,
   MetaInfoContainer,
-  PageWrapper,
   Photos,
   SplitText,
   Text,

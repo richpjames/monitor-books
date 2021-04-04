@@ -7,7 +7,7 @@ const LeftSection = styled.div`
   text-align: justify;
   @media only screen and (max-width: 600px) {
     padding-bottom: 25px;
-    border-bottom: 1px solid black;
+    border-bottom: var(--line-thickness) solid var(--main-border-colour);
     margin-right: 0%;
     width: 100%;
   }
