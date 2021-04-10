@@ -3,7 +3,7 @@ import styled from "styled-components/macro";
 import { ImageLogo } from "./ImageLogo";
 
 const FooterWrap = styled.footer`
-  margin-top: auto;
+  margin-top: var(--medium-component-spacing);
   color: var(--button-colour);
   > * {
     padding-left: var(--medium-text-spacing);
@@ -18,7 +18,7 @@ const FooterWrap = styled.footer`
 
 const footerItems = [
   { text: <ImageLogo /> },
-  { text: "@monitorbooks", link: "" },
+  { text: "@monitorbooks", link: "https://www.instagram.com/monitorbooks/" },
   {
     text: "editor@monitorbooks.co.uk",
     link: "mailto:editor@monitorbooks.co.uk",
@@ -28,11 +28,15 @@ const footerItems = [
 export const Footer = () => {
   return (
     <FooterWrap className="FooterWrap">
-      {footerItems.map((item) => {
+      {footerItems.map((item, i) => {
         if (item.link) {
-          return <a href={item.link}>{item.text}</a>;
+          return (
+            <a href={item.link} key={i}>
+              {item.text}
+            </a>
+          );
         } else if (item.text) {
-          return <span>{item.text}</span>;
+          return <span key={i}>{item.text}</span>;
         } else {
           return item;
         }

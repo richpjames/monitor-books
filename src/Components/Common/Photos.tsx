@@ -1,76 +1,80 @@
 import React, { useState } from "react";
 import styled from "styled-components/macro";
-import Lightbox from "react-image-lightbox";
-import "react-image-lightbox/style.css";
 
-import { IndividualPhoto } from "./index";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 const PhotoWrap = styled.section`
-  display: grid;
-  grid-template-columns: repeat(1, minmax(200px, 100%));
-  grid-gap: 1rem;
-  @media only screen and (min-width: 600px) {
-    grid-template-columns: repeat(2, minmax(200px, 100%));
-  }
-`;
-
-const PhotoContainer = styled.div`
+  padding: 0 var(--small-component-spacing);
   display: flex;
-  justify-content: center;
   align-items: center;
 `;
 
+const Arrow = styled.div`
+  height: var(--x-small-component-spacing);
+  width: var(--x-small-component-spacing);
+`;
+
+const ArrowWrap = styled.div`
+  width: var(--x-small-component-spacing);
+`;
+
+const LeftArrow = styled(Arrow)`
+  border-bottom: var(--line-thickness) solid var(--main-border-colour);
+  border-left: var(--line-thickness) solid var(--main-border-colour);
+  align-items: center;
+  margin-right: var(--small-component-spacing);
+  transform: translateX(-50%) rotate(45deg);
+`;
+const RightArrow = styled(Arrow)`
+  border-top: var(--line-thickness) solid var(--main-border-colour);
+  border-right: var(--line-thickness) solid var(--main-border-colour);
+  align-items: center;
+  transform: translateX(-100%) rotate(45deg);
+  margin-left: var(--small-component-spacing);
+`;
+
 interface PhotosProps {
-  photos: string[];
+  photos: any;
+  title: string;
 }
 
 export const Photos = (props: PhotosProps) => {
-  const { photos } = props;
+  const { photos, title } = props;
   const [photoIndex, setPhotoIndex] = useState(0);
-  const [galleryOpen, setGalleyOpen] = useState(false);
 
-  const imageURLs = photos;
-  const thumbURLs = photos;
-
-  const openLightbox = (i: number) => {
-    setPhotoIndex(i);
-    setGalleyOpen(true);
-  };
-
-  const thumbReel = thumbURLs.map((url, i) => {
-    return (
-      <PhotoContainer key={i}>
-        <IndividualPhoto
-          openLightbox={openLightbox}
-          index={i}
-          src={url}
-          altText="a photo of murmur anthology"
-        />
-      </PhotoContainer>
-    );
+  const thumbReel = photos.map((photo, i) => {
+    const image = getImage(photo.localFile);
+    console.log(photo, image);
+    if (image) {
+      return (
+        <GatsbyImage image={image} alt={`a photo of ${title} book`} key={i} />
+      );
+    } else return null;
   });
 
   return (
     <>
-      <PhotoWrap className="ImagesWrapper">{thumbReel[0]}</PhotoWrap>
-      {galleryOpen && (
-        <Lightbox
-          mainSrc={imageURLs[photoIndex]}
-          nextSrc={imageURLs[(photoIndex + 1) % imageURLs.length]}
-          prevSrc={
-            imageURLs[(photoIndex + imageURLs.length - 1) % imageURLs.length]
-          }
-          onCloseRequest={() => setGalleyOpen(false)}
-          onMovePrevRequest={() =>
-            setPhotoIndex(
-              (photoIndex + imageURLs.length - 1) % imageURLs.length
+      <PhotoWrap className="ImagesWrapper">
+        <ArrowWrap
+          onClick={() =>
+            setPhotoIndex((prevState) =>
+              prevState > 0 ? prevState - 1 : prevState
             )
           }
-          onMoveNextRequest={() =>
-            setPhotoIndex((photoIndex + 1) % imageURLs.length)
-          }
-        />
-      )}
+        >
+          <LeftArrow />
+        </ArrowWrap>
+        {thumbReel[photoIndex]}
+        <ArrowWrap>
+          <RightArrow
+            onClick={() =>
+              setPhotoIndex((prevState) =>
+                prevState < photos.length - 1 ? prevState + 1 : prevState
+              )
+            }
+          />
+        </ArrowWrap>
+      </PhotoWrap>
     </>
   );
 };

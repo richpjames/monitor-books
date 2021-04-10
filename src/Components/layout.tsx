@@ -49,7 +49,6 @@ const Layout: React.FC<LayoutProps> = ({
   useEffect(() => {
     if (typeof window !== "undefined") {
       clearTimeout((window as any).introTimer);
-      console.log("timeoutcleared");
     }
   }, [pathname]);
   return (

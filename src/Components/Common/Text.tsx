@@ -28,6 +28,9 @@ const TextWrapper = styled.section`
   display: flex;
   flex-direction: column;
   padding-top: 2.5%;
+  b {
+    font-style: italic;
+  }
   @media only screen and (min-width: 600px) {
     flex-direction: row;
   }

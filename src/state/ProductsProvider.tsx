@@ -62,11 +62,22 @@ const skusQuery = graphql`
         publishedDate
         slug
         id
+        gallery_images {
+          localFile {
+            childImageSharp {
+              fluid(maxWidth: 1500) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+        }
         inventory
         thumbnail_image {
           localFile {
             childImageSharp {
-              gatsbyImageData(width: 300)
+              fixed(width: 200) {
+                ...GatsbyImageSharpFixed
+              }
             }
           }
         }

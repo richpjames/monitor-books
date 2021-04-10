@@ -15,6 +15,17 @@ export const query = graphql`
       images {
         fullSize
       }
+      gallery_images {
+        localFile {
+          childImageSharp {
+            gatsbyImageData(
+              width: 1000
+              placeholder: BLURRED
+              formats: [AUTO, WEBP, AVIF]
+            )
+          }
+        }
+      }
       blurb1
       blurb2
       publishedDate
@@ -43,13 +54,13 @@ interface ProductPageProps extends PageProps {
 const ProductPage: React.FC<ProductPageProps> = ({ data, location }) => {
   const product: Product = productMapper(data.strapiBooks);
   const {
-    photos,
     title,
     author,
     blurb1,
     blurb2,
     priceId,
     publishedDate,
+    galleryImages,
   } = product;
   return (
     <Layout
@@ -58,7 +69,7 @@ const ProductPage: React.FC<ProductPageProps> = ({ data, location }) => {
     >
       <SEO title={`${title} by ${author}`} description={blurb1} />
       <Container>
-        <Photos photos={photos} />
+        <Photos photos={galleryImages} title={title} />
         <h1>{`${title[0]}${title.slice(1).toLowerCase()}`}</h1>
         <h2>{author}</h2>
         <SplitText
