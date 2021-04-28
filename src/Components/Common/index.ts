@@ -1,5 +1,4 @@
 import { AddToBasketButton } from "./AddToBasketButton";
-import { IndividualPhoto } from "./IndividualPhoto";
 import { Button } from "./Button";
 import { Photos } from "./Photos";
 import {
@@ -25,7 +24,6 @@ export {
   AddToBasketButton,
   Button,
   ErrorText,
-  IndividualPhoto,
   ItemType,
   BasketListItemContainerWrap,
   ListItemContainerWrap,
