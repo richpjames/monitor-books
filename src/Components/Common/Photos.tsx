@@ -35,42 +35,7 @@ const RightArrow = styled(Arrow)`
 `;
 
 const Photo = styled(GatsbyImage)`
-  transition: opacity 0.2s, visibility 0.2s, margin-top 0s 0.2s;
-  @keyframes slide_animation {
-    0% {
-      left: 0px;
-    }
-    10% {
-      left: 0px;
-    }
-    20% {
-      left: 500px;
-    }
-    30% {
-      left: 500px;
-    }
-    40% {
-      left: 500px;
-    }
-    50% {
-      left: 500px;
-    }
-    60% {
-      left: 1000px;
-    }
-    70% {
-      left: 1000px;
-    }
-    80% {
-      left: 1000px;
-    }
-    90% {
-      left: 1000px;
-    }
-    100% {
-      left: 1000px;
-    }
-  }
+  
 `;
 interface PhotosProps {
   photos: any;
@@ -81,7 +46,7 @@ export const Photos = (props: PhotosProps) => {
   const { photos, title } = props;
   const [photoIndex, setPhotoIndex] = useState(0);
 
-  const thumbReel = photos.map((photo, i) => {
+  const photoReel = photos.map((photo, i) => {
     const image = getImage(photo.localFile);
     if (image) {
       return <Photo image={image} alt={`a photo of ${title} book`} key={i} />;
@@ -100,7 +65,7 @@ export const Photos = (props: PhotosProps) => {
         >
           <LeftArrow />
         </ArrowWrap>
-        {thumbReel[photoIndex]}
+        {photoReel[photoIndex]}
         <ArrowWrap>
           <RightArrow
             onClick={() =>

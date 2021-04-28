@@ -1,12 +1,14 @@
 import { graphql, PageProps } from "gatsby";
 import React from "react";
 import styled from "styled-components/macro";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 import { productMapper } from "../../api/mappers";
 import Layout from "../../Components/layout";
 import { AddToBasketButton, Photos, SplitText } from "../../Components/Common";
 import SEO from "../../Components/seo";
-import {mobileBreakpoint} from "../../constants";
+import { mobileBreakpoint } from "../../constants";
+import useMediaQuery from "../../hooks/useMediaQuery";
 
 export const query = graphql`
   query BookQuery($slug: String!) {
@@ -68,6 +70,17 @@ const ProductPage: React.FC<ProductPageProps> = ({ data, location }) => {
     publishedDate,
     galleryImages,
   } = product;
+  const isMobile = useMediaQuery(`(max-width:${mobileBreakpoint})`);
+  const photoReel = galleryImages.map((photo, i) => {
+    return (
+      <GatsbyImage
+        image={photo?.localFile?.childImageSharp?.gatsbyImageData}
+        alt={`a photo of ${title} book`}
+        key={i}
+      />
+    );
+  });
+  console.log(isMobile)
   return (
     <Layout
       backgroundColour="var(--product-background-colour)"
@@ -75,7 +88,11 @@ const ProductPage: React.FC<ProductPageProps> = ({ data, location }) => {
     >
       <SEO title={`${title} by ${author}`} description={blurb1} />
       <Container>
-        <Photos photos={galleryImages} title={title} />
+        {!isMobile ? (
+          <Photos photos={galleryImages} title={title} />
+        ) : (
+          photoReel[0]
+        )}
         <h1>{`${title[0]}${title.slice(1).toLowerCase()}`}</h1>
         <h2>{author}</h2>
         <SplitText
@@ -84,6 +101,7 @@ const ProductPage: React.FC<ProductPageProps> = ({ data, location }) => {
           addToBasketButton={
             <AddToBasketButton id={priceId} publishedDate={publishedDate} />
           }
+          photo={photoReel[1]}
         />
       </Container>
     </Layout>

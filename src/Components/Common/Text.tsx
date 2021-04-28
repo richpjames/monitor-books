@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components/macro";
 import { sanitize } from "dompurify";
 
-import {mobileBreakpoint} from "../../constants";
+import { mobileBreakpoint } from "../../constants";
 
 const LeftSection = styled.section`
   width: 45%;
@@ -14,16 +14,18 @@ const LeftSection = styled.section`
     width: 100%;
   }
 `;
-const RightSection = styled(LeftSection)`
+const RightSection = styled(LeftSection) <{ photoExists: boolean }>`
   padding-left: 9%;
+  padding-bottom: 0;
   @media only screen and (max-width: ${mobileBreakpoint}) {
     padding-left: 0;
-    padding-top: var(--x-small-component-spacing);
+    padding-bottom: var(--x-small-component-spacing);
+    padding-top: ${({ photoExists }) => !photoExists ? `var(--x-small-component-spacing);` : `0;`}
   }
 `;
 
 const ErrorTextWrapper = styled.span`
-  color: #ec9696;
+  color: var(--pink);
 `;
 
 const TextWrapper = styled.section`
@@ -39,6 +41,22 @@ const TextWrapper = styled.section`
   }
 `;
 
+const PhotoWrapper = styled.div`
+display: none;
+padding: 0;
+@media only screen and (max-width: ${mobileBreakpoint}) {
+  display:block;
+  padding: var(--medium-component-spacing) 0;
+}
+`
+
+const AddToBasketWrapper = styled.div`
+display: block;
+@media only screen and (max-width: ${mobileBreakpoint}) {
+  display: flex; 
+  justify-content: center;
+}
+`
 const sanitizeText = (text: string) => {
   let safeText;
   if (typeof window === "undefined") {
@@ -48,20 +66,22 @@ const sanitizeText = (text: string) => {
   }
   return safeText;
 };
+
 interface Props {
   leftText: string;
   rightText: string;
   addToBasketButton?: JSX.Element;
+  photo?: JSX.Element;
 }
 
 export const SplitText = (props: Props) => {
   const unsanitizedLeftText = props.leftText;
   const unsanitizedRightText = props.rightText;
-
-  const { addToBasketButton } = props;
+  const { addToBasketButton, photo } = props;
   const sanitizedText = [unsanitizedLeftText, unsanitizedRightText].map(
     sanitizeText
   );
+  const photoExists = !!photo
   return (
     <TextWrapper className="TextWrapper">
       <LeftSection>
@@ -70,12 +90,13 @@ export const SplitText = (props: Props) => {
           dangerouslySetInnerHTML={{ __html: sanitizedText[0] }}
         />
       </LeftSection>
-      <RightSection>
+      {photo && <PhotoWrapper>{photo}</PhotoWrapper>}
+      <RightSection photoExists={photoExists}>
         <div
           className="right-section"
           dangerouslySetInnerHTML={{ __html: sanitizedText[1] }}
         />
-        {addToBasketButton}
+        <AddToBasketWrapper>{addToBasketButton}</AddToBasketWrapper>
       </RightSection>
     </TextWrapper>
   );
