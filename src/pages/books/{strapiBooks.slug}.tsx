@@ -1,7 +1,7 @@
 import { graphql, PageProps } from "gatsby";
 import React from "react";
 import styled from "styled-components/macro";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 
 import { productMapper } from "../../api/mappers";
 import Layout from "../../Components/layout";
