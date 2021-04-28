@@ -53,6 +53,10 @@ const Nav = styled.nav<{ showMenu: boolean }>`
     > ul {
       flex-direction: column;
       display: ${({ showMenu }) => (showMenu ? "block" : "none")};
+      border-bottom: ${({ showMenu }) =>
+        showMenu
+          ? "var(--line-thickness) solid var(--main-border-colour)"
+          : "none"};
     }
     li:last-child {
       margin-left: 0;

@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components/macro";
+
 import { ImageLogo } from "./ImageLogo";
+import { mobileBreakpoint } from "../../constants";
 
 const FooterWrap = styled.footer`
   margin-top: var(--medium-component-spacing);
@@ -13,9 +15,14 @@ const FooterWrap = styled.footer`
     text-decoration: none;
   }
   display: flex;
+  flex-direction: row;
   align-items: center;
-  @media only screen and (min-width: 20px) {
-    display: none;
+  @media only screen and (max-width: ${mobileBreakpoint}) {
+    margin-top: var(--small-component-spacing);
+    flex-direction: column;
+    > * {
+      padding-bottom: var(--x-small-component-spacing);
+    }
   }
 `;
 

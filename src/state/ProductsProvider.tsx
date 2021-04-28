@@ -75,9 +75,11 @@ const skusQuery = graphql`
         thumbnail_image {
           localFile {
             childImageSharp {
-              fixed(width: 200) {
-                ...GatsbyImageSharpFixed
-              }
+              gatsbyImageData(
+                width: 400
+                placeholder: BLURRED
+                formats: [AUTO, WEBP, AVIF]
+              )
             }
           }
         }

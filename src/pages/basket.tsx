@@ -11,7 +11,7 @@ const Basket: React.FC<PageProps> = ({ location }) => {
   let basketComponent = (
     <>
       <BasketItemsList />
-      <CheckoutSection />
+      {/* <CheckoutSection /> */}
     </>
   );
 

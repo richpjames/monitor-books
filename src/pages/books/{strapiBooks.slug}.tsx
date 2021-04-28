@@ -6,6 +6,7 @@ import { productMapper } from "../../api/mappers";
 import Layout from "../../Components/layout";
 import { AddToBasketButton, Photos, SplitText } from "../../Components/Common";
 import SEO from "../../Components/seo";
+import {mobileBreakpoint} from "../../constants";
 
 export const query = graphql`
   query BookQuery($slug: String!) {
@@ -41,10 +42,15 @@ export const query = graphql`
 `;
 
 const Container = styled.div`
-  border-top: var(--line-thickness) solid var(--main-text-colour);
   padding-top: var(--small-component-spacing);
   padding-bottom: var(--small-component-spacing);
+  border-top: var(--line-thickness) solid var(--main-text-colour);
   border-bottom: var(--line-thickness) solid var(--main-text-colour);
+  @media only screen and (max-width: ${mobileBreakpoint}) {
+    border-bottom: none;
+    border-top: none;
+    padding-bottom: 0;
+  }
 `;
 
 interface ProductPageProps extends PageProps {

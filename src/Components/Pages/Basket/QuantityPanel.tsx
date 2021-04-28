@@ -1,12 +1,18 @@
 import React from "react";
 import styled from "styled-components/macro";
 
+import { mobileBreakpoint } from "../../../constants";
+
 const Wrap = styled.div`
   margin-left: auto;
+  margin-right: 0;
   display: flex;
   grid-area: quantity;
   padding-top: var(--x-small-text-spacing);
   height: var(--xx-small-component-width);
+  @media only screen and (max-width: ${mobileBreakpoint}) {
+    margin-right: auto;
+  }
 `;
 
 const Quantity = styled.span`
