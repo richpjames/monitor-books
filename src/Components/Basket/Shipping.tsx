@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components/macro";
 
-import { shippingCosts } from "../../../constants";
+import { shippingCosts } from "../../constants";
 
 const ShippingLabel = styled.label`
   padding-right: 0.5rem;

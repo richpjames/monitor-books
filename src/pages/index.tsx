@@ -24,7 +24,7 @@ const Home = () => {
   useEffect(() => {
     if (typeof window !== "undefined")
       (window as any).introTimer = setTimeout(() => {
-        // navigateToBooks();
+        navigateToBooks();
       }, introTimerMilliseconds);
   }, []);
   useLayoutEffect(() => {

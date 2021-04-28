@@ -15,7 +15,6 @@ import {
   ListItemLink,
   ItemType,
 } from "./ListComponents";
-import { LoadingSpinner } from "./LoadingSpinner";
 import { SplitText, Text, ErrorText } from "./Text";
 import { VideoTitle } from "./VideoTitle";
 import { Video } from "./Video";
@@ -33,7 +32,6 @@ export {
   ListWrap,
   ListItemWrap,
   ListItemLink,
-  LoadingSpinner,
   MetaInfoContainer,
   Photos,
   SplitText,

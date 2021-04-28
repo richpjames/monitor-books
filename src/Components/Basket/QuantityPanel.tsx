@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components/macro";
 
-import { mobileBreakpoint } from "../../../constants";
+import { mobileBreakpoint } from "../../constants";
 
 const Wrap = styled.div`
   margin-left: auto;

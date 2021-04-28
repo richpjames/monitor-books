@@ -3,15 +3,15 @@ import { PageProps } from "gatsby";
 
 import Layout from "../Components/layout";
 
-import { CheckoutSection } from "../Components/Pages/Basket/CheckoutSection";
-import { BasketItemsList } from "../Components/Pages/Basket/BasketItemsList";
+import { CheckoutSection } from "../Components/Basket/CheckoutSection";
+import { BasketItemsList } from "../Components/Basket/BasketItemsList";
 import SEO from "../Components/seo";
 
 const Basket: React.FC<PageProps> = ({ location }) => {
   let basketComponent = (
     <>
       <BasketItemsList />
-      {/* <CheckoutSection /> */}
+      <CheckoutSection />
     </>
   );
 

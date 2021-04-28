@@ -3,8 +3,8 @@ import { getImage, GatsbyImage } from "gatsby-plugin-image";
 import styled from "styled-components/macro";
 
 import { QuantityPanel } from "./QuantityPanel";
-import { mobileBreakpoint } from "../../../constants";
-import { CartContext } from "../../../state/CartProvider";
+import { mobileBreakpoint } from "../../constants";
+import { CartContext } from "../../state/CartProvider";
 
 export const BasketListItemContainerWrap = styled.div<{ index: number }>`
   display: flex;

@@ -2,9 +2,9 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 
 import { Shipping } from "./Shipping";
-import { Button } from "../../Common";
-import { CartContext } from "../../../state/CartProvider";
-import { shippingCosts } from "../../../constants";
+import { Button } from "../Common";
+import { CartContext } from "../../state/CartProvider";
+import { shippingCosts } from "../../constants";
 
 const CheckoutSectionWrap = styled.section`
   padding-top: var(--medium-component-spacing);

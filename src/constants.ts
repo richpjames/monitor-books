@@ -31,11 +31,6 @@ export const shippingCosts: Shipping[] =
     ? productionShippingCosts
     : devShippingCosts;
 
-//COLOUR DEFINITIONS
-export const _offWhite = "#FAFAFA";
-export const _offOffWhite = "#ebebeb";
-export const _purp = "#02003D";
-export const _darkGrey = "#141414";
 
 //URLS
 export const homePage = "propositions";
