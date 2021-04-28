@@ -2,7 +2,7 @@ import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { navigate } from "gatsby";
 import styled from "styled-components/macro";
 
-import { introTimerMilliseconds, mobileBreakpoint } from "../constants";
+import { introTimerMilliseconds } from "../constants";
 import { PageWrapper } from "../Components/layout";
 import { TextBoxLogo } from "../Components/Global/TextBoxLogo";
 import SEO from "../Components/seo";
