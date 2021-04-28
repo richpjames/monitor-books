@@ -2,21 +2,23 @@ import React from "react";
 import styled from "styled-components/macro";
 import { sanitize } from "dompurify";
 
-const LeftSection = styled.div`
+import {mobileBreakpoint} from "../../constants";
+
+const LeftSection = styled.section`
   width: 45%;
   text-align: justify;
-  @media only screen and (max-width: 600px) {
-    padding-bottom: 25px;
+  padding-bottom: 0;
+  @media only screen and (max-width: ${mobileBreakpoint}) {
+    padding-bottom: var(--medium-text-spacing);
     border-bottom: var(--line-thickness) solid var(--main-border-colour);
-    margin-right: 0%;
     width: 100%;
   }
 `;
 const RightSection = styled(LeftSection)`
   padding-left: 9%;
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: ${mobileBreakpoint}) {
     padding-left: 0;
-    margin-top: 5%;
+    padding-top: var(--x-small-component-spacing);
   }
 `;
 
@@ -26,13 +28,14 @@ const ErrorTextWrapper = styled.span`
 
 const TextWrapper = styled.section`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   padding-top: 2.5%;
   b {
     font-style: italic;
   }
-  @media only screen and (min-width: 600px) {
-    flex-direction: row;
+  @media only screen and (max-width: ${mobileBreakpoint}) {
+    flex-direction: column;
+    margin-bottom: var(--small-component-spacing);
   }
 `;
 
@@ -61,10 +64,12 @@ export const SplitText = (props: Props) => {
   );
   return (
     <TextWrapper className="TextWrapper">
-      <LeftSection
-        className="left-section"
-        dangerouslySetInnerHTML={{ __html: sanitizedText[0] }}
-      />
+      <LeftSection>
+        <div
+          className="left-section"
+          dangerouslySetInnerHTML={{ __html: sanitizedText[0] }}
+        />
+      </LeftSection>
       <RightSection>
         <div
           className="right-section"

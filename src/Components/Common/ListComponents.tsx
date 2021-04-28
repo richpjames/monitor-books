@@ -1,6 +1,8 @@
 import styled from "styled-components/macro";
 import { Link } from "gatsby";
 
+import {mobileBreakpoint} from "../../constants"
+
 interface BasketListItemContainerProps {
   index: number;
   height: string;
@@ -31,14 +33,6 @@ export const ListItemContainerWrap = styled(Link)<ListItemContainerProps>`
   border-top: var(--line-thickness) solid var(--main-border-colour);
   border-bottom: var(--line-thickness) solid var(--main-border-colour);
   text-decoration: none;
-  @media only screen and (max-width: 600px) {
-    flex-direction: column;
-    padding-left: 0;
-    padding-right: 0;
-    margin-left: 0;
-    margin-right: 0;
-    width: 100%;
-  }
 `;
 
 export const BasketListItemContainerWrap = styled.div<BasketListItemContainerProps>`
@@ -50,7 +44,7 @@ export const BasketListItemContainerWrap = styled.div<BasketListItemContainerPro
   margin-right: ${(props) => props.horizontalmargin};
   margin-top: ${(props) => (props.index < 1 ? "0" : props.topmargin)};
   text-decoration: none;
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: ${mobileBreakpoint}) {
     flex-direction: column;
     padding-left: 0;
     padding-right: 0;
@@ -67,9 +61,9 @@ export const MetaInfoContainer = styled.div<{ index: number; width: string }>`
   width: 100%;
   position: relative;
   padding-left: var(--small-component-spacing);
-  @media only screen and (max-width: 600px) {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+  @media only screen and (max-width: ${mobileBreakpoint}) {
+    padding-top: var(--x-small-component-spacing);
+    padding-left: 0;
     width: 100%;
   }
 `;
@@ -101,7 +95,7 @@ export const Photo = styled.img`
   height: var(--medium-component-width);
   object-fit: cover;
   overflow: hidden;
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: ${mobileBreakpoint}) {
     max-height: 100vw;
     margin: 3% 0%;
     max-width: 100%;
@@ -120,6 +114,12 @@ export const ListItemWrap = styled.li`
   width: 100%;
   text-decoration: none !important;
   display: flex;
+  flex-direction: row;
+  padding-bottom: 0;
+  @media only screen and (max-width: ${mobileBreakpoint}) {
+    flex-direction: column;
+    padding-bottom: var(--small-component-spacing);
+  }
 `;
 export const ListItemLink = styled(Link)`
   margin-top: var(--x-small-component-spacing);

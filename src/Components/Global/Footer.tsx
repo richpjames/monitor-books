@@ -14,6 +14,9 @@ const FooterWrap = styled.footer`
   }
   display: flex;
   align-items: center;
+  @media only screen and (min-width: 20px) {
+    display: none;
+  }
 `;
 
 const footerItems = [

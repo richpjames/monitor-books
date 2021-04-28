@@ -25,6 +25,7 @@ const LeftArrow = styled(Arrow)`
   margin-right: var(--small-component-spacing);
   transform: translateX(-50%) rotate(45deg);
 `;
+
 const RightArrow = styled(Arrow)`
   border-top: var(--line-thickness) solid var(--main-border-colour);
   border-right: var(--line-thickness) solid var(--main-border-colour);
@@ -33,6 +34,44 @@ const RightArrow = styled(Arrow)`
   margin-left: var(--small-component-spacing);
 `;
 
+const Photo = styled(GatsbyImage)`
+  transition: opacity 0.2s, visibility 0.2s, margin-top 0s 0.2s;
+  @keyframes slide_animation {
+    0% {
+      left: 0px;
+    }
+    10% {
+      left: 0px;
+    }
+    20% {
+      left: 500px;
+    }
+    30% {
+      left: 500px;
+    }
+    40% {
+      left: 500px;
+    }
+    50% {
+      left: 500px;
+    }
+    60% {
+      left: 1000px;
+    }
+    70% {
+      left: 1000px;
+    }
+    80% {
+      left: 1000px;
+    }
+    90% {
+      left: 1000px;
+    }
+    100% {
+      left: 1000px;
+    }
+  }
+`;
 interface PhotosProps {
   photos: any;
   title: string;
@@ -44,11 +83,8 @@ export const Photos = (props: PhotosProps) => {
 
   const thumbReel = photos.map((photo, i) => {
     const image = getImage(photo.localFile);
-    console.log(photo, image);
     if (image) {
-      return (
-        <GatsbyImage image={image} alt={`a photo of ${title} book`} key={i} />
-      );
+      return <Photo image={image} alt={`a photo of ${title} book`} key={i} />;
     } else return null;
   });
 
@@ -58,7 +94,7 @@ export const Photos = (props: PhotosProps) => {
         <ArrowWrap
           onClick={() =>
             setPhotoIndex((prevState) =>
-              prevState > 0 ? prevState - 1 : prevState
+              prevState > 0 ? prevState - 1 : photos.length - 1
             )
           }
         >
@@ -69,7 +105,7 @@ export const Photos = (props: PhotosProps) => {
           <RightArrow
             onClick={() =>
               setPhotoIndex((prevState) =>
-                prevState < photos.length - 1 ? prevState + 1 : prevState
+                prevState < photos.length - 1 ? prevState + 1 : 0
               )
             }
           />

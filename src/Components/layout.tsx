@@ -4,6 +4,8 @@ import styled from "styled-components/macro";
 import "../css/app.css";
 import "../css/system.css";
 
+import {mobileBreakpoint} from "../constants"
+
 import { Header } from "./Global/Header";
 import ProductsProvider from "../state/ProductsProvider";
 import CartProvider from "../state/CartProvider";
@@ -16,7 +18,7 @@ interface LayoutProps {
 }
 
 const Main = styled.main`
-  width: var(--page-max-width);
+  width: min(var(--page-max-width), 95%);
 `;
 export const PageWrapper = styled.div<{ backgroundColour: string }>`
   padding-top: var(--small-component-spacing);
@@ -32,7 +34,7 @@ export const PageWrapper = styled.div<{ backgroundColour: string }>`
   box-sizing: border-box;
   background-color: ${({ backgroundColour }) =>
     `${backgroundColour || `var(--faded-blue)`}`};
-  @media only screen and (max-width: 400px) {
+  @media only screen and (max-width: ${mobileBreakpoint}) {
     padding: var(--small-component-spacing), var(--small-text-spacing);
   }
 `;

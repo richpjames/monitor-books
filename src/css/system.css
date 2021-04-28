@@ -84,8 +84,9 @@
     --medium-text-spacing: calc(var(--l-small) * var(--spacing-unit));
     --large-text-spacing: calc(var(--xl-small) * var(--spacing-unit));
     --x-large-text-spacing: calc(var(--base) * var(--spacing-unit));
-  
+    
     /* component spacing */
+    --xx-small-text-spacing: calc(var(--small) * var(--spacing-unit));
     --x-small-component-spacing: calc(var(--base) * var(--spacing-unit));
     --small-component-spacing: calc(var(--xs-medium) * var(--spacing-unit));
     --medium-component-spacing: calc(var(--medium) * var(--spacing-unit));

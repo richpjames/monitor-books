@@ -45,6 +45,8 @@ export const introTimer = 4;
 
 export const introTimerMilliseconds = introTimer * 1000;
 
+export const mobileBreakpoint = "600px"
+
 //STRIPE
 export const stripePublishableKey =
   process.env.GATSBY_ENV === "production"
