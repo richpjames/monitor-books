@@ -50,13 +50,6 @@ padding: 0;
 }
 `
 
-const AddToBasketWrapper = styled.div`
-display: block;
-@media only screen and (max-width: ${mobileBreakpoint}) {
-  display: flex; 
-  justify-content: center;
-}
-`
 const sanitizeText = (text: string) => {
   let safeText;
   if (typeof window === "undefined") {
@@ -96,7 +89,7 @@ export const SplitText = (props: Props) => {
           className="right-section"
           dangerouslySetInnerHTML={{ __html: sanitizedText[1] }}
         />
-        <AddToBasketWrapper>{addToBasketButton}</AddToBasketWrapper>
+        {addToBasketButton}
       </RightSection>
     </TextWrapper>
   );

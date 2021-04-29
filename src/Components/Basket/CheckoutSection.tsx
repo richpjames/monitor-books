@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { Shipping } from "./Shipping";
 import { Button } from "../Common";
 import { CartContext } from "../../state/CartProvider";
-import { shippingCosts } from "../../constants";
+import { shippingCosts, mobileBreakpoint  } from "../../constants";
 
 const CheckoutSectionWrap = styled.section`
   padding-top: var(--medium-component-spacing);
@@ -21,6 +21,15 @@ const CheckoutSectionWrap = styled.section`
   margin-left: auto;
   width: var(--x-large-component-width);
   text-align: end;
+  @media only screen and (max-width: ${mobileBreakpoint}) {
+    grid-template-areas: "shipping-label"
+                         "shipping-selector"
+                         "shipping-cost"
+                         "total"
+                         "checkout-button";
+    grid-template-columns: 100%;
+    width: 100%;
+}
 `;
 
 const TotalWrapper = styled.h4`
@@ -31,6 +40,7 @@ const TotalWrapper = styled.h4`
 
 const ButtonWrapper = styled.div`
   grid-area:checkout-button;
+  width: 100%;
 `
 export const CheckoutSection: React.FC = () => {
   const cartContext = useContext(CartContext);

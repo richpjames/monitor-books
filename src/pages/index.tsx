@@ -21,15 +21,16 @@ export const IntroPageWrapper = styled(PageWrapper)`
 const Home = () => {
   const wrapperEl = useRef<any>(null)
   const [width, setWidth] = useState(0)
+  
   useEffect(() => {
     if (typeof window !== "undefined")
       (window as any).introTimer = setTimeout(() => {
         navigateToBooks();
       }, introTimerMilliseconds);
   }, []);
+
   useLayoutEffect(() => {
     if (wrapperEl?.current) {
-      console.log(wrapperEl.current)
       setWidth(() => wrapperEl?.current?.offsetWidth);
     }
   }, [])
@@ -39,7 +40,7 @@ const Home = () => {
       onClick={navigateToBooks}
       ref={wrapperEl}
     >
-      <SEO title="Monitor Books Home" description="" />
+      <SEO title="Home" description="" />
       <BoxWrapper >
         <TextBoxLogo parentWidth={width} />
       </BoxWrapper>
