@@ -93,7 +93,9 @@ const ProductPage: React.FC<ProductPageProps> = ({ data, location }) => {
         ) : (
           photoReel[0]
         )}
-        <h1>{`${title[0]}${title.slice(1).toLowerCase()}`}</h1>
+        <h1>{title.split(" ")
+          .map((word) => `${word[0]}${word.slice(1).toLowerCase()}`)
+          .join(" ")}</h1>
         <h2>{author}</h2>
         <SplitText
           leftText={blurb1}

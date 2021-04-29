@@ -116,6 +116,7 @@ export const Header = () => {
               aria-label="Basket Page"
               className="basket"
               selected={/basket/.test(pathname)}
+              id="header-basket-items"
             >
               Basket ({count})
           </Link>

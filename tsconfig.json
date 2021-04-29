@@ -20,7 +20,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "removeComments": false,
-    "preserveConstEnums": true,"disableAutomaticTypeAcquisition": true
+    "preserveConstEnums": true,
   },
   "include": [
     "src", "cypress", 
