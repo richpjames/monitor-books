@@ -6,6 +6,7 @@ import { mobileBreakpoint } from "../../constants";
 
 const FooterWrap = styled.footer`
   margin-top: var(--medium-component-spacing);
+  height: var(--medium-component-spacing);
   color: var(--button-colour);
   > * {
     padding-left: var(--medium-text-spacing);
@@ -18,6 +19,7 @@ const FooterWrap = styled.footer`
   flex-direction: row;
   align-items: center;
   @media only screen and (max-width: ${mobileBreakpoint}) {
+    height: var(--large-component-width);
     margin-top: var(--small-component-spacing);
     flex-direction: column;
     > * {

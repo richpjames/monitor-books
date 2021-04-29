@@ -4,7 +4,7 @@ import styled from "styled-components/macro";
 import "../css/app.css";
 import "../css/system.css";
 
-import {mobileBreakpoint} from "../constants"
+import { mobileBreakpoint } from "../constants"
 
 import { Header } from "./Global/Header";
 import ProductsProvider from "../state/ProductsProvider";
@@ -19,8 +19,10 @@ interface LayoutProps {
 
 const Main = styled.main`
   width: min(var(--page-max-width), 95%);
+  flex: 1;
 `;
-export const PageWrapper = styled.div<{ backgroundColour: string }>`
+
+export const PageWrapper = styled.body<{ backgroundColour: string }>`
   padding-top: var(--small-component-spacing);
   padding-left: var(--small-component-spacing);
   padding-right: var(--small-component-spacing);

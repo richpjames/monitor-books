@@ -7,6 +7,9 @@ import SEO from "../Components/seo";
 
 const ContentWrapper = styled.div`
   margin: 0 auto;
+  > h1 {
+    padding-bottom: var(--medium-text-spacing);
+  }
 `;
 
 const NotFound: React.FC<PageProps> = ({ location }) => {

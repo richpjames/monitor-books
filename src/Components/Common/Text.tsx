@@ -6,7 +6,6 @@ import { mobileBreakpoint } from "../../constants";
 
 const LeftSection = styled.section`
   width: 45%;
-  text-align: justify;
   padding-bottom: 0;
   @media only screen and (max-width: ${mobileBreakpoint}) {
     padding-bottom: var(--medium-text-spacing);

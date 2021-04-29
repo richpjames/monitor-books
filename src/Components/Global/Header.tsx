@@ -8,19 +8,24 @@ import { CartContext } from "../../state/CartProvider";
 
 import { TextLogo } from "./TextLogo";
 
-const Nav = styled.nav<{ showMenu: boolean }>`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding-bottom: var(--small-component-spacing);
-  font-size: var(--font-title-medium);
-  > h3 {
-    display: none;
-  }
-  > a > div {
+const HeaderStyles = styled.header<{ showMenu: boolean }>`
+display: flex;
+flex-direction: column;
+width: 100%;
+padding-bottom: var(--small-component-spacing);
+font-size: var(--font-title-medium);
+
+> a > div {
     padding-top: 0;
     display: block;
   }
+
+> nav {
+
+> h3 {
+    display: none;
+  }
+ 
   > ul {
     display: flex;
     flex-direction: row;
@@ -34,29 +39,30 @@ const Nav = styled.nav<{ showMenu: boolean }>`
   li:first-child {
     padding-left: 0;
   }
-
+}
   @media only screen and (max-width: ${mobileBreakpoint}) {
     padding-bottom: var(--xx-small-component-spacing);
     width: min(var(--page-max-width), 95%);
-
+    > a > div {
+      padding: var(--x-small-component-spacing) 0;
+      display: flex;
+      justify-content: center;
+    }
+ > nav {
     > h3 {
       display: flex;
       width: 100%;
       justify-content: center;
       border-top: var(--line-thickness) solid var(--main-border-colour);
     }
-    > a > div {
-      padding: var(--x-small-component-spacing) 0;
-      display: flex;
-      justify-content: center;
-    }
+   
     > ul {
       flex-direction: column;
       display: ${({ showMenu }) => (showMenu ? "block" : "none")};
       border-bottom: ${({ showMenu }) =>
-        showMenu
-          ? "var(--line-thickness) solid var(--main-border-colour)"
-          : "none"};
+    showMenu
+      ? "var(--line-thickness) solid var(--main-border-colour)"
+      : "none"};
     }
     li:last-child {
       margin-left: 0;
@@ -64,10 +70,10 @@ const Nav = styled.nav<{ showMenu: boolean }>`
     li:first-child {
       padding-left: var(--x-small-text-spacing);
     }
-  }
-`;
+  }}
+`
 
-const Link = styled(GatsbyLink)<{ selected?: boolean }>`
+const Link = styled(GatsbyLink) <{ selected?: boolean }>`
   text-decoration: ${(props) => (props.selected ? `` : `none`)};
   text-decoration-thickness: var(--line-thickness);
   text-underline-offset: var(--x-small-text-spacing);
@@ -81,40 +87,42 @@ export const Header = () => {
     pathname = window.location.pathname;
   }
   return (
-    <Nav showMenu={showMenu}>
+    <HeaderStyles showMenu={showMenu}>
       <Link to="/about" className="logo-container">
         <TextLogo />
       </Link>
-      <h3 onClick={() => setShowMenu((prevState) => !prevState)}>Menu</h3>
-      <ul>
-        {navItems.map((navItem, index) => {
-          const { link, ariaLabel, className, content } = navItem;
-          return (
-            <li key={index}>
-              <Link
-                to={link}
-                aria-label={ariaLabel}
-                className={className}
-                selected={new RegExp(link).test(pathname)}
-              >
-                {content}
-              </Link>
-              {index < navItems.length - 1 ? `, ` : null}
-            </li>
-          );
-        })}
-        <li>
-          <Link
-            to="/basket"
-            aria-label="Basket Page"
-            className="basket"
-            selected={/basket/.test(pathname)}
-          >
-            Basket ({count})
+      <nav>
+        <h3 onClick={() => setShowMenu((prevState) => !prevState)}>Menu</h3>
+        <ul>
+          {navItems.map((navItem, index) => {
+            const { link, ariaLabel, className, content } = navItem;
+            return (
+              <li key={index}>
+                <Link
+                  to={link}
+                  aria-label={ariaLabel}
+                  className={className}
+                  selected={new RegExp(link).test(pathname)}
+                >
+                  {content}
+                </Link>
+                {index < navItems.length - 1 ? `, ` : null}
+              </li>
+            );
+          })}
+          <li>
+            <Link
+              to="/basket"
+              aria-label="Basket Page"
+              className="basket"
+              selected={/basket/.test(pathname)}
+            >
+              Basket ({count})
           </Link>
-        </li>
-      </ul>
-    </Nav>
+          </li>
+        </ul>
+      </nav>
+    </HeaderStyles>
   );
 };
 
