@@ -80,7 +80,6 @@ const ProductPage: React.FC<ProductPageProps> = ({ data, location }) => {
       />
     );
   });
-  console.log(isMobile)
   return (
     <Layout
       backgroundColour="var(--product-background-colour)"

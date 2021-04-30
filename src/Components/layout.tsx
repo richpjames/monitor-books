@@ -17,12 +17,12 @@ interface LayoutProps {
   pathname: string;
 }
 
-const Main = styled.main`
+const Main = styled.section`
   width: min(var(--page-max-width), 95%);
   flex: 1;
 `;
 
-export const PageWrapper = styled.body<{ backgroundColour: string }>`
+export const PageWrapper = styled.main<{ backgroundColour: string }>`
   padding-top: var(--small-component-spacing);
   padding-left: var(--small-component-spacing);
   padding-right: var(--small-component-spacing);
