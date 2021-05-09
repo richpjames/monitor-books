@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useLayoutEffect } from "react";
 import { PageProps } from "gatsby";
 
 import Layout from "../Components/layout";
@@ -6,6 +6,7 @@ import Layout from "../Components/layout";
 import { CheckoutSection } from "../Components/Basket/CheckoutSection";
 import { BasketItemsList } from "../Components/Basket/BasketItemsList";
 import SEO from "../Components/seo";
+import { setBackground } from "../hooks/setBackground";
 
 const Basket: React.FC<PageProps> = ({ location }) => {
   let basketComponent = (
@@ -15,9 +16,13 @@ const Basket: React.FC<PageProps> = ({ location }) => {
     </>
   );
 
+
+  useLayoutEffect(() => {
+    setBackground('var(--basket-background-colour)')
+  }, [])
+
   return (
     <Layout
-      backgroundColour="var(--basket-background-colour)"
       pathname={location.pathname}
     >
       <SEO title="Basket" description="boook basket" />

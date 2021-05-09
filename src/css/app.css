@@ -1,111 +1,108 @@
-
 body {
-    margin: 0;
-    font-family: 'Century Schoolbook', Georgia, 'Times New Roman', Times, serif;
-    font-size: var(--font-body-medium);
-    color: var(--main-text-colour);
-  }
-  
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    margin: 0;
-    font-weight: var(--font-weight-regular);
-    padding: var(--medium-text-spacing) 0 calc(var(--medium-text-spacing) * 0.8) 0;
-    font-family: var(--main-title-font);
-    
-  }
-  p {
-    font-size: var(--font-body-large);
-    padding-bottom: var(--small-text-spacing);
-    margin: 0;
-  }
-  nav {
-    font-family: var(--main-title-font);
-  }
-  
-  h1 {
-    font-size: var(--font-title-large);
-    margin: 0;
-    padding: var(--x-large-text-spacing) 0 0 0;
-    font-style: italic;
-    line-height: var(--x-large-text-spacing);
-  }
-  
-  h2 {
-    font-size: var(--font-title-medium);
-    padding: var(--x-small-text-spacing) 0
-      calc(var(--medium-text-spacing) * var(--small)) 0;
-  }
-  
-  h3 {
-    font-size: var(--font-title-medium);
-    padding: var(--medium-text-spacing) 0
-      calc(var(--medium-text-spacing) * var(--small)) 0;
-  }
-  
-  h4 {
-    font-size: var(--font-title-medium);
-    padding: var(--x-small-text-spacing) 0
-      var(--x-small-text-spacing) 0;
-    }
-    
-  h5 {
-      font-size: var(--font-title-medium);
-      padding: var(--x-small-text-spacing) 0
-      calc(var(--x-small-text-spacing) * var(--small)) 0;
-  }
-  a {
-    color: var(--main-highlight);
-  }
-  
-  figure {
-    margin: 0;
-    padding: var(--x-small-component-spacing);
-  }
-  figcaption {
-    margin: 0;
-  }
-  
-  code {
-    font-family: menlo, inconsolata, monospace;
-    font-size: calc(1em - 2px);
-    color: #555;
-    background-color: #f0f0f0;
-    padding: 0.2em 0.4em;
-    border-radius: 2px;
-  }
-  
-  figcaption {
-    text-align: left;
-    font-style: italic;
-  }
-  
-  li {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  ul {
-    padding: 0;
-    margin: 0;
-  }
-  
-  code {
-    background-color: transparent;
-    padding: 0;
-  }
-  button,
-  input,
-  optgroup,
-  select,
-  textarea {
-    font-family: inherit; /* 1 */
-    font-size: 100%; /* 1 */
-    line-height: 1.15; /* 1 */
-    margin: 0; /* 2 */
-  }
-  
+  margin: 0;
+  font-family: "Century Schoolbook", Georgia, "Times New Roman", Times, serif;
+  font-size: var(--font-body-medium);
+  color: var(--main-text-colour);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-weight: var(--font-weight-regular);
+  padding: var(--medium-text-spacing) 0 calc(var(--medium-text-spacing) * 0.8) 0;
+  font-family: var(--main-title-font);
+}
+p {
+  font-size: var(--font-body-large);
+  padding-bottom: var(--small-text-spacing);
+  margin: 0;
+}
+nav {
+  font-family: var(--main-title-font);
+}
+
+h1 {
+  font-size: var(--font-title-large);
+  margin: 0;
+  padding: var(--x-large-text-spacing) 0 0 0;
+  font-style: italic;
+  line-height: var(--x-large-text-spacing);
+}
+
+h2 {
+  font-size: var(--font-title-medium);
+  padding: var(--x-small-text-spacing) 0
+    calc(var(--medium-text-spacing) * var(--small)) 0;
+}
+
+h3 {
+  font-size: var(--font-title-medium);
+  padding: var(--medium-text-spacing) 0
+    calc(var(--medium-text-spacing) * var(--small)) 0;
+}
+
+h4 {
+  font-size: var(--font-title-medium);
+  padding: var(--x-small-text-spacing) 0 var(--x-small-text-spacing) 0;
+}
+
+h5 {
+  font-size: var(--font-title-medium);
+  padding: var(--x-small-text-spacing) 0
+    calc(var(--x-small-text-spacing) * var(--small)) 0;
+}
+a {
+  color: var(--main-highlight);
+}
+
+figure {
+  margin: 0;
+  padding: var(--x-small-component-spacing);
+}
+figcaption {
+  margin: 0;
+}
+
+code {
+  font-family: menlo, inconsolata, monospace;
+  font-size: calc(1em - 2px);
+  color: #555;
+  background-color: #f0f0f0;
+  padding: 0.2em 0.4em;
+  border-radius: 2px;
+}
+
+figcaption {
+  text-align: left;
+  font-style: italic;
+}
+
+li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  line-height: 1.15; /* 1 */
+  margin: 0; /* 2 */
+}
+
+button {
+  background-color: var(--current-background-colour);
+  border: none;
+}

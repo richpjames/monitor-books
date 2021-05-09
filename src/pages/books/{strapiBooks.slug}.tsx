@@ -1,5 +1,5 @@
+import React, { useLayoutEffect } from "react";
 import { graphql, PageProps } from "gatsby";
-import React from "react";
 import styled from "styled-components/macro";
 import { GatsbyImage } from "gatsby-plugin-image";
 
@@ -9,6 +9,7 @@ import { AddToBasketButton, Photos, SplitText } from "../../Components/Common";
 import SEO from "../../Components/seo";
 import { mobileBreakpoint } from "../../constants";
 import useMediaQuery from "../../hooks/useMediaQuery";
+import { setBackground } from "../../hooks/setBackground";
 
 export const query = graphql`
   query BookQuery($slug: String!) {
@@ -70,6 +71,7 @@ const ProductPage: React.FC<ProductPageProps> = ({ data, location }) => {
     publishedDate,
     galleryImages,
   } = product;
+
   const isMobile = useMediaQuery(`(max-width:${mobileBreakpoint})`);
   const photoReel = galleryImages.map((photo, i) => {
     return (
@@ -80,9 +82,13 @@ const ProductPage: React.FC<ProductPageProps> = ({ data, location }) => {
       />
     );
   });
+
+  useLayoutEffect(() => {
+    setBackground('var(--product-background-colour)')
+  }, [])
+
   return (
     <Layout
-      backgroundColour="var(--product-background-colour)"
       pathname={location.pathname}
     >
       <SEO title={`${title} by ${author}`} description={blurb1} />

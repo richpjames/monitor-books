@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, { useLayoutEffect, useRef, useState } from "react";
 import { navigate } from "gatsby";
 import styled from "styled-components/macro";
 
@@ -6,6 +6,7 @@ import { introTimerMilliseconds } from "../constants";
 import { PageWrapper } from "../Components/layout";
 import { TextBoxLogo } from "../Components/Global/TextBoxLogo";
 import SEO from "../Components/seo";
+import { setBackground } from "../hooks/setBackground";
 
 const navigateToBooks = () => navigate("/books/propositions");
 
@@ -21,22 +22,21 @@ export const IntroPageWrapper = styled(PageWrapper)`
 const Home = () => {
   const wrapperEl = useRef<any>(null)
   const [width, setWidth] = useState(0)
-  
-  useEffect(() => {
-    if (typeof window !== "undefined")
-      (window as any).introTimer = setTimeout(() => {
-        navigateToBooks();
-      }, introTimerMilliseconds);
-  }, []);
+
 
   useLayoutEffect(() => {
     if (wrapperEl?.current) {
       setWidth(() => wrapperEl?.current?.offsetWidth);
     }
+    if (typeof window !== "undefined")
+      (window as any).introTimer = setTimeout(() => {
+        navigateToBooks();
+      }, introTimerMilliseconds);
+    setBackground('var(--product-background-colour)');
   }, [])
+
   return (
     <IntroPageWrapper
-      backgroundColour="var(--faded-blue)"
       onClick={navigateToBooks}
       ref={wrapperEl}
     >

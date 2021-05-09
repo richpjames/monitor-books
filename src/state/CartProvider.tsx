@@ -225,7 +225,8 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
     onCheckoutClicked,
   };
   if (typeof window !== "undefined" && (window as any).Cypress) {
-    (window as any).addToBasket = () => { add('price_1HdckTJs9ciiqN7O218PIefo') }
+    (window as any).addToBasket = () => add('price_1HdckTJs9ciiqN7O218PIefo');
+    (window as any).dubstep = 'lol'
   }
   return (
     <CartContext.Provider value={{ ...ctx }}>{children}</CartContext.Provider>

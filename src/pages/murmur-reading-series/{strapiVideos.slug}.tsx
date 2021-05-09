@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useLayoutEffect } from "react";
 import styled from "styled-components/macro";
 import { graphql, PageProps } from "gatsby";
 import { videoMapper } from "../../api/mappers";
@@ -6,6 +6,7 @@ import { videoMapper } from "../../api/mappers";
 import { Video, VideoTitle, SplitText } from "../../Components/Common";
 import SEO from "../../Components/seo";
 import Layout from "../../Components/layout";
+import { setBackground } from "../../hooks/setBackground";
 
 export const query = graphql`
   query VideoQuery($slug: String!) {
@@ -44,10 +45,11 @@ const VideoPage: React.FC<VideoPageProps> = ({ data, location }) => {
     data.strapiMurmurReadingSeriesDescription.Description;
 
   const { title, url, artistNames, blurb1, blurb2 } = video;
-  React.useEffect(() => window.scrollTo(0, 0), []);
+  useLayoutEffect(() => {
+    setBackground('var(--video-background-colour)')
+  }, [])
   return (
     <VideoPageWrapper
-      backgroundColour="var(--video-background-colour)"
       pathname={location.pathname}
     >
       <SEO

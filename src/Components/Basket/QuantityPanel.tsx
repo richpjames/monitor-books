@@ -10,8 +10,10 @@ const Wrap = styled.div`
   grid-area: quantity;
   padding-top: var(--x-small-text-spacing);
   height: var(--xx-small-component-width);
+  width: initial;
   @media only screen and (max-width: ${mobileBreakpoint}) {
     margin-right: auto;
+    width: 100%;
   }
 `;
 

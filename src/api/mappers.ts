@@ -47,7 +47,6 @@ export const videoMapper = (video: ApiVideo): Video => {
   } = video;
   const artistNames = artists.map((artist) => artist.Name);
   const thumbnail = thumbnail_img?.localFile;
-  console.log("date", publishedDate);
   return {
     title,
     publishedDate: new Date(publishedDate),

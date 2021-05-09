@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useLayoutEffect } from "react";
 import { useStaticQuery, graphql, PageProps } from "gatsby";
 import { getImage, GatsbyImage } from "gatsby-plugin-image";
 
@@ -14,6 +14,7 @@ import {
 import Layout from "../../Components/layout";
 import { productMapper } from "../../api/mappers";
 import SEO from "../../Components/seo";
+import { setBackground } from "../../hooks/setBackground";
 
 const ProductsPage: FunctionComponent<PageProps> = ({ location }) => {
   const {
@@ -46,6 +47,10 @@ const ProductsPage: FunctionComponent<PageProps> = ({ location }) => {
     }
   `);
 
+  useLayoutEffect(() => {
+    setBackground('var(--product-background-colour)')
+  }, [])
+
   const sortedBooks = allStrapiBooks.nodes
     .map((book) => {
       const { slug, title, author, thumbnail, publishedDate } = productMapper(
@@ -57,7 +62,6 @@ const ProductsPage: FunctionComponent<PageProps> = ({ location }) => {
   return (
     <Layout
       pathname={location.pathname}
-      backgroundColour="var(--product-background-colour)"
     >
       <SEO title="Books" description="Publications from Monitor books" />
       <ListWrap>

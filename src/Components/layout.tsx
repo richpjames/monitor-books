@@ -11,18 +11,13 @@ import ProductsProvider from "../state/ProductsProvider";
 import CartProvider from "../state/CartProvider";
 import { Footer } from "./Global/Footer";
 
-interface LayoutProps {
-  children: any;
-  backgroundColour: string;
-  pathname: string;
-}
 
 const Main = styled.section`
   width: min(var(--page-max-width), 95%);
   flex: 1;
-`;
+  `;
 
-export const PageWrapper = styled.main<{ backgroundColour: string }>`
+export const PageWrapper = styled.main`
   padding-top: var(--small-component-spacing);
   padding-left: var(--small-component-spacing);
   padding-right: var(--small-component-spacing);
@@ -34,20 +29,23 @@ export const PageWrapper = styled.main<{ backgroundColour: string }>`
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
-  background-color: ${({ backgroundColour }) =>
-    `${backgroundColour || `var(--faded-blue)`}`};
+  background-color: var(--current-background-colour);
   @media only screen and (max-width: ${mobileBreakpoint}) {
     padding: var(--small-component-spacing), var(--small-text-spacing);
   }
-`;
+  `;
 
 export const IntroPageWrapper = styled(PageWrapper)`
   justify-content: center;
-`;
+  `;
+
+interface LayoutProps {
+  children: any;
+  pathname: string;
+}
 
 const Layout: React.FC<LayoutProps> = ({
   children,
-  backgroundColour,
   pathname,
 }) => {
   useEffect(() => {
@@ -55,8 +53,9 @@ const Layout: React.FC<LayoutProps> = ({
       clearTimeout((window as any).introTimer);
     }
   }, [pathname]);
+
   return (
-    <PageWrapper backgroundColour={backgroundColour}>
+    <PageWrapper>
       <ProductsProvider>
         <CartProvider>
           <Header />

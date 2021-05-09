@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useLayoutEffect } from "react";
 import { useStaticQuery, graphql, PageProps } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
@@ -14,6 +14,7 @@ import {
 import Layout from "../../Components/layout";
 import SEO from "../../Components/seo";
 import { videoMapper } from "../../api/mappers";
+import { setBackground } from "../../hooks/setBackground";
 
 const VideosPage: React.FC<PageProps> = ({ location }) => {
   const {
@@ -54,11 +55,13 @@ const VideosPage: React.FC<PageProps> = ({ location }) => {
   const sortedVideos = allStrapiVideos.nodes
     .map(videoMapper)
     .sort((a, b) => (b.publishedDate as any) - (a.publishedDate as any));
-  console.log(sortedVideos);
+
+  useLayoutEffect(() => {
+    setBackground('var(--video-background-colour)');
+  }, [])
   return (
     <Layout
       pathname={location.pathname}
-      backgroundColour="var(--video-background-colour)"
     >
       <SEO
         title="Murmur Reading Series"
