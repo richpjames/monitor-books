@@ -5,7 +5,7 @@ exports.createSchemaCustomization = ({ actions }) => {
   // This way those will always be defined even if removed from gatsby-config.js
 
   createTypes(`
-      type SiteSiteMetadata {
+      type SiteMetadata {
         siteUrl: String
         social: Social
       }
