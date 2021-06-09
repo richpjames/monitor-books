@@ -23,7 +23,7 @@ const FooterWrap = styled.footer`
     margin-top: var(--small-component-spacing);
     flex-direction: column;
     > * {
-      padding-bottom: var(--x-small-component-spacing);
+      padding-bottom: var(--medium-text-spacing);
     }
   }
 `;

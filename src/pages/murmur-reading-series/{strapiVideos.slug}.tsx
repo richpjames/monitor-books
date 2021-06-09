@@ -6,7 +6,7 @@ import { videoMapper } from "../../api/mappers";
 import { Video, VideoTitle, SplitText } from "../../Components/Common";
 import SEO from "../../Components/seo";
 import Layout from "../../Components/layout";
-import { setBackground } from "../../hooks/setBackground";
+import { useSetBackground } from "../../hooks/useSetBackground";
 
 export const query = graphql`
   query VideoQuery($slug: String!) {
@@ -40,14 +40,13 @@ interface VideoPageProps extends PageProps {
 }
 
 const VideoPage: React.FC<VideoPageProps> = ({ data, location }) => {
+  useSetBackground('video-background-colour');
+
   const video = videoMapper(data.strapiVideos);
   const readingSeriesDescription =
     data.strapiMurmurReadingSeriesDescription.Description;
 
   const { title, url, artistNames, blurb1, blurb2 } = video;
-  useLayoutEffect(() => {
-    setBackground('var(--video-background-colour)')
-  }, [])
   return (
     <VideoPageWrapper
       pathname={location.pathname}

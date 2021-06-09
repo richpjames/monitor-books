@@ -4,7 +4,13 @@ import { navigate } from "gatsby";
 
 import { CartContext } from "../../state/CartProvider";
 
-import { Button } from "./Button";
+
+const Button = styled.button`
+ background-color: var(--button-colour);
+ color: var(--current-background-colour);
+ padding: var(--small-text-spacing);
+ width: var(--large-component-spacing);
+`;
 
 const ButtonWrapper = styled.div`
   padding-top: 1rem;

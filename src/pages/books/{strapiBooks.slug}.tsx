@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from "react";
+import React from "react";
 import { graphql, PageProps } from "gatsby";
 import styled from "styled-components/macro";
 import { GatsbyImage } from "gatsby-plugin-image";
@@ -8,8 +8,7 @@ import Layout from "../../Components/layout";
 import { AddToBasketButton, Photos, SplitText } from "../../Components/Common";
 import SEO from "../../Components/seo";
 import { mobileBreakpoint } from "../../constants";
-import useMediaQuery from "../../hooks/useMediaQuery";
-import { setBackground } from "../../hooks/setBackground";
+import { useSetBackground } from "../../hooks/useSetBackground";
 
 export const query = graphql`
   query BookQuery($slug: String!) {
@@ -44,6 +43,7 @@ export const query = graphql`
   }
 `;
 
+
 const Container = styled.div`
   padding-top: var(--small-component-spacing);
   padding-bottom: var(--small-component-spacing);
@@ -61,6 +61,7 @@ interface ProductPageProps extends PageProps {
 }
 
 const ProductPage: React.FC<ProductPageProps> = ({ data, location }) => {
+  useSetBackground('product-background-colour')
   const product: Product = productMapper(data.strapiBooks);
   const {
     title,
@@ -72,7 +73,6 @@ const ProductPage: React.FC<ProductPageProps> = ({ data, location }) => {
     galleryImages,
   } = product;
 
-  const isMobile = useMediaQuery(`(max-width:${mobileBreakpoint})`);
   const photoReel = galleryImages.map((photo, i) => {
     return (
       <GatsbyImage
@@ -83,9 +83,6 @@ const ProductPage: React.FC<ProductPageProps> = ({ data, location }) => {
     );
   });
 
-  useLayoutEffect(() => {
-    setBackground('var(--product-background-colour)')
-  }, [])
 
   return (
     <Layout
@@ -93,11 +90,7 @@ const ProductPage: React.FC<ProductPageProps> = ({ data, location }) => {
     >
       <SEO title={`${title} by ${author}`} description={blurb1} />
       <Container>
-        {!isMobile ? (
-          <Photos photos={galleryImages} title={title} />
-        ) : (
-          photoReel[0]
-        )}
+        <Photos photos={galleryImages} title={title} />
         <h1>{title.split(" ")
           .map((word) => `${word[0]}${word.slice(1).toLowerCase()}`)
           .join(" ")}</h1>
@@ -108,7 +101,6 @@ const ProductPage: React.FC<ProductPageProps> = ({ data, location }) => {
           addToBasketButton={
             <AddToBasketButton id={priceId} publishedDate={publishedDate} />
           }
-          photo={photoReel[1]}
         />
       </Container>
     </Layout>

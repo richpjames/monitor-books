@@ -5,7 +5,7 @@ import ReactMarkdown from "react-markdown";
 
 import Layout from "../Components/layout";
 import { mobileBreakpoint } from "../constants";
-import { setBackground } from "../hooks/setBackground";
+import { useSetBackground } from "../hooks/useSetBackground";
 
 const TextWrap = styled.section`
   width: min(100%, var(--xx-large-component-width));
@@ -25,9 +25,8 @@ const About: React.FC<PageProps> = ({ location }) => {
   `);
   const { Description } = strapiAboutPage;
 
-  useLayoutEffect(() => {
-    setBackground('var(--about-background-colour)')
-  }, [])
+  useSetBackground('about-background-colour')
+
   return (
     <Layout pathname={location.pathname}>
       <TextWrap>

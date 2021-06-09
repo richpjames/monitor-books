@@ -6,7 +6,7 @@ import { introTimerMilliseconds } from "../constants";
 import { PageWrapper } from "../Components/layout";
 import { TextBoxLogo } from "../Components/Global/TextBoxLogo";
 import SEO from "../Components/seo";
-import { setBackground } from "../hooks/setBackground";
+import { useSetBackground } from "../hooks/useSetBackground";
 
 const navigateToBooks = () => navigate("/books/propositions");
 
@@ -32,8 +32,9 @@ const Home = () => {
       (window as any).introTimer = setTimeout(() => {
         navigateToBooks();
       }, introTimerMilliseconds);
-    setBackground('var(--product-background-colour)');
   }, [])
+
+  useSetBackground('product-background-colour');
 
   return (
     <IntroPageWrapper

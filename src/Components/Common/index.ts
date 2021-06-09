@@ -1,5 +1,4 @@
 import { AddToBasketButton } from "./AddToBasketButton";
-import { Button } from "./Button";
 import { Photos } from "./Photos";
 import {
   BasketListItemContainerWrap,
@@ -21,7 +20,6 @@ import { Video } from "./Video";
 
 export {
   AddToBasketButton,
-  Button,
   ErrorText,
   ItemType,
   BasketListItemContainerWrap,

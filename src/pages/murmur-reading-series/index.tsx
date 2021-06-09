@@ -14,7 +14,7 @@ import {
 import Layout from "../../Components/layout";
 import SEO from "../../Components/seo";
 import { videoMapper } from "../../api/mappers";
-import { setBackground } from "../../hooks/setBackground";
+import { useSetBackground } from "../../hooks/useSetBackground";
 
 const VideosPage: React.FC<PageProps> = ({ location }) => {
   const {
@@ -56,9 +56,7 @@ const VideosPage: React.FC<PageProps> = ({ location }) => {
     .map(videoMapper)
     .sort((a, b) => (b.publishedDate as any) - (a.publishedDate as any));
 
-  useLayoutEffect(() => {
-    setBackground('var(--video-background-colour)');
-  }, [])
+  useSetBackground('video-background-colour');
   return (
     <Layout
       pathname={location.pathname}

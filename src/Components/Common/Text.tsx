@@ -82,7 +82,6 @@ export const SplitText = (props: Props) => {
           dangerouslySetInnerHTML={{ __html: sanitizedText[0] }}
         />
       </LeftSection>
-      {photo && <PhotoWrapper>{photo}</PhotoWrapper>}
       <RightSection photoExists={photoExists}>
         <div
           className="right-section"

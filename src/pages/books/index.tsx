@@ -14,7 +14,7 @@ import {
 import Layout from "../../Components/layout";
 import { productMapper } from "../../api/mappers";
 import SEO from "../../Components/seo";
-import { setBackground } from "../../hooks/setBackground";
+import { useSetBackground } from "../../hooks/useSetBackground";
 
 const ProductsPage: FunctionComponent<PageProps> = ({ location }) => {
   const {
@@ -47,9 +47,8 @@ const ProductsPage: FunctionComponent<PageProps> = ({ location }) => {
     }
   `);
 
-  useLayoutEffect(() => {
-    setBackground('var(--product-background-colour)')
-  }, [])
+
+  useSetBackground('product-background-colour')
 
   const sortedBooks = allStrapiBooks.nodes
     .map((book) => {

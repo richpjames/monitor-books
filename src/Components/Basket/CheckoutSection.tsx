@@ -2,9 +2,8 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 
 import { Shipping } from "./Shipping";
-import { Button } from "../Common";
 import { CartContext } from "../../state/CartProvider";
-import { shippingCosts, mobileBreakpoint  } from "../../constants";
+import { shippingCosts, mobileBreakpoint } from "../../constants";
 
 const CheckoutSectionWrap = styled.section`
   padding-top: var(--medium-component-spacing);
@@ -40,8 +39,16 @@ const TotalWrapper = styled.h4`
 
 const ButtonWrapper = styled.div`
   grid-area:checkout-button;
+  display: flex;
   width: 100%;
 `
+const Button = styled.button`
+ flex: 1;
+ background-color: var(--button-colour);
+ color: var(--current-background-colour);
+ width: var(--large-component-spacing);
+`;
+
 export const CheckoutSection: React.FC = () => {
   const cartContext = useContext(CartContext);
 
