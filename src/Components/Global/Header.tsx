@@ -86,6 +86,7 @@ export const Header = () => {
   const [pathname, setPathname] = useState('');
   const isMobile = useMediaQuery(`(max-width:${mobileBreakpoint})`);
 
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       const newPath = window.location.pathname;
@@ -94,7 +95,7 @@ export const Header = () => {
       }
       setPathname(() => window.location.pathname)
     }
-  }, [window.location.pathname])
+  }, [pathname])
 
   return (
     <HeaderStyles showMenu={showMenu}>
