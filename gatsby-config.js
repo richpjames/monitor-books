@@ -48,6 +48,7 @@ module.exports = {
           "about-page",
           "intro-page",
           "murmur-reading-series-description",
+          "submissions",
         ],
       },
     },

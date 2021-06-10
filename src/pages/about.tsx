@@ -16,21 +16,26 @@ const TextWrap = styled.section`
 `;
 
 const About: React.FC<PageProps> = ({ location }) => {
-  const { strapiAboutPage } = useStaticQuery(graphql`
+  const { strapiAboutPage, strapiSubmissions } = useStaticQuery(graphql`
     query AboutPageQuery {
       strapiAboutPage {
         Description
       }
+      strapiSubmissions {
+        title
+        description
+      }
     }
   `);
   const { Description } = strapiAboutPage;
-
   useSetBackground('about-background-colour')
 
   return (
     <Layout pathname={location.pathname}>
       <TextWrap>
         <ReactMarkdown children={Description} />
+        <p><u>{strapiSubmissions.title}</u></p>
+        <ReactMarkdown children={strapiSubmissions.description} />
       </TextWrap>
     </Layout>
   );
