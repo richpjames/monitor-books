@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 
 import { Shipping } from "./Shipping";
 import { CartContext } from "../../state/CartProvider";
@@ -41,7 +41,9 @@ const ButtonWrapper = styled.div`
   grid-area:checkout-button;
   display: flex;
   width: 100%;
-`
+  height: var(--small-component-spacing);
+`;
+
 const Button = styled.button`
  flex: 1;
  background-color: var(--button-colour);

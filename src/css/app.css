@@ -46,7 +46,7 @@ h3 {
 }
 
 h4 {
-  font-size: var(--font-title-medium);
+  font-size: var(--font-title-small);
   padding: var(--x-small-text-spacing) 0 var(--x-small-text-spacing) 0;
 }
 
@@ -55,6 +55,7 @@ h5 {
   padding: var(--x-small-text-spacing) 0
     calc(var(--x-small-text-spacing) * var(--small)) 0;
 }
+
 a {
   color: var(--main-highlight);
 }

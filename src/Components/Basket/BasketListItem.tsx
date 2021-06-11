@@ -24,6 +24,7 @@ const BasketMetaInfoContainer = styled.div`
     "title subtitle quantity"
     "price . .";
   grid-template-rows: var(--x-large-text-spacing) var(--x-large-text-spacing);
+  grid-template-columns: fit-content(50%) fit-content(40%) auto;
   row-gap: var(--small-text-spacing);
   width: 100%;
   > p {
@@ -50,9 +51,9 @@ const BasketMetaInfoContainer = styled.div`
       "subtitle"
       "quantity"
       "price ";
+    grid-template-columns: 100%;
+  
   }
-  grid-template-rows: var(--x-large-text-spacing) var(--x-large-text-spacing);
-
   > p {
     width: 100%;
   }
@@ -113,7 +114,7 @@ const BasketListItem = ({
             .join(" ")}
           ,
         </h4>
-        <h4>{title}</h4>
+        <h4> {title}</h4>
         <QuantityPanel
           addToCart={() => handleAdd(id)}
           decrementInCart={() => handleSubtract(id)}

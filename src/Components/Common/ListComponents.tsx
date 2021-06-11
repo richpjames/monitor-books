@@ -1,7 +1,7 @@
 import styled from "styled-components/macro";
 import { Link } from "gatsby";
 
-import {mobileBreakpoint} from "../../constants"
+import { mobileBreakpoint } from "../../constants"
 
 interface BasketListItemContainerProps {
   index: number;
@@ -23,7 +23,7 @@ interface ListItemContainerProps {
   id: string;
 }
 
-export const ListItemContainerWrap = styled(Link)<ListItemContainerProps>`
+export const ListItemContainerWrap = styled(Link) <ListItemContainerProps>`
   display: flex;
   height: ${(props) => props.height};
   width: ${(props) => props.width};
@@ -76,7 +76,7 @@ export const ListItemTitle = styled.h4`
   width: 100%;
   border-top: var(--line-thickness) solid var(--main-border-colour);
   font-family: "Century Schoolbook";
-  font-size: var(--font-title-medium);
+  font-size: var(--font-title-small);
   font-weight: normal;
   font-style: italic;
 `;
@@ -131,5 +131,5 @@ export const ItemType = styled.h5`
   border-top: 2px solid var(--main-border-colour);
   width: 100%;
   padding: var(--x-small-text-spacing) 0 var(--x-small-text-spacing) 0;
-  font-size: var(--font-title-medium);
+  font-size: var(--font-title-small);
 `;
