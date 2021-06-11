@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from "react";
+import React from "react";
 import { graphql, useStaticQuery, PageProps } from "gatsby";
 import styled from "styled-components/macro";
 import ReactMarkdown from "react-markdown";
@@ -8,7 +8,6 @@ import { mobileBreakpoint } from "../constants";
 import { useSetBackground } from "../hooks/useSetBackground";
 
 const TextWrap = styled.section`
-  width: min(100%, var(--xx-large-component-width));
   padding-top: var(--x-small-component-spacing);
   @media only screen and (max-width: ${mobileBreakpoint}) {
     padding-top: var(--small-component-spacing);
