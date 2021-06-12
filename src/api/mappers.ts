@@ -17,6 +17,8 @@ export const productMapper = (product: ApiProduct): Product => {
   } = product;
   const thumbnail = thumbnail_image?.localFile;
   const galleryImages = gallery_images;
+  const publishedDateObj = new Date(publishedDate);
+  const yearPublished = publishedDateObj.getFullYear();
   return {
     title,
     author,
@@ -28,7 +30,8 @@ export const productMapper = (product: ApiProduct): Product => {
     blurb1,
     blurb2,
     id: `${id}`,
-    publishedDate: new Date(publishedDate),
+    publishedDate: publishedDateObj,
+    yearPublished,
     priceId: process.env.NODE_ENV === "development" ? devPriceId : prodPriceId,
     photos: images?.fullSize,
   };

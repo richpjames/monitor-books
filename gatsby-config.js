@@ -4,7 +4,7 @@ require(`dotenv`).config({
 
 module.exports = {
   siteMetadata: {
-    title: `Monitor books`,
+    title: `Monitor Books`,
     siteUrl: "https://monitorbooks.co.uk",
     social: {
       instagram: `monitorbooks`,

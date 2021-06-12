@@ -6,6 +6,7 @@ interface Product {
   blurb2: string;
   price: number;
   publishedDate: Date;
+  yearPublished: number;
   galleryImages: StrapiGatsbyImage[];
   thumbnail: any;
   id: string;

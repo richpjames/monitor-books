@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components/macro";
 
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
@@ -45,6 +45,7 @@ interface PhotosProps {
 export const Photos = (props: PhotosProps) => {
   const { photos, title } = props;
   const [photoIndex, setPhotoIndex] = useState(0);
+  const timer = useRef<NodeJS.Timeout | null>(null);
 
   const photoReel = photos.map((photo, i) => {
     const image = getImage(photo.localFile);
@@ -52,27 +53,45 @@ export const Photos = (props: PhotosProps) => {
       return <Photo image={image} alt={`a photo of ${title} book`} key={i} />;
     } else return null;
   });
+  useEffect(() => {
+    timer.current = setInterval(() => {
+      setPhotoIndex((prevState) =>
+        prevState < photos.length - 1 ? prevState + 1 : 0
+      )
+    }, 5000)
+    return () => {
+      if (timer.current) {
+        clearInterval(timer.current)
+      }
+    }
+  }, [])
 
   return (
     <>
       <PhotoWrap className="ImagesWrapper">
         <ArrowWrap
-          onClick={() =>
-            setPhotoIndex((prevState) =>
-              prevState > 0 ? prevState - 1 : photos.length - 1
-            )
-          }
+          onClick={() => {
+            if (timer.current) {
+              clearInterval(timer.current)
+            }
+            setPhotoIndex((prevState) => {
+              return prevState > 0 ? prevState - 1 : photos.length - 1
+            })
+          }}
         >
           <LeftArrow />
         </ArrowWrap>
         {photoReel[photoIndex]}
         <ArrowWrap>
           <RightArrow
-            onClick={() =>
+            onClick={() => {
+              if (timer.current) {
+                clearInterval(timer.current);
+              }
               setPhotoIndex((prevState) =>
                 prevState < photos.length - 1 ? prevState + 1 : 0
               )
-            }
+            }}
           />
         </ArrowWrap>
       </PhotoWrap>

@@ -46,16 +46,14 @@ const ProductsPage: FunctionComponent<PageProps> = ({ location }) => {
       }
     }
   `);
-
-
   useSetBackground('product-background-colour')
 
   const sortedBooks = allStrapiBooks.nodes
     .map((book) => {
-      const { slug, title, author, thumbnail, publishedDate } = productMapper(
+      const { slug, title, author, thumbnail, publishedDate, yearPublished } = productMapper(
         book
       );
-      return { slug, title, author, thumbnail, publishedDate };
+      return { slug, title, author, thumbnail, publishedDate, yearPublished };
     })
     .sort((a, b) => (b.publishedDate as any) - (a.publishedDate as any));
   return (
@@ -65,7 +63,7 @@ const ProductsPage: FunctionComponent<PageProps> = ({ location }) => {
       <SEO title="Books" description="Publications from Monitor books" />
       <ListWrap>
         {sortedBooks.map((book, index) => {
-          const { title, slug, thumbnail, author } = book;
+          const { title, slug, thumbnail, author, yearPublished } = book;
           const image = getImage(thumbnail);
 
           const lowercaseTitle = title.toLowerCase();
@@ -89,7 +87,7 @@ const ProductsPage: FunctionComponent<PageProps> = ({ location }) => {
                   <ListItemSubtitle id={`${slug}-subtitle`}>
                     {author}
                   </ListItemSubtitle>
-                  <ItemType>Book, 2020</ItemType>
+                  <ItemType>Book, {yearPublished}</ItemType>
                 </MetaInfoContainer>
               </ListItemWrap>
             </ListItemLink>

@@ -25,6 +25,9 @@ const Quantity = styled.span`
 const Button = styled.button`
   background-color: var(--basket-background-colour);
   border: none;
+  @media only screen and (max-width: ${mobileBreakpoint}) {
+    flex:1;
+  }
 `;
 
 const InnerButtonContent = styled.span``;

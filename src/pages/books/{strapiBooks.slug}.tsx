@@ -73,15 +73,7 @@ const ProductPage: React.FC<ProductPageProps> = ({ data, location }) => {
     galleryImages,
   } = product;
 
-  const photoReel = galleryImages.map((photo, i) => {
-    return (
-      <GatsbyImage
-        image={photo?.localFile?.childImageSharp?.gatsbyImageData}
-        alt={`a photo of ${title} book`}
-        key={i}
-      />
-    );
-  });
+
 
 
   return (
