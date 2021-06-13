@@ -49,11 +49,14 @@ module.exports = {
           "intro-page",
           "murmur-reading-series-description",
           "submissions",
+          "basket-page",
         ],
       },
     },
   ],
   flags: {
+    PRESERVE_WEBPACK_CACHE: true,
     DEV_SSR: false,
+    PARALLEL_SOURCING: false,
   },
 };

@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { useStaticQuery, graphql } from "gatsby";
 import styled from "styled-components/macro";
 
 import { CartContext } from "../../state/CartProvider";
@@ -22,10 +23,21 @@ export const BasketItemsList = () => {
   const productsData = useContext(ProductsContext);
   const cartContents = cartData.contents || [];
   const skus = productsData.skus || {};
+  const { strapiBasketPage } = useStaticQuery(
+    graphql`
+      query {
+        strapiBasketPage {
+          empty_basket_message
+      }
+    }
+    `
+  );
   const basketItems = cartContents.map((cartItem, index) => {
     const { author, title, price, thumbnail, id, inventory, slug } = skus[
       cartItem[0]
     ];
+
+
 
     return (
       <BasketListItem
@@ -48,11 +60,7 @@ export const BasketItemsList = () => {
         <BasketItemsSection>{basketItems}</BasketItemsSection>
       ) : (
         <EmptyCartMessage id="empty-basket-message">
-          Your basket is empty
-          <br />
-          <span role="img" aria-label="unhappy face">
-            😢
-          </span>
+          {strapiBasketPage.empty_basket_message}
         </EmptyCartMessage>
       )}
     </>
