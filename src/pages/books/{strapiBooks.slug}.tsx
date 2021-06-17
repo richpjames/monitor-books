@@ -52,11 +52,11 @@ const Container = styled.div`
   padding-bottom: var(--small-component-spacing);
   border-top: var(--line-thickness) solid var(--main-text-colour);
   border-bottom: var(--line-thickness) solid var(--main-text-colour);
-
   @media only screen and (max-width: ${mobileBreakpoint}) {
     border-bottom: none;
     border-top: none;
     padding-bottom: 0;
+    padding-top: var(--xx-small-component-spacing);
   }
 `;
 const LeftSection = styled(ReactMarkdown)`
@@ -87,13 +87,16 @@ const RightSectionWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 45%;
+  @media only screen and (max-width: ${mobileBreakpoint}) {
+  width: 100%;
+  padding-left: 0;
+  }
 `
 
 const TextWrapper = styled.section`
   display: flex;
   flex-direction: row;
   padding-top: 2.5%;
-  hanging-punctuation: first;
   div blockquote {
     text-indent: -0.3rem;
   }

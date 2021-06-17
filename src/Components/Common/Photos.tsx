@@ -2,11 +2,15 @@ import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components/macro";
 
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { mobileBreakpoint } from "../../constants";
 
 const PhotoWrap = styled.section`
   padding: 0 var(--small-component-spacing);
   display: flex;
   align-items: center;
+  @media only screen and (max-width: ${mobileBreakpoint}) {
+    padding: 0;
+  }
 `;
 
 const Arrow = styled.div`
@@ -15,7 +19,11 @@ const Arrow = styled.div`
 `;
 
 const ArrowWrap = styled.div`
+  display: block;
   width: var(--x-small-component-spacing);
+  @media only screen and (max-width: ${mobileBreakpoint}) {
+      display: none;
+  }
 `;
 
 const LeftArrow = styled(Arrow)`
