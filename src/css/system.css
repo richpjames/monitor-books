@@ -8,8 +8,9 @@
   --grey: hsl(209, 40.3%, 69.8%);
   --pink: hsl(333, 35%, 76.5%);
   --green: hsl(177, 35.8%, 68.8%);
+  --lavender: #d3c2f0;
 
-  --product-background-colour: var(--purple);
+  --product-background-colour: var(--lavender);
   --video-background-colour: var(--faded-blue);
   --basket-background-colour: var(--green);
   --about-background-colour: var(--pink);
