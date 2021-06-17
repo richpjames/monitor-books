@@ -1,14 +1,17 @@
 import React from "react";
 import { graphql, PageProps } from "gatsby";
 import styled from "styled-components/macro";
-import { GatsbyImage } from "gatsby-plugin-image";
+import ReactMarkdown from "react-markdown";
 
 import { productMapper } from "../../api/mappers";
+import { sanitizeText } from "../../utils";
+
 import Layout from "../../Components/layout";
-import { AddToBasketButton, Photos, SplitText } from "../../Components/Common";
+import { AddToBasketButton, Photos } from "../../Components/Common";
 import SEO from "../../Components/seo";
 import { mobileBreakpoint } from "../../constants";
 import { useSetBackground } from "../../hooks/useSetBackground";
+
 
 export const query = graphql`
   query BookQuery($slug: String!) {
@@ -49,12 +52,60 @@ const Container = styled.div`
   padding-bottom: var(--small-component-spacing);
   border-top: var(--line-thickness) solid var(--main-text-colour);
   border-bottom: var(--line-thickness) solid var(--main-text-colour);
+
   @media only screen and (max-width: ${mobileBreakpoint}) {
     border-bottom: none;
     border-top: none;
     padding-bottom: 0;
   }
 `;
+const LeftSection = styled(ReactMarkdown)`
+  width: 45%;
+  padding-bottom: 0;
+  @media only screen and (max-width: ${mobileBreakpoint}) {
+    padding-bottom: var(--medium-text-spacing);
+    border-bottom: var(--line-thickness) solid var(--main-border-colour);
+    width: 100%;
+  }
+`;
+
+const RightSection = styled(LeftSection)`
+  width: 100%;
+  padding-bottom: 0;
+  p {
+    padding-bottom: 0;
+  }
+  @media only screen and (max-width: ${mobileBreakpoint}) {
+    padding-left: 0;
+    padding-bottom: var(--x-small-component-spacing);
+    padding-top: var(--x-small-component-spacing);
+  }
+`;
+
+const RightSectionWrapper = styled.div`
+  padding-left: 9%;
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+`
+
+const TextWrapper = styled.section`
+  display: flex;
+  flex-direction: row;
+  padding-top: 2.5%;
+  hanging-punctuation: first;
+  div blockquote {
+    text-indent: -0.3rem;
+  }
+  b {
+    font-style: italic;
+  }
+  @media only screen and (max-width: ${mobileBreakpoint}) {
+    flex-direction: column;
+    margin-bottom: var(--small-component-spacing);
+  }
+`;
+
 
 interface ProductPageProps extends PageProps {
   data: { strapiBooks: ApiProduct };
@@ -73,7 +124,9 @@ const ProductPage: React.FC<ProductPageProps> = ({ data, location }) => {
     galleryImages,
   } = product;
 
-
+  const sanitizedText = [blurb1, blurb2].map(
+    sanitizeText
+  );
 
 
   return (
@@ -87,15 +140,21 @@ const ProductPage: React.FC<ProductPageProps> = ({ data, location }) => {
           .map((word) => `${word[0]}${word.slice(1).toLowerCase()}`)
           .join(" ")}</h1>
         <h2>{author}</h2>
-        <SplitText
-          leftText={blurb1}
-          rightText={blurb2}
-          addToBasketButton={
-            <AddToBasketButton id={priceId} publishedDate={publishedDate} />
-          }
-        />
+        <TextWrapper className="TextWrapper">
+          <LeftSection
+            className="left-section"
+            children={sanitizedText[0]}
+          />
+          <RightSectionWrapper>
+            <RightSection
+              className="right-section">
+              {sanitizedText[1]}
+            </RightSection>
+            <AddToBasketButton id={priceId} preorder={new Date(publishedDate).getTime() > new Date().getTime()} />
+          </RightSectionWrapper>
+        </TextWrapper >
       </Container>
-    </Layout>
+    </Layout >
   );
 };
 export default ProductPage;

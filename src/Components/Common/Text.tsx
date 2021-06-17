@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components/macro";
-import { sanitize } from "dompurify";
+import ReactMarkdown from "react-markdown";
 
 import { mobileBreakpoint } from "../../constants";
+import { sanitizeText } from "../../utils";
 
 const LeftSection = styled.section`
   width: 45%;
@@ -31,6 +32,10 @@ const TextWrapper = styled.section`
   display: flex;
   flex-direction: row;
   padding-top: 2.5%;
+  hanging-punctuation: first;
+  section div p blockquote {
+    background: pink;
+  }
   b {
     font-style: italic;
   }
@@ -49,15 +54,7 @@ padding: 0;
 }
 `
 
-const sanitizeText = (text: string) => {
-  let safeText;
-  if (typeof window === "undefined") {
-    safeText = text;
-  } else {
-    safeText = sanitize(text);
-  }
-  return safeText;
-};
+
 
 interface Props {
   leftText: string;
@@ -77,15 +74,15 @@ export const SplitText = (props: Props) => {
   return (
     <TextWrapper className="TextWrapper">
       <LeftSection>
-        <div
+        <ReactMarkdown
           className="left-section"
-          dangerouslySetInnerHTML={{ __html: sanitizedText[0] }}
+          children={sanitizedText[0]}
         />
       </LeftSection>
       <RightSection photoExists={photoExists}>
-        <div
+        <ReactMarkdown
           className="right-section"
-          dangerouslySetInnerHTML={{ __html: sanitizedText[1] }}
+          children={sanitizedText[1]}
         />
         {addToBasketButton}
       </RightSection>

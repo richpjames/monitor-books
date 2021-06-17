@@ -92,6 +92,11 @@ ul {
   margin: 0;
 }
 
+blockquote {
+  margin: 0;
+  font-size: var(--font-body-large);
+}
+
 button,
 input,
 optgroup,

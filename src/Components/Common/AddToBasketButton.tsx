@@ -18,12 +18,12 @@ const ButtonWrapper = styled.div`
 
 interface AddToBasketButtonProps {
   id: string;
-  publishedDate: Date;
+  preorder: boolean;
 }
 
 export const AddToBasketButton: React.FC<AddToBasketButtonProps> = ({
   id,
-  publishedDate,
+  preorder,
 }) => {
   const context = useContext(CartContext);
   if (context.get && context.add && context.available) {
@@ -33,16 +33,15 @@ export const AddToBasketButton: React.FC<AddToBasketButtonProps> = ({
     const outOfStock = !available(id, 1);
     let buttonMessage = "Add to basket";
 
-    if (new Date(publishedDate).getTime() > new Date().getTime()) {
-      buttonMessage = "Pre-order";
-    }
 
     let onClick = () => {
       if (!inCart) return add(id);
       else return navigate("/basket");
     };
 
-    if (inCart) {
+    if (preorder) {
+      buttonMessage = "Pre-order";
+    } else if (inCart) {
       buttonMessage = "In basket";
       onClick = () => navigate("/basket");
     } else if (outOfStock) {
