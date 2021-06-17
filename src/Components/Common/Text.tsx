@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components/macro";
 import { sanitize } from "dompurify";
+import ReactMarkdown from "react-markdown"
 
 const LeftSection = styled.div`
   width: 45%;
@@ -26,8 +27,8 @@ const ErrorTextWrapper = styled.span`
 
 const TextWrapper = styled.section`
   display: flex;
-  flex-direction: column;
   padding-top: 2.5%;
+  color: var(--text-color);
   @media only screen and (min-width: 600px) {
     flex-direction: row;
   }
@@ -45,13 +46,12 @@ export const SplitText = (props: Props) => {
     <TextWrapper className="TextWrapper">
       <LeftSection
         className="left-section"
-        dangerouslySetInnerHTML={{ __html: sanitize(leftText) }}
-      />
+      >
+        <ReactMarkdown children={leftText} />
+      </LeftSection>
       <RightSection>
-        <div
-          className="right-section"
-          dangerouslySetInnerHTML={{ __html: sanitize(rightText) }}
-        />
+        <ReactMarkdown
+          className="right-section" children={rightText} />
         {addToBasketButton}
       </RightSection>
     </TextWrapper>
