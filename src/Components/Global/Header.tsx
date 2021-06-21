@@ -52,7 +52,6 @@ const HeaderStyles = styled.header<{ showMenu: boolean }>`
       justify-content: center;
       width: 75%;
     }
-    
   > nav {
     flex: 1;
     padding-top: var(--small-component-spacing);
@@ -63,6 +62,7 @@ const HeaderStyles = styled.header<{ showMenu: boolean }>`
     showMenu
       ? "var(--line-thickness) solid var(--main-border-colour)"
       : "none"};
+      margin-bottom: ${({ showMenu }) => showMenu ? 'var(--x-small-component-spacing)' : '0'};
     }
     li:last-child {
       margin-left: 0;
@@ -129,7 +129,7 @@ export const Header = () => {
               id="header-basket-items"
             >
               Basket ({count})
-          </Link>
+            </Link>
           </li>
         </ul>
       </nav>
