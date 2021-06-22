@@ -75,9 +75,8 @@ const HeaderStyles = styled.header<{ showMenu: boolean }>`
 `
 
 const Link = styled(GatsbyLink) <{ selected?: boolean }>`
-  text-decoration: ${(props) => (props.selected ? `` : `none`)};
+  text-decoration: ${({ selected }) => (selected ? `` : `none`)};
   text-decoration-thickness: var(--line-thickness);
-  text-underline-offset: var(--x-small-text-spacing);
 `;
 
 export const Header = () => {
