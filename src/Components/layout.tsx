@@ -18,10 +18,10 @@ const Main = styled.section`
   `;
 
 export const PageWrapper = styled.main`
-  padding-top: var(--small-component-spacing);
-  padding-left: var(--small-component-spacing);
-  padding-right: var(--small-component-spacing);
-  padding-bottom: var(--x-small-component-spacing);
+  padding-top: var(--spacing-6);
+  padding-left: var(--spacing-6);
+  padding-right: var(--spacing-6);
+  padding-bottom: var(--spacing-10);
   width: 100%;
   height: 100%;
   min-height: 100vh;
@@ -31,7 +31,7 @@ export const PageWrapper = styled.main`
   box-sizing: border-box;
   background-color: var(--current-background-colour);
   @media only screen and (max-width: ${mobileBreakpoint}) {
-    padding: var(--small-component-spacing), var(--small-text-spacing);
+    padding: var(--spacing-6), var(--spacing-2);
   }
   `;
 

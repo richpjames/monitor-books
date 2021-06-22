@@ -5,7 +5,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { mobileBreakpoint } from "../../constants";
 
 const PhotoWrap = styled.section`
-  padding: 0 var(--small-component-spacing);
+  padding: 0 var(--spacing-6);
   display: flex;
   align-items: center;
   @media only screen and (max-width: ${mobileBreakpoint}) {
@@ -14,13 +14,13 @@ const PhotoWrap = styled.section`
 `;
 
 const Arrow = styled.div`
-  height: var(--x-small-component-spacing);
-  width: var(--x-small-component-spacing);
+  height: var(--spacing-10);
+  width: var(--spacing-10);
 `;
 
 const ArrowWrap = styled.div`
   display: block;
-  width: var(--x-small-component-spacing);
+  width: var(--spacing-10);
   @media only screen and (max-width: ${mobileBreakpoint}) {
       display: none;
   }
@@ -30,7 +30,7 @@ const LeftArrow = styled(Arrow)`
   border-bottom: var(--line-thickness) solid var(--main-border-colour);
   border-left: var(--line-thickness) solid var(--main-border-colour);
   align-items: center;
-  margin-right: var(--small-component-spacing);
+  margin-right: var(--spacing-6);
   transform: translateX(-50%) rotate(45deg);
 `;
 
@@ -39,7 +39,7 @@ const RightArrow = styled(Arrow)`
   border-right: var(--line-thickness) solid var(--main-border-colour);
   align-items: center;
   transform: translateX(-100%) rotate(45deg);
-  margin-left: var(--small-component-spacing);
+  margin-left: var(--spacing-6);
 `;
 
 const Photo = styled(GatsbyImage)`

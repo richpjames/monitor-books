@@ -4,7 +4,7 @@ import styled from "styled-components/macro";
 import { mobileBreakpoint } from "../../constants";
 
 const BurgerSlice = styled.div` 
-    width: var(--large-text-spacing);
+    width: var(--spacing-4);
     height: var(--line-thickness);
     background-color:var(--main-text-colour);
     margin: 3px 0;

@@ -6,19 +6,19 @@ import { CartContext } from "../../state/CartProvider";
 import { shippingCosts, mobileBreakpoint } from "../../constants";
 
 const CheckoutSectionWrap = styled.section`
-  padding-top: var(--medium-component-spacing);
+  padding-top: var(--spacing-7);
   display: grid;
   grid-template-areas:
     "shipping-label shipping-selector"
     ".                 shipping-cost"
     ".                 total"
     ".                 checkout-button";
-  grid-template-columns: var(--medium-component-width) var(
-      --medium-component-width
+  grid-template-columns: var(--spacing-9) var(
+      --spacing-9
     );
-  grid-template-rows: var(--x-small-component-spacing) 1fr 1fr 1fr;
+  grid-template-rows: var(--spacing-10) 1fr 1fr 1fr;
   margin-left: auto;
-  width: var(--x-large-component-width);
+  width: var(--spacing-11);
   text-align: end;
   @media only screen and (max-width: ${mobileBreakpoint}) {
     grid-template-areas: "shipping-label"
@@ -41,14 +41,14 @@ const ButtonWrapper = styled.div`
   grid-area:checkout-button;
   display: flex;
   width: 100%;
-  height: var(--small-component-spacing);
+  height: var(--spacing-6);
 `;
 
 const Button = styled.button`
  flex: 1;
  background-color: var(--button-colour);
  color: var(--current-background-colour);
- width: var(--large-component-spacing);
+ width: var(--spacing-8);
 `;
 
 export const CheckoutSection: React.FC = () => {

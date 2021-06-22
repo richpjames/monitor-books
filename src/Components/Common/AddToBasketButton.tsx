@@ -8,8 +8,8 @@ import { CartContext } from "../../state/CartProvider";
 const Button = styled.button`
  background-color: var(--button-colour);
  color: var(--current-background-colour);
- padding: var(--small-text-spacing);
- width: var(--large-component-spacing);
+ padding: var(--spacing-2);
+ width: var(--spacing-8);
 `;
 
 const ButtonWrapper = styled.div`

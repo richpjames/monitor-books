@@ -32,34 +32,16 @@
   --font-weight-heavy: 600;
 
   /* typography - font sizes */
-
-  /* title */
-  --font-title-xx-small: calc(var(--font-size-small) * var(--spacing-unit));
-  --font-title-x-small: calc(var(--font-size-s-medium) * var(--spacing-unit));
-  --font-title-small: calc(var(--font-size-medium) * var(--spacing-unit));
-  --font-title-medium: calc(var(--font-size-l-medium) * var(--spacing-unit));
+  --font-body: calc(var(--font-size-x-small) * var(--spacing-unit));
+  --font-title-small: calc(var(--font-size-small) * var(--spacing-unit));
+  --font-title-medium: calc(var(--font-size-medium) * var(--spacing-unit));
   --font-title-large: calc(var(--font-size-large) * var(--spacing-unit));
-  --font-title-x-large: calc(var(--font-size-x-large) * var(--spacing-unit));
 
   /* font-size */
-  --font-body-small: calc(var(--font-size-xx-small) * var(--spacing-unit));
-  --font-body-s-medium: calc(var(--font-size-x-small) * var(--spacing-unit));
-  --font-body-medium-small: calc(var(--font-size-small) * var(--spacing-unit));
-  --font-body-medium: calc(var(--font-size-small) * var(--spacing-unit));
-  --font-body-large: calc(var(--font-size-s-medium) * var(--spacing-unit));
-  --font-body-x-large: calc(var(--font-size-medium) * var(--spacing-unit));
-
-  /* font-size */
-  --font-size-xx-small: 0.75;
-  --font-size-x-small: 0.875;
-  --font-size-small: 1;
-  --font-size-s-medium: 1.125;
-  --font-size-medium: 1.25;
-  --font-size-l-medium: 1.5;
+  --font-size-x-small: 1.125;
+  --font-size-small: 1.25;
+  --font-size-medium: 1.5;
   --font-size-large: 1.875;
-  --font-size-x-large: 2.25;
-  --font-size-xx-large: 3;
-  --font-size-xxx-large: 3.75;
 
   /* spacing */
   --xxx-small: 0.125;
@@ -81,28 +63,20 @@
   --xxx-large: 48;
 
   /* text spacing */
-  --x-small-text-spacing: calc(var(--x-small) * var(--spacing-unit));
-  --small-text-spacing: calc(var(--small) * var(--spacing-unit));
-  --medium-text-spacing: calc(var(--l-small) * var(--spacing-unit));
-  --large-text-spacing: calc(var(--xl-small) * var(--spacing-unit));
-  --x-large-text-spacing: calc(var(--base) * var(--spacing-unit));
-
-  /* component spacing */
-  --xx-small-text-spacing: calc(var(--small) * var(--spacing-unit));
-  --x-small-component-spacing: calc(var(--base) * var(--spacing-unit));
-  --small-component-spacing: calc(var(--xs-medium) * var(--spacing-unit));
-  --medium-component-spacing: calc(var(--medium) * var(--spacing-unit));
-  --large-component-spacing: calc(var(--l-medium) * var(--spacing-unit));
-  --x-large-component-spacing: calc(var(--m-large) * var(--spacing-unit));
-
-  /* component width photo */
-  --xx-small-component-width: calc(var(--xl-small) * var(--spacing-unit));
-  --x-small-component-width: calc(var(--base) * var(--spacing-unit));
-  --small-component-width: calc(var(--medium) * var(--spacing-unit));
-  --medium-component-width: calc(var(--xl-medium) * var(--spacing-unit));
-  --large-component-width: calc(var(--s-large) * var(--spacing-unit));
-  --x-large-component-width: calc(var(--m-large) * var(--spacing-unit));
-  --xx-large-component-width: calc(var(--x-large) * var(--spacing-unit));
+  --spacing-1: calc(var(--x-small) * var(--spacing-unit));
+  /* small */
+  --spacing-2: calc(var(--small) * var(--spacing-unit));
+  /* medium */
+  --spacing-3: calc(var(--l-small) * var(--spacing-unit));
+  --spacing-4: calc(var(--xl-small) * var(--spacing-unit));
+  --spacing-5: calc(var(--xl-small) * var(--spacing-unit));
+  --spacing-6: calc(var(--xs-medium) * var(--spacing-unit));
+  --spacing-7: calc(var(--medium) * var(--spacing-unit));
+  --spacing-8: calc(var(--l-medium) * var(--spacing-unit));
+  --spacing-9: calc(var(--xl-medium) * var(--spacing-unit));
+  --spacing-10: calc(var(--base) * var(--spacing-unit));
+  --spacing-10: calc(var(--s-large) * var(--spacing-unit));
+  --spacing-11: calc(var(--m-large) * var(--spacing-unit));
 
   /* line thickness */
   --line-thickness: 2px;

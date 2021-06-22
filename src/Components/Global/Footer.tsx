@@ -5,12 +5,12 @@ import { ImageLogo } from "./ImageLogo";
 import { mobileBreakpoint } from "../../constants";
 
 const FooterWrap = styled.footer`
-  margin-top: var(--medium-component-spacing);
-  height: var(--medium-component-spacing);
+  margin-top: var(--spacing-7);
+  height: var(--spacing-7);
   color: var(--button-colour);
   > * {
-    padding-left: var(--medium-text-spacing);
-    padding-right: var(--medium-text-spacing);
+    padding-left: var(--spacing-3);
+    padding-right: var(--spacing-3);
   }
   a {
     text-decoration: none;
@@ -19,11 +19,11 @@ const FooterWrap = styled.footer`
   flex-direction: row;
   align-items: center;
   @media only screen and (max-width: ${mobileBreakpoint}) {
-    height: var(--large-component-width);
-    margin-top: var(--small-component-spacing);
+    height: var(--spacing-10);
+    margin-top: var(--spacing-6);
     flex-direction: column;
     > * {
-      padding-bottom: var(--medium-text-spacing);
+      padding-bottom: var(--spacing-3);
     }
   }
 `;

@@ -48,8 +48,8 @@ export const query = graphql`
 
 
 const Container = styled.div`
-  padding-top: var(--small-component-spacing);
-  padding-bottom: var(--small-component-spacing);
+  padding-top: var(--spacing-6);
+  padding-bottom: var(--spacing-6);
   border-top: var(--line-thickness) solid var(--main-text-colour);
   border-bottom: var(--line-thickness) solid var(--main-text-colour);
   @media only screen and (max-width: ${mobileBreakpoint}) {
@@ -63,7 +63,7 @@ const LeftSection = styled(ReactMarkdown)`
   width: 45%;
   padding-bottom: 0;
   @media only screen and (max-width: ${mobileBreakpoint}) {
-    padding-bottom: var(--medium-text-spacing);
+    padding-bottom: var(--spacing-3);
     border-bottom: var(--line-thickness) solid var(--main-border-colour);
     width: 100%;
   }
@@ -77,8 +77,8 @@ const RightSection = styled(LeftSection)`
   }
   @media only screen and (max-width: ${mobileBreakpoint}) {
     padding-left: 0;
-    padding-bottom: var(--x-small-component-spacing);
-    padding-top: var(--x-small-component-spacing);
+    padding-bottom: var(--spacing-10);
+    padding-top: var(--spacing-10);
   }
 `;
 
@@ -105,7 +105,7 @@ const TextWrapper = styled.section`
   }
   @media only screen and (max-width: ${mobileBreakpoint}) {
     flex-direction: column;
-    margin-bottom: var(--small-component-spacing);
+    margin-bottom: var(--spacing-6);
   }
 `;
 

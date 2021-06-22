@@ -1,19 +1,19 @@
 import React from "react";
 import styled from "styled-components/macro";
 
-import {mobileBreakpoint} from "../../constants"
+import { mobileBreakpoint } from "../../constants"
 
 const TitleWrap = styled.h1`
   padding-bottom: 0;
   @media only screen and (max-width: ${mobileBreakpoint}) {
-    padding-bottom: var(--x-small-text-spacing);
+    padding-bottom: var(--spacing-1);
   }
 `;
 
 const SubtitleWrap = styled.h2`
   padding-bottom: 0;
   @media only screen and (max-width: ${mobileBreakpoint}) {
-    padding-bottom: var(--medium-text-spacing);
+    padding-bottom: var(--spacing-3);
   }
 `;
 

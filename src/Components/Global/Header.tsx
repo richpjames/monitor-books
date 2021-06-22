@@ -16,7 +16,7 @@ const HeaderStyles = styled.header<{ showMenu: boolean }>`
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding-bottom: var(--small-component-spacing);
+  padding-bottom: var(--spacing-6);
   font-size: var(--font-title-medium);
 
 > a > div {
@@ -31,7 +31,7 @@ const HeaderStyles = styled.header<{ showMenu: boolean }>`
     }
 
   li {
-      padding: var(--x-small-text-spacing);
+      padding: var(--spacing-1);
     }
   li:last-child {
       margin-left: auto;
@@ -47,14 +47,14 @@ const HeaderStyles = styled.header<{ showMenu: boolean }>`
     flex-direction: row;
     font-size: var(--font-size-small);
     > a > div {
-      padding: var(--x-small-component-spacing) 0;
+      padding: var(--spacing-10) 0;
       display: flex;
       justify-content: center;
       width: 75%;
     }
   > nav {
     flex: 1;
-    padding-top: var(--small-component-spacing);
+    padding-top: var(--spacing-6);
     > ul {
       flex-direction: column;
       display: ${({ showMenu }) => (showMenu ? "block" : "none")};
@@ -62,13 +62,13 @@ const HeaderStyles = styled.header<{ showMenu: boolean }>`
     showMenu
       ? "var(--line-thickness) solid var(--main-border-colour)"
       : "none"};
-      margin-bottom: ${({ showMenu }) => showMenu ? 'var(--x-small-component-spacing)' : '0'};
+      margin-bottom: ${({ showMenu }) => showMenu ? 'var(--spacing-10)' : '0'};
     }
     li:last-child {
       margin-left: 0;
     }
     li:first-child {
-      padding-left: var(--x-small-text-spacing);
+      padding-left: var(--spacing-1);
     }
   }
   }

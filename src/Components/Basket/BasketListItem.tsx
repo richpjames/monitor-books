@@ -23,9 +23,9 @@ const BasketMetaInfoContainer = styled.div`
   grid-template-areas:
     "title subtitle quantity"
     "price . .";
-  grid-template-rows: var(--x-large-text-spacing) var(--x-large-text-spacing);
+  grid-template-rows: var(--spacing-10) var(--spacing-10);
   grid-template-columns: fit-content(50%) fit-content(40%) auto;
-  row-gap: var(--small-text-spacing);
+  row-gap: var(--spacing-2);
   width: 100%;
   > p {
     grid-area: price;
@@ -64,14 +64,14 @@ const BasketMetaInfoContainer = styled.div`
 `;
 
 const Image = styled(GatsbyImage)`
-  margin-right: var(--x-small-component-spacing);
+  margin-right: var(--spacing-10);
   margin-left: 0;
   margin-bottom: 0;
-  width: var(--medium-component-width);
+  width: var(--spacing-9);
   @media only screen and (max-width: ${mobileBreakpoint}) {
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: var(--x-small-component-spacing);
+    margin-bottom: var(--spacing-10);
   }
 `;
 interface Props {

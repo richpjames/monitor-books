@@ -8,8 +8,8 @@ const Wrap = styled.div`
   margin-right: 0;
   display: flex;
   grid-area: quantity;
-  padding-top: var(--x-small-text-spacing);
-  height: var(--xx-small-component-width);
+  padding-top: var(--spacing-1);
+  height: var(--spacing-5);
   width: initial;
   @media only screen and (max-width: ${mobileBreakpoint}) {
     margin-right: auto;
@@ -18,8 +18,8 @@ const Wrap = styled.div`
 `;
 
 const Quantity = styled.span`
-  margin-left: var(--x-small-text-spacing);
-  margin-right: var(--x-small-text-spacing);
+  margin-left: var(--spacing-1);
+  margin-right: var(--spacing-1);
 `;
 
 const Button = styled.button`

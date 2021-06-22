@@ -60,9 +60,9 @@ export const MetaInfoContainer = styled.div<{ index: number; width: string }>`
   align-items: center;
   width: 100%;
   position: relative;
-  padding-left: var(--small-component-spacing);
+  padding-left: var(--spacing-6);
   @media only screen and (max-width: ${mobileBreakpoint}) {
-    padding-top: var(--x-small-component-spacing);
+    padding-top: var(--spacing-10);
     padding-left: 0;
     width: 100%;
   }
@@ -91,8 +91,8 @@ export const VideoCreatorName = styled(ListItemTitle)`
 `;
 
 export const Photo = styled.img`
-  width: var(--medium-component-width);
-  height: var(--medium-component-width);
+  width: var(--spacing-9);
+  height: var(--spacing-9);
   object-fit: cover;
   overflow: hidden;
   @media only screen and (max-width: ${mobileBreakpoint}) {
@@ -107,7 +107,7 @@ export const ListWrap = styled.ul`
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding-top: var(--small-component-spacing);
+  padding-top: var(--spacing-6);
 `;
 
 export const ListItemWrap = styled.li`
@@ -118,11 +118,11 @@ export const ListItemWrap = styled.li`
   padding-bottom: 0;
   @media only screen and (max-width: ${mobileBreakpoint}) {
     flex-direction: column;
-    padding-bottom: var(--small-component-spacing);
+    padding-bottom: var(--spacing-6);
   }
 `;
 export const ListItemLink = styled(Link)`
-  margin-top: var(--x-small-component-spacing);
+  margin-top: var(--spacing-10);
   width: 100%;
   text-decoration: none;
 `;
@@ -130,6 +130,6 @@ export const ListItemLink = styled(Link)`
 export const ItemType = styled.h5`
   border-top: 2px solid var(--main-border-colour);
   width: 100%;
-  padding: var(--x-small-text-spacing) 0 var(--x-small-text-spacing) 0;
+  padding: var(--spacing-1) 0 var(--spacing-1) 0;
   font-size: var(--font-title-small);
 `;

@@ -8,9 +8,9 @@ import { mobileBreakpoint } from "../constants";
 import { useSetBackground } from "../hooks/useSetBackground";
 
 const TextWrap = styled.section`
-  padding-top: var(--small-component-spacing);
+  padding-top: var(--spacing-6);
   @media only screen and (max-width: ${mobileBreakpoint}) {
-    padding-top: var(--small-component-spacing);
+    padding-top: var(--spacing-6);
   }
 `;
 

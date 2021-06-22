@@ -4,17 +4,20 @@ import { PageProps } from "gatsby";
 
 import Layout from "../Components/layout";
 import SEO from "../Components/seo";
+import { useSetBackground } from "../hooks/useSetBackground";
 
 const ContentWrapper = styled.div`
   margin: 0 auto;
   > h1 {
-    padding-bottom: var(--medium-text-spacing);
+    padding-bottom: var(--spacing-3);
   }
 `;
 
 const NotFound: React.FC<PageProps> = ({ location }) => {
+  useSetBackground("product-background-colour");
+  
   return (
-    <Layout backgroundColour="var(--faded-blue)" pathname={location.pathname}>
+    <Layout pathname={location.pathname}>
       <SEO
         title="404 Page"
         description="Sorry, we couldn't find the page you're looking for"

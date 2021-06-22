@@ -18,7 +18,7 @@ const ShippingSelector = styled.select`
 
 const ShippingTotal = styled.h4`
   padding-top: 0.5rem;
-  padding-bottom: var(--medium-text-spacing);
+  padding-bottom: var(--spacing-3);
   grid-area: shipping-cost;
 `;
 

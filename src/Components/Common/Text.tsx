@@ -9,7 +9,7 @@ const LeftSection = styled.section`
   width: 45%;
   padding-bottom: 0;
   @media only screen and (max-width: ${mobileBreakpoint}) {
-    padding-bottom: var(--medium-text-spacing);
+    padding-bottom: var(--spacing-3);
     border-bottom: var(--line-thickness) solid var(--main-border-colour);
     width: 100%;
   }
@@ -19,8 +19,8 @@ const RightSection = styled(LeftSection) <{ photoExists: boolean }>`
   padding-bottom: 0;
   @media only screen and (max-width: ${mobileBreakpoint}) {
     padding-left: 0;
-    padding-bottom: var(--x-small-component-spacing);
-    padding-top: ${({ photoExists }) => !photoExists ? `var(--x-small-component-spacing);` : `0;`}
+    padding-bottom: var(--spacing-10);
+    padding-top: ${({ photoExists }) => !photoExists ? `var(--spacing-10);` : `0;`}
   }
 `;
 
@@ -41,7 +41,7 @@ const TextWrapper = styled.section`
   }
   @media only screen and (max-width: ${mobileBreakpoint}) {
     flex-direction: column;
-    margin-bottom: var(--small-component-spacing);
+    margin-bottom: var(--spacing-6);
   }
 `;
 
@@ -50,7 +50,7 @@ display: none;
 padding: 0;
 @media only screen and (max-width: ${mobileBreakpoint}) {
   display:block;
-  padding: var(--medium-component-spacing) 0;
+  padding: var(--spacing-7) 0;
 }
 `
 
