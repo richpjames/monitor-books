@@ -3,12 +3,12 @@
 :root {
   /* colours */
   --deep-blue: hsl(235, 86.8%, 29.8%);
-  --faded-blue: hsl(219, 44.6%, 60.4%);
+  --faded-blue: #9fb4da;
   --purple: hsl(232, 40.5%, 59.8%);
   --grey: hsl(209, 40.3%, 69.8%);
-  --pink: hsl(333, 35%, 76.5%);
-  --green: hsl(177, 35.8%, 68.8%);
-  --lavender: #d3c2f0;
+  --pink: #d8aec1;
+  --green: #94ccc9;
+  --lavender: #e4daf4;
 
   --product-background-colour: var(--lavender);
   --video-background-colour: var(--faded-blue);
