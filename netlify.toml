@@ -1,6 +1,6 @@
 [build]
   command = "yarn buildProd"
-  publish = "build/"
+  publish = "public/"
   functions = "functions/"
 
 [context.production]
