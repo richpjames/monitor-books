@@ -1,22 +1,17 @@
 const SUPPORTED_LOCATIONS = require("./constants");
-const devStripe = require("stripe")(
-  process.env.REACT_APP_DEV_STRIPE_SECRET_KEY
-);
-const prodStripe = require("stripe")(
-  process.env.REACT_APP_PROD_STRIPE_SECRET_KEY
-);
+const devStripe = require("stripe")(process.env.GATSBY_DEV_STRIPE_SECRET_KEY);
+const prodStripe = require("stripe")(process.env.GATSBY_PROD_STRIPE_SECRET_KEY);
 
 exports.handler = async (event) => {
   const data = JSON.parse(event.body);
-  const products = data.data;
+  const products = data.lineItems;
   const env = data.env;
-
   let stripe = devStripe;
-  let publishableKey = process.env.REACT_APP_DEV_STRIPE_PUBLISHABLE_KEY;
+  let publishableKey = process.env.GATSBY_DEV_STRIPE_PUBLISHABLE_KEY;
 
   if (env === "production") {
     stripe = prodStripe;
-    publishableKey = process.env.REACT_APP_PROD_STRIPE_PUBLISHABLE_KEY;
+    publishableKey = process.env.GATSBY_PROD_STRIPE_PUBLISHABLE_KEY;
   }
   try {
     const session = await stripe.checkout.sessions.create({
@@ -34,7 +29,7 @@ exports.handler = async (event) => {
           product.quantity > 0 < 11 ? product.quantity : 1;
 
         const lineItem = {
-          price: product.priceId,
+          price: product.price,
           quantity: validatedQuantity,
         };
         return lineItem;
@@ -51,7 +46,7 @@ exports.handler = async (event) => {
   } catch (e) {
     return {
       statusCode: 400,
-      body: "something went really wrong",
+      body: e,
     };
   }
 };

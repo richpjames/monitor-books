@@ -1,8 +1,9 @@
 {
-  "baseUrl": "http://localhost:8888",
+  "baseUrl": "http://localhost:8000",
   "screenshotOnRunFailure": true,
   "video": false,
   "viewportHeight": 1000,
   "viewportWidth": 1500,
-  "projectId": "oi4g8j"
+  "projectId": "oi4g8j",
+  "failOnStatusCode": false
 }

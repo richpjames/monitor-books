@@ -1,29 +1,26 @@
-import { saveState } from "../../../src/sessionStorage";
 
 describe("Product Page", () => {
   beforeEach(() =>
     cy.fixture("initialisedState").then((initialisedState) =>
-      cy.visit("/books/propositions", {
-        onBeforeLoad: (win) => {
-          saveState(initialisedState);
-        },
-      })
+      cy.visit("/books/anthology")
     )
   );
+  
   it("test correct information is shown for product", () => {
     cy.url()
-      .should("include", "/propositions")
+      .should("include", "/anthology")
+      .get("h2")
+      .contains("Various")
       .get("h1")
-      .contains("Amy")
-      .get("h1")
-      .contains("PROPOSITIONS")
+      .contains("Murmur Anthology")
       .get(".left-section")
       .contains(
-        "A fragmentary treatise on desire and its consequences, Propositions is a playful examination of how we constitute and disassemble the self in language"
+        "Monitor Books is proud to present: Murmur Anthology #1. Featuring new"
       )
       .get(".right-section")
-      .contains("Designed by John Newton and Rory Cook");
+      .contains("Designed by Joe Haigh at Chaosmos");
   });
+
   it("Clicking on Add to basket button adds item to basket", () => {
     return cy
       .get(".add-to-basket")
@@ -32,15 +29,6 @@ describe("Product Page", () => {
       .contains("1");
   });
 
-  it("Clicking add to basket button for a second time takes customer to basket", () => {
-    cy.get(".add-to-basket")
-      .click()
-      .click()
-      .url()
-      .should("include", "/basket")
-      .get("#basket-title")
-      .contains("Basket");
-  });
 
   //test images
 });

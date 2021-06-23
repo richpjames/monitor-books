@@ -1,88 +1,139 @@
-import React from "react";
+import React, { useContext, useState, useEffect } from "react";
 import styled from "styled-components/macro";
-import { Link } from "@reach/router";
+import { Link as GatsbyLink } from "gatsby";
 
-import BasketNav from "./BasketNav";
+import { mobileBreakpoint } from "../../constants";
 
-import Logo from "./Logo";
-import { text } from "../../constants";
+import { CartContext } from "../../state/CartProvider";
+import useMediaQuery from "../../hooks/useMediaQuery";
 
-const Nav = styled.nav`
+import { TextLogo } from "./TextLogo";
+import { Burger } from "../Common/Burger";
+
+
+
+const HeaderStyles = styled.header<{ showMenu: boolean }>`
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  border-bottom: 1px solid ${text};
-  padding-bottom: 0.5rem;
-  padding-left: 0.5rem;
-  @media only screen and (min-width: 600px) {
-    margin-top: 5vh;
-    margin-left: 2.5rem;
-    margin-right: 2.5rem;
-  }
-`;
+  flex-direction: column;
+  width: 100%;
+  padding-bottom: var(--spacing-6);
+  font-size: var(--font-title-medium);
 
-const NavLinks = styled.ul`
-  list-style: none;
-  text-align: right;
-  padding-top: 2px;
-  margin-top: 2.5vh;
-  display: inline;
-  @media only screen and (min-width: 600px) {
-    display: flex;
-  }
-`;
-const NavItem = styled.li`
-  display: flex;
-  justify-content: flex-end;
-  height: 20px;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  @media only screen and (min-width: 600px) {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-  }
-`;
-
-const NavLink = styled(Link)`
-  color: ${text};
-  text-decoration: none;
-`;
-
-const Seperator = styled.span`
-  display: none;
-  @media only screen and (min-width: 600px) {
+> a > div {
+    padding-top: 0;
     display: block;
   }
+
+> nav {
+  > ul {
+      display: flex;
+      flex-direction: row;
+    }
+
+  li {
+      padding: var(--spacing-1);
+    }
+  li:last-child {
+      margin-left: auto;
+    }
+  li:first-child {
+      padding-left: 0;
+    }
+  }
+
+  @media only screen and (max-width: ${mobileBreakpoint}) {
+    padding-bottom: var(--spacing-1);
+    width: min(var(--page-max-width), 95%);
+    flex-direction: row;
+    font-size: var(--font-size-small);
+    > a > div {
+      padding: var(--spacing-1) 0;
+      display: flex;
+      justify-content: center;
+      width: 75%;
+    }
+  > nav {
+    flex: 1;
+    padding-top: var(--spacing-6);
+    > ul {
+      flex-direction: column;
+      display: ${({ showMenu }) => (showMenu ? "block" : "none")};
+      border: ${({ showMenu }) =>
+    showMenu
+      ? "var(--line-thickness) solid var(--main-border-colour)"
+      : "none"};
+      margin-bottom: ${({ showMenu }) => showMenu ? 'var(--spacing-10)' : '0'};
+    }
+    li:last-child {
+      margin-left: 0;
+    }
+    li:first-child {
+      padding-left: var(--spacing-1);
+    }
+  }
+  }
+`
+
+const Link = styled(GatsbyLink) <{ selected?: boolean }>`
+  text-decoration: ${({ selected }) => (selected ? `` : `none`)};
+  text-decoration-thickness: var(--line-thickness);
 `;
 
 export const Header = () => {
+  const { count } = useContext(CartContext);
+  const [showMenu, setShowMenu] = useState(false);
+  const [pathname, setPathname] = useState('');
+  const isMobile = useMediaQuery(`(max-width:${mobileBreakpoint})`);
+
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const newPath = window.location.pathname;
+      if (pathname !== newPath) {
+        setShowMenu(() => false)
+      }
+      setPathname(() => window.location.pathname)
+    }
+  }, [pathname])
+
   return (
-    <Nav>
+    <HeaderStyles showMenu={showMenu}>
       <Link to="/about" className="logo-container">
-        <Logo />
+        <TextLogo />
       </Link>
-      <NavLinks>
-        {navItems.map((navItem, index) => {
-          return (
-            <React.Fragment key={index}>
-              {index !== 0 && index <= navItems.length - 2 && (
-                <Seperator>{String.fromCharCode(8226)}</Seperator>
-              )}
-              <NavItem key={index}>
-                <NavLink
-                  to={navItem.link}
-                  aria-label={navItem.ariaLabel}
-                  className={navItem.className}
+      <nav>
+        <ul>
+          {navItems.map((navItem, index) => {
+            const { link, ariaLabel, className, content } = navItem;
+            return (
+              <li key={index}>
+                <Link
+                  to={link}
+                  aria-label={ariaLabel}
+                  className={className}
+                  selected={new RegExp(link).test(pathname)}
                 >
-                  {navItem.content}
-                  {navItem.component}
-                </NavLink>
-              </NavItem>
-            </React.Fragment>
-          );
-        })}
-      </NavLinks>
-    </Nav>
+                  {content}
+                </Link>
+                {!isMobile && index < navItems.length - 1 ? `, ` : null}
+              </li>
+            );
+          })}
+          <li>
+            <Link
+              to="/basket"
+              aria-label="Basket Page"
+              className="basket"
+              selected={/basket/.test(pathname)}
+              id="header-basket-items"
+            >
+              Basket ({count})
+            </Link>
+          </li>
+        </ul>
+      </nav>
+      {!showMenu && <Burger onClick={() => { setShowMenu((prevShowMenu) => !prevShowMenu) }} />}
+    </HeaderStyles>
   );
 };
 
@@ -94,7 +145,7 @@ const navItems = [
     className: "books",
   },
   {
-    link: "murmur-reading-series",
+    link: "/murmur-reading-series",
     ariaLabel: "Video link",
     content: "Murmur Reading Series",
     className: "videos",
@@ -104,12 +155,5 @@ const navItems = [
     ariaLabel: "About page",
     content: "About",
     className: "about",
-  },
-  {
-    link: "/basket",
-    ariaLabel: "Basket link",
-    content: "",
-    component: <BasketNav />,
-    className: "basket",
   },
 ];

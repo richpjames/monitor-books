@@ -1,80 +1,108 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components/macro";
-import Lightbox from "react-image-lightbox";
-import "react-image-lightbox/style.css";
 
-import { IndividualPhoto } from "./index";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { mobileBreakpoint } from "../../constants";
 
 const PhotoWrap = styled.section`
-  display: grid;
-  grid-template-columns: repeat(1, minmax(200px, 100%));
-  grid-gap: 1rem;
-  @media only screen and (min-width: 600px) {
-    grid-template-columns: repeat(2, minmax(200px, 100%));
+  padding: 0 var(--spacing-6);
+  display: flex;
+  align-items: center;
+  @media only screen and (max-width: ${mobileBreakpoint}) {
+    padding: 0;
   }
 `;
 
-const PhotoContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+const Arrow = styled.div`
+  height: var(--spacing-10);
+  width: var(--spacing-10);
 `;
 
+const ArrowWrap = styled.div`
+  display: block;
+  width: var(--spacing-10);
+  @media only screen and (max-width: ${mobileBreakpoint}) {
+      display: none;
+  }
+`;
+
+const LeftArrow = styled(Arrow)`
+  border-bottom: var(--line-thickness) solid var(--main-border-colour);
+  border-left: var(--line-thickness) solid var(--main-border-colour);
+  align-items: center;
+  margin-right: var(--spacing-6);
+  transform: translateX(-50%) rotate(45deg);
+`;
+
+const RightArrow = styled(Arrow)`
+  border-top: var(--line-thickness) solid var(--main-border-colour);
+  border-right: var(--line-thickness) solid var(--main-border-colour);
+  align-items: center;
+  transform: translateX(-100%) rotate(45deg);
+  margin-left: var(--spacing-6);
+`;
+
+const Photo = styled(GatsbyImage)`
+  
+`;
 interface PhotosProps {
-  photos: string[];
-  imageThumbnailHeight: string;
-  imageThumbnailWidth: string;
+  photos: any;
+  title: string;
 }
 
 export const Photos = (props: PhotosProps) => {
-  const { photos, imageThumbnailHeight, imageThumbnailWidth } = props;
+  const { photos, title } = props;
   const [photoIndex, setPhotoIndex] = useState(0);
-  const [galleryOpen, setGalleyOpen] = useState(false);
+  const timer = useRef<NodeJS.Timeout | null>(null);
 
-  const imageURLs = photos;
-  const thumbURLs = photos;
-
-  const openLightbox = (i: number) => {
-    setPhotoIndex(i);
-    setGalleyOpen(true);
-  };
-
-  const thumbReel = thumbURLs.map((url, i) => {
-    return (
-      <PhotoContainer key={i}>
-        <IndividualPhoto
-          openLightbox={openLightbox}
-          index={i}
-          src={url}
-          altText="a photo of murmur anthology"
-          height={imageThumbnailHeight}
-          width={imageThumbnailWidth}
-        />
-      </PhotoContainer>
-    );
+  const photoReel = photos.map((photo, i) => {
+    const image = getImage(photo.localFile);
+    if (image) {
+      return <Photo image={image} alt={`a photo of ${title} book`} key={i} />;
+    } else return null;
   });
+  useEffect(() => {
+    timer.current = setInterval(() => {
+      setPhotoIndex((prevState) =>
+        prevState < photos.length - 1 ? prevState + 1 : 0
+      )
+    }, 5000)
+    return () => {
+      if (timer.current) {
+        clearInterval(timer.current)
+      }
+    }
+  }, [])
 
   return (
     <>
-      <PhotoWrap className="ImagesWrapper">{thumbReel}</PhotoWrap>
-      {galleryOpen && (
-        <Lightbox
-          mainSrc={imageURLs[photoIndex]}
-          nextSrc={imageURLs[(photoIndex + 1) % imageURLs.length]}
-          prevSrc={
-            imageURLs[(photoIndex + imageURLs.length - 1) % imageURLs.length]
-          }
-          onCloseRequest={() => setGalleyOpen(false)}
-          onMovePrevRequest={() =>
-            setPhotoIndex(
-              (photoIndex + imageURLs.length - 1) % imageURLs.length
-            )
-          }
-          onMoveNextRequest={() =>
-            setPhotoIndex((photoIndex + 1) % imageURLs.length)
-          }
-        />
-      )}
+      <PhotoWrap className="ImagesWrapper">
+        <ArrowWrap
+          onClick={() => {
+            if (timer.current) {
+              clearInterval(timer.current)
+            }
+            setPhotoIndex((prevState) => {
+              return prevState > 0 ? prevState - 1 : photos.length - 1
+            })
+          }}
+        >
+          <LeftArrow />
+        </ArrowWrap>
+        {photoReel[photoIndex]}
+        <ArrowWrap>
+          <RightArrow
+            onClick={() => {
+              if (timer.current) {
+                clearInterval(timer.current);
+              }
+              setPhotoIndex((prevState) =>
+                prevState < photos.length - 1 ? prevState + 1 : 0
+              )
+            }}
+          />
+        </ArrowWrap>
+      </PhotoWrap>
     </>
   );
 };

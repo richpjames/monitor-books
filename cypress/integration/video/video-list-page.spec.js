@@ -1,19 +1,12 @@
-import { saveState } from "../../../src/sessionStorage";
 
 describe("Video List Page", () => {
   beforeEach(() =>
     cy.fixture("initialisedState").then((initialisedState) =>
-      cy.visit("/murmur-reading-series/", {
-        onBeforeLoad: (_) => {
-          saveState(initialisedState);
-        },
-      })
+      cy.visit("/murmur-reading-series/")
     )
   );
 
-  it("shows title", () => {
-    cy.get("h1").contains("Murmur Reading Series");
-  });
+ 
   it("shows all the videos", () => {
     cy.get("#episode-two-creator-0")
       .contains("Nisha Ramayya")
@@ -29,7 +22,7 @@ describe("Video List Page", () => {
       .get("#episode-one-creator-1")
       .contains("Aurelia Guo")
       .get("#episode-one-creator-2")
-      .contains("Mónica De La Torre")
+      .contains("Mónica de la Torre")
       .get('[alt="thumbnail image for Murmur Reading Series #1 video"]')
       .should("be.visible");
   });
@@ -37,12 +30,12 @@ describe("Video List Page", () => {
     cy.get("#episode-two-video-list-container")
       .click()
       .url()
-      .should("eq", "http://localhost:8888/murmur-reading-series/episode-two");
+      .should("eq", `${Cypress.config().baseUrl}/murmur-reading-series/episode-two`);
 
     cy.visit("/murmur-reading-series")
       .get("#episode-one-video-list-container")
       .click()
       .url()
-      .should("eq", "http://localhost:8888/murmur-reading-series/episode-one");
+      .should("eq", `${Cypress.config().baseUrl}/murmur-reading-series/episode-one`);
   });
 });

@@ -1,25 +1,38 @@
 import React from "react";
+import styled from "styled-components/macro";
 
-import { PageSubtitle, PageTitle, TitleWrapper } from "./Titles";
+import { mobileBreakpoint } from "../../constants"
+
+const TitleWrap = styled.h1`
+  padding-bottom: 0;
+  @media only screen and (max-width: ${mobileBreakpoint}) {
+    padding-bottom: var(--spacing-1);
+  }
+`;
+
+const SubtitleWrap = styled.h2`
+  padding-bottom: 0;
+  @media only screen and (max-width: ${mobileBreakpoint}) {
+    padding-bottom: var(--spacing-3);
+  }
+`;
 
 interface Props {
   title: string;
-  subtitle: [string, string, string];
+  subtitle: string[];
 }
 
 export function VideoTitle(props: Props) {
   const { title, subtitle } = props;
   return (
-    <TitleWrapper>
-      <PageTitle>{title} </PageTitle>
+    <>
+      <TitleWrap>{title} </TitleWrap>
 
-      {subtitle.map((creator, i) => {
-        return (
-          <PageSubtitle key={i}>{`${creator}${
-            i < subtitle.length - 1 ? ", " : ""
-          }`}</PageSubtitle>
-        );
-      })}
-    </TitleWrapper>
+      <SubtitleWrap>
+        {subtitle.map((creator, i) => {
+          return <>{`${creator}${i < subtitle.length - 1 ? ", " : ""}`}</>;
+        })}
+      </SubtitleWrap>
+    </>
   );
 }

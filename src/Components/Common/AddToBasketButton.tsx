@@ -1,18 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components/macro";
-import { navigate } from "@reach/router";
-import { connect } from "react-redux";
+import { navigate } from "gatsby";
 
-import { background, text } from "../../constants";
-import { addToBasket } from "../../actions";
+import { CartContext } from "../../state/CartProvider";
 
-const ButtonStyles = styled.button<{ borderColour: string }>`
-  width: 150px;
-  height: 40px;
-  background: ${background};
-  color: ${text};
-  border: ${({ borderColour }) =>
-    `1px solid ${borderColour ? borderColour : text}`};
+
+const Button = styled.button`
+ background-color: var(--button-colour);
+ color: var(--current-background-colour);
+ padding: var(--spacing-2);
+ width: var(--spacing-8);
 `;
 
 const ButtonWrapper = styled.div`
@@ -20,61 +17,49 @@ const ButtonWrapper = styled.div`
 `;
 
 interface AddToBasketButtonProps {
-  cartQuantity: number;
-  inventoryQuantity: number;
-  addToBasket: (id: string) => void;
   id: string;
-  borderColour: string;
-  publishedDate: Date;
+  preorder: boolean;
 }
 
-const AddToBasketButton: React.FC<AddToBasketButtonProps> = ({
-  cartQuantity,
-  inventoryQuantity,
-  addToBasket,
+export const AddToBasketButton: React.FC<AddToBasketButtonProps> = ({
   id,
-  borderColour,
-  publishedDate,
+  preorder,
 }) => {
-  const inCart = cartQuantity > 0;
+  const context = useContext(CartContext);
+  if (context.get && context.add && context.available) {
+    const { get, available, add } = context;
 
-  let buttonMessage = "Add to basket";
+    const inCart = get(id) > 0;
+    const outOfStock = !available(id, 1);
+    let buttonMessage = "Add to basket";
 
-  if (new Date(publishedDate).getTime() > new Date().getTime()) {
-    buttonMessage = "Pre-order";
+
+    let onClick = () => {
+      if (!inCart) return add(id);
+      else return navigate("/basket");
+    };
+
+    if (preorder) {
+      buttonMessage = "Pre-order";
+    } else if (inCart) {
+      buttonMessage = "In basket";
+      onClick = () => navigate("/basket");
+    } else if (outOfStock) {
+      buttonMessage = "Out of stock";
+    }
+
+    return (
+      <ButtonWrapper>
+        <Button
+          onClick={onClick}
+          disabled={outOfStock || inCart}
+          className="add-to-basket"
+        >
+          {buttonMessage}
+        </Button>
+      </ButtonWrapper>
+    );
+  } else {
+    return <></>;
   }
-
-  let onClick = () => {
-    if (!inCart) return addToBasket(id);
-    else return navigate("/basket");
-  };
-
-  if (inCart) {
-    buttonMessage = "In basket";
-    onClick = () => navigate("/basket");
-  } else if (inventoryQuantity < 1) {
-    buttonMessage = "Out of stock";
-  }
-
-  return (
-    <ButtonWrapper>
-      <ButtonStyles
-        onClick={onClick}
-        disabled={false}
-        className="add-to-basket"
-        borderColour={borderColour}
-      >
-        {buttonMessage}
-      </ButtonStyles>
-    </ButtonWrapper>
-  );
 };
-
-const mapStateToProps = (state: State, { id }: { id: string }) => ({
-  cartQuantity: state.cart.quantityById[id],
-  inventoryQuantity: state.products.byId[id].inventory,
-  id: id,
-  publishDate: state.products.byId[id].publishedDate,
-});
-
-export default connect(mapStateToProps, { addToBasket })(AddToBasketButton);

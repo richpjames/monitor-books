@@ -8,8 +8,6 @@ const publishableKey =
 type stripeResponse = undefined | { error: StripeError };
 
 export async function handleCheckout(data: any) {
-  console.log(process.env.NODE_ENV, "node env");
-  console.log(process.env, "publishable key");
   const stripe = await loadStripe(publishableKey || "");
 
   try {

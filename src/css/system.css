@@ -1,0 +1,90 @@
+@import "./typography.css";
+
+:root {
+  /* colours */
+  --deep-blue: hsl(235, 86.8%, 29.8%);
+  --faded-blue: #9fb4da;
+  --purple: hsl(232, 40.5%, 59.8%);
+  --grey: hsl(209, 40.3%, 69.8%);
+  --pink: #d8aec1;
+  --green: #94ccc9;
+  --lavender: #e4daf4;
+
+  --product-background-colour: var(--lavender);
+  --video-background-colour: var(--faded-blue);
+  --basket-background-colour: var(--green);
+  --about-background-colour: var(--pink);
+  --button-colour: var(--deep-blue);
+  --current-background-colour: var(--faded-blue);
+
+  /* Base spacing unit. */
+  --spacing-unit: 16px;
+
+  /* typography - colours*/
+  --main-text-colour: hsl(0, 0%, 0%);
+  --main-border-colour: var(--main-text-colour);
+
+  /* typography - fonts */
+  --main-title-font: "Century Schoolbook", sans-serif;
+
+  /* typography - weights */
+  --font-weight-regular: 400;
+  --font-weight-heavy: 600;
+
+  /* typography - font sizes */
+  --font-body: calc(var(--font-size-x-small) * var(--spacing-unit));
+  --font-title-small: calc(var(--font-size-small) * var(--spacing-unit));
+  --font-title-medium: calc(var(--font-size-medium) * var(--spacing-unit));
+  --font-title-large: calc(var(--font-size-large) * var(--spacing-unit));
+
+  /* font-size */
+  --font-size-x-small: 1.125;
+  --font-size-small: 1.25;
+  --font-size-medium: 1.5;
+  --font-size-large: 1.875;
+
+  /* spacing */
+  --xxx-small: 0.125;
+  --xx-small: 0.25;
+  --x-small: 0.5;
+  --small: 0.75;
+  --l-small: 1;
+  --xl-small: 1.5;
+  --base: 2;
+  --xs-medium: 3;
+  --s-medium: 4;
+  --medium: 6;
+  --l-medium: 9;
+  --xl-medium: 12;
+  --s-large: 16;
+  --m-large: 24;
+  --x-large: 32;
+  --xx-large: 40;
+  --xxx-large: 48;
+
+  --spacing-1: calc(var(--x-small) * var(--spacing-unit));
+  --spacing-2: calc(var(--small) * var(--spacing-unit));
+  --spacing-3: calc(var(--l-small) * var(--spacing-unit));
+  --spacing-4: calc(var(--xl-small) * var(--spacing-unit));
+  --spacing-5: calc(var(--xl-small) * var(--spacing-unit));
+  --spacing-6: calc(var(--xs-medium) * var(--spacing-unit));
+  --spacing-7: calc(var(--medium) * var(--spacing-unit));
+  --spacing-8: calc(var(--l-medium) * var(--spacing-unit));
+  --spacing-9: calc(var(--xl-medium) * var(--spacing-unit));
+  --spacing-10: calc(var(--base) * var(--spacing-unit));
+  --spacing-11: calc(var(--s-large) * var(--spacing-unit));
+  --spacing-12: calc(var(--m-large) * var(--spacing-unit));
+
+  /* line thickness */
+  --line-thickness: 2px;
+
+  /* border radius */
+  --border-radius: 2px;
+
+  /* opacity */
+  --medium-opacity: 0.7;
+  --almost-full-opacity: 0.85;
+
+  --page-max-width: calc(var(--xxx-large) * var(--spacing-unit));
+  --page-min-width: 90%;
+}

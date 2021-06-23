@@ -1,57 +1,89 @@
 import React from "react";
 import styled from "styled-components/macro";
-import { sanitize } from "dompurify";
-import ReactMarkdown from "react-markdown"
+import ReactMarkdown from "react-markdown";
 
-const LeftSection = styled.div`
+import { mobileBreakpoint } from "../../constants";
+import { sanitizeText } from "../../utils";
+
+const LeftSection = styled.section`
   width: 45%;
-  text-align: justify;
-  @media only screen and (max-width: 600px) {
-    padding-bottom: 25px;
-    border-bottom: 1px solid black;
-    margin-right: 0%;
+  padding-bottom: 0;
+  @media only screen and (max-width: ${mobileBreakpoint}) {
+    padding-bottom: var(--spacing-3);
+    border-bottom: var(--line-thickness) solid var(--main-border-colour);
     width: 100%;
   }
 `;
-const RightSection = styled(LeftSection)`
+const RightSection = styled(LeftSection) <{ photoExists: boolean }>`
   padding-left: 9%;
-  @media only screen and (max-width: 600px) {
+  padding-bottom: 0;
+  @media only screen and (max-width: ${mobileBreakpoint}) {
     padding-left: 0;
-    margin-top: 5%;
+    padding-bottom: var(--spacing-10);
+    padding-top: ${({ photoExists }) => !photoExists ? `var(--spacing-10);` : `0;`}
   }
 `;
 
 const ErrorTextWrapper = styled.span`
-  color: #ec9696;
+  color: var(--pink);
 `;
 
 const TextWrapper = styled.section`
   display: flex;
+  flex-direction: row;
   padding-top: 2.5%;
-  color: var(--text-color);
-  @media only screen and (min-width: 600px) {
-    flex-direction: row;
+  hanging-punctuation: first;
+  section div p blockquote {
+    background: pink;
+  }
+  b {
+    font-style: italic;
+  }
+  @media only screen and (max-width: ${mobileBreakpoint}) {
+    flex-direction: column;
+    margin-bottom: var(--spacing-6);
   }
 `;
+
+const PhotoWrapper = styled.div`
+display: none;
+padding: 0;
+@media only screen and (max-width: ${mobileBreakpoint}) {
+  display:block;
+  padding: var(--spacing-7) 0;
+}
+`
+
+
 
 interface Props {
   leftText: string;
   rightText: string;
   addToBasketButton?: JSX.Element;
+  photo?: JSX.Element;
 }
 
 export const SplitText = (props: Props) => {
-  const { leftText, rightText, addToBasketButton } = props;
+  const unsanitizedLeftText = props.leftText;
+  const unsanitizedRightText = props.rightText;
+  const { addToBasketButton, photo } = props;
+  const sanitizedText = [unsanitizedLeftText, unsanitizedRightText].map(
+    sanitizeText
+  );
+  const photoExists = !!photo
   return (
     <TextWrapper className="TextWrapper">
-      <LeftSection
-        className="left-section"
-      >
-        <ReactMarkdown children={leftText} />
-      </LeftSection>
-      <RightSection>
+      <LeftSection>
         <ReactMarkdown
-          className="right-section" children={rightText} />
+          className="left-section"
+          children={sanitizedText[0]}
+        />
+      </LeftSection>
+      <RightSection photoExists={photoExists}>
+        <ReactMarkdown
+          className="right-section"
+          children={sanitizedText[1]}
+        />
         {addToBasketButton}
       </RightSection>
     </TextWrapper>
@@ -59,7 +91,7 @@ export const SplitText = (props: Props) => {
 };
 
 export const Text: React.FC<{ text: string; colour?: string }> = ({ text }) => (
-  <TextWrapper dangerouslySetInnerHTML={{ __html: sanitize(text) }} />
+  <TextWrapper dangerouslySetInnerHTML={{ __html: sanitizeText(text) }} />
 );
 
 export const ErrorText: React.FC<{ line1: string; line2: string }> = ({

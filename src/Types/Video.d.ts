@@ -1,12 +1,12 @@
 interface Video {
   title: string;
-  artistNames: [string, string, string];
+  artistNames: string[];
   blurb1: string;
   blurb2: string;
   url: string;
   publishedDate: Date;
   slug: string;
-  thumbnail: string;
+  thumbnail: any;
   id: string;
 }
 interface ApiVideo {
@@ -15,25 +15,18 @@ interface ApiVideo {
   publishedDate: string;
   slug: string;
   url: string;
-  thumbnail: string;
+  thumbnail_img: StrapiGatsbyImage;
   blurb1: string;
   blurb2: string;
   artists: { id: number; Name: string; Description: string }[];
 }
-
-type VideoAction = {
-  type: RECEIVE_VIDEOS;
-  videos: Video[];
+type StrapiMurmurReadingSeriesDescription = {
+  Description: string;
 };
-
-type VideosById = ById<Video>;
-
-type Videos = { byId: VideosById; visibleIds: VisibleIds };
-
-interface Cart {
-  addedIds: AddedIds;
-  quantityById: ProductQuantityById;
-  shipping: Shipping;
-  loading: boolean;
-  config: { hasError: boolean };
-}
+type StrapiGatsbyImage = {
+  localFile: {
+    childImageSharp: {
+      gatsbyImageData: any;
+    };
+  };
+};

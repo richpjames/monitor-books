@@ -6,6 +6,9 @@ interface Product {
   blurb2: string;
   price: number;
   publishedDate: Date;
+  yearPublished: number;
+  galleryImages: StrapiGatsbyImage[];
+  thumbnail: any;
   id: string;
   slug: string;
   inventory: number;
@@ -20,6 +23,8 @@ interface ApiProduct {
   published_at: string;
   created_at: string;
   updated_at: string;
+  gallery_images: StrapiGatsbyImage[];
+  thumbnail_image: StrapiGatsbyImage;
   title: string;
   author: string;
   publishedDate: string;
@@ -32,17 +37,6 @@ interface ApiProduct {
   images: {
     fullSize: string[];
   };
-}
-interface Products {
-  byId: ProductsById;
-  visibleIds: VisibleIds;
-}
-type ProductsById = ById<Product>;
-interface ProductsAction {
-  type: PRODUCTS_ACTIONS;
-  products: Product[];
-  quantityToReplace: number;
-  productId: string;
 }
 interface ProductQuantityById {
   [index: string]: number;

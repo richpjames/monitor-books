@@ -1,24 +1,14 @@
-import { addToBasket } from "../../../src/actions";
-import { saveState } from "../../../src/sessionStorage";
 
-const dispatch = (action) =>
-  cy.window().its("store").invoke("dispatch", action);
 
 describe("Basket", () => {
   beforeEach(() =>
     cy.fixture("initialisedState").then((initialisedState) =>
-      cy.visit("/basket", {
-        onBeforeLoad: (win) => {
-          console.log("before", initialisedState);
-
-          saveState(initialisedState);
-        },
-      })
+      cy.visit("/basket")
     )
   );
 
   it("correct items are shown in basket", () => {
-    dispatch(addToBasket("1"));
+    dispatch(asket("1"));
     cy.get("#anthology-title")
       .contains("Various")
       .get("#anthology-subtitle")
@@ -46,7 +36,6 @@ describe("Basket", () => {
   });
 
   it("increasing quantity of a book increases the price accordingly", () => {
-    dispatch(addToBasket("1"));
     cy.get("#basket-total")
       .contains("£12")
       .get("#anthology-increase-quantity-button")
@@ -66,8 +55,6 @@ describe("Basket", () => {
   });
 
   it("test descreasing/increasing quantity of different book increases the basket total accordingly", () => {
-    dispatch(addToBasket("1"));
-    dispatch(addToBasket("2"));
     cy.get("#basket-total")
       .contains("£22.50")
       .get("#propositions-decrease-quantity-button")
@@ -86,7 +73,6 @@ describe("Basket", () => {
   });
 
   it("test that when quantity is 0 decreasing is disabled and quantity is 0", () => {
-    dispatch(addToBasket("1"));
     cy.get("#basket-total")
       .contains("£12")
       .get("#anthology-decrease-quantity-button")
@@ -99,7 +85,6 @@ describe("Basket", () => {
       .should("be.disabled");
   });
   it("test removing a book removes it from the basket", () => {
-    dispatch(addToBasket("2"));
     cy.get("#propositions-remove-button")
       .click()
       .get("#empty-basket-message")
@@ -107,7 +92,6 @@ describe("Basket", () => {
   });
 
   it("changes to the postal region are show in the shipping price and basket total", () => {
-    dispatch(addToBasket("1"));
 
     cy.get("#shipping-selector")
       .select("Europe")

@@ -1,4 +1,4 @@
-export const productMapper = (product: ApiProduct) => {
+export const productMapper = (product: ApiProduct): Product => {
   const {
     title,
     author,
@@ -9,42 +9,47 @@ export const productMapper = (product: ApiProduct) => {
     slug,
     id,
     inventory,
-    thumbnail,
     devPriceId,
     prodPriceId,
     price,
+    gallery_images,
+    thumbnail_image,
   } = product;
+  const thumbnail = thumbnail_image?.localFile;
+  const galleryImages = gallery_images;
+  const publishedDateObj = new Date(publishedDate);
+  const yearPublished = publishedDateObj.getFullYear();
   return {
     title,
     author,
-    images,
     slug,
     price,
     inventory,
     thumbnail,
-    devPriceId,
-    prodPriceId,
-    id,
+    galleryImages,
     blurb1,
     blurb2,
-    publishedDate: new Date(publishedDate),
-    priceId: process.env.NODE_ENV === "production" ? prodPriceId : devPriceId,
+    id: `${id}`,
+    publishedDate: publishedDateObj,
+    yearPublished,
+    priceId: process.env.NODE_ENV === "development" ? devPriceId : prodPriceId,
     photos: images?.fullSize,
   };
 };
 
-export const videoMapper = (video: ApiVideo) => {
+export const videoMapper = (video: ApiVideo): Video => {
   const {
     title,
     publishedDate,
     slug,
     url,
-    thumbnail,
+    thumbnail_img,
     blurb1,
     blurb2,
     artists,
   } = video;
   const artistNames = artists.map((artist) => artist.Name);
+  const thumbnail = thumbnail_img?.localFile;
   return {
     title,
     publishedDate: new Date(publishedDate),
