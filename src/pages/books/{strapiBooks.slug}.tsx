@@ -56,7 +56,7 @@ const Container = styled.div`
     border-bottom: none;
     border-top: none;
     padding-bottom: 0;
-    padding-top: var(--spacing-1;
+    padding-top: var(--spacing-1);
   }
 `;
 const LeftSection = styled(ReactMarkdown)`
