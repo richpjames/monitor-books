@@ -19,7 +19,7 @@ const FooterWrap = styled.footer`
   flex-direction: row;
   align-items: center;
   @media only screen and (max-width: ${mobileBreakpoint}) {
-    height: var(--spacing-10);
+    height: var(--spacing-11);
     margin-top: var(--spacing-6);
     flex-direction: column;
     > * {
