@@ -21,7 +21,7 @@ type BurgerProps = {
 }
 
 export const Burger: React.FC<BurgerProps> = ({ onClick }) => (
-    <Button onClick={onClick}>
+    <Button aria-label="Site Menu" onClick={onClick}>
         <BurgerSlice />
         <BurgerSlice />
         <BurgerSlice />

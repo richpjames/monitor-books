@@ -98,7 +98,7 @@ export const Header = () => {
 
   return (
     <HeaderStyles showMenu={showMenu}>
-      <Link to="/about" className="logo-container">
+      <Link to="/about" className="logo-container" aria-label="home button">
         <TextLogo />
       </Link>
       <nav>
