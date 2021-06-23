@@ -62,11 +62,8 @@
   --xx-large: 40;
   --xxx-large: 48;
 
-  /* text spacing */
   --spacing-1: calc(var(--x-small) * var(--spacing-unit));
-  /* small */
   --spacing-2: calc(var(--small) * var(--spacing-unit));
-  /* medium */
   --spacing-3: calc(var(--l-small) * var(--spacing-unit));
   --spacing-4: calc(var(--xl-small) * var(--spacing-unit));
   --spacing-5: calc(var(--xl-small) * var(--spacing-unit));
@@ -75,8 +72,8 @@
   --spacing-8: calc(var(--l-medium) * var(--spacing-unit));
   --spacing-9: calc(var(--xl-medium) * var(--spacing-unit));
   --spacing-10: calc(var(--base) * var(--spacing-unit));
-  --spacing-10: calc(var(--s-large) * var(--spacing-unit));
-  --spacing-11: calc(var(--m-large) * var(--spacing-unit));
+  --spacing-11: calc(var(--s-large) * var(--spacing-unit));
+  --spacing-12: calc(var(--m-large) * var(--spacing-unit));
 
   /* line thickness */
   --line-thickness: 2px;

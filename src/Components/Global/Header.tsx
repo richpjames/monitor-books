@@ -42,12 +42,12 @@ const HeaderStyles = styled.header<{ showMenu: boolean }>`
   }
 
   @media only screen and (max-width: ${mobileBreakpoint}) {
-    padding-bottom: var(--xx-small-component-spacing);
+    padding-bottom: var(--spacing-1);
     width: min(var(--page-max-width), 95%);
     flex-direction: row;
     font-size: var(--font-size-small);
     > a > div {
-      padding: var(--spacing-10) 0;
+      padding: var(--spacing-1) 0;
       display: flex;
       justify-content: center;
       width: 75%;

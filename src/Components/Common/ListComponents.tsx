@@ -62,7 +62,7 @@ export const MetaInfoContainer = styled.div<{ index: number; width: string }>`
   position: relative;
   padding-left: var(--spacing-6);
   @media only screen and (max-width: ${mobileBreakpoint}) {
-    padding-top: var(--spacing-10);
+    padding-top: var(--spacing-1);
     padding-left: 0;
     width: 100%;
   }
@@ -122,7 +122,7 @@ export const ListItemWrap = styled.li`
   }
 `;
 export const ListItemLink = styled(Link)`
-  margin-top: var(--spacing-10);
+  margin-top: var(--spacing-1);
   width: 100%;
   text-decoration: none;
 `;

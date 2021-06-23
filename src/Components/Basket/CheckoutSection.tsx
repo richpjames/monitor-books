@@ -18,7 +18,7 @@ const CheckoutSectionWrap = styled.section`
     );
   grid-template-rows: var(--spacing-10) 1fr 1fr 1fr;
   margin-left: auto;
-  width: var(--spacing-11);
+  width: var(--spacing-12);
   text-align: end;
   @media only screen and (max-width: ${mobileBreakpoint}) {
     grid-template-areas: "shipping-label"

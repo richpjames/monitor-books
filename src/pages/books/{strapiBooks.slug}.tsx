@@ -56,7 +56,7 @@ const Container = styled.div`
     border-bottom: none;
     border-top: none;
     padding-bottom: 0;
-    padding-top: var(--xx-small-component-spacing);
+    padding-top: var(--spacing-1;
   }
 `;
 const LeftSection = styled(ReactMarkdown)`
@@ -77,8 +77,8 @@ const RightSection = styled(LeftSection)`
   }
   @media only screen and (max-width: ${mobileBreakpoint}) {
     padding-left: 0;
-    padding-bottom: var(--spacing-10);
-    padding-top: var(--spacing-10);
+    padding-bottom: var(--spacing-2);
+    padding-top: var(--spacing-2);
   }
 `;
 
