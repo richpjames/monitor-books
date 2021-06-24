@@ -2,7 +2,7 @@ body {
   margin: 0;
   font-family: "Century Schoolbook", Georgia, "Times New Roman", Times, serif;
   font-size: var(--font-body);
-  color: var(--main-text-colour, #e4daf4);
+  color: var(--main-text-colour);
   text-underline-offset: calc(var(--spacing-unit) * var(--xxx-small));
 }
 
