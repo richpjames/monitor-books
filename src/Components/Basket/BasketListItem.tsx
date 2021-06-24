@@ -108,13 +108,10 @@ const BasketListItem = ({
       <Image image={image} alt={`thumbnail image of ${title}`} />
       <BasketMetaInfoContainer>
         <h4 id={`${basketItemLabel}-subtitle`}>
-          {subtitle
-            .split(" ")
-            .map((word) => `${word[0]}${word.slice(1).toLowerCase()}`)
-            .join(" ")}
+          {subtitle}
           ,
         </h4>
-        <h4> {title}</h4>
+        <h4 id={`${basketItemLabel}-title`}> {title}</h4>
         <QuantityPanel
           addToCart={() => handleAdd(id)}
           decrementInCart={() => handleSubtract(id)}

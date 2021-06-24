@@ -127,10 +127,6 @@ const ProductPage: React.FC<ProductPageProps> = ({ data, location }) => {
     galleryImages,
   } = product;
 
-  const sanitizedText = [blurb1, blurb2].map(
-    sanitizeText
-  );
-
 
   return (
     <Layout
@@ -139,19 +135,17 @@ const ProductPage: React.FC<ProductPageProps> = ({ data, location }) => {
       <SEO title={`${title} by ${author}`} description={blurb1} />
       <Container>
         <Photos photos={galleryImages} title={title} />
-        <h1>{title.split(" ")
-          .map((word) => `${word[0]}${word.slice(1).toLowerCase()}`)
-          .join(" ")}</h1>
+        <h1>{title}</h1>
         <h2>{author}</h2>
         <TextWrapper className="TextWrapper">
           <LeftSection
             className="left-section"
-            children={sanitizedText[0]}
+            children={blurb1}
           />
           <RightSectionWrapper>
             <RightSection
               className="right-section">
-              {sanitizedText[1]}
+              {blurb2}
             </RightSection>
             <AddToBasketButton id={priceId} preorder={new Date(publishedDate).getTime() > new Date().getTime()} />
           </RightSectionWrapper>
