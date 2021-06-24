@@ -5,6 +5,7 @@
   "license": "MIT",
   "homepage": ".",
   "dependencies": {
+    "@sentry/gatsby": "^6.7.2",
     "@stripe/stripe-js": "^1.13.2",
     "@testing-library/cypress": "^7.0.6",
     "@testing-library/user-event": "13.1.5",
