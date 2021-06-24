@@ -8,7 +8,7 @@ import { TextBoxLogo } from "../Components/Global/TextBoxLogo";
 import SEO from "../Components/seo";
 import { useSetBackground } from "../hooks/useSetBackground";
 
-const navigateToBooks = () => navigate("/books/propositions");
+const navigateToBooks = () => navigate("/books/");
 
 const BoxWrapper = styled.div`
   margin-top: -100px;
