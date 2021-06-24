@@ -1,9 +1,8 @@
-
 describe("Product List Page", () => {
   beforeEach(() =>
-    cy.fixture("initialisedState").then((initialisedState) =>
-      cy.visit("/books/")
-    )
+    cy
+      .fixture("initialisedState")
+      .then((initialisedState) => cy.visit("/books/"))
   );
 
   it("shows all the books", () => {
@@ -17,7 +16,7 @@ describe("Product List Page", () => {
       .contains("Murmur Anthology")
       .get("#anthology-subtitle")
       .contains("Various")
-      .get('[alt="a photo of the book murmur anthology 1 by Various"]')
+      .get('[alt="a photo of the book murmur anthology 1 by various"]')
       .should("be.visible");
   });
   it("clicking on a book takes the user to the correct page", () => {
