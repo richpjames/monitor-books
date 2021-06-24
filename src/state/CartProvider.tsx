@@ -210,7 +210,7 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
   const hasItems = contents.length > 0;
 
   const ctx: CartContextT = {
-    contents: contents,
+    contents,
     add,
     subtract,
     get,
@@ -224,7 +224,9 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
     setShipping,
     onCheckoutClicked,
   };
-
+  if (typeof window !== 'undefined' && (window as any).Cypress && !(window as any).ctx) {
+    (window as any).ctx = ctx;
+  }
   return (
     <CartContext.Provider value={{ ...ctx }}>{children}</CartContext.Provider>
   );

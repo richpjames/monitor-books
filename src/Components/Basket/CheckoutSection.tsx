@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components/macro";
 
 import { Shipping } from "./Shipping";
@@ -52,22 +52,28 @@ const Button = styled.button`
 `;
 
 export const CheckoutSection: React.FC = () => {
-  const cartContext = useContext(CartContext);
+  const cart = useContext(CartContext);
+  const [grandTotal, setGrandTotal] = useState(0);
+  const { total, shipping, setShipping, contents, onCheckoutClicked } = cart
 
   const calculateGrandTotal = () => {
-    if (cartContext.total && cartContext.shipping) {
-      return cartContext?.total + cartContext?.shipping.price;
-    } else {
-      return 0;
-    }
+    if (total && shipping) {
+      return total + shipping.price;
+    } else if (shipping) {
+      return shipping.price
+    } else return 0
   };
-  const grandTotal = calculateGrandTotal();
+
+  useEffect(() => {
+    setGrandTotal(() => calculateGrandTotal())
+
+  }, [contents, shipping])
 
   return (
     <CheckoutSectionWrap>
       <Shipping
-        shipping={cartContext.shipping}
-        setShipping={cartContext.setShipping}
+        shipping={shipping}
+        setShipping={setShipping}
         shippingOptions={shippingCosts}
       />
       <TotalWrapper id="basket-total">
@@ -75,7 +81,7 @@ export const CheckoutSection: React.FC = () => {
       </TotalWrapper>
       <ButtonWrapper>
         <Button
-          onClick={cartContext.onCheckoutClicked}
+          onClick={onCheckoutClicked}
           disabled={false}
           id="checkout-button"
         >
