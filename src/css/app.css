@@ -18,7 +18,7 @@ h6 {
   font-family: var(--main-title-font);
 }
 p {
-  font-size: var(--font-body);
+  font-size: var(--font-title-small);
   padding-bottom: var(--spacing-2);
   margin: 0;
 }

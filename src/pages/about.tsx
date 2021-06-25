@@ -13,6 +13,9 @@ const TextWrap = styled.section`
     padding-top: var(--spacing-6);
   }
 `;
+const SubmissionsText = styled.section`
+  padding-top: var(--spacing-5);
+;`;
 
 const About: React.FC<PageProps> = ({ location }) => {
   const { strapiAboutPage, strapiSubmissions } = useStaticQuery(graphql`
@@ -33,7 +36,7 @@ const About: React.FC<PageProps> = ({ location }) => {
     <Layout pathname={location.pathname}>
       <TextWrap>
         <ReactMarkdown children={Description} />
-        <p><u>{strapiSubmissions.title}</u></p>
+        <SubmissionsText><u>{strapiSubmissions.title}</u></SubmissionsText>
         <ReactMarkdown children={strapiSubmissions.description} />
       </TextWrap>
     </Layout>
