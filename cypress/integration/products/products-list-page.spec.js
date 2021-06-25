@@ -1,9 +1,12 @@
 describe("Product List Page", () => {
-  beforeEach(() =>
-    cy
-      .fixture("initialisedState")
-      .then((initialisedState) => cy.visit("/books/"))
-  );
+  beforeEach(() => {
+    cy.fixture("initialisedState").then((initialisedState) =>
+      cy.visit("/books/")
+    );
+  });
+
+  // check the login page with fluent api, see more info here
+  // https://applitools.com/docs/topics/sdk/the-eyes-sdk-check-fluent-api.html
 
   it("shows all the books", () => {
     cy.get("#propositions-title")
@@ -16,7 +19,7 @@ describe("Product List Page", () => {
       .contains("Murmur Anthology")
       .get("#anthology-subtitle")
       .contains("Various")
-      .get('[alt="a photo of the book murmur anthology 1 by various"]')
+      .get('[alt="a photo of the book murmur anthology #1 by Various"]')
       .should("be.visible");
   });
   it("clicking on a book takes the user to the correct page", () => {
