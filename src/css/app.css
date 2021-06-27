@@ -50,7 +50,7 @@ h4 {
 }
 
 h5 {
-  font-size: var(--font-title-medium);
+  font-size: var(--font-title-small);
   padding: var(--spacing-1) 0 calc(var(--spacing-1) * var(--small)) 0;
 }
 

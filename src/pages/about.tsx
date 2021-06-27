@@ -36,7 +36,7 @@ const About: React.FC<PageProps> = ({ location }) => {
     <Layout pathname={location.pathname}>
       <TextWrap>
         <ReactMarkdown children={Description} />
-        <SubmissionsText><u>{strapiSubmissions.title}</u></SubmissionsText>
+        <SubmissionsText><h4><u>{strapiSubmissions.title}</u></h4></SubmissionsText>
         <ReactMarkdown children={strapiSubmissions.description} />
       </TextWrap>
     </Layout>

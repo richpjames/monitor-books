@@ -131,5 +131,4 @@ export const ItemType = styled.h5`
   border-top: 2px solid var(--main-border-colour);
   width: 100%;
   padding: var(--spacing-1) 0 var(--spacing-1) 0;
-  font-size: var(--font-title-small);
 `;
