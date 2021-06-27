@@ -1,23 +1,16 @@
 import React from "react";
 
-interface TextBoxLogoProps {
-  parentWidth?: number;
-}
 
-export const TextBoxLogo = ({ parentWidth }: TextBoxLogoProps) => {
-  const width = parentWidth ? parentWidth - (parentWidth * 0.2) : 500
+
+export const TextBoxLogo = () => {
   return (
     <svg
-      width={width}
-      height="200"
+      width="100%"
       xmlns="http://www.w3.org/2000/svg"
       preserveAspectRatio="xMidYMid meet"
       viewBox="0 0 4688 1776"
     >
-
-
       <g>
-        <title>Layer 1</title>
         <g
           id="svg_1"
           fill="var(--button-colour)"
