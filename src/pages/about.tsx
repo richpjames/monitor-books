@@ -3,6 +3,7 @@ import { graphql, useStaticQuery, PageProps } from "gatsby";
 import styled from "styled-components/macro";
 import ReactMarkdown from "react-markdown";
 
+import SEO from "../Components/seo";
 import Layout from "../Components/layout";
 import { mobileBreakpoint } from "../constants";
 import { useSetBackground } from "../hooks/useSetBackground";
@@ -34,6 +35,7 @@ const About: React.FC<PageProps> = ({ location }) => {
 
   return (
     <Layout pathname={location.pathname}>
+      <SEO title="About" description="About Monitor Books" />
       <TextWrap>
         <ReactMarkdown children={Description} />
         <SubmissionsText><h4><u>{strapiSubmissions.title}</u></h4></SubmissionsText>
