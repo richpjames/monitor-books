@@ -17,7 +17,7 @@ const Basket: React.FC<PageProps> = ({ location }) => {
     <Layout
       pathname={location.pathname}
     >
-      <SEO title="Basket" description="boook basket" />
+      <SEO title="Basket" description="basket" />
       <BasketPage />
     </Layout>
   );
