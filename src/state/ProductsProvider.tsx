@@ -65,9 +65,10 @@ const skusQuery = graphql`
         gallery_images {
           localFile {
             childImageSharp {
-              fluid(maxWidth: 1500) {
-                ...GatsbyImageSharpFluid
-              }
+              gatsbyImageData(width: 1000
+              placeholder: BLURRED 
+              formats: [AUTO, WEBP, AVIF]
+              )
             }
           }
         }

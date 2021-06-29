@@ -42,9 +42,7 @@ const RightArrow = styled(Arrow)`
   margin-left: var(--spacing-6);
 `;
 
-const Photo = styled(GatsbyImage)`
-  
-`;
+
 interface PhotosProps {
   photos: any;
   title: string;
@@ -58,7 +56,7 @@ export const Photos = (props: PhotosProps) => {
   const photoReel = photos.map((photo, i) => {
     const image = getImage(photo.localFile);
     if (image) {
-      return <Photo image={image} alt={`a photo of ${title} book`} key={i} />;
+      return <GatsbyImage image={image} alt={`a photo of ${title} book`} key={i} />;
     } else return null;
   });
   useEffect(() => {

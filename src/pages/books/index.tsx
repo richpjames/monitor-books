@@ -28,17 +28,10 @@ const ProductsPage: FunctionComponent<PageProps> = ({ location }) => {
           author
           thumbnail
           publishedDate
-          gallery_images {
-            localFile {
-              childImageSharp {
-                gatsbyImageData
-              }
-            }
-          }
           thumbnail_image {
             localFile {
               childImageSharp {
-                gatsbyImageData(width: 300)
+                gatsbyImageData(width: 350)
               }
             }
           }
