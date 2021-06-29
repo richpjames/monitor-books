@@ -4,7 +4,6 @@ import styled from "styled-components/macro";
 import ReactMarkdown from "react-markdown";
 
 import { productMapper } from "../../api/mappers";
-import { sanitizeText } from "../../utils";
 
 import Layout from "../../Components/layout";
 import { AddToBasketButton, Photos } from "../../Components/Common";
