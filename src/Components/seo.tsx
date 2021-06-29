@@ -21,7 +21,7 @@ const SEO = ({
   meta: any[];
   title: string;
 }) => {
-  const { site } = useStaticQuery(
+  const { site, strapiFavicon } = useStaticQuery(
     graphql`
       query {
         site {
@@ -32,54 +32,65 @@ const SEO = ({
             }
           }
         }
+        strapiFavicon {
+	        image{
+            url
+          }
+        }
       }
     `
   );
 
   const metaDescription = description || site.siteMetadata.description;
   const defaultTitle = site.siteMetadata?.title;
-
+  const favicon = strapiFavicon.image?.url
   return (
     <Helmet
       htmlAttributes={{
         lang,
       }}
       title={title}
-      titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : undefined}
-      meta={[
+      titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : undefined} link={[
         {
-          name: `description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:title`,
-          content: title,
-        },
-        {
-          property: `og:description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-          name: `twitter:card`,
-          content: `summary`,
-        },
-        {
-          name: `twitter:creator`,
-          content: site.siteMetadata?.social?.twitter || ``,
-        },
-        {
-          name: `twitter:title`,
-          content: title,
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
-      ].concat(meta)}
+          rel: "icon",
+          href: favicon,
+        }]}
+      meta={
+        [
+          {
+            name: `description`,
+            content: metaDescription,
+          },
+          {
+            property: `og:title`,
+            content: title,
+          },
+          {
+            property: `og:description`,
+            content: metaDescription,
+          },
+          {
+            property: `og:type`,
+            content: `website`,
+          },
+          {
+            name: `twitter:card`,
+            content: `summary`,
+          },
+          {
+            name: `twitter:creator`,
+            content: site.siteMetadata?.social?.twitter || ``,
+          },
+          {
+            name: `twitter:title`,
+            content: title,
+          },
+          {
+            name: `twitter:description`,
+            content: metaDescription,
+          },
+        ].concat(meta)
+      }
     />
   );
 };

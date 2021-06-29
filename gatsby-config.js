@@ -51,6 +51,7 @@ module.exports = {
           "murmur-reading-series-description",
           "submissions",
           "basket-page",
+          "favicon",
         ],
       },
     },
