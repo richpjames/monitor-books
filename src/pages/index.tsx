@@ -15,7 +15,7 @@ const BoxWrapper = styled.div`
   width: 25%;
   @media only screen and (max-width: ${mobileBreakpoint}) {
     margin-top: -50px;
-    width: 85%;
+    width: 50%;
   }`;
 
 export const IntroPageWrapper = styled(PageWrapper)`
