@@ -14,7 +14,6 @@ const BoxWrapper = styled.div`
   margin-top: -100px;
   width: 25%;
   @media only screen and (max-width: ${mobileBreakpoint}) {
-    margin-top: -50px;
     width: 50%;
   }`;
 
