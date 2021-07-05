@@ -12,8 +12,9 @@ const navigateToBooks = () => navigate("/books/");
 
 const BoxWrapper = styled.div`
   margin-top: -100px;
-  width: 50%;
+  width: 25%;
   @media only screen and (max-width: ${mobileBreakpoint}) {
+    margin-top: -50px;
     width: 85%;
   }`;
 
@@ -29,7 +30,7 @@ const Home = () => {
     if (typeof window !== "undefined")
       (window as any).introTimer = setTimeout(() => {
         navigateToBooks();
-      }, introTimerMilliseconds);
+      }, 20000000);
   }, [])
 
   useSetBackground('product-background-colour');
