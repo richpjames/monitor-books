@@ -30,7 +30,7 @@ const Home = () => {
     if (typeof window !== "undefined")
       (window as any).introTimer = setTimeout(() => {
         navigateToBooks();
-      }, 20000000);
+      }, introTimerMilliseconds);
   }, [])
 
   useSetBackground('product-background-colour');
