@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components/macro";
 
 import "../css/app.css";
@@ -46,13 +46,7 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({
   children,
-  pathname,
 }) => {
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      clearTimeout((window as any).introTimer);
-    }
-  }, [pathname]);
 
   return (
     <PageWrapper>
