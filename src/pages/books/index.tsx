@@ -66,6 +66,7 @@ const ProductsPage: FC<PageProps> = ({ location }) => {
             id={`${slug}-photo`}
             image={image}
             alt={`a photo of the book ${lowercaseTitle} by ${author}`}
+            loading="eager"
           />
           <MetaInfoContainer index={index} width="40%">
             <ListItemTitle id={`${slug}-title`}>
