@@ -5,7 +5,7 @@ import { Link as GatsbyLink } from "gatsby";
 import { mobileBreakpoint } from "../../constants";
 
 import { CartContext } from "../../state/CartProvider";
-import useMediaQuery from "../../hooks/useMediaQuery";
+import { useIsMobile } from "../../hooks/useIsMobile";
 
 import { TextLogo } from "./TextLogo";
 import { Burger } from "../Common/Burger";
@@ -83,8 +83,7 @@ export const Header = () => {
   const { count } = useContext(CartContext);
   const [showMenu, setShowMenu] = useState(false);
   const [pathname, setPathname] = useState('');
-  const isMobile = useMediaQuery(`(max-width:${mobileBreakpoint})`);
-
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     if (typeof window !== "undefined") {
