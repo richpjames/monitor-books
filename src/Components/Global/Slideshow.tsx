@@ -1,9 +1,12 @@
 import React from "react";
 import styled from "styled-components/macro";
 
+
 import { mobileBreakpoint } from "../../constants";
+
 import { TextBoxLogo } from "./TextBoxLogo";
-import { useShowSlideshow } from "../../hooks/useShowSlideshow";
+import { EagerLoadWrapper } from "../../Components/Common/EagerLoadWrapper";
+
 
 const BoxWrapper = styled.div`
   margin-top: -100px;
@@ -12,7 +15,7 @@ const BoxWrapper = styled.div`
     width: 50%;
   }`;
 
-export const IntroPageWrapper = styled.div<{ show: boolean }>`
+export const IntroPageWrapper = styled.div`
  padding-top: var(--spacing-6);
   padding-left: var(--spacing-6);
   padding-right: var(--spacing-6);
@@ -33,12 +36,15 @@ export const IntroPageWrapper = styled.div<{ show: boolean }>`
   }
 `;
 
-export const Slideshow = () => {
-  const showSlideshow = useShowSlideshow()
+export const Slideshow: React.FC<{ show: React.Dispatch<React.SetStateAction<boolean>> }> = ({ children, show }) => {
 
-  return <IntroPageWrapper show={showSlideshow}>
-    <BoxWrapper >
-      <TextBoxLogo />
-    </BoxWrapper>
-  </IntroPageWrapper>
+  return <div onClick={() => show(false)}>
+    <EagerLoadWrapper>{children}</EagerLoadWrapper>
+    <IntroPageWrapper >
+      <BoxWrapper >
+        <TextBoxLogo />
+      </BoxWrapper>
+    </IntroPageWrapper>
+  </div>
+
 }

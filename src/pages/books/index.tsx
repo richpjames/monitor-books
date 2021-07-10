@@ -11,7 +11,6 @@ import {
   ItemType,
   ListItemLink
 } from "../../Components/Common";
-import { EagerLoadWrapper } from "../../Components/Common/EagerLoadWrapper";
 import Layout from "../../Components/layout";
 import { productMapper } from "../../api/mappers";
 import SEO from "../../Components/seo";
@@ -22,7 +21,7 @@ import { useIsMobile } from "../../hooks/useIsMobile";
 
 
 const ProductsPage: FC<PageProps> = ({ location }) => {
-  const showSlideshow = useShowSlideshow();
+  const [showSlideshow, setShowSlideshow] = useShowSlideshow();
   const isMobile = useIsMobile();
   const {
     allStrapiBooks,
@@ -91,7 +90,9 @@ const ProductsPage: FC<PageProps> = ({ location }) => {
 
   return (
     <>
-      {showSlideshow && <><Slideshow /><EagerLoadWrapper>{eagerLoadedBooks}</EagerLoadWrapper></>}
+      {showSlideshow && (
+        <Slideshow show={setShowSlideshow}>{eagerLoadedBooks}</Slideshow>
+      )}
 
       <Layout
         pathname={location.pathname}

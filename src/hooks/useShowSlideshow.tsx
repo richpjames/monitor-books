@@ -1,7 +1,7 @@
 import { useState, useLayoutEffect } from "react";
 import { introTimerMilliseconds } from "../constants";
 
-export const useShowSlideshow = () => {
+export const useShowSlideshow: () => [boolean, React.Dispatch<React.SetStateAction<boolean>>] = () => {
     const [showSlideshow, setShowSlideshow] = useState(true)
 
     useLayoutEffect(() => {
@@ -10,5 +10,5 @@ export const useShowSlideshow = () => {
         }, introTimerMilliseconds);
     }, [])
 
-    return showSlideshow
+    return [showSlideshow, setShowSlideshow]
 }
