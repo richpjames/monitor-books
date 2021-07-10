@@ -16,3 +16,11 @@ exports.createSchemaCustomization = ({ actions }) => {
   
      `);
 };
+exports.createPages = ({ actions }) => {
+  const { createRedirect } = actions;
+  createRedirect({
+    fromPath: "/",
+    toPath: "/books",
+    redirectInBrowser: true,
+  });
+};
