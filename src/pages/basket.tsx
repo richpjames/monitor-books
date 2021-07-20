@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from "react";
+import React from "react";
 import { PageProps } from "gatsby";
 
 import Layout from "../Components/layout";
@@ -8,10 +8,7 @@ import SEO from "../Components/seo";
 import { useSetBackground } from "../hooks/useSetBackground";
 
 const Basket: React.FC<PageProps> = ({ location }) => {
-
-
   useSetBackground('basket-background-colour')
-
 
   return (
     <Layout
