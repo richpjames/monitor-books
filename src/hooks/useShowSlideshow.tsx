@@ -1,15 +1,15 @@
-import { useState, useLayoutEffect } from "react";
+import { useState, useEffect } from "react";
 import { introTimerMilliseconds } from "../constants";
 
 export const useShowSlideshow: () => [boolean, React.Dispatch<React.SetStateAction<boolean>>] = () => {
-    const [showSlideshow, setShowSlideshow] = useState(false)
+    const [showSlideshow, setShowSlideshow] = useState(true)
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         if (typeof window !== 'undefined') {
             if (!window.localStorage.getItem('isFirstVisit')) {
-                console.log('no localstorage')
-                setShowSlideshow(true)
                 window.localStorage.setItem('isFirstVisit', 'true')
+            } else {
+                setShowSlideshow(false)
             }
             const slideshowTimer = setTimeout(() => {
                 console.log('timer has been set')
