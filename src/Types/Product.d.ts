@@ -7,8 +7,8 @@ interface Product {
   price: number;
   publishedDate: Date;
   yearPublished: number;
-  galleryImages: StrapiGatsbyImage[];
-  thumbnail: any;
+  galleryImages: ImageDataLike[];
+  thumbnail: ImageDataLike;
   id: string;
   slug: string;
   inventory: number;
@@ -23,7 +23,7 @@ interface ApiProduct {
   published_at: string;
   created_at: string;
   updated_at: string;
-  gallery_images: StrapiGatsbyImage[];
+  gallery_images: { localfile: StrapiGatsbyImage }[];
   thumbnail_image: StrapiGatsbyImage;
   title: string;
   author: string;

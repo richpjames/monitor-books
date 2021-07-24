@@ -16,7 +16,9 @@ export const productMapper = (product: ApiProduct): Product => {
     thumbnail_image,
   } = product;
   const thumbnail = thumbnail_image?.localFile;
-  const galleryImages = gallery_images;
+  const galleryImages = gallery_images.map(
+    (galleryImage) => galleryImage.localfile
+  );
   const publishedDateObj = new Date(publishedDate);
   const yearPublished = publishedDateObj.getFullYear();
   return {

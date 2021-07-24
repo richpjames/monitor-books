@@ -13,11 +13,11 @@ const ContentWrapper = styled.div`
   }
 `;
 
-const NotFound: React.FC<PageProps> = ({ location }) => {
+const NotFound: React.FC<PageProps> = () => {
   useSetBackground("product-background-colour");
-  
+
   return (
-    <Layout pathname={location.pathname}>
+    <Layout>
       <SEO
         title="404 Page"
         description="Sorry, we couldn't find the page you're looking for"

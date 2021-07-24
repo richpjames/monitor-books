@@ -113,7 +113,7 @@ interface ProductPageProps extends PageProps {
   data: { strapiBooks: ApiProduct };
 }
 
-const ProductPage: React.FC<ProductPageProps> = ({ data, location }) => {
+const ProductPage: React.FC<ProductPageProps> = ({ data }) => {
   useSetBackground('product-background-colour')
   const product: Product = productMapper(data.strapiBooks);
   const {
@@ -128,9 +128,7 @@ const ProductPage: React.FC<ProductPageProps> = ({ data, location }) => {
 
 
   return (
-    <Layout
-      pathname={location.pathname}
-    >
+    <Layout>
       <SEO title={`${title} by ${author}`} description={blurb1} />
       <Container>
         <Photos photos={galleryImages} title={title} />

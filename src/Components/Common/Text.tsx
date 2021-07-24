@@ -14,6 +14,7 @@ const LeftSection = styled.section`
     width: 100%;
   }
 `;
+
 const RightSection = styled(LeftSection) <{ photoExists: boolean }>`
   padding-left: 9%;
   padding-bottom: 0;
@@ -44,17 +45,6 @@ const TextWrapper = styled.section`
     margin-bottom: var(--spacing-6);
   }
 `;
-
-const PhotoWrapper = styled.div`
-display: none;
-padding: 0;
-@media only screen and (max-width: ${mobileBreakpoint}) {
-  display:block;
-  padding: var(--spacing-7) 0;
-}
-`
-
-
 
 interface Props {
   leftText: string;
