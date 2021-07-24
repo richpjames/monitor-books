@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from "react";
+import React from "react";
 import styled from "styled-components/macro";
 import { graphql, PageProps } from "gatsby";
 import { videoMapper } from "../../api/mappers";
@@ -39,7 +39,7 @@ interface VideoPageProps extends PageProps {
   };
 }
 
-const VideoPage: React.FC<VideoPageProps> = ({ data, location }) => {
+const VideoPage: React.FC<VideoPageProps> = ({ data }) => {
   useSetBackground('video-background-colour');
 
   const video = videoMapper(data.strapiVideos);
@@ -48,9 +48,7 @@ const VideoPage: React.FC<VideoPageProps> = ({ data, location }) => {
 
   const { title, url, artistNames, blurb1, blurb2 } = video;
   return (
-    <VideoPageWrapper
-      pathname={location.pathname}
-    >
+    <VideoPageWrapper>
       <SEO
         title={`${title} featuring ${artistNames.join(" ")}`}
         description={readingSeriesDescription}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components/macro";
 
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { GatsbyImage, getImage, ImageDataLike } from "gatsby-plugin-image";
 import { mobileBreakpoint } from "../../constants";
 
 const PhotoWrap = styled.section`
@@ -44,7 +44,7 @@ const RightArrow = styled(Arrow)`
 
 
 interface PhotosProps {
-  photos: any;
+  photos: ImageDataLike[];
   title: string;
 }
 
@@ -54,7 +54,7 @@ export const Photos = (props: PhotosProps) => {
   const timer = useRef<NodeJS.Timeout | null>(null);
 
   const photoReel = photos.map((photo, i) => {
-    const image = getImage(photo.localFile);
+    const image = getImage(photo);
     if (image) {
       return <GatsbyImage image={image} alt={`a photo of ${title} book`} key={i} />;
     } else return null;

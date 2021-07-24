@@ -18,7 +18,7 @@ const SubmissionsText = styled.section`
   padding-top: var(--spacing-5);
 ;`;
 
-const About: React.FC<PageProps> = ({ location }) => {
+const About: React.FC<PageProps> = () => {
   const { strapiAboutPage, strapiSubmissions } = useStaticQuery(graphql`
     query AboutPageQuery {
       strapiAboutPage {
@@ -34,7 +34,7 @@ const About: React.FC<PageProps> = ({ location }) => {
   useSetBackground('about-background-colour')
 
   return (
-    <Layout pathname={location.pathname}>
+    <Layout>
       <SEO title="About" description="About Monitor Books" />
       <TextWrap>
         <ReactMarkdown children={Description} />
