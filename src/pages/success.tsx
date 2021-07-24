@@ -1,10 +1,12 @@
 import React from "react";
 import { PageProps } from "gatsby";
 import Layout from "../Components/layout";
+import { useSetBackground } from "../hooks/useSetBackground";
 
-const Success: React.FC<PageProps> = ({ location }) => {
+const Success: React.FC<PageProps> = () => {
+  useSetBackground('basket-background-colour')
   return (
-    <Layout pathname={location.pathname} backgroundColour="yellow">
+    <Layout>
       <h1>Order Successful</h1>
       <p>
         Everything went through ok.

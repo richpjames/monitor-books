@@ -41,11 +41,10 @@ export const IntroPageWrapper = styled(PageWrapper)`
 
 interface LayoutProps {
   children: any;
-  pathname: string;
 }
 
 const Layout: React.FC<LayoutProps> = ({
-  children,
+  children
 }) => {
 
   return (
