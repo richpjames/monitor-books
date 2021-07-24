@@ -4,11 +4,11 @@
   functions = "functions/"
 
 [context.production]
-  command = "SENTRY_LOG_LEVEL=debug  yarn buildProd"
+  command = "yarn buildProd"
   environment = { NODE_ENV = "production", GATSBY_ENV = "production"}
 
 [context.branch-deploy]
-  command = "yarn buildProd"
+  command = "SENTRY_LOG_LEVEL=debug yarn buildProd"
   publish = "public/"
   environment = { NODE_ENV = "production", GATSBY_ENV = "production"}
 
