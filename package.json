@@ -40,7 +40,6 @@
   },
   "scripts": {
     "start": "gatsby develop",
-    "test": "react-scripts test",
     "buildDev": "NODE_ENV=development gatsby build",
     "buildProd": "NODE_ENV=production gatsby build",
     "functions": "cd functions && npm i && cd ..",
