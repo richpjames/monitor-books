@@ -30,15 +30,3 @@ jobs:
         run: yarn install
       - name: run e2e tests
         run: yarn ci
-
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses:
-          actions/checkout@v2
-          # does an install
-      - name: Run install
-        run: yarn install
-
-      - name: Run buildProd
-        run: yarn run buildProd
