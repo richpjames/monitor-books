@@ -34,7 +34,7 @@ interface ApiSinglePageProduct {
   published_at: string;
   created_at: string;
   updated_at: string;
-  gallery_images: { localfile: StrapiGatsbyImage }[];
+  gallery_images: { localFile: StrapiGatsbyImage }[];
   thumbnail_image: StrapiGatsbyImage;
   title: string;
   author: string;
