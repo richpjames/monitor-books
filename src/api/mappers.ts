@@ -29,7 +29,7 @@ export const singleProductPageMapper = (
     gallery_images,
   } = product;
   const galleryImages = gallery_images.map(
-    (galleryImage) => galleryImage.localfile
+    (galleryImage) => galleryImage.localFile
   );
   const publishedDateObj = new Date(publishedDate);
   return {
