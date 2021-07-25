@@ -12,7 +12,7 @@ import {
   ListItemLink
 } from "../../Components/Common";
 import Layout from "../../Components/layout";
-import { productMapper } from "../../api/mappers";
+import { productListPageMapper } from "../../api/mappers";
 import SEO from "../../Components/seo";
 import { useSetBackground } from "../../hooks/useSetBackground";
 import { Slideshow } from "../../Components/Global/Slideshow";
@@ -25,14 +25,13 @@ const ProductsPage: FC<PageProps> = () => {
   const isMobile = useIsMobile();
   const {
     allStrapiBooks,
-  }: { allStrapiBooks: { nodes: ApiProduct[] } } = useStaticQuery(graphql`
+  }: { allStrapiBooks: { nodes: ApiListPageProduct[] } } = useStaticQuery(graphql`
   query {
     allStrapiBooks(sort: {order: DESC, fields: publishedDate}) {
       nodes {
         slug
         title
         author
-        thumbnail
         publishedDate
         thumbnail_image {
           localFile {
@@ -48,7 +47,7 @@ const ProductsPage: FC<PageProps> = () => {
 
 
   const books = allStrapiBooks.nodes.map((book, index) => {
-    const mappedBook = productMapper(book);
+    const mappedBook = productListPageMapper(book);
     const { title, slug, thumbnail, author, yearPublished } = mappedBook;
     const image = getImage(thumbnail);
 

@@ -1,41 +1,69 @@
-export const productMapper = (product: ApiProduct): Product => {
-  const {
-    title,
-    author,
-    images,
-    blurb1,
-    blurb2,
-    publishedDate,
-    slug,
-    id,
-    inventory,
-    devPriceId,
-    prodPriceId,
-    price,
-    gallery_images,
-    thumbnail_image,
-  } = product;
+export const productListPageMapper = (
+  product: ApiListPageProduct
+): ListPageProduct => {
+  const { title, author, publishedDate, slug, thumbnail_image } = product;
   const thumbnail = thumbnail_image?.localFile;
-  const galleryImages = gallery_images.map(
-    (galleryImage) => galleryImage.localfile
-  );
+
   const publishedDateObj = new Date(publishedDate);
   const yearPublished = publishedDateObj.getFullYear();
   return {
     title,
     author,
     slug,
-    price,
-    inventory,
     thumbnail,
+    yearPublished,
+  };
+};
+
+export const singleProductPageMapper = (
+  product: ApiSinglePageProduct
+): SinglePageProduct => {
+  const {
+    title,
+    author,
+    blurb1,
+    blurb2,
+    publishedDate,
+    devPriceId,
+    prodPriceId,
+    gallery_images,
+  } = product;
+  const galleryImages = gallery_images.map(
+    (galleryImage) => galleryImage.localfile
+  );
+  const publishedDateObj = new Date(publishedDate);
+  return {
+    title,
+    author,
     galleryImages,
     blurb1,
     blurb2,
-    id: `${id}`,
     publishedDate: publishedDateObj,
-    yearPublished,
     priceId: process.env.NODE_ENV === "development" ? devPriceId : prodPriceId,
-    photos: images?.fullSize,
+  };
+};
+
+export const basketProductMapper = (product: ApiFullProduct): BasketProduct => {
+  const {
+    author,
+    title,
+    price,
+    thumbnail,
+    id,
+    inventory,
+    slug,
+    devPriceId,
+    prodPriceId,
+  } = product;
+  return {
+    author,
+    title,
+    price,
+    thumbnail,
+    inventory,
+    slug,
+    id: `${id}`,
+    priceId: process.env.NODE_ENV === "development" ? devPriceId : prodPriceId,
   };
 };
 
