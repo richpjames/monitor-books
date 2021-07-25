@@ -28,5 +28,7 @@ jobs:
           # does an install
       - name: Run install
         run: yarn install
+      - name: run typecheck
+        run: yarn run typecheck
       - name: run e2e tests
         run: yarn ci
