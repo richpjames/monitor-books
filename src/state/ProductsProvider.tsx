@@ -1,15 +1,15 @@
 import React, { createContext, ReactNode } from "react";
 import { useStaticQuery, graphql } from "gatsby";
-import { productMapper } from "../api/mappers";
+import { basketProductMapper } from "../api/mappers";
 
 export const ProductsContext = createContext<Partial<{ skus: Skus }>>({});
-type skusQuery = { allStrapiBooks: { nodes: ApiProduct[] } };
+type SkusQuery = { allStrapiBooks: { nodes: ApiFullProduct[] } };
 
 /**
  * Wrapper to give Provider access to Sku nodes from Gatsby's GraphQL store.
  */
 const ProductsProvider = ({ children }: { children: ReactNode }) => {
-  const data: skusQuery = useStaticQuery(skusQuery);
+  const data: SkusQuery = useStaticQuery(skusQuery);
   return <Provider data={data}>{children}</Provider>;
 };
 
@@ -23,7 +23,7 @@ const Provider = ({
   children,
 }: {
   children: ReactNode;
-  data: { allStrapiBooks: { nodes: ApiProduct[] } };
+  data: SkusQuery;
 }) => {
   // Load product data from Gatsby store
   const skus = processGatsbyData(data);
@@ -40,11 +40,11 @@ const Provider = ({
 };
 
 /** Normalize structure of data sourced from Gatsby's GraphQL store */
-const processGatsbyData = (data: skusQuery) => {
-  const skus: { [index: string]: Product } = {};
+const processGatsbyData = (data: SkusQuery) => {
+  const skus: { [index: string]: BasketProduct } = {};
   // Sku nodes are grouped by product
   data.allStrapiBooks.nodes.forEach((book) => {
-    const mappedBook = productMapper(book);
+    const mappedBook = basketProductMapper(book);
     const sku = mappedBook.priceId;
     skus[sku] = mappedBook;
   });

@@ -3,7 +3,7 @@ import { graphql, PageProps } from "gatsby";
 import styled from "styled-components/macro";
 import ReactMarkdown from "react-markdown";
 
-import { productMapper } from "../../api/mappers";
+import { singleProductPageMapper } from "../../api/mappers";
 
 import Layout from "../../Components/layout";
 import { AddToBasketButton, Photos } from "../../Components/Common";
@@ -110,12 +110,12 @@ const TextWrapper = styled.section`
 
 
 interface ProductPageProps extends PageProps {
-  data: { strapiBooks: ApiProduct };
+  data: { strapiBooks: ApiSinglePageProduct };
 }
 
 const ProductPage: React.FC<ProductPageProps> = ({ data }) => {
   useSetBackground('product-background-colour')
-  const product: Product = productMapper(data.strapiBooks);
+  const product: SinglePageProduct = singleProductPageMapper(data.strapiBooks);
   const {
     title,
     author,
