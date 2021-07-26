@@ -23,14 +23,14 @@ jobs:
   e2e_tests:
     runs-on: ubuntu-latest
     steps:
-      - uses:
-          actions/checkout@v2
-          # does an install
+      - uses: actions/checkout@v2
       - name: Run install
         run: yarn install
       - name: run typecheck
         run: yarn run typecheck
-      - name: set percy token
-        run: export PERCY_TOKEN=${{ secrets.PERCY_TOKEN }}
-      - name: run e2e tests
-        run: yarn ci
+      - name: percy test
+        uses: percy/exec-action@v0.3.1
+        with:
+          command: "yarn ci"
+        env:
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
