@@ -1,11 +1,10 @@
-
 describe("Product Page", () => {
   beforeEach(() =>
-    cy.fixture("initialisedState").then((initialisedState) =>
-      cy.visit("/books/anthology")
-    )
+    cy
+      .fixture("initialisedState")
+      .then((initialisedState) => cy.visit("/books/anthology"))
   );
-  
+
   it("test correct information is shown for product", () => {
     cy.url()
       .should("include", "/anthology")
@@ -18,7 +17,8 @@ describe("Product Page", () => {
         "Monitor Books is proud to present: Murmur Anthology #1. Featuring new"
       )
       .get(".right-section")
-      .contains("Designed by Joe Haigh at Chaosmos");
+      .contains("Designed by Joe Haigh at Chaosmos")
+      .percySnapshot();
   });
 
   it("Clicking on Add to basket button adds item to basket", () => {
@@ -28,7 +28,6 @@ describe("Product Page", () => {
       .get("#header-basket-items")
       .contains("1");
   });
-
 
   //test images
 });

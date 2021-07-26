@@ -4,6 +4,7 @@ const testSlideshowShows = () =>
   cy
     .visit(Cypress.config().baseUrl)
     .wait(introTimerMilliseconds)
+    .percySnapshot()
     .url()
     .should("includes", "/books");
 

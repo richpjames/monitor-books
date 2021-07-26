@@ -17,7 +17,8 @@ describe("Product List Page", () => {
       .get("#anthology-subtitle")
       .contains("Various")
       .get('[alt="a photo of the book murmur anthology #1 by Various"]')
-      .should("be.visible");
+      .should("be.visible")
+      .percySnapshot();
   });
   it("clicking on a book takes the user to the correct page", () => {
     cy.wait(5000)
