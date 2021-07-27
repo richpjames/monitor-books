@@ -51,6 +51,9 @@ const Container = styled.div`
   padding-bottom: var(--spacing-6);
   border-top: var(--line-thickness) solid var(--main-text-colour);
   border-bottom: var(--line-thickness) solid var(--main-text-colour);
+  > h1 {
+    padding-bottom: 0;
+  }
   @media only screen and (max-width: ${mobileBreakpoint}) {
     border-bottom: none;
     border-top: none;
