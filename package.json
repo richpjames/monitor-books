@@ -12,7 +12,7 @@
     "dev": "netlify dev",
     "typecheck": "./node_modules/typescript/bin/tsc --noEmit --skipLibCheck",
     "ci-unit-tests": "react-scripts test --watchAll=false --env=jest-environment-jsdom-sixteen",
-    "cypress": "npx cypress run --record --key f21a23f6-c018-4a0e-94ba-00b643cd0256",
+    "cypress": "npx cypress run",
     "ci": "start-server-and-test dev http://localhost:8000 cypress",
     "eject": "react-scripts eject"
   },
