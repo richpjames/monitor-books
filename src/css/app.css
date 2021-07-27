@@ -29,14 +29,14 @@ nav {
 h1 {
   font-size: var(--font-title-large);
   margin: 0;
-  padding: var(--spacing-5) 0 0 0;
+  padding: var(--spacing-5) 0 var(--spacing-5) 0;
   font-style: italic;
   line-height: var(--spacing-5);
 }
 
 h2 {
   font-size: var(--font-title-medium);
-  padding: var(--spacing-1) 0 calc(var(--spacing-3) * var(--small)) 0;
+  padding: var(--spacing-1) 0 var(--spacing-3) 0;
 }
 
 h3 {
