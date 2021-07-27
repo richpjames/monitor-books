@@ -12,7 +12,7 @@ import {
   ListItemLink
 } from "../../Components/Common";
 import Layout from "../../Components/layout";
-import { productMapper } from "../../api/mappers";
+import { productListPageMapper } from "../../api/mappers";
 import SEO from "../../Components/seo";
 import { useSetBackground } from "../../hooks/useSetBackground";
 import { Slideshow } from "../../Components/Global/Slideshow";
@@ -20,35 +20,34 @@ import { useShowSlideshow } from "../../hooks/useShowSlideshow";
 import { useIsMobile } from "../../hooks/useIsMobile";
 
 
-const ProductsPage: FC<PageProps> = ({ location }) => {
+const ProductsPage: FC<PageProps> = () => {
   const [showSlideshow, setShowSlideshow] = useShowSlideshow();
   const isMobile = useIsMobile();
   const {
     allStrapiBooks,
-  }: { allStrapiBooks: { nodes: ApiProduct[] } } = useStaticQuery(graphql`
- query {
-  allStrapiBooks(sort: {order: DESC, fields: publishedDate}) {
-    nodes {
-      slug
-      title
-      author
-      thumbnail
-      publishedDate
-      thumbnail_image {
-        localFile {
-          childImageSharp {
-            gatsbyImageData(width: 350)
+  }: { allStrapiBooks: { nodes: ApiListPageProduct[] } } = useStaticQuery(graphql`
+  query {
+    allStrapiBooks(sort: {order: DESC, fields: publishedDate}) {
+      nodes {
+        slug
+        title
+        author
+        publishedDate
+        thumbnail_image {
+          localFile {
+            childImageSharp {
+              gatsbyImageData(width: 350)
+              }
+            }
           }
         }
       }
     }
-  }
-}
   `);
 
 
   const books = allStrapiBooks.nodes.map((book, index) => {
-    const mappedBook = productMapper(book);
+    const mappedBook = productListPageMapper(book);
     const { title, slug, thumbnail, author, yearPublished } = mappedBook;
     const image = getImage(thumbnail);
 
@@ -61,12 +60,12 @@ const ProductsPage: FC<PageProps> = ({ location }) => {
     return (
       <ListItemLink to={slug} key={slug}>
         <ListItemWrap id={`${slug}-container`}>
-          <GatsbyImage
+          {image && <GatsbyImage
             id={`${slug}-photo`}
             image={image}
             alt={`a photo of the book ${lowercaseTitle} by ${author}`}
             loading="eager"
-          />
+          />}
           <MetaInfoContainer index={index} width="40%">
             <ListItemTitle id={`${slug}-title`}>
               {titleCaseTitle}
@@ -94,9 +93,7 @@ const ProductsPage: FC<PageProps> = ({ location }) => {
         <Slideshow show={setShowSlideshow}>{eagerLoadedBooks}</Slideshow>
       )}
 
-      <Layout
-        pathname={location.pathname}
-      >
+      <Layout>
         <SEO title="Books" description="Publications from Monitor books" />
         <ListWrap>
           {!showSlideshow && books}

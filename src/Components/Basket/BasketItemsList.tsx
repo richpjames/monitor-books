@@ -37,8 +37,6 @@ export const BasketItemsList = () => {
       cartItem[0]
     ];
 
-
-
     return (
       <BasketListItem
         title={author}

@@ -6,7 +6,7 @@ describe("Basket", () => {
   );
 
   it("shows empty basket message", () => {
-    cy.get("#empty-basket-message").contains("Your basket is empty");
+    cy.get("#empty-basket-message");
   });
 
   it("correct items are shown in basket", () => {
@@ -18,7 +18,8 @@ describe("Basket", () => {
       .get("#anthology-quantity-panel")
       .get("#anthology-price")
       .contains("£10")
-      .contains("1");
+      .contains("1")
+      .percySnapshot();
   });
 
   it("increasing quantity of a book increases the price accordingly", () => {
@@ -28,7 +29,8 @@ describe("Basket", () => {
       .get("#anthology-increase-quantity-button")
       .click()
       .get("#basket-total")
-      .contains("£22");
+      .contains("£22")
+      .percySnapshot();
   });
 
   it("decreasing quantity of a book increases the price accordingly", () => {
@@ -38,7 +40,8 @@ describe("Basket", () => {
       .get("#anthology-decrease-quantity-button")
       .click()
       .get("#basket-total")
-      .contains("£2.50");
+      .contains("£2.50")
+      .percySnapshot();
   });
 
   it("test that when quantity is 0 decreasing is disabled and quantity is 0", () => {
@@ -74,11 +77,17 @@ describe("Basket", () => {
       .get("#shipping-cost")
       .contains("£2.50")
       .get("#basket-total")
-      .contains("£12.50");
+      .contains("£12.50")
+      .percySnapshot();
   });
 
+  // doesnt work as takes user to cypress page
   // it.only("test checkout button takes user to stripe", () => {
-  //   dispatch(addToBasket("9T65B28LLM2MC"));
-  //   cy.get("#checkout-button").click().wait(5000).url();
+  //   cy.window().its("ctx").invoke("add", "price_1HdckTJs9ciiqN7O218PIefo");
+  //   cy.get("#checkout-button")
+  //     .click()
+  //     .wait(5000)
+  //     .url()
+  //     .should("include", "stripe");
   // });
 });

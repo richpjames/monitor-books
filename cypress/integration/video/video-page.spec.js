@@ -1,9 +1,10 @@
-
 describe("Video Page", () => {
   beforeEach(() =>
-    cy.fixture("initialisedState").then((initialisedState) =>
-      cy.visit("/murmur-reading-series/episode-two")
-    )
+    cy
+      .fixture("initialisedState")
+      .then((initialisedState) =>
+        cy.visit("/murmur-reading-series/episode-two")
+      )
   );
   it("test correct information is shown for product", () => {
     cy.get("h1")
@@ -11,7 +12,8 @@ describe("Video Page", () => {
       .get(".left-section")
       .contains("Originally a programme of occasional live events")
       .get(".right-section")
-      .contains("Nisha Ramayya grew up in Glasgow and is based in London.");
+      .contains("Nisha Ramayya grew up in Glasgow and is based in London.")
+      .percySnapshot();
   });
 
   //test video is shown

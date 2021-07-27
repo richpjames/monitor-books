@@ -105,7 +105,7 @@ const BasketListItem = ({
   const basketItemLabel = slug.toLowerCase();
   return (
     <BasketListItemContainerWrap index={index} id={`${slug}-basket-item`}>
-      <Image image={image} alt={`thumbnail image of ${title}`} />
+      {image && <Image image={image} alt={`thumbnail image of ${title}`} />}
       <BasketMetaInfoContainer>
         <h4 id={`${basketItemLabel}-subtitle`}>
           {subtitle}

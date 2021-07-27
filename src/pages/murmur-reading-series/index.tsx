@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from "react";
+import React from "react";
 import { useStaticQuery, graphql, PageProps } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
@@ -16,7 +16,7 @@ import SEO from "../../Components/seo";
 import { videoMapper } from "../../api/mappers";
 import { useSetBackground } from "../../hooks/useSetBackground";
 
-const VideosPage: React.FC<PageProps> = ({ location }) => {
+const VideosPage: React.FC<PageProps> = () => {
   const {
     allStrapiVideos,
     strapiMurmurReadingSeriesDescription,
@@ -59,7 +59,6 @@ const VideosPage: React.FC<PageProps> = ({ location }) => {
   useSetBackground('video-background-colour');
   return (
     <Layout
-      pathname={location.pathname}
     >
       <SEO
         title="Murmur Reading Series"
@@ -78,11 +77,11 @@ const VideosPage: React.FC<PageProps> = ({ location }) => {
               id={`${slug}-video-list-container`}
             >
               <ListItemWrap>
-                <GatsbyImage
+                {image && <GatsbyImage
                   image={image}
                   alt={`thumbnail image for ${title} video`}
                   loading="eager"
-                />
+                />}
                 <MetaInfoContainer
                   index={index}
                   width="40%"

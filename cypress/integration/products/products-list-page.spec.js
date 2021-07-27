@@ -5,9 +5,6 @@ describe("Product List Page", () => {
     );
   });
 
-  // check the login page with fluent api, see more info here
-  // https://applitools.com/docs/topics/sdk/the-eyes-sdk-check-fluent-api.html
-
   it("shows all the books", () => {
     cy.get("#propositions-title")
       .contains("Propositions")
@@ -20,12 +17,14 @@ describe("Product List Page", () => {
       .get("#anthology-subtitle")
       .contains("Various")
       .get('[alt="a photo of the book murmur anthology #1 by Various"]')
-      .should("be.visible");
+      .should("be.visible")
+      .percySnapshot();
   });
   it("clicking on a book takes the user to the correct page", () => {
-    cy.get("#propositions-container")
+    cy.wait(5000)
+      .get("#propositions-container")
       .click()
       .url()
-      .should("eq", "http://localhost:8000/books/propositions");
+      .should("eq", `${Cypress.config().baseUrl}/books/propositions`);
   });
 });

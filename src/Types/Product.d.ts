@@ -1,22 +1,56 @@
-interface Product {
+interface ListPageProduct {
   title: string;
   author: string;
-  photos: string[];
+  yearPublished: number;
+  thumbnail: ImageDataLike;
+  slug: string;
+}
+
+interface SinglePageProduct {
+  title: string;
+  author: string;
   blurb1: string;
   blurb2: string;
-  price: number;
   publishedDate: Date;
-  yearPublished: number;
-  galleryImages: StrapiGatsbyImage[];
-  thumbnail: any;
-  id: string;
-  slug: string;
-  inventory: number;
-  thumbnail: string;
+  galleryImages: ImageDataLike[];
   priceId: string;
 }
 
-interface ApiProduct {
+interface BasketProduct {
+  thumbnail: ImageDataLike;
+  title: string;
+  author: string;
+  slug: string;
+  price: number;
+  inventory: number;
+  id: string;
+  priceId: string;
+}
+
+interface ApiSinglePageProduct {
+  id: number;
+  blurb1: string;
+  blurb2: string;
+  published_at: string;
+  created_at: string;
+  updated_at: string;
+  gallery_images: { localFile: StrapiGatsbyImage }[];
+  thumbnail_image: StrapiGatsbyImage;
+  title: string;
+  author: string;
+  publishedDate: string;
+  slug: string;
+  inventory: number;
+  devPriceId: string;
+  prodPriceId: string;
+  thumbnail: string;
+  price: number;
+  images: {
+    fullSize: string[];
+  };
+}
+
+interface ApiFullProduct {
   id: number;
   blurb1: string;
   blurb2: string;
@@ -38,6 +72,16 @@ interface ApiProduct {
     fullSize: string[];
   };
 }
+
+interface ApiListPageProduct {
+  thumbnail_image: StrapiGatsbyImage;
+  title: string;
+  author: string;
+  publishedDate: string;
+  slug: string;
+  price: number;
+}
+
 interface ProductQuantityById {
   [index: string]: number;
 }

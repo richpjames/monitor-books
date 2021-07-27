@@ -23,22 +23,20 @@ jobs:
   e2e_tests:
     runs-on: ubuntu-latest
     steps:
-      - uses:
-          actions/checkout@v2
-          # does an install
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
       - name: Run install
         run: yarn install
-      - name: run e2e tests
-        run: yarn ci
-
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses:
-          actions/checkout@v2
-          # does an install
-      - name: Run install
-        run: yarn install
-
-      - name: Run buildProd
-        run: yarn run buildProd
+      - name: run typecheck
+        run: yarn run typecheck
+      - name: cypress & percy test
+        uses: percy/exec-action@v0.3.1
+        with:
+          command: "yarn ci"
+        env:
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}

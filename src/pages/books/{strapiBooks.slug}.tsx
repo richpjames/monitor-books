@@ -3,7 +3,7 @@ import { graphql, PageProps } from "gatsby";
 import styled from "styled-components/macro";
 import ReactMarkdown from "react-markdown";
 
-import { productMapper } from "../../api/mappers";
+import { singleProductPageMapper } from "../../api/mappers";
 
 import Layout from "../../Components/layout";
 import { AddToBasketButton, Photos } from "../../Components/Common";
@@ -51,6 +51,9 @@ const Container = styled.div`
   padding-bottom: var(--spacing-6);
   border-top: var(--line-thickness) solid var(--main-text-colour);
   border-bottom: var(--line-thickness) solid var(--main-text-colour);
+  > h1 {
+    padding-bottom: 0;
+  }
   @media only screen and (max-width: ${mobileBreakpoint}) {
     border-bottom: none;
     border-top: none;
@@ -110,12 +113,12 @@ const TextWrapper = styled.section`
 
 
 interface ProductPageProps extends PageProps {
-  data: { strapiBooks: ApiProduct };
+  data: { strapiBooks: ApiSinglePageProduct };
 }
 
-const ProductPage: React.FC<ProductPageProps> = ({ data, location }) => {
+const ProductPage: React.FC<ProductPageProps> = ({ data }) => {
   useSetBackground('product-background-colour')
-  const product: Product = productMapper(data.strapiBooks);
+  const product: SinglePageProduct = singleProductPageMapper(data.strapiBooks);
   const {
     title,
     author,
@@ -128,9 +131,7 @@ const ProductPage: React.FC<ProductPageProps> = ({ data, location }) => {
 
 
   return (
-    <Layout
-      pathname={location.pathname}
-    >
+    <Layout>
       <SEO title={`${title} by ${author}`} description={blurb1} />
       <Container>
         <Photos photos={galleryImages} title={title} />
