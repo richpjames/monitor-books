@@ -34,7 +34,7 @@ jobs:
         run: yarn install
       - name: run typecheck
         run: yarn run typecheck
-      - name: percy test
+      - name: cypress & percy test
         uses: percy/exec-action@v0.3.1
         with:
           command: "yarn ci"

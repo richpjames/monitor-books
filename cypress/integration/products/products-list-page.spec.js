@@ -25,6 +25,6 @@ describe("Product List Page", () => {
       .get("#propositions-container")
       .click()
       .url()
-      .should("eq", "http://localhost:8000/books/propositions");
+      .should("eq", `${Cypress.config().baseUrl}/books/propositions`);
   });
 });
