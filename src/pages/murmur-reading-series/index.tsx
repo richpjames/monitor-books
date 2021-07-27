@@ -28,7 +28,7 @@ const VideosPage: React.FC<PageProps> = () => {
       imageFile: File
     }
     query {
-      allStrapiVideos {
+      allStrapiVideos(sort: {order: DESC, fields: publishedDate}) {
         nodes {
           slug
           title
@@ -52,10 +52,8 @@ const VideosPage: React.FC<PageProps> = () => {
   `);
   const readingSeriesDescription =
     strapiMurmurReadingSeriesDescription.Description;
-  const sortedVideos = allStrapiVideos.nodes
-    .map(videoMapper)
-    .sort((a, b) => (b.publishedDate as any) - (a.publishedDate as any));
 
+  const videos = allStrapiVideos.nodes.map(videoMapper)
   useSetBackground('video-background-colour');
   return (
     <Layout
@@ -66,7 +64,7 @@ const VideosPage: React.FC<PageProps> = () => {
       />
       <ListWrap>
         <p>{readingSeriesDescription}</p>
-        {sortedVideos.map((video, index) => {
+        {videos.map((video, index) => {
           const { slug, thumbnail, title, artistNames } = video;
           const image = getImage(thumbnail);
 
