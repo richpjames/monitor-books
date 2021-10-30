@@ -69,27 +69,29 @@ export const CheckoutSection: React.FC<{ setLoading: Dispatch<SetStateAction<boo
 
   }, [contents, shipping])
 
-  return <CheckoutSectionWrap>
-    <Shipping
-      shipping={shipping}
-      setShipping={setShipping}
-      shippingOptions={shippingCosts}
-    />
-    <TotalWrapper id="basket-total">
-      <i>Total:</i> £{(Math.round(grandTotal * 100) / 100).toFixed(2)}
-    </TotalWrapper>
-    <ButtonWrapper>
-      <Button
-        onClick={() => {
-          if (!onCheckoutClicked) return
-          onCheckoutClicked();
-          setLoading(true);
-        }}
-        disabled={false}
-        id="checkout-button"
-      >
-        Checkout
-      </Button>
-    </ButtonWrapper>
-  </CheckoutSectionWrap >
+  return (
+    <CheckoutSectionWrap>
+      <Shipping
+        shipping={shipping}
+        setShipping={setShipping}
+        shippingOptions={shippingCosts}
+      />
+      <TotalWrapper id="basket-total">
+        <i>Total:</i> £{(Math.round(grandTotal * 100) / 100).toFixed(2)}
+      </TotalWrapper>
+      <ButtonWrapper>
+        <Button
+          onClick={() => {
+            if (!onCheckoutClicked) return
+            onCheckoutClicked();
+            setLoading(true);
+          }}
+          disabled={false}
+          id="checkout-button"
+        >
+          Checkout
+        </Button>
+      </ButtonWrapper>
+    </CheckoutSectionWrap >
+  )
 };
