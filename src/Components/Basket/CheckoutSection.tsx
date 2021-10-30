@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, Dispatch, SetStateAction } from "react";
 import styled from "styled-components/macro";
 
 import { Shipping } from "./Shipping";
@@ -51,7 +51,7 @@ const Button = styled.button`
  width: var(--spacing-8);
 `;
 
-export const CheckoutSection: React.FC = () => {
+export const CheckoutSection: React.FC<{ setLoading: Dispatch<SetStateAction<boolean>> }> = ({ setLoading }) => {
   const cart = useContext(CartContext);
   const [grandTotal, setGrandTotal] = useState(0);
   const { total, shipping, setShipping, contents, onCheckoutClicked } = cart
@@ -69,25 +69,27 @@ export const CheckoutSection: React.FC = () => {
 
   }, [contents, shipping])
 
-  return (
-    <CheckoutSectionWrap>
-      <Shipping
-        shipping={shipping}
-        setShipping={setShipping}
-        shippingOptions={shippingCosts}
-      />
-      <TotalWrapper id="basket-total">
-        <i>Total:</i> £{(Math.round(grandTotal * 100) / 100).toFixed(2)}
-      </TotalWrapper>
-      <ButtonWrapper>
-        <Button
-          onClick={onCheckoutClicked}
-          disabled={false}
-          id="checkout-button"
-        >
-          Checkout
-        </Button>
-      </ButtonWrapper>
-    </CheckoutSectionWrap>
-  );
+  return <CheckoutSectionWrap>
+    <Shipping
+      shipping={shipping}
+      setShipping={setShipping}
+      shippingOptions={shippingCosts}
+    />
+    <TotalWrapper id="basket-total">
+      <i>Total:</i> £{(Math.round(grandTotal * 100) / 100).toFixed(2)}
+    </TotalWrapper>
+    <ButtonWrapper>
+      <Button
+        onClick={() => {
+          if (!onCheckoutClicked) return
+          onCheckoutClicked();
+          setLoading(true);
+        }}
+        disabled={false}
+        id="checkout-button"
+      >
+        Checkout
+      </Button>
+    </ButtonWrapper>
+  </CheckoutSectionWrap >
 };

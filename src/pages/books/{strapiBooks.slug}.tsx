@@ -99,9 +99,6 @@ const TextWrapper = styled.section`
   display: flex;
   flex-direction: row;
   padding-top: 2.5%;
-  div blockquote {
-    text-indent: -0.3rem;
-  }
   b {
     font-style: italic;
   }

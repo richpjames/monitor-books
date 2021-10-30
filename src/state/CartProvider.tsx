@@ -194,7 +194,8 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
           });
 
           if (stripeResponse.error) {
-            alert(stripeResponse.error.message);
+            alert("something went wrong. try again or contact editor@monitorbooks.co.uk, you have not been charged"
+            );
           }
           // If `redirectToCheckout` fails due to a browser or network
           // error, display the localized error message to your customer
@@ -203,7 +204,7 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
       })
       .catch((_) =>
         alert(
-          "something went wrong. try again or contact editor@monitorbooks.co.uk"
+          "something went wrong. try again or contact editor@monitorbooks.co.uk, you have not been charged"
         )
       );
   };
