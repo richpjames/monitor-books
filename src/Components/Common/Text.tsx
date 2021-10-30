@@ -34,9 +34,6 @@ const TextWrapper = styled.section`
   flex-direction: row;
   padding-top: 2.5%;
   hanging-punctuation: first;
-  section div p blockquote {
-    background: pink;
-  }
   b {
     font-style: italic;
   }

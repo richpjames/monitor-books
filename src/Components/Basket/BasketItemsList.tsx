@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { useStaticQuery, graphql } from "gatsby";
 import styled from "styled-components/macro";
 
 import { CartContext } from "../../state/CartProvider";
@@ -13,25 +12,13 @@ const BasketItemsSection = styled.section`
   align-items: center;
   padding-top: 2.5rem;
 `;
-const EmptyCartMessage = styled.p`
-  padding-top: 15%;
-  text-align: center;
-`;
 
 export const BasketItemsList = () => {
   const cartData = useContext(CartContext);
   const productsData = useContext(ProductsContext);
   const cartContents = cartData.contents || [];
   const skus = productsData.skus || {};
-  const { strapiBasketPage } = useStaticQuery(
-    graphql`
-      query {
-        strapiBasketPage {
-          empty_basket_message
-      }
-    }
-    `
-  );
+
   const basketItems = cartContents.map((cartItem, index) => {
     const { author, title, price, thumbnail, id, inventory, slug } = skus[
       cartItem[0]

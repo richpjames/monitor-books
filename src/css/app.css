@@ -93,6 +93,7 @@ ul {
 blockquote {
   margin: 0;
   font-size: var(--font-body);
+  text-indent: -0.3rem;
 }
 
 button,
