@@ -39,15 +39,6 @@ export const BasketItemsList = () => {
       />
     );
   });
-  return (
-    <>
-      {cartContents.length > 0 ? (
-        <BasketItemsSection>{basketItems}</BasketItemsSection>
-      ) : (
-        <EmptyCartMessage id="empty-basket-message">
-          {strapiBasketPage.empty_basket_message}
-        </EmptyCartMessage>
-      )}
-    </>
-  );
+  return <BasketItemsSection>{basketItems}</BasketItemsSection>
+
 };
