@@ -144,7 +144,7 @@ const ProductPage: React.FC<ProductPageProps> = ({ data }) => {
               className="right-section">
               {blurb2}
             </RightSection>
-            <AddToBasketButton id={priceId} preorder={new Date(publishedDate).getTime() > new Date().getTime()} />
+            {priceId && <AddToBasketButton id={priceId} preorder={new Date(publishedDate).getTime() > new Date().getTime()} />}
           </RightSectionWrapper>
         </TextWrapper >
       </Container>
