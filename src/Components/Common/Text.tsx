@@ -3,7 +3,6 @@ import styled from "styled-components/macro";
 import ReactMarkdown from "react-markdown";
 
 import { mobileBreakpoint } from "../../constants";
-import { sanitizeText } from "../../utils";
 
 const LeftSection = styled.section`
   width: 45%;
@@ -51,35 +50,26 @@ interface Props {
 }
 
 export const SplitText = (props: Props) => {
-  const unsanitizedLeftText = props.leftText;
-  const unsanitizedRightText = props.rightText;
-  const { addToBasketButton, photo } = props;
-  const sanitizedText = [unsanitizedLeftText, unsanitizedRightText].map(
-    sanitizeText
-  );
+  const { addToBasketButton, photo, leftText, rightText } = props;
   const photoExists = !!photo
   return (
     <TextWrapper className="TextWrapper">
       <LeftSection>
         <ReactMarkdown
           className="left-section"
-          children={sanitizedText[0]}
+          children={leftText}
         />
       </LeftSection>
       <RightSection photoExists={photoExists}>
         <ReactMarkdown
           className="right-section"
-          children={sanitizedText[1]}
+          children={rightText}
         />
         {addToBasketButton}
       </RightSection>
     </TextWrapper>
   );
 };
-
-export const Text: React.FC<{ text: string; colour?: string }> = ({ text }) => (
-  <TextWrapper dangerouslySetInnerHTML={{ __html: sanitizeText(text) }} />
-);
 
 export const ErrorText: React.FC<{ line1: string; line2: string }> = ({
   line1,

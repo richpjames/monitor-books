@@ -14,7 +14,7 @@ import {
   ListItemLink,
   ItemType,
 } from "./ListComponents";
-import { SplitText, Text, ErrorText } from "./Text";
+import { SplitText, ErrorText } from "./Text";
 import { VideoTitle } from "./VideoTitle";
 import { Video } from "./Video";
 
@@ -33,7 +33,6 @@ export {
   MetaInfoContainer,
   Photos,
   SplitText,
-  Text,
   VideoTitle,
   VideoCreatorContainer,
   Video,
