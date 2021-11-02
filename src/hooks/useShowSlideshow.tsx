@@ -12,7 +12,6 @@ export const useShowSlideshow: () => [boolean, React.Dispatch<React.SetStateActi
                 setShowSlideshow(false)
             }
             const slideshowTimer = setTimeout(() => {
-                console.log('timer has been set')
                 setShowSlideshow(() => false);
             }, introTimerMilliseconds)
             return () => clearTimeout(slideshowTimer)

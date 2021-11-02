@@ -35,11 +35,11 @@ export const AddToBasketButton: React.FC<AddToBasketButtonProps> = ({
 
 
     let onClick = () => {
-      if (!inCart) return add(id);
-      else return navigate("/basket");
+      add(id);
+      navigate("/basket");
     };
 
-    if (preorder) {
+    if (preorder && !inCart) {
       buttonMessage = "Pre-order";
     } else if (inCart) {
       buttonMessage = "In basket";
