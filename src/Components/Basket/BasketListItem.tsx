@@ -23,7 +23,7 @@ const BasketMetaInfoContainer = styled.div`
   grid-template-areas:
     "title subtitle quantity"
     "price . .";
-  grid-template-rows: var(--spacing-10) var(--spacing-10);
+  grid-template-rows: fit-content(50%) fit-content(50%) fit-content(50%);
   grid-template-columns: fit-content(50%) fit-content(40%) auto;
   row-gap: var(--spacing-2);
   width: 100%;
@@ -47,19 +47,17 @@ const BasketMetaInfoContainer = styled.div`
   }
   @media only screen and (max-width: ${mobileBreakpoint}) {
     grid-template-areas:
-      "title "
+      "title"
       "subtitle"
       "quantity"
-      "price ";
+      "price";
     grid-template-columns: 100%;
-  
-  }
-  > p {
-    width: 100%;
-  }
-
-  h4 {
-    width: 100%;
+      > p {
+        text-align: center;
+      }
+      h4 {
+       width: 100%;
+    }
   }
 `;
 
