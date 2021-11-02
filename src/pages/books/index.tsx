@@ -33,6 +33,7 @@ const ProductsPage: FC<PageProps> = () => {
         title
         author
         publishedDate
+        productType
         thumbnail_image {
           localFile {
             childImageSharp {
@@ -49,13 +50,8 @@ const ProductsPage: FC<PageProps> = () => {
   const books = allStrapiBooks.nodes.map((book, index) => {
     const mappedBook = productListPageMapper(book);
     const { title, slug, thumbnail, author, yearPublished } = mappedBook;
+    let { productType } = mappedBook
     const image = getImage(thumbnail);
-
-    const lowercaseTitle = title.toLowerCase();
-    const titleCaseTitle = title
-      .split(" ")
-      .map((word) => `${word[0]}${word.slice(1).toLowerCase()}`)
-      .join(" ");
 
     return (
       <ListItemLink to={slug} key={slug}>
@@ -63,17 +59,17 @@ const ProductsPage: FC<PageProps> = () => {
           {image && <GatsbyImage
             id={`${slug}-photo`}
             image={image}
-            alt={`a photo of the book ${lowercaseTitle} by ${author}`}
+            alt={`a photo of the book ${title} by ${author}`}
             loading="eager"
           />}
           <MetaInfoContainer index={index} width="40%">
             <ListItemTitle id={`${slug}-title`}>
-              {titleCaseTitle}
+              {title}
             </ListItemTitle>
             <ListItemSubtitle id={`${slug}-subtitle`}>
               {author}
             </ListItemSubtitle>
-            <ItemType>Book, {yearPublished}</ItemType>
+            <ItemType>{productType && `${productType},`} {yearPublished}</ItemType>
           </MetaInfoContainer>
         </ListItemWrap>
       </ListItemLink>

@@ -4,6 +4,7 @@ interface ListPageProduct {
   yearPublished: number;
   thumbnail: ImageDataLike;
   slug: string;
+  productType: string;
 }
 
 interface SinglePageProduct {
@@ -80,6 +81,7 @@ interface ApiListPageProduct {
   publishedDate: string;
   slug: string;
   price: number;
+  productType: string;
 }
 
 interface ProductQuantityById {

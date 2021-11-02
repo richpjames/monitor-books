@@ -1,7 +1,8 @@
 export const productListPageMapper = (
   product: ApiListPageProduct
 ): ListPageProduct => {
-  const { title, author, publishedDate, slug, thumbnail_image } = product;
+  const { title, author, publishedDate, slug, thumbnail_image, productType } =
+    product;
   const thumbnail = thumbnail_image?.localFile;
 
   const publishedDateObj = new Date(publishedDate);
@@ -12,6 +13,7 @@ export const productListPageMapper = (
     slug,
     thumbnail,
     yearPublished,
+    productType,
   };
 };
 
