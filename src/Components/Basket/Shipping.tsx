@@ -33,7 +33,7 @@ export const Shipping: React.FC<Props> = ({
   shipping,
   shippingOptions,
 }) => {
-  const shippingPrice = (shipping && shipping.price) || 0;
+  const shippingPrice = (shipping && shipping?.price) || 0;
   const total = (Math.round(shippingPrice * 100) / 100).toFixed(2) || "0";
   return (
     <>

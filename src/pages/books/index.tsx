@@ -15,14 +15,11 @@ import Layout from "../../Components/layout";
 import { productListPageMapper } from "../../api/mappers";
 import SEO from "../../Components/seo";
 import { useSetBackground } from "../../hooks/useSetBackground";
-import { Slideshow } from "../../Components/Global/Slideshow";
-import { useShowSlideshow } from "../../hooks/useShowSlideshow";
-import { useIsMobile } from "../../hooks/useIsMobile";
 
 
 const ProductsPage: FC<PageProps> = () => {
-  const [showSlideshow, setShowSlideshow] = useShowSlideshow();
-  const isMobile = useIsMobile();
+  useSetBackground('product-background-colour')
+
   const {
     allStrapiBooks,
   }: { allStrapiBooks: { nodes: ApiListPageProduct[] } } = useStaticQuery(graphql`
@@ -48,9 +45,9 @@ const ProductsPage: FC<PageProps> = () => {
 
 
   const books = allStrapiBooks.nodes.map((book, index) => {
+
     const mappedBook = productListPageMapper(book);
-    const { title, slug, thumbnail, author, yearPublished } = mappedBook;
-    let { productType } = mappedBook
+    const { title, slug, thumbnail, author, yearPublished, productType } = mappedBook;
     const image = getImage(thumbnail);
 
     return (
@@ -76,16 +73,9 @@ const ProductsPage: FC<PageProps> = () => {
     );
   })
 
-  const eagerLoadedBooks = books.filter((_, index) => {
-    const limit = isMobile ? 0 : 2;
-    return index < limit;
-  })
-
-  useSetBackground('product-background-colour')
 
   return (
     <>
-
       <Layout>
         <SEO title="Books" description="Publications from Monitor books" />
         <ListWrap>

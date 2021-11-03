@@ -82,7 +82,7 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
 
   /** The total cost of the items in the cart */
   const total: number = contents.reduce(
-    (sum, [id, quantity]) => sum + skus[id].price * quantity,
+    (sum, [id, quantity]) => sum + skus[id]?.price * quantity,
     0
   );
 
