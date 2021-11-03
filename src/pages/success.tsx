@@ -11,7 +11,7 @@ const Success: React.FC<PageProps> = () => {
       <p>
         Everything went through ok.
         <br /> Thanks for your order. <br /> You will receive an email with
-        details. <br /> For enquiries contact@monitorbooks.co.uk
+        details. <br /> For enquiries editor@monitorbooks.co.uk
       </p>
     </Layout>
   );
