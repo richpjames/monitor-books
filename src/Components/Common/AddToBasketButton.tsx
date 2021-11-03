@@ -14,6 +14,8 @@ const Button = styled.button`
 
 const ButtonWrapper = styled.div`
   padding-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 interface AddToBasketButtonProps {
