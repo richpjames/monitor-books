@@ -58,9 +58,9 @@ export const CheckoutSection: React.FC<{ setLoading: Dispatch<SetStateAction<boo
 
   const calculateGrandTotal = () => {
     if (total && shipping) {
-      return total + shipping.price;
+      return total + shipping?.price;
     } else if (shipping) {
-      return shipping.price
+      return shipping?.price
     } else return 0
   };
 
