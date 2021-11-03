@@ -13,7 +13,7 @@ const devShippingCosts = [
 ];
 
 const productionShippingCosts = [
-  { region: "UK", priceId: "price_1HOpaOJs9ciiqN7OcNEPQA7G", price: 2.5 },
+  { region: "UK", priceId: "price_1JriFbJs9ciiqN7OkgQse0lh", price: 3 },
   {
     region: "Europe",
     priceId: "price_1HpJWSJs9ciiqN7Olq3WUKe8",
