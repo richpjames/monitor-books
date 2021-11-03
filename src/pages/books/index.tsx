@@ -85,14 +85,11 @@ const ProductsPage: FC<PageProps> = () => {
 
   return (
     <>
-      {showSlideshow && (
-        <Slideshow show={setShowSlideshow}>{eagerLoadedBooks}</Slideshow>
-      )}
 
       <Layout>
         <SEO title="Books" description="Publications from Monitor books" />
         <ListWrap>
-          {!showSlideshow && books}
+          {books}
         </ListWrap>
       </Layout>
     </>
