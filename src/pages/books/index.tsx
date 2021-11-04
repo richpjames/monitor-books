@@ -24,7 +24,7 @@ const ProductsPage: FC<PageProps> = () => {
     allStrapiBooks,
   }: { allStrapiBooks: { nodes: ApiListPageProduct[] } } = useStaticQuery(graphql`
   query {
-    allStrapiBooks(sort: {order: DESC, fields: publishedDate}) {
+    allStrapiBooks(sort: {order: DESC, fields: pageOrder}) {
       nodes {
         slug
         title
