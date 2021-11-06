@@ -6,25 +6,13 @@ import { QuantityPanel } from "./QuantityPanel";
 import { mobileBreakpoint } from "../../constants";
 import { CartContext } from "../../state/CartProvider";
 
-export const BasketListItemContainerWrap = styled.div<{ index: number }>`
-  display: flex;
-  flex-direction: row;
-  text-decoration: none;
-  width: 100%;
-  @media only screen and (max-width: ${mobileBreakpoint}) {
-    flex-direction: column;
-  }
-`;
-
 const BasketMetaInfoContainer = styled.div`
-  border-top: var(--line-thickness) solid var(--main-border-colour);
-  border-bottom: var(--line-thickness) solid var(--main-border-colour);
   display: grid;
   grid-template-areas:
     "title subtitle quantity"
     "price . .";
-  grid-template-rows: fit-content(50%) fit-content(50%) fit-content(50%);
-  grid-template-columns: fit-content(50%) fit-content(40%) auto;
+  grid-template-rows: fit-content(50%) fit-content(50%);
+  grid-template-columns: 45% 22.5% 22.5%;
   row-gap: var(--spacing-2);
   width: 100%;
   > p {
@@ -49,11 +37,13 @@ const BasketMetaInfoContainer = styled.div`
     grid-template-areas:
       "title"
       "subtitle"
-      "quantity"
-      "price";
+      "price"
+      "quantity";
     grid-template-columns: 100%;
+    grid-template-rows: fit-content(50%) fit-content(50%) fit-content(50%) fit-content(50%);
       > p {
         text-align: center;
+        padding-bottom: 0;
       }
       h4 {
        width: 100%;
@@ -72,6 +62,7 @@ const Image = styled(GatsbyImage)`
     margin-bottom: var(--spacing-10);
   }
 `;
+
 interface Props {
   id: string;
   thumbnail: any;
@@ -102,7 +93,7 @@ const BasketListItem = ({
   const image = getImage(thumbnail);
   const basketItemLabel = slug.toLowerCase();
   return (
-    <BasketListItemContainerWrap index={index} id={`${slug}-basket-item`}>
+    <li id={`${slug}-basket-item`}>
       {image && <Image image={image} alt={`thumbnail image of ${title}`} />}
       <BasketMetaInfoContainer>
         <h4 id={`${basketItemLabel}-subtitle`}>
@@ -119,7 +110,7 @@ const BasketListItem = ({
         />
         <p id={`${basketItemLabel}-price`}>£{price}</p>
       </BasketMetaInfoContainer>
-    </BasketListItemContainerWrap>
+    </li>
   );
 };
 

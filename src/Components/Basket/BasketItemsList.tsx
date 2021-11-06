@@ -3,14 +3,30 @@ import styled from "styled-components/macro";
 
 import { CartContext } from "../../state/CartProvider";
 import { ProductsContext } from "../../state/ProductsProvider";
+import { mobileBreakpoint } from "../../constants";
 
 import BasketListItem from "./BasketListItem";
 
-const BasketItemsSection = styled.section`
+const BasketItemsSection = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 2.5rem;
+
+  & li {
+  display: flex;
+  flex-direction: row;
+  text-decoration: none;
+  width: 100%;
+  border-bottom: var(--line-thickness) solid var(--main-border-colour);
+  padding-top: var(--spacing-3);
+  padding-bottom: var(--spacing-3);
+  @media only screen and (max-width: ${mobileBreakpoint}) {
+    flex-direction: column;
+  }  
+}
+  :first-child {
+    border-top: var(--line-thickness) solid var(--main-border-colour);
+}
 `;
 
 export const BasketItemsList = () => {

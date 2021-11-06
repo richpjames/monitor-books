@@ -11,7 +11,7 @@ const Basket: React.FC<PageProps> = () => {
   useSetBackground('basket-background-colour')
 
   return (
-    <Layout>
+    <Layout basket>
       <SEO title="Basket" description="basket" />
       <BasketPage />
     </Layout>
