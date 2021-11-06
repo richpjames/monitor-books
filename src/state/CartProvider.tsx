@@ -171,11 +171,11 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
     }
   };
   const onCheckoutClicked: onCheckoutClicked = () => {
-    const lineItems = cart.map(([sku, quantity]) => ({
+    const lineItems = cart.filter(([_, quantity]) => quantity).map(([sku, quantity]) => ({
       price: sku.priceId,
       quantity: quantity,
     }));
-    lineItems.push({ price: shipping.priceId, quantity: "1" });
+    lineItems.push({ price: shipping.priceId, quantity: 1 });
     const stripePromise = loadStripe(stripePublishableKey || "");
 
     fetch("/.netlify/functions/create-checkout", {
