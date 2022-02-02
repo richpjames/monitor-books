@@ -144,9 +144,9 @@ const navItems = [
     className: "books",
   },
   {
-    link: "/murmur-reading-series",
-    ariaLabel: "Video link",
-    content: "Murmur Reading Series",
+    link: "/occasions",
+    ariaLabel: "Occasions link",
+    content: "Occasions",
     className: "videos",
   },
   {

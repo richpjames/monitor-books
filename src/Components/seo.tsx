@@ -91,7 +91,9 @@ const SEO = ({
           },
         ].concat(meta)
       }
-    />
+    >
+      <script>{'if(!sessionStorage.getItem("_swa")&&document.referrer.indexOf(location.protocol+"//"+location.host)!== 0){fetch("https://counter.dev/track?" + new URLSearchParams({ referrer: document.referrer, screen: screen.width + "x" + screen.height, user: "richjames", utcoffset: "0" }))};sessionStorage.setItem("_swa","1")'}</script>
+    </Helmet>
   );
 };
 

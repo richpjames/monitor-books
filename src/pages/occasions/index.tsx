@@ -63,7 +63,6 @@ const VideosPage: React.FC<PageProps> = () => {
         description={readingSeriesDescription}
       />
       <ListWrap>
-        <p>{readingSeriesDescription}</p>
         {videos.map((video, index) => {
           const { slug, thumbnail, title, artistNames } = video;
           const image = getImage(thumbnail);
