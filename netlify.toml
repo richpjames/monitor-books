@@ -17,9 +17,6 @@
   to = "/index.html"
   status = 200
 
-[[plugins]]
-  package = "@netlify/plugin-gatsby"
-
 [[plugins]] 
   package = "netlify-plugin-a11y"
 
