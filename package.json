@@ -22,7 +22,7 @@
     "@testing-library/cypress": "^7.0.6",
     "@testing-library/user-event": "13.1.5",
     "babel-plugin-styled-components": "^1.12.0",
-    "cross-fetch": "^3.1.4",
+    "cross-fetch": "^3.1.5",
     "dompurify": "^2.2.7",
     "eslint": "^7.25.0",
     "gatsby": "^3.3.1",
