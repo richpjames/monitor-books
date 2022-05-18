@@ -1,20 +1,22 @@
 import React from "react";
-import { useStaticQuery, graphql, PageProps } from "gatsby";
+import { useStaticQuery, graphql, PageProps, Link } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import styled from "styled-components/macro";
 
-import {
-  ListWrap,
-  ListItemLink,
-  ItemType,
-  MetaInfoContainer,
-  ListItemTitle,
-  ListItemSubtitle,
-  ListItemWrap,
-} from "../../Components/Common";
 import Layout from "../../Components/layout";
 import SEO from "../../Components/seo";
 import { videoMapper } from "../../api/mappers";
 import { useSetBackground } from "../../hooks/useSetBackground";
+
+export const ListWrap = styled.ul`
+  display: flex;
+  width: 100%;
+  padding-top: var(--spacing-6);
+`;
+
+export const ListItemWrap = styled.li`
+  margin: var(--spacing-3);
+`;
 
 const VideosPage: React.FC<PageProps> = () => {
   const {
@@ -28,7 +30,7 @@ const VideosPage: React.FC<PageProps> = () => {
       imageFile: File
     }
     query {
-      allStrapiVideos(sort: {order: DESC, fields: publishedDate}) {
+      allStrapiVideos(sort: { order: DESC, fields: publishedDate }) {
         nodes {
           slug
           title
@@ -53,50 +55,31 @@ const VideosPage: React.FC<PageProps> = () => {
   const readingSeriesDescription =
     strapiMurmurReadingSeriesDescription.Description;
 
-  const videos = allStrapiVideos.nodes.map(videoMapper)
-  useSetBackground('video-background-colour');
+  const videos = allStrapiVideos.nodes.map(videoMapper);
+  useSetBackground("video-background-colour");
   return (
-    <Layout
-    >
+    <Layout>
       <SEO
         title="Murmur Reading Series"
         description={readingSeriesDescription}
       />
       <ListWrap>
         {videos.map((video, index) => {
-          const { slug, thumbnail, title, artistNames } = video;
+          const { slug, thumbnail, title } = video;
           const image = getImage(thumbnail);
 
           return (
-            <ListItemLink
-              key={index}
-              to={slug}
-              id={`${slug}-video-list-container`}
-            >
-              <ListItemWrap>
-                {image && <GatsbyImage
-                  image={image}
-                  alt={`thumbnail image for ${title} video`}
-                  loading="eager"
-                />}
-                <MetaInfoContainer
-                  index={index}
-                  width="40%"
-                  id={`${slug}-creators`}
-                >
-                  <ListItemTitle>{title}</ListItemTitle>
-                  <ListItemSubtitle>
-                    {artistNames.map((creator, index) => (
-                      <span id={`${slug}-creator-${index}`} key={index}>
-                        {creator}
-                        {index < artistNames.length - 1 ? `, ` : ``}
-                      </span>
-                    ))}
-                  </ListItemSubtitle>
-                  <ItemType>Video, 2020</ItemType>
-                </MetaInfoContainer>
-              </ListItemWrap>
-            </ListItemLink>
+            <ListItemWrap key={index} id={`${slug}-video-list-container`}>
+              <Link to={slug}>
+                {image && (
+                  <GatsbyImage
+                    image={image}
+                    alt={`thumbnail image for ${title} video`}
+                    loading="eager"
+                  />
+                )}
+              </Link>
+            </ListItemWrap>
           );
         })}
       </ListWrap>
