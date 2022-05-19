@@ -8,10 +8,10 @@ import SEO from "../Components/seo";
 import { useSetBackground } from "../hooks/useSetBackground";
 
 const Basket: React.FC<PageProps> = () => {
-  useSetBackground('basket-background-colour')
+  useSetBackground("basket-background-colour");
 
   return (
-    <Layout basket>
+    <Layout>
       <SEO title="Basket" description="basket" />
       <BasketPage />
     </Layout>
