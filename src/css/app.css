@@ -115,3 +115,9 @@ button {
 .list-text {
   font-size: var(--font-title-small) !important;
 }
+
+@media only screen and (max-width: 800px) {
+  .list-text img {
+    max-width: 100%;
+  }
+}
