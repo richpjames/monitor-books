@@ -111,3 +111,7 @@ button {
   background-color: var(--current-background-colour);
   border: none;
 }
+
+.list-text {
+  font-size: var(--font-title-small) !important;
+}
