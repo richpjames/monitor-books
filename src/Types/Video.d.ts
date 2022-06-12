@@ -21,5 +21,5 @@ interface ApiVideo {
   artists: { id: number; Name: string; Description: string }[];
 }
 type StrapiMurmurReadingSeriesDescription = {
-  Description: string;
+  description_of_events: string;
 };

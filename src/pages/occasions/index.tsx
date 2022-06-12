@@ -1,105 +1,37 @@
 import React from "react";
 import { useStaticQuery, graphql, PageProps } from "gatsby";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
-import {
-  ListWrap,
-  ListItemLink,
-  ItemType,
-  MetaInfoContainer,
-  ListItemTitle,
-  ListItemSubtitle,
-  ListItemWrap,
-} from "../../Components/Common";
 import Layout from "../../Components/layout";
 import SEO from "../../Components/seo";
-import { videoMapper } from "../../api/mappers";
 import { useSetBackground } from "../../hooks/useSetBackground";
+import ReactMarkdown from "react-markdown";
 
 const VideosPage: React.FC<PageProps> = () => {
   const {
-    allStrapiVideos,
     strapiMurmurReadingSeriesDescription,
   }: {
-    allStrapiVideos: { nodes: ApiVideo[] };
     strapiMurmurReadingSeriesDescription: StrapiMurmurReadingSeriesDescription;
   } = useStaticQuery(graphql`
-    type StrapiReadingSeriesImage implements Node {
-      imageFile: File
-    }
     query {
-      allStrapiVideos(sort: {order: DESC, fields: publishedDate}) {
-        nodes {
-          slug
-          title
-          artists {
-            Name
-          }
-          publishedDate
-          thumbnail_img {
-            localFile {
-              childImageSharp {
-                gatsbyImageData(width: 300)
-              }
-            }
-          }
-        }
-      }
       strapiMurmurReadingSeriesDescription {
-        Description
+        description_of_events
       }
     }
   `);
   const readingSeriesDescription =
-    strapiMurmurReadingSeriesDescription.Description;
+    strapiMurmurReadingSeriesDescription.description_of_events;
 
-  const videos = allStrapiVideos.nodes.map(videoMapper)
-  useSetBackground('video-background-colour');
+  useSetBackground("video-background-colour");
   return (
-    <Layout
-    >
+    <Layout>
       <SEO
         title="Murmur Reading Series"
         description={readingSeriesDescription}
       />
-      <ListWrap>
-        {videos.map((video, index) => {
-          const { slug, thumbnail, title, artistNames } = video;
-          const image = getImage(thumbnail);
-
-          return (
-            <ListItemLink
-              key={index}
-              to={slug}
-              id={`${slug}-video-list-container`}
-            >
-              <ListItemWrap>
-                {image && <GatsbyImage
-                  image={image}
-                  alt={`thumbnail image for ${title} video`}
-                  loading="eager"
-                />}
-                <MetaInfoContainer
-                  index={index}
-                  width="40%"
-                  id={`${slug}-creators`}
-                >
-                  <ListItemTitle>{title}</ListItemTitle>
-                  <ListItemSubtitle>
-                    {artistNames.map((creator, index) => (
-                      <span id={`${slug}-creator-${index}`} key={index}>
-                        {creator}
-                        {index < artistNames.length - 1 ? `, ` : ``}
-                      </span>
-                    ))}
-                  </ListItemSubtitle>
-                  <ItemType>Video, 2020</ItemType>
-                </MetaInfoContainer>
-              </ListItemWrap>
-            </ListItemLink>
-          );
-        })}
-      </ListWrap>
+      <ReactMarkdown
+        children={readingSeriesDescription}
+        className="list-text"
+      />
     </Layout>
   );
 };
