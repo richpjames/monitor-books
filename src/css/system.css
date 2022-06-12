@@ -11,9 +11,9 @@
   --lavender: #e4daf4;
 
   --product-background-colour: var(--lavender);
-  --video-background-colour: var(--faded-blue);
+  --video-background-colour: #d3dcee;
   --basket-background-colour: var(--green);
-  --about-background-colour: var(--pink);
+  --about-background-colour: #ebd6e0;
   --button-colour: var(--deep-blue);
   --current-background-colour: var(--lavender);
 
