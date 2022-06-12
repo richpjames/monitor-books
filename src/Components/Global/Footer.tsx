@@ -35,7 +35,7 @@ const footerItems = [
     text: "editor@monitorbooks.co.uk",
     link: "mailto:editor@monitorbooks.co.uk",
   },
-  { text: "Salford, UK" },
+  { text: "UK" },
 ];
 export const Footer = () => {
   return (
