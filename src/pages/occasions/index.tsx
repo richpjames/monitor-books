@@ -31,6 +31,7 @@ const VideosPage: React.FC<PageProps> = () => {
       <ReactMarkdown
         children={readingSeriesDescription}
         className="list-text"
+        allowDangerousHtml
       />
     </Layout>
   );
