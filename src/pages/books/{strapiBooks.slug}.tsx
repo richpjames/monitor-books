@@ -11,7 +11,6 @@ import SEO from "../../Components/seo";
 import { mobileBreakpoint } from "../../constants";
 import { useSetBackground } from "../../hooks/useSetBackground";
 
-
 export const query = graphql`
   query BookQuery($slug: String!) {
     strapiBooks(slug: { eq: $slug }) {
@@ -44,7 +43,6 @@ export const query = graphql`
     }
   }
 `;
-
 
 const Container = styled.div`
   padding-top: var(--spacing-6);
@@ -90,10 +88,10 @@ const RightSectionWrapper = styled.div`
   flex-direction: column;
   width: 45%;
   @media only screen and (max-width: ${mobileBreakpoint}) {
-  width: 100%;
-  padding-left: 0;
+    width: 100%;
+    padding-left: 0;
   }
-`
+`;
 
 const TextWrapper = styled.section`
   display: flex;
@@ -108,13 +106,12 @@ const TextWrapper = styled.section`
   }
 `;
 
-
 interface ProductPageProps extends PageProps {
   data: { strapiBooks: ApiSinglePageProduct };
 }
 
 const ProductPage: React.FC<ProductPageProps> = ({ data }) => {
-  useSetBackground('product-background-colour')
+  useSetBackground("books_background");
   const product: SinglePageProduct = singleProductPageMapper(data.strapiBooks);
   const {
     title,
@@ -126,7 +123,6 @@ const ProductPage: React.FC<ProductPageProps> = ({ data }) => {
     galleryImages,
   } = product;
 
-
   return (
     <Layout>
       <SEO title={`${title} by ${author}`} description={blurb1} />
@@ -135,20 +131,21 @@ const ProductPage: React.FC<ProductPageProps> = ({ data }) => {
         <h1>{title}</h1>
         <h2>{author}</h2>
         <TextWrapper className="TextWrapper">
-          <LeftSection
-            className="left-section"
-            children={blurb1}
-          />
+          <LeftSection className="left-section" children={blurb1} />
           <RightSectionWrapper>
-            <RightSection
-              className="right-section">
-              {blurb2}
-            </RightSection>
-            {priceId && <AddToBasketButton id={priceId} preorder={new Date(publishedDate).getTime() > new Date().getTime()} />}
+            <RightSection className="right-section">{blurb2}</RightSection>
+            {priceId && (
+              <AddToBasketButton
+                id={priceId}
+                preorder={
+                  new Date(publishedDate).getTime() > new Date().getTime()
+                }
+              />
+            )}
           </RightSectionWrapper>
-        </TextWrapper >
+        </TextWrapper>
       </Container>
-    </Layout >
+    </Layout>
   );
 };
 export default ProductPage;

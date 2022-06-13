@@ -4,9 +4,8 @@ import { PageProps } from "gatsby";
 import Layout from "../Components/layout";
 import { useSetBackground } from "../hooks/useSetBackground";
 
-
 const NotFound: React.FC<PageProps> = () => {
-  useSetBackground("product-background-colour");
+  useSetBackground("about-background");
 
   return (
     <Layout>
