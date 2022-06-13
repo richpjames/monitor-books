@@ -21,7 +21,7 @@ const VideosPage: React.FC<PageProps> = () => {
   const readingSeriesDescription =
     strapiMurmurReadingSeriesDescription.description_of_events;
 
-  useSetBackground("video-background-colour");
+  useSetBackground("occasions_background");
   return (
     <Layout>
       <SEO

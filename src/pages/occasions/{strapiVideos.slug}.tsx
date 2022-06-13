@@ -40,18 +40,16 @@ interface VideoPageProps extends PageProps {
 }
 
 const VideoPage: React.FC<VideoPageProps> = ({ data }) => {
-  useSetBackground('video-background-colour');
+  useSetBackground("occasions_background");
 
   const video = videoMapper(data.strapiVideos);
-  const readingSeriesDescription =
-    data.strapiMurmurReadingSeriesDescription.Description;
 
   const { title, url, artistNames, blurb1, blurb2 } = video;
   return (
     <VideoPageWrapper>
       <SEO
         title={`${title} featuring ${artistNames.join(" ")}`}
-        description={readingSeriesDescription}
+        description={title}
       />
       <Video url={url} title={title} />
       <VideoTitle title={`${title}:`} subtitle={artistNames} />

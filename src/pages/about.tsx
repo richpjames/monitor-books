@@ -15,8 +15,8 @@ const TextWrap = styled.section`
   }
 `;
 const SubmissionsText = styled.section`
-  padding-top: var(--spacing-5);
-;`;
+  padding-top: var(--spacing-5); ;
+`;
 
 const About: React.FC<PageProps> = () => {
   const { strapiAboutPage, strapiSubmissions } = useStaticQuery(graphql`
@@ -31,14 +31,18 @@ const About: React.FC<PageProps> = () => {
     }
   `);
   const { Description } = strapiAboutPage;
-  useSetBackground('about-background-colour')
+  useSetBackground("about_background");
 
   return (
     <Layout>
       <SEO title="About" description="About Monitor Books" />
       <TextWrap>
         <ReactMarkdown children={Description} />
-        <SubmissionsText><h4><u>{strapiSubmissions.title}</u></h4></SubmissionsText>
+        <SubmissionsText>
+          <h4>
+            <u>{strapiSubmissions.title}</u>
+          </h4>
+        </SubmissionsText>
         <ReactMarkdown children={strapiSubmissions.description} />
       </TextWrap>
     </Layout>

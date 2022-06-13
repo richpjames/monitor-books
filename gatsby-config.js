@@ -45,7 +45,7 @@ module.exports = {
       resolve: `gatsby-source-strapi`,
       options: {
         apiURL: `https://monitor-books.herokuapp.com`,
-        collectionTypes: ["books", "videos"],
+        collectionTypes: ["books", "videos", "background-colours"],
         singleTypes: [
           "about-page",
           "intro-page",

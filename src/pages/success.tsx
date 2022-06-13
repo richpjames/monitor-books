@@ -4,7 +4,7 @@ import Layout from "../Components/layout";
 import { useSetBackground } from "../hooks/useSetBackground";
 
 const Success: React.FC<PageProps> = () => {
-  useSetBackground('basket-background-colour')
+  useSetBackground("basket_background");
   return (
     <Layout>
       <h1>Order Successful</h1>
