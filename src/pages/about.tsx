@@ -9,13 +9,12 @@ import { mobileBreakpoint } from "../constants";
 import { useSetBackground } from "../hooks/useSetBackground";
 
 const TextWrap = styled.section`
-  padding-top: var(--spacing-6);
   @media only screen and (max-width: ${mobileBreakpoint}) {
     padding-top: var(--spacing-6);
   }
 `;
 const SubmissionsText = styled.section`
-  padding-top: var(--spacing-5); ;
+  padding-top: var(--spacing-5);
 `;
 
 const About: React.FC<PageProps> = () => {
