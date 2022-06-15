@@ -24,10 +24,7 @@ const VideosPage: React.FC<PageProps> = () => {
   useSetBackground("occasions_background");
   return (
     <Layout>
-      <SEO
-        title="Murmur Reading Series"
-        description={readingSeriesDescription}
-      />
+      <SEO title="Occasions" description={readingSeriesDescription} />
       <ReactMarkdown
         children={readingSeriesDescription}
         className="list-text"
