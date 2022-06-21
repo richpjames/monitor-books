@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import styled from "styled-components/macro";
+import styled from "@emotion/styled";
 
 import { GatsbyImage, getImage, ImageDataLike } from "gatsby-plugin-image";
 import { mobileBreakpoint } from "../../constants";
@@ -22,7 +22,7 @@ const ArrowWrap = styled.div`
   display: block;
   width: var(--spacing-10);
   @media only screen and (max-width: ${mobileBreakpoint}) {
-      display: none;
+    display: none;
   }
 `;
 
@@ -42,7 +42,6 @@ const RightArrow = styled(Arrow)`
   margin-left: var(--spacing-6);
 `;
 
-
 interface PhotosProps {
   photos: ImageDataLike[];
   title: string;
@@ -56,21 +55,23 @@ export const Photos = (props: PhotosProps) => {
   const photoReel = photos.map((photo, i) => {
     const image = getImage(photo);
     if (image) {
-      return <GatsbyImage image={image} alt={`a photo of ${title} book`} key={i} />;
+      return (
+        <GatsbyImage image={image} alt={`a photo of ${title} book`} key={i} />
+      );
     } else return null;
   });
   useEffect(() => {
     timer.current = setInterval(() => {
       setPhotoIndex((prevState) =>
         prevState < photos.length - 1 ? prevState + 1 : 0
-      )
-    }, 5000)
+      );
+    }, 5000);
     return () => {
       if (timer.current) {
-        clearInterval(timer.current)
+        clearInterval(timer.current);
       }
-    }
-  }, [])
+    };
+  }, []);
 
   return (
     <>
@@ -78,11 +79,11 @@ export const Photos = (props: PhotosProps) => {
         <ArrowWrap
           onClick={() => {
             if (timer.current) {
-              clearInterval(timer.current)
+              clearInterval(timer.current);
             }
             setPhotoIndex((prevState) => {
-              return prevState > 0 ? prevState - 1 : photos.length - 1
-            })
+              return prevState > 0 ? prevState - 1 : photos.length - 1;
+            });
           }}
         >
           <LeftArrow />
@@ -96,7 +97,7 @@ export const Photos = (props: PhotosProps) => {
               }
               setPhotoIndex((prevState) =>
                 prevState < photos.length - 1 ? prevState + 1 : 0
-              )
+              );
             }}
           />
         </ArrowWrap>

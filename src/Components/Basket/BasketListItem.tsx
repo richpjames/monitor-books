@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { getImage, GatsbyImage } from "gatsby-plugin-image";
-import styled from "styled-components/macro";
+import styled from "@emotion/styled";
 
 import { QuantityPanel } from "./QuantityPanel";
 import { mobileBreakpoint } from "../../constants";
@@ -40,13 +40,15 @@ const BasketMetaInfoContainer = styled.div`
       "price"
       "quantity";
     grid-template-columns: 100%;
-    grid-template-rows: fit-content(50%) fit-content(50%) fit-content(50%) fit-content(50%);
-      > p {
-        text-align: center;
-        padding-bottom: 0;
-      }
-      h4 {
-       width: 100%;
+    grid-template-rows: fit-content(50%) fit-content(50%) fit-content(50%) fit-content(
+        50%
+      );
+    > p {
+      text-align: center;
+      padding-bottom: 0;
+    }
+    h4 {
+      width: 100%;
     }
   }
 `;
@@ -78,7 +80,6 @@ interface Props {
 const BasketListItem = ({
   id,
   thumbnail,
-  index,
   quantity,
   price,
   stock,
@@ -96,10 +97,7 @@ const BasketListItem = ({
     <li id={`${slug}-basket-item`}>
       {image && <Image image={image} alt={`thumbnail image of ${title}`} />}
       <BasketMetaInfoContainer>
-        <h4 id={`${basketItemLabel}-subtitle`}>
-          {subtitle}
-          ,
-        </h4>
+        <h4 id={`${basketItemLabel}-subtitle`}>{subtitle},</h4>
         <h4 id={`${basketItemLabel}-title`}> {title}</h4>
         <QuantityPanel
           addToCart={() => handleAdd(id)}

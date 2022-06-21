@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components/macro";
+import styled from "@emotion/styled";
 import ReactMarkdown from "react-markdown";
 
 import { mobileBreakpoint } from "../../constants";
@@ -14,13 +14,14 @@ const LeftSection = styled.section`
   }
 `;
 
-const RightSection = styled(LeftSection) <{ photoExists: boolean }>`
+const RightSection = styled(LeftSection)<{ photoExists: boolean }>`
   padding-left: 9%;
   padding-bottom: 0;
   @media only screen and (max-width: ${mobileBreakpoint}) {
     padding-left: 0;
     padding-bottom: var(--spacing-10);
-    padding-top: ${({ photoExists }) => !photoExists ? `var(--spacing-10);` : `0;`}
+    padding-top: ${({ photoExists }) =>
+      !photoExists ? `var(--spacing-10);` : `0;`};
   }
 `;
 
@@ -51,20 +52,14 @@ interface Props {
 
 export const SplitText = (props: Props) => {
   const { addToBasketButton, photo, leftText, rightText } = props;
-  const photoExists = !!photo
+  const photoExists = !!photo;
   return (
     <TextWrapper className="TextWrapper">
       <LeftSection>
-        <ReactMarkdown
-          className="left-section"
-          children={leftText}
-        />
+        <ReactMarkdown className="left-section" children={leftText} />
       </LeftSection>
       <RightSection photoExists={photoExists}>
-        <ReactMarkdown
-          className="right-section"
-          children={rightText}
-        />
+        <ReactMarkdown className="right-section" children={rightText} />
         {addToBasketButton}
       </RightSection>
     </TextWrapper>

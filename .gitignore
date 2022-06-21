@@ -11,3 +11,6 @@ cypress/videos/*
 # gatsby
 .cache/
 public/
+# @netlify/plugin-gatsby ignores start
+functions/gatsby
+# @netlify/plugin-gatsby ignores end

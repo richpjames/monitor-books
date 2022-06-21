@@ -1,7 +1,7 @@
 import React from "react";
-import styled from "styled-components/macro";
+import styled from "@emotion/styled";
 
-import { mobileBreakpoint } from "../../constants"
+import { mobileBreakpoint } from "../../constants";
 
 const TitleWrap = styled.h1`
   padding-bottom: 0;

@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components/macro";
+import styled from "@emotion/styled";
 
 import { mobileBreakpoint } from "../../constants";
 
@@ -26,7 +26,7 @@ const Button = styled.button`
   background-color: var(--basket-background-colour);
   border: none;
   @media only screen and (max-width: ${mobileBreakpoint}) {
-    flex:1;
+    flex: 1;
   }
 `;
 
