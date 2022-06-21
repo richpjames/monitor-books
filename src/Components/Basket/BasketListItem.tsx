@@ -80,7 +80,6 @@ interface Props {
 const BasketListItem = ({
   id,
   thumbnail,
-  index,
   quantity,
   price,
   stock,
