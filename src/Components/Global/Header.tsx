@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import styled from "styled-components/macro";
+import styled from "@emotion/styled";
 import { Link as GatsbyLink } from "gatsby";
 
 import { mobileBreakpoint } from "../../constants";
@@ -10,8 +10,6 @@ import { useIsMobile } from "../../hooks/useIsMobile";
 import { TextLogo } from "./TextLogo";
 import { Burger } from "../Common/Burger";
 
-
-
 const HeaderStyles = styled.header<{ showMenu: boolean }>`
   display: flex;
   flex-direction: column;
@@ -19,24 +17,24 @@ const HeaderStyles = styled.header<{ showMenu: boolean }>`
   padding-bottom: var(--spacing-6);
   font-size: var(--font-title-medium);
 
-> a > div {
+  > a > div {
     padding-top: 0;
     display: block;
   }
 
-> nav {
-  > ul {
+  > nav {
+    > ul {
       display: flex;
       flex-direction: row;
     }
 
-  li {
+    li {
       padding: var(--spacing-1);
     }
-  li:last-child {
+    li:last-child {
       margin-left: auto;
     }
-  li:first-child {
+    li:first-child {
       padding-left: 0;
     }
   }
@@ -52,29 +50,30 @@ const HeaderStyles = styled.header<{ showMenu: boolean }>`
       justify-content: center;
       width: 75%;
     }
-  > nav {
-    flex: 1;
-    padding-top: var(--spacing-6);
-    > ul {
-      flex-direction: column;
-      display: ${({ showMenu }) => (showMenu ? "block" : "none")};
-      border: ${({ showMenu }) =>
-    showMenu
-      ? "var(--line-thickness) solid var(--main-border-colour)"
-      : "none"};
-      margin-bottom: ${({ showMenu }) => showMenu ? 'var(--spacing-10)' : '0'};
-    }
-    li:last-child {
-      margin-left: 0;
-    }
-    li:first-child {
-      padding-left: var(--spacing-1);
+    > nav {
+      flex: 1;
+      padding-top: var(--spacing-6);
+      > ul {
+        flex-direction: column;
+        display: ${({ showMenu }) => (showMenu ? "block" : "none")};
+        border: ${({ showMenu }) =>
+          showMenu
+            ? "var(--line-thickness) solid var(--main-border-colour)"
+            : "none"};
+        margin-bottom: ${({ showMenu }) =>
+          showMenu ? "var(--spacing-10)" : "0"};
+      }
+      li:last-child {
+        margin-left: 0;
+      }
+      li:first-child {
+        padding-left: var(--spacing-1);
+      }
     }
   }
-  }
-`
+`;
 
-const Link = styled(GatsbyLink) <{ selected?: boolean }>`
+const Link = styled(GatsbyLink)<{ selected?: boolean }>`
   text-decoration: ${({ selected }) => (selected ? `` : `none`)};
   text-decoration-thickness: var(--line-thickness);
 `;
@@ -82,18 +81,18 @@ const Link = styled(GatsbyLink) <{ selected?: boolean }>`
 export const Header = () => {
   const { count } = useContext(CartContext);
   const [showMenu, setShowMenu] = useState(false);
-  const [pathname, setPathname] = useState('');
+  const [pathname, setPathname] = useState("");
   const isMobile = useIsMobile();
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       const newPath = window.location.pathname;
       if (pathname !== newPath) {
-        setShowMenu(() => false)
+        setShowMenu(() => false);
       }
-      setPathname(() => window.location.pathname)
+      setPathname(() => window.location.pathname);
     }
-  }, [pathname])
+  }, [pathname]);
 
   return (
     <HeaderStyles showMenu={showMenu}>
@@ -131,7 +130,13 @@ export const Header = () => {
           </li>
         </ul>
       </nav>
-      {!showMenu && <Burger onClick={() => { setShowMenu((prevShowMenu) => !prevShowMenu) }} />}
+      {!showMenu && (
+        <Burger
+          onClick={() => {
+            setShowMenu((prevShowMenu) => !prevShowMenu);
+          }}
+        />
+      )}
     </HeaderStyles>
   );
 };

@@ -1,7 +1,7 @@
-import styled from "styled-components/macro";
+import styled from "@emotion/styled";
 import { Link } from "gatsby";
 
-import { mobileBreakpoint } from "../../constants"
+import { mobileBreakpoint } from "../../constants";
 
 interface BasketListItemContainerProps {
   index: number;
@@ -23,7 +23,7 @@ interface ListItemContainerProps {
   id: string;
 }
 
-export const ListItemContainerWrap = styled(Link) <ListItemContainerProps>`
+export const ListItemContainerWrap = styled(Link)<ListItemContainerProps>`
   display: flex;
   height: ${(props) => props.height};
   width: ${(props) => props.width};

@@ -1,5 +1,5 @@
-import styled from "styled-components/macro";
+import styled from "@emotion/styled";
 
 export const EagerLoadWrapper = styled.div`
-    position:absolute;
-`
+  position: absolute;
+`;

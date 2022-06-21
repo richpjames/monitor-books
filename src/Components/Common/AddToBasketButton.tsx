@@ -1,15 +1,14 @@
 import React, { useContext } from "react";
-import styled from "styled-components/macro";
+import styled from "@emotion/styled";
 import { navigate } from "gatsby";
 
 import { CartContext } from "../../state/CartProvider";
 
-
 const Button = styled.button`
- background-color: var(--button-colour);
- color: var(--current-background-colour);
- padding: var(--spacing-2);
- width: var(--spacing-8);
+  background-color: var(--button-colour);
+  color: var(--current-background-colour);
+  padding: var(--spacing-2);
+  width: var(--spacing-8);
 `;
 
 const ButtonWrapper = styled.div`
@@ -34,7 +33,6 @@ export const AddToBasketButton: React.FC<AddToBasketButtonProps> = ({
     const inCart = get(id) > 0;
     const outOfStock = !available(id, 1);
     let buttonMessage = "Add to basket";
-
 
     let onClick = () => {
       add(id);

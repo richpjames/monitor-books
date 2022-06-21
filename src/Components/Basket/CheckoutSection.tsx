@@ -1,5 +1,11 @@
-import React, { useContext, useEffect, useState, Dispatch, SetStateAction } from "react";
-import styled from "styled-components/macro";
+import React, {
+  useContext,
+  useEffect,
+  useState,
+  Dispatch,
+  SetStateAction,
+} from "react";
+import styled from "@emotion/styled";
 
 import { Shipping } from "./Shipping";
 import { CartContext } from "../../state/CartProvider";
@@ -13,22 +19,21 @@ const CheckoutSectionWrap = styled.section`
     ".                 shipping-cost"
     ".                 total"
     ".                 checkout-button";
-  grid-template-columns: var(--spacing-9) var(
-      --spacing-9
-    );
+  grid-template-columns: var(--spacing-9) var(--spacing-9);
   grid-template-rows: var(--spacing-10) 1fr 1fr 1fr;
   margin-left: auto;
   width: var(--spacing-12);
   text-align: end;
   @media only screen and (max-width: ${mobileBreakpoint}) {
-    grid-template-areas: "shipping-label"
-                         "shipping-selector"
-                         "shipping-cost"
-                         "total"
-                         "checkout-button";
+    grid-template-areas:
+      "shipping-label"
+      "shipping-selector"
+      "shipping-cost"
+      "total"
+      "checkout-button";
     grid-template-columns: 100%;
     width: 100%;
-}
+  }
 `;
 
 const TotalWrapper = styled.h4`
@@ -38,36 +43,37 @@ const TotalWrapper = styled.h4`
 `;
 
 const ButtonWrapper = styled.div`
-  grid-area:checkout-button;
+  grid-area: checkout-button;
   display: flex;
   width: 100%;
   height: var(--spacing-6);
 `;
 
 const Button = styled.button`
- flex: 1;
- background-color: var(--button-colour);
- color: var(--current-background-colour);
- width: var(--spacing-8);
+  flex: 1;
+  background-color: var(--button-colour);
+  color: var(--current-background-colour);
+  width: var(--spacing-8);
 `;
 
-export const CheckoutSection: React.FC<{ setLoading: Dispatch<SetStateAction<boolean>> }> = ({ setLoading }) => {
+export const CheckoutSection: React.FC<{
+  setLoading: Dispatch<SetStateAction<boolean>>;
+}> = ({ setLoading }) => {
   const cart = useContext(CartContext);
   const [grandTotal, setGrandTotal] = useState(0);
-  const { total, shipping, setShipping, contents, onCheckoutClicked } = cart
+  const { total, shipping, setShipping, contents, onCheckoutClicked } = cart;
 
   const calculateGrandTotal = () => {
     if (total && shipping) {
       return total + shipping?.price;
     } else if (shipping) {
-      return shipping?.price
-    } else return 0
+      return shipping?.price;
+    } else return 0;
   };
 
   useEffect(() => {
-    setGrandTotal(() => calculateGrandTotal())
-
-  }, [contents, shipping])
+    setGrandTotal(() => calculateGrandTotal());
+  }, [contents, shipping]);
 
   return (
     <CheckoutSectionWrap>
@@ -82,7 +88,7 @@ export const CheckoutSection: React.FC<{ setLoading: Dispatch<SetStateAction<boo
       <ButtonWrapper>
         <Button
           onClick={() => {
-            if (!onCheckoutClicked) return
+            if (!onCheckoutClicked) return;
             onCheckoutClicked();
             setLoading(true);
           }}
@@ -92,6 +98,6 @@ export const CheckoutSection: React.FC<{ setLoading: Dispatch<SetStateAction<boo
           Checkout
         </Button>
       </ButtonWrapper>
-    </CheckoutSectionWrap >
-  )
+    </CheckoutSectionWrap>
+  );
 };

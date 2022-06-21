@@ -1,6 +1,6 @@
 import React from "react";
 import { graphql, PageProps } from "gatsby";
-import styled from "styled-components/macro";
+import styled from "@emotion/styled";
 import ReactMarkdown from "react-markdown";
 
 import { singleProductPageMapper } from "../../api/mappers";

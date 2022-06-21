@@ -1,22 +1,21 @@
 import React from "react";
-import styled from "styled-components/macro";
-
+import styled from "@emotion/styled";
 
 import { mobileBreakpoint } from "../../constants";
 
 import { TextBoxLogo } from "./TextBoxLogo";
 import { EagerLoadWrapper } from "../../Components/Common/EagerLoadWrapper";
 
-
 const BoxWrapper = styled.div`
   margin-top: -100px;
   width: 25%;
   @media only screen and (max-width: ${mobileBreakpoint}) {
     width: 50%;
-  }`;
+  }
+`;
 
 export const IntroPageWrapper = styled.div`
- padding-top: var(--spacing-6);
+  padding-top: var(--spacing-6);
   padding-left: var(--spacing-6);
   padding-right: var(--spacing-6);
   padding-bottom: var(--spacing-10);
@@ -36,15 +35,17 @@ export const IntroPageWrapper = styled.div`
   }
 `;
 
-export const Slideshow: React.FC<{ show: React.Dispatch<React.SetStateAction<boolean>> }> = ({ children, show }) => {
-
-  return <div onClick={() => show(false)}>
-    <EagerLoadWrapper>{children}</EagerLoadWrapper>
-    <IntroPageWrapper >
-      <BoxWrapper >
-        <TextBoxLogo />
-      </BoxWrapper>
-    </IntroPageWrapper>
-  </div>
-
-}
+export const Slideshow: React.FC<{
+  show: React.Dispatch<React.SetStateAction<boolean>>;
+}> = ({ children, show }) => {
+  return (
+    <div onClick={() => show(false)}>
+      <EagerLoadWrapper>{children}</EagerLoadWrapper>
+      <IntroPageWrapper>
+        <BoxWrapper>
+          <TextBoxLogo />
+        </BoxWrapper>
+      </IntroPageWrapper>
+    </div>
+  );
+};

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import styled from "styled-components/macro";
+import styled from "@emotion/styled";
 
 import { CartContext } from "../../state/CartProvider";
 import { ProductsContext } from "../../state/ProductsProvider";
@@ -13,20 +13,20 @@ const BasketItemsSection = styled.ul`
   align-items: center;
 
   & li {
-  display: flex;
-  flex-direction: row;
-  text-decoration: none;
-  width: 100%;
-  border-bottom: var(--line-thickness) solid var(--main-border-colour);
-  padding-top: var(--spacing-3);
-  padding-bottom: var(--spacing-3);
-  @media only screen and (max-width: ${mobileBreakpoint}) {
-    flex-direction: column;
-  }  
-}
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+    width: 100%;
+    border-bottom: var(--line-thickness) solid var(--main-border-colour);
+    padding-top: var(--spacing-3);
+    padding-bottom: var(--spacing-3);
+    @media only screen and (max-width: ${mobileBreakpoint}) {
+      flex-direction: column;
+    }
+  }
   :first-child {
     border-top: var(--line-thickness) solid var(--main-border-colour);
-}
+  }
 `;
 
 export const BasketItemsList = () => {
@@ -36,9 +36,8 @@ export const BasketItemsList = () => {
   const skus = productsData.skus || {};
 
   const basketItems = cartContents.map((cartItem, index) => {
-    const { author, title, price, thumbnail, id, inventory, slug } = skus[
-      cartItem[0]
-    ];
+    const { author, title, price, thumbnail, id, inventory, slug } =
+      skus[cartItem[0]];
 
     return (
       <BasketListItem
@@ -55,6 +54,5 @@ export const BasketItemsList = () => {
       />
     );
   });
-  return <BasketItemsSection>{basketItems}</BasketItemsSection>
-
+  return <BasketItemsSection>{basketItems}</BasketItemsSection>;
 };
