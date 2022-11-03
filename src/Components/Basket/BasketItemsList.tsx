@@ -36,8 +36,15 @@ export const BasketItemsList = () => {
   const skus = productsData.skus || {};
 
   const basketItems = cartContents.map((cartItem, index) => {
-    const { author, title, price, thumbnail, id, inventory, slug } =
-      skus[cartItem[0]];
+    const {
+      author = "",
+      title,
+      price,
+      thumbnail,
+      id,
+      inventory,
+      slug,
+    } = skus[cartItem[0]];
 
     return (
       <BasketListItem
