@@ -18,12 +18,22 @@ module.exports = {
     `gatsby-plugin-emotion`,
     `gatsby-plugin-netlify`,
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: `gatsby-source-sanity`,
       options: {
-        name: `pages`,
-        path: `${__dirname}/src/pages/`,
+        projectId: `djdzl2ed`,
+        dataset: `production`,
+        // a token with read permissions is required
+        // if you have a private dataset
+        token: process.env.SANITY_TOKEN,
       },
     },
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `pages`,
+    //     path: `${__dirname}/src/pages/`,
+    //   },
+    // },
     {
       resolve: `gatsby-plugin-typescript`,
       options: {
@@ -32,30 +42,30 @@ module.exports = {
         allExtensions: true, // defaults to false
       },
     },
-    {
-      resolve: `gatsby-source-cloudinary`,
-      options: {
-        cloudName: process.env.CLOUDINARY_CLOUD_NAME,
-        apiKey: process.env.CLOUDINARY_API_KEY,
-        apiSecret: process.env.CLOUDINARY_API_SECRET,
-        resourceType: `image`,
-      },
-    },
-    {
-      resolve: `gatsby-source-strapi`,
-      options: {
-        apiURL: `https://monitor-books.herokuapp.com`,
-        collectionTypes: ["books", "videos", "background-colours"],
-        singleTypes: [
-          "about-page",
-          "intro-page",
-          "murmur-reading-series-description",
-          "submissions",
-          "basket-page",
-          "favicon",
-        ],
-      },
-    },
+    // {
+    //   resolve: `gatsby-source-cloudinary`,
+    //   options: {
+    //     cloudName: process.env.CLOUDINARY_CLOUD_NAME,
+    //     apiKey: process.env.CLOUDINARY_API_KEY,
+    //     apiSecret: process.env.CLOUDINARY_API_SECRET,
+    //     resourceType: `image`,
+    //   },
+    // },
+    // {
+    //   resolve: `gatsby-source-strapi`,
+    //   options: {
+    //     apiURL: `https://monitor-books.herokuapp.com`,
+    //     collectionTypes: ["books", "videos", "background-colours"],
+    //     singleTypes: [
+    //       "about-page",
+    //       "intro-page",
+    //       "murmur-reading-series-description",
+    //       "submissions",
+    //       "basket-page",
+    //       "favicon",
+    //     ],
+    //   },
+    // },
     {
       resolve: "@sentry/gatsby",
       options: {
