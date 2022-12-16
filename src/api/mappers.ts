@@ -1,11 +1,11 @@
 export const productListPageMapper = (
   product: ApiListPageProduct
 ): ListPageProduct => {
-  const { title, author, publishedDate, slug, thumbnail_image, productType } =
+  const { title, author, date_published, slug, thumbnail_image, productType } =
     product;
-  const thumbnail = thumbnail_image?.localFile;
+  const thumbnail = thumbnail_image.asset;
 
-  const publishedDateObj = new Date(publishedDate);
+  const publishedDateObj = new Date(date_published);
   const yearPublished = publishedDateObj.getFullYear();
   return {
     title,
@@ -23,25 +23,22 @@ export const singleProductPageMapper = (
   const {
     title,
     author,
-    blurb1,
-    blurb2,
-    publishedDate,
-    devPriceId,
-    prodPriceId,
-    gallery_images,
+    _rawBlurb1,
+    _rawBlurb2,
+    date_published,
+    price_id,
+    photos,
   } = product;
-  const galleryImages = gallery_images.map(
-    (galleryImage) => galleryImage.localFile
-  );
-  const publishedDateObj = new Date(publishedDate);
+
+  const publishedDateObj = new Date(date_published);
   return {
     title,
     author,
-    galleryImages,
-    blurb1,
-    blurb2,
+    galleryImages: photos,
+    blurb1: _rawBlurb1,
+    blurb2: _rawBlurb2,
     publishedDate: publishedDateObj,
-    priceId: process.env.NODE_ENV === "development" ? devPriceId : prodPriceId,
+    priceId: price_id,
   };
 };
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { graphql, PageProps } from "gatsby";
 import styled from "@emotion/styled";
-import ReactMarkdown from "react-markdown";
+import { PortableText } from "@portabletext/react";
 
 import { singleProductPageMapper } from "../../api/mappers";
 
@@ -10,39 +10,6 @@ import { AddToBasketButton, Photos } from "../../Components/Common";
 import SEO from "../../Components/seo";
 import { mobileBreakpoint } from "../../constants";
 import { useSetBackground } from "../../hooks/useSetBackground";
-
-export const query = graphql`
-  query BookQuery($slug: String!) {
-    strapiBooks(slug: { eq: $slug }) {
-      title
-      author
-      images {
-        fullSize
-      }
-      gallery_images {
-        localFile {
-          childImageSharp {
-            gatsbyImageData(
-              width: 1000
-              placeholder: BLURRED
-              formats: [AUTO, WEBP, AVIF]
-            )
-          }
-        }
-      }
-      blurb1
-      blurb2
-      publishedDate
-      slug
-      id
-      inventory
-      thumbnail
-      devPriceId
-      prodPriceId
-      price
-    }
-  }
-`;
 
 const Container = styled.div`
   padding-top: var(--spacing-6);
@@ -59,7 +26,7 @@ const Container = styled.div`
     padding-top: var(--spacing-1);
   }
 `;
-const LeftSection = styled(ReactMarkdown)`
+const LeftSection = styled(PortableText)<{ className: string }>`
   width: 45%;
   padding-bottom: 0;
   @media only screen and (max-width: ${mobileBreakpoint}) {
@@ -69,7 +36,7 @@ const LeftSection = styled(ReactMarkdown)`
   }
 `;
 
-const RightSection = styled(LeftSection)`
+const RightSection = styled(PortableText)<{ className: string }>`
   width: 100%;
   padding-bottom: 0;
   p {
@@ -106,13 +73,47 @@ const TextWrapper = styled.section`
   }
 `;
 
+export const query = graphql`
+  query BookQuery($slug: String!) {
+    sanityProduct(slug: { eq: $slug }) {
+      author
+      _rawBlurb1
+      _rawBlurb2
+      date_published
+      inventory
+      page_order
+      photos {
+        _key
+        _type
+        _rawAsset
+        _rawHotspot
+        _rawCrop
+        asset {
+          gatsbyImageData(placeholder: BLURRED, fit: FILLMAX)
+        }
+      }
+      price
+      product_type
+      price_id
+      slug
+      title
+      thumbnail_image {
+        asset {
+          gatsbyImageData(placeholder: BLURRED, fit: FILLMAX)
+        }
+      }
+    }
+  }
+`;
 interface ProductPageProps extends PageProps {
-  data: { strapiBooks: ApiSinglePageProduct };
+  data: { sanityProduct: ApiSinglePageProduct };
 }
 
 const ProductPage: React.FC<ProductPageProps> = ({ data }) => {
-  useSetBackground("books_background");
-  const product: SinglePageProduct = singleProductPageMapper(data.strapiBooks);
+  useSetBackground("products");
+  const product: SinglePageProduct = singleProductPageMapper(
+    data.sanityProduct
+  );
   const {
     title,
     author,
@@ -122,7 +123,7 @@ const ProductPage: React.FC<ProductPageProps> = ({ data }) => {
     publishedDate,
     galleryImages,
   } = product;
-
+  console.log({ blurb1 });
   return (
     <Layout>
       <SEO title={`${title} by ${author}`} description={blurb1} />
@@ -131,9 +132,12 @@ const ProductPage: React.FC<ProductPageProps> = ({ data }) => {
         <h1>{title}</h1>
         <h2>{author}</h2>
         <TextWrapper className="TextWrapper">
-          <LeftSection className="left-section" children={blurb1} />
+          <LeftSection value={blurb1} className="left-section" />
           <RightSectionWrapper>
-            <RightSection className="right-section">{blurb2}</RightSection>
+            <RightSection
+              className="right-section"
+              value={blurb2}
+            ></RightSection>
             {priceId && (
               <AddToBasketButton
                 id={priceId}

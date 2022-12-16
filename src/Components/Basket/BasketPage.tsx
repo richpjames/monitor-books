@@ -16,15 +16,15 @@ const EmptyCartMessage = styled.p`
 export const BasketPage = () => {
   const cartData = useContext(CartContext);
   const [loading, setLoading] = useState(false);
-  const { strapiBasketPage } = useStaticQuery(
-    graphql`
-      query {
-        strapiBasketPage {
-          empty_basket_message
-        }
-      }
-    `
-  );
+  // const { strapiBasketPage } = useStaticQuery(
+  //   graphql`
+  //     query {
+  //       strapiBasketPage {
+  //         empty_basket_message
+  //       }
+  //     }
+  //   `
+  // );
 
   if (loading) return <Loading />;
 
@@ -37,7 +37,7 @@ export const BasketPage = () => {
         </>
       ) : (
         <EmptyCartMessage id="empty-basket-message">
-          {strapiBasketPage.empty_basket_message}
+          {/* {strapiBasketPage.empty_basket_message} */}
         </EmptyCartMessage>
       )}
     </>

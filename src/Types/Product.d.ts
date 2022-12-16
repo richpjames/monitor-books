@@ -10,8 +10,8 @@ interface ListPageProduct {
 interface SinglePageProduct {
   title: string;
   author: string;
-  blurb1: string;
-  blurb2: string;
+  blurb1: PortableTextBlock;
+  blurb2: PortableTextBlock;
   publishedDate: Date;
   galleryImages: ImageDataLike[];
   priceId: string;
@@ -30,20 +30,19 @@ interface BasketProduct {
 
 interface ApiSinglePageProduct {
   id: number;
-  blurb1: string;
-  blurb2: string;
-  published_at: string;
+  _rawBlurb1: string;
+  _rawBlurb2: string;
+  date_published: string;
   created_at: string;
   updated_at: string;
-  gallery_images: { localFile: StrapiGatsbyImage }[];
+  photos: { asset: StrapiGatsbyImage }[];
   thumbnail_image: StrapiGatsbyImage;
   title: string;
   author: string;
   publishedDate: string;
   slug: string;
   inventory: number;
-  devPriceId: string;
-  prodPriceId: string;
+  price_id: string;
   thumbnail: string;
   price: number;
   images: {
@@ -75,10 +74,10 @@ interface ApiFullProduct {
 }
 
 interface ApiListPageProduct {
-  thumbnail_image: StrapiGatsbyImage;
+  thumbnail_image: { asset: any };
   title: string;
   author: string;
-  publishedDate: string;
+  date_published: string;
   slug: string;
   price: number;
   productType: string;
