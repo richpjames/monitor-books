@@ -34,7 +34,7 @@ const HeaderStyles = styled.header<{ showMenu: boolean }>`
     li:last-child {
       margin-left: auto;
     }
-    li:first-child {
+    li:first-of-type {
       padding-left: 0;
     }
   }
@@ -66,7 +66,7 @@ const HeaderStyles = styled.header<{ showMenu: boolean }>`
       li:last-child {
         margin-left: 0;
       }
-      li:first-child {
+      li:first-of-type {
         padding-left: var(--spacing-1);
       }
     }

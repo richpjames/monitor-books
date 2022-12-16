@@ -17,25 +17,23 @@ import SEO from "../../Components/seo";
 import { useSetBackground } from "../../hooks/useSetBackground";
 
 const ProductsPage: FC<PageProps> = () => {
-  useSetBackground("books_background");
+  useSetBackground("products");
 
   const {
-    allStrapiBooks,
-  }: { allStrapiBooks: { nodes: ApiListPageProduct[] } } =
+    allSanityProduct,
+  }: { allSanityProduct: { nodes: ApiListPageProduct[] } } =
     useStaticQuery(graphql`
       query {
-        allStrapiBooks(sort: { order: DESC, fields: pageOrder }) {
+        allSanityProduct(sort: { order: DESC, fields: page_order }) {
           nodes {
             slug
             title
             author
-            publishedDate
-            productType
+            date_published
+            product_type
             thumbnail_image {
-              localFile {
-                childImageSharp {
-                  gatsbyImageData(width: 350)
-                }
+              asset {
+                gatsbyImageData(placeholder: BLURRED, fit: FILLMAX)
               }
             }
           }
@@ -43,7 +41,7 @@ const ProductsPage: FC<PageProps> = () => {
       }
     `);
 
-  const books = allStrapiBooks.nodes.map((book, index) => {
+  const books = allSanityProduct.nodes.map((book, index) => {
     const mappedBook = productListPageMapper(book);
     const { title, slug, thumbnail, author, yearPublished, productType } =
       mappedBook;
@@ -77,7 +75,7 @@ const ProductsPage: FC<PageProps> = () => {
   return (
     <>
       <Layout>
-        <SEO title="Books" description="Publications from Monitor books" />
+        {/* <SEO title="Books" description="Publications from Monitor books" /> */}
         <ListWrap>{books}</ListWrap>
       </Layout>
     </>

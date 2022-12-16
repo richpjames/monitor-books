@@ -24,7 +24,7 @@ const BasketItemsSection = styled.ul`
       flex-direction: column;
     }
   }
-  :first-child {
+  :first-of-type {
     border-top: var(--line-thickness) solid var(--main-border-colour);
   }
 `;

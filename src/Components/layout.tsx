@@ -45,13 +45,13 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <PageWrapper>
-      <ProductsProvider>
-        <CartProvider>
-          <Header />
-          <Main>{children}</Main>
-          <Footer />
-        </CartProvider>
-      </ProductsProvider>
+      {/* <ProductsProvider> */}
+      {/* <CartProvider> */}
+      <Header />
+      <Main>{children}</Main>
+      <Footer />
+      {/* </CartProvider> */}
+      {/* </ProductsProvider> */}
     </PageWrapper>
   );
 };
