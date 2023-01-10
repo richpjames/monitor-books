@@ -1,6 +1,6 @@
 interface Video {
   title: string;
-  artistNames: string[];
+  artists: string[];
   blurb1: string;
   blurb2: string;
   url: string;
@@ -15,10 +15,10 @@ interface ApiVideo {
   publishedDate: string;
   slug: string;
   url: string;
-  thumbnail_img: StrapiGatsbyImage;
-  blurb1: string;
-  blurb2: string;
-  artists: { id: number; Name: string; Description: string }[];
+  thumbnail_img?: StrapiGatsbyImage;
+  _rawBlurb1: string;
+  _rawBlurb2: string;
+  artists: string[];
 }
 type StrapiMurmurReadingSeriesDescription = {
   description_of_events: string;

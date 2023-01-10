@@ -73,11 +73,11 @@ export const videoMapper = (video: ApiVideo): Video => {
     slug,
     url,
     thumbnail_img,
-    blurb1,
-    blurb2,
+    _rawBlurb1,
+    _rawBlurb2,
     artists,
   } = video;
-  const artistNames = artists.map((artist) => artist.Name);
+
   const thumbnail = thumbnail_img?.localFile;
   return {
     title,
@@ -86,8 +86,8 @@ export const videoMapper = (video: ApiVideo): Video => {
     slug,
     url,
     thumbnail,
-    blurb1,
-    blurb2,
-    artistNames,
+    blurb1: _rawBlurb1,
+    blurb2: _rawBlurb2,
+    artists,
   };
 };
