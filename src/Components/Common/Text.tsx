@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "@emotion/styled";
-import ReactMarkdown from "react-markdown";
+import { PortableText } from "@portabletext/react";
 
 import { mobileBreakpoint } from "../../constants";
 
-const LeftSection = styled.section`
+export const LeftSection = styled.div<{ className: string }>`
   width: 45%;
   padding-bottom: 0;
   @media only screen and (max-width: ${mobileBreakpoint}) {
@@ -14,26 +14,34 @@ const LeftSection = styled.section`
   }
 `;
 
-const RightSection = styled(LeftSection)<{ photoExists: boolean }>`
-  padding-left: 9%;
+export const RightSection = styled.div<{ className: string }>`
+  width: 100%;
   padding-bottom: 0;
+  p {
+    padding-bottom: 0;
+  }
   @media only screen and (max-width: ${mobileBreakpoint}) {
     padding-left: 0;
-    padding-bottom: var(--spacing-10);
-    padding-top: ${({ photoExists }) =>
-      !photoExists ? `var(--spacing-10);` : `0;`};
+    padding-bottom: var(--spacing-2);
+    padding-top: var(--spacing-2);
   }
 `;
 
-const ErrorTextWrapper = styled.span`
-  color: var(--pink);
+export const RightSectionWrapper = styled.div`
+  padding-left: 9%;
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+  @media only screen and (max-width: ${mobileBreakpoint}) {
+    width: 100%;
+    padding-left: 0;
+  }
 `;
 
-const TextWrapper = styled.section`
+export const TextWrapper = styled.section`
   display: flex;
   flex-direction: row;
   padding-top: 2.5%;
-  hanging-punctuation: first;
   b {
     font-style: italic;
   }
@@ -43,28 +51,9 @@ const TextWrapper = styled.section`
   }
 `;
 
-interface Props {
-  leftText: string;
-  rightText: string;
-  addToBasketButton?: JSX.Element;
-  photo?: JSX.Element;
-}
-
-export const SplitText = (props: Props) => {
-  const { addToBasketButton, photo, leftText, rightText } = props;
-  const photoExists = !!photo;
-  return (
-    <TextWrapper className="TextWrapper">
-      <LeftSection>
-        <ReactMarkdown className="left-section" children={leftText} />
-      </LeftSection>
-      <RightSection photoExists={photoExists}>
-        <ReactMarkdown className="right-section" children={rightText} />
-        {addToBasketButton}
-      </RightSection>
-    </TextWrapper>
-  );
-};
+const ErrorTextWrapper = styled.span`
+  color: var(--pink);
+`;
 
 export const ErrorText: React.FC<{ line1: string; line2: string }> = ({
   line1,

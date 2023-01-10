@@ -7,9 +7,15 @@ import { singleProductPageMapper } from "../../api/mappers";
 
 import Layout from "../../Components/layout";
 import { AddToBasketButton, Photos } from "../../Components/Common";
-import SEO from "../../Components/seo";
+// import SEO from "../../Components/seo";
 import { mobileBreakpoint } from "../../constants";
 import { useSetBackground } from "../../hooks/useSetBackground";
+import {
+  LeftSection,
+  RightSection,
+  RightSectionWrapper,
+  TextWrapper,
+} from "../../Components/Common/Text";
 
 const Container = styled.div`
   padding-top: var(--spacing-6);
@@ -24,52 +30,6 @@ const Container = styled.div`
     border-top: none;
     padding-bottom: 0;
     padding-top: var(--spacing-1);
-  }
-`;
-const LeftSection = styled(PortableText)<{ className: string }>`
-  width: 45%;
-  padding-bottom: 0;
-  @media only screen and (max-width: ${mobileBreakpoint}) {
-    padding-bottom: var(--spacing-3);
-    border-bottom: var(--line-thickness) solid var(--main-border-colour);
-    width: 100%;
-  }
-`;
-
-const RightSection = styled(PortableText)<{ className: string }>`
-  width: 100%;
-  padding-bottom: 0;
-  p {
-    padding-bottom: 0;
-  }
-  @media only screen and (max-width: ${mobileBreakpoint}) {
-    padding-left: 0;
-    padding-bottom: var(--spacing-2);
-    padding-top: var(--spacing-2);
-  }
-`;
-
-const RightSectionWrapper = styled.div`
-  padding-left: 9%;
-  display: flex;
-  flex-direction: column;
-  width: 45%;
-  @media only screen and (max-width: ${mobileBreakpoint}) {
-    width: 100%;
-    padding-left: 0;
-  }
-`;
-
-const TextWrapper = styled.section`
-  display: flex;
-  flex-direction: row;
-  padding-top: 2.5%;
-  b {
-    font-style: italic;
-  }
-  @media only screen and (max-width: ${mobileBreakpoint}) {
-    flex-direction: column;
-    margin-bottom: var(--spacing-6);
   }
 `;
 
@@ -123,21 +83,22 @@ const ProductPage: React.FC<ProductPageProps> = ({ data }) => {
     publishedDate,
     galleryImages,
   } = product;
-  console.log({ blurb1 });
+
   return (
     <Layout>
-      <SEO title={`${title} by ${author}`} description={blurb1} />
+      {/* <SEO title={`${title} by ${author}`} description={blurb1} /> */}
       <Container>
         <Photos photos={galleryImages} title={title} />
         <h1>{title}</h1>
         <h2>{author}</h2>
         <TextWrapper className="TextWrapper">
-          <LeftSection value={blurb1} className="left-section" />
+          <LeftSection className="left-section">
+            <PortableText value={blurb1} />
+          </LeftSection>
           <RightSectionWrapper>
-            <RightSection
-              className="right-section"
-              value={blurb2}
-            ></RightSection>
+            <RightSection className="right-section">
+              <PortableText value={blurb2} />
+            </RightSection>
             {priceId && (
               <AddToBasketButton
                 id={priceId}
