@@ -20,6 +20,6 @@ interface ApiVideo {
   _rawBlurb2: string;
   artists: string[];
 }
-type StrapiMurmurReadingSeriesDescription = {
-  description_of_events: string;
+type EventList = {
+  eventLists: string[];
 };
