@@ -44,12 +44,11 @@ const SEO = ({
     `
   );
 
-  console.log({ site, sanityFavicon });
   const metaDescription = description || site.siteMetadata.description;
   const defaultTitle = site.siteMetadata?.title;
 
   const favicon = sanityFavicon.image.asset.publicUrl;
-  console.log({ favicon });
+
   return (
     <Helmet
       htmlAttributes={{

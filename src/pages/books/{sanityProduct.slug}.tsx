@@ -86,7 +86,10 @@ const ProductPage: React.FC<ProductPageProps> = ({ data }) => {
 
   return (
     <Layout>
-      <SEO title={`${title} by ${author}`} description={blurb1} />
+      <SEO
+        title={`${title} by ${author}`}
+        description={`${title} by ${author}`}
+      />
       <Container>
         <Photos photos={galleryImages} title={title} />
         <h1>{title}</h1>

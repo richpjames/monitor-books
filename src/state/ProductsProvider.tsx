@@ -57,20 +57,6 @@ const skusQuery = graphql`
       nodes {
         title
         author
-        blurb_1 {
-          _key
-          _type
-          style
-          list
-          _rawChildren
-        }
-        blurb_2 {
-          _key
-          _type
-          style
-          list
-          _rawChildren
-        }
         date_published
         slug
         id
@@ -83,11 +69,9 @@ const skusQuery = graphql`
         }
         inventory
         thumbnail_image {
-          _key
-          _type
-          _rawAsset
-          _rawHotspot
-          _rawCrop
+          asset {
+            gatsbyImageData(placeholder: BLURRED, fit: FILLMAX)
+          }
         }
         price_id
         price
