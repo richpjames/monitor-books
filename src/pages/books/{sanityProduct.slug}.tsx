@@ -7,7 +7,7 @@ import { singleProductPageMapper } from "../../api/mappers";
 
 import Layout from "../../Components/layout";
 import { AddToBasketButton, Photos } from "../../Components/Common";
-// import SEO from "../../Components/seo";
+import SEO from "../../Components/seo";
 import { mobileBreakpoint } from "../../constants";
 import { useSetBackground } from "../../hooks/useSetBackground";
 import {
@@ -86,7 +86,7 @@ const ProductPage: React.FC<ProductPageProps> = ({ data }) => {
 
   return (
     <Layout>
-      {/* <SEO title={`${title} by ${author}`} description={blurb1} /> */}
+      <SEO title={`${title} by ${author}`} description={blurb1} />
       <Container>
         <Photos photos={galleryImages} title={title} />
         <h1>{title}</h1>

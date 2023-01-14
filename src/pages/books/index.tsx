@@ -75,7 +75,7 @@ const ProductsPage: FC<PageProps> = () => {
   return (
     <>
       <Layout>
-        {/* <SEO title="Books" description="Publications from Monitor books" /> */}
+        <SEO title="Books" description="Publications from Monitor books" />
         <ListWrap>{books}</ListWrap>
       </Layout>
     </>

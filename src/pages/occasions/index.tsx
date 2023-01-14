@@ -3,7 +3,7 @@ import { useStaticQuery, graphql, PageProps } from "gatsby";
 import { PortableText } from "@portabletext/react";
 
 import Layout from "../../Components/layout";
-// import SEO from "../../Components/seo";
+import SEO from "../../Components/seo";
 import { useSetBackground } from "../../hooks/useSetBackground";
 
 const VideosPage: React.FC<PageProps> = () => {
@@ -22,7 +22,7 @@ const VideosPage: React.FC<PageProps> = () => {
 
   return (
     <Layout>
-      {/* <SEO title="Occasions" description={readingSeriesDescription} /> */}
+      <SEO title="Occasions" description={eventList} />
       <PortableText value={eventList} />
     </Layout>
   );
