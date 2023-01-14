@@ -5,7 +5,7 @@ import { videoMapper } from "../../api/mappers";
 import { PortableText } from "@portabletext/react";
 
 import { Video, VideoTitle } from "../../Components/Common";
-// import SEO from "../../Components/seo";
+import SEO from "../../Components/seo";
 import Layout from "../../Components/layout";
 import { useSetBackground } from "../../hooks/useSetBackground";
 import {
@@ -45,10 +45,10 @@ const VideoPage: React.FC<VideoPageProps> = ({ data }) => {
   const { title, url, artists, blurb1, blurb2 } = video;
   return (
     <VideoPageWrapper>
-      {/* <SEO
-        title={`${title} featuring ${artistNames.join(" ")}`}
+      <SEO
+        title={`${title} featuring ${artists.join(" ")}`}
         description={title}
-      /> */}
+      />
       <Video url={url} title={title} />
       <VideoTitle title={`${title}:`} subtitle={artists} />
       <TextWrapper className="TextWrapper">

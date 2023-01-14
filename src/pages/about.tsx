@@ -3,7 +3,7 @@ import { graphql, useStaticQuery, PageProps } from "gatsby";
 import styled from "@emotion/styled";
 import { PortableText } from "@portabletext/react";
 
-// import SEO from "../Components/seo";
+import SEO from "../Components/seo";
 import Layout from "../Components/layout";
 import { mobileBreakpoint } from "../constants";
 import { useSetBackground } from "../hooks/useSetBackground";
@@ -25,13 +25,12 @@ const About: React.FC<PageProps> = () => {
     }
   `);
 
-  console.log({ allSanityAbout });
   const { _rawDescription } = allSanityAbout.nodes[0];
   useSetBackground("about");
 
   return (
     <Layout>
-      {/* <SEO title="About" description="About Monitor Books" /> */}
+      <SEO title="About" description="About Monitor Books" />
       <TextWrap>
         <PortableText value={_rawDescription} />
       </TextWrap>
