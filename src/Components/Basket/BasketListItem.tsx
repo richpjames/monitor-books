@@ -90,12 +90,12 @@ const BasketListItem = ({
   const { add, subtract } = useContext(CartContext);
   const handleAdd = (id: string) => (add ? add(id) : null);
   const handleSubtract = (id: string) => (subtract ? subtract(id) : null);
-
   const image = getImage(thumbnail);
+
   const basketItemLabel = slug.toLowerCase();
   return (
     <li id={`${slug}-basket-item`}>
-      {image && <Image image={image} alt={`thumbnail image of ${title}`} />}
+      {thumbnail && <Image image={image} alt={`thumbnail image of ${title}`} />}
       <BasketMetaInfoContainer>
         <h4 id={`${basketItemLabel}-subtitle`}>{subtitle},</h4>
         <h4 id={`${basketItemLabel}-title`}> {title}</h4>

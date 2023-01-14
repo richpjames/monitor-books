@@ -24,7 +24,6 @@ interface BasketProduct {
   slug: string;
   price: number;
   inventory: number;
-  id: string;
   priceId: string;
 }
 
@@ -58,14 +57,13 @@ interface ApiFullProduct {
   created_at: string;
   updated_at: string;
   gallery_images: StrapiGatsbyImage[];
-  thumbnail_image: StrapiGatsbyImage;
+  thumbnail_image: { asset: { gatsbyImage: StrapiGatsbyImage } };
   title: string;
   author: string;
   publishedDate: string;
   slug: string;
   inventory: number;
-  devPriceId: string;
-  prodPriceId: string;
+  price_id: string;
   thumbnail: string;
   price: number;
   images: {

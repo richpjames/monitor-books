@@ -43,26 +43,17 @@ export const singleProductPageMapper = (
 };
 
 export const basketProductMapper = (product: ApiFullProduct): BasketProduct => {
-  const {
-    author,
-    title,
-    price,
-    thumbnail_image,
-    id,
-    inventory,
-    slug,
-    devPriceId,
-    prodPriceId,
-  } = product;
+  const { author, title, price, thumbnail_image, inventory, slug, price_id } =
+    product;
+
   return {
     author,
     title,
     price,
-    thumbnail: thumbnail_image.localFile,
+    thumbnail: thumbnail_image.asset,
     inventory,
     slug,
-    id: `${id}`,
-    priceId: process.env.NODE_ENV === "development" ? devPriceId : prodPriceId,
+    priceId: price_id,
   };
 };
 
