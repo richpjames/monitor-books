@@ -15,6 +15,11 @@ import Layout from "../../Components/layout";
 import { productListPageMapper } from "../../api/mappers";
 import SEO from "../../Components/seo";
 import { useSetBackground } from "../../hooks/useSetBackground";
+import styled from "@emotion/styled";
+
+const Image = styled(GatsbyImage)`
+  height: 100%;
+`;
 
 const ProductsPage: FC<PageProps> = () => {
   useSetBackground("products");
@@ -33,7 +38,7 @@ const ProductsPage: FC<PageProps> = () => {
             product_type
             thumbnail_image {
               asset {
-                gatsbyImageData(placeholder: BLURRED, fit: FILLMAX)
+                gatsbyImageData(placeholder: BLURRED, fit: FILLMAX, width: 350)
               }
             }
           }
@@ -51,7 +56,7 @@ const ProductsPage: FC<PageProps> = () => {
       <ListItemLink to={slug} key={slug}>
         <ListItemWrap id={`${slug}-container`}>
           {image && (
-            <GatsbyImage
+            <Image
               id={`${slug}-photo`}
               image={image}
               alt={`a photo of the book ${title} by ${author}`}
