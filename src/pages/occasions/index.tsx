@@ -1,9 +1,10 @@
-import React from "react";
-import { useStaticQuery, graphql, PageProps } from "gatsby";
-import { PortableText } from "@portabletext/react";
+import { PageProps, graphql, useStaticQuery } from "gatsby";
 
 import Layout from "../../Components/layout";
+import { PortableText } from "@portabletext/react";
+import React from "react";
 import SEO from "../../Components/seo";
+import { urlFor } from "../../utils/sanityImage";
 import { useSetBackground } from "../../hooks/useSetBackground";
 
 const VideosPage: React.FC<PageProps> = () => {
@@ -22,8 +23,21 @@ const VideosPage: React.FC<PageProps> = () => {
 
   return (
     <Layout>
-      <SEO title="Occasions" description={eventList} />
-      <PortableText value={eventList} />
+      <SEO title="Occasions" description="Monitor books occassions" />
+      <PortableText
+        value={eventList}
+        components={{
+          types: {
+            image: ({ value }) => {
+              return (
+                <p>
+                  <img src={urlFor(value).url()} alt="image" />
+                </p>
+              );
+            },
+          },
+        }}
+      />
     </Layout>
   );
 };

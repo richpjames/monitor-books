@@ -54,6 +54,8 @@
     "@cypress/webpack-dev-server": "^1.4.0",
     "@percy/cli": "^1.0.0-beta.56",
     "@percy/cypress": "^3.1.0",
+    "@sanity/client": "^5.2.1",
+    "@sanity/image-url": "^1.0.2",
     "@testing-library/cypress": "^7.0.6",
     "@testing-library/jest-dom": "^5.11.0",
     "@testing-library/react": "^11.2.6",
