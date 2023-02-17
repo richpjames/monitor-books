@@ -5,7 +5,7 @@ interface Shipping {
 }
 
 interface Skus {
-  [index: string]: Sku;
+  [index: string]: BasketProduct;
 }
 interface Cart {
   addedIds: AddedIds;
