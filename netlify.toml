@@ -8,7 +8,7 @@
   environment = { NODE_ENV = "production", GATSBY_ENV = "production"}
 
 [context.branch-deploy]
-  command = "SENTRY_LOG_LEVEL=debug yarn buildProd"
+  command = "SENTRY_LOG_LEVEL=debug yarn build"
   publish = "public/"
   environment = { NODE_ENV = "production", GATSBY_ENV = "production"}
 
