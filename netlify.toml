@@ -1,10 +1,10 @@
 [build]
-  command = "yarn buildProd"
+  command = "yarn build"
   publish = "public/"
   functions = "functions/"
 
 [context.production]
-  command = "yarn buildProd"
+  command = "yarn build"
   environment = { NODE_ENV = "production", GATSBY_ENV = "production"}
 
 [context.branch-deploy]
@@ -33,3 +33,5 @@
   ]
   
   resultMode = "warn"
+
+  package = "gatsby-plugin-netlify"
