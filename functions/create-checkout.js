@@ -6,7 +6,7 @@ exports.handler = async (event) => {
   const data = JSON.parse(event.body);
   const products = data.lineItems;
   let stripe = prodStripe;
-  let publishableKey = process.env.GATSBY_PROD_STRIPE_PUBLISHABLE_KEY;
+  const publishableKey = process.env.GATSBY_PROD_STRIPE_PUBLISHABLE_KEY;
 
   try {
     const session = await stripe.checkout.sessions.create({
