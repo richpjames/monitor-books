@@ -17,21 +17,3 @@
   to = "/index.html"
   status = 200
 
-[[plugins]] 
-  package = "netlify-plugin-a11y"
-
-  # all inputs are optional, we just show you the defaults below
-  [plugins.inputs]
-
-  checkPaths = [
-    '/books',
-    '/about',
-    '/murmur-reading-series',
-    '/basket',
-    '/books/propositions',
-    '/murmur-reading-series/episode-one'
-  ]
-  
-  resultMode = "warn"
-
-  package = "gatsby-plugin-netlify"
