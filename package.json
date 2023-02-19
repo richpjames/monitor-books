@@ -47,14 +47,15 @@
     "sharp": "^0.30.6",
     "stripe": "^8.144.0",
     "typescript": "^4.2.4",
-    "use-mediaquery": "^1.0.1"
+    "use-mediaquery": "^1.0.1",
+    "@sanity/client": "^5.2.1",
+    "@sanity/image-url": "^1.0.2"
   },
   "devDependencies": {
     "@cypress/webpack-dev-server": "^1.4.0",
     "@percy/cli": "^1.0.0-beta.56",
     "@percy/cypress": "^3.1.0",
-    "@sanity/client": "^5.2.1",
-    "@sanity/image-url": "^1.0.2",
+
     "@testing-library/cypress": "^7.0.6",
     "@testing-library/jest-dom": "^5.11.0",
     "@testing-library/react": "^11.2.6",
