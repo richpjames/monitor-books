@@ -5,14 +5,9 @@ const prodStripe = require("stripe")(process.env.GATSBY_PROD_STRIPE_SECRET_KEY);
 exports.handler = async (event) => {
   const data = JSON.parse(event.body);
   const products = data.lineItems;
-  const env = data.env;
-  let stripe = devStripe;
-  let publishableKey = process.env.GATSBY_DEV_STRIPE_PUBLISHABLE_KEY;
+  let stripe = prodStripe;
+  const publishableKey = process.env.GATSBY_PROD_STRIPE_PUBLISHABLE_KEY;
 
-  if (env === "production") {
-    stripe = prodStripe;
-    publishableKey = process.env.GATSBY_PROD_STRIPE_PUBLISHABLE_KEY;
-  }
   try {
     const session = await stripe.checkout.sessions.create({
       mode: "payment",

@@ -21,7 +21,7 @@ const SEO = ({
   meta: any[];
   title: string;
 }) => {
-  const { site, strapiFavicon } = useStaticQuery(
+  const { site, sanityFavicon } = useStaticQuery(
     graphql`
       query {
         site {
@@ -32,9 +32,12 @@ const SEO = ({
             }
           }
         }
-        strapiFavicon {
-	        image{
-            url
+
+        sanityFavicon {
+          image {
+            asset {
+              publicUrl
+            }
           }
         }
       }
@@ -43,56 +46,62 @@ const SEO = ({
 
   const metaDescription = description || site.siteMetadata.description;
   const defaultTitle = site.siteMetadata?.title;
-  const favicon = strapiFavicon.image?.url
+
+  const favicon = sanityFavicon.image.asset.publicUrl;
+
   return (
     <Helmet
       htmlAttributes={{
         lang,
       }}
       title={title}
-      titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : undefined} link={[
+      titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : undefined}
+      link={[
         {
           rel: "icon",
           href: favicon,
-        }]}
-      meta={
-        [
-          {
-            name: `description`,
-            content: metaDescription,
-          },
-          {
-            property: `og:title`,
-            content: title,
-          },
-          {
-            property: `og:description`,
-            content: metaDescription,
-          },
-          {
-            property: `og:type`,
-            content: `website`,
-          },
-          {
-            name: `twitter:card`,
-            content: `summary`,
-          },
-          {
-            name: `twitter:creator`,
-            content: site.siteMetadata?.social?.twitter || ``,
-          },
-          {
-            name: `twitter:title`,
-            content: title,
-          },
-          {
-            name: `twitter:description`,
-            content: metaDescription,
-          },
-        ].concat(meta)
-      }
+        },
+      ]}
+      meta={[
+        {
+          name: `description`,
+          content: metaDescription,
+        },
+        {
+          property: `og:title`,
+          content: title,
+        },
+        {
+          property: `og:description`,
+          content: metaDescription,
+        },
+        {
+          property: `og:type`,
+          content: `website`,
+        },
+        {
+          name: `twitter:card`,
+          content: `summary`,
+        },
+        {
+          name: `twitter:creator`,
+          content: site.siteMetadata?.social?.twitter || ``,
+        },
+        {
+          name: `twitter:title`,
+          content: title,
+        },
+        {
+          name: `twitter:description`,
+          content: metaDescription,
+        },
+      ].concat(meta)}
     >
-      <script>{'if(!sessionStorage.getItem("_swa")&&document.referrer.indexOf(location.protocol+"//"+location.host)!== 0){fetch("https://counter.dev/track?" + new URLSearchParams({ referrer: document.referrer, screen: screen.width + "x" + screen.height, user: "richjames", utcoffset: "0" }))};sessionStorage.setItem("_swa","1")'}</script>
+      <script>
+        {
+          'if(!sessionStorage.getItem("_swa")&&document.referrer.indexOf(location.protocol+"//"+location.host)!== 0){fetch("https://counter.dev/track?" + new URLSearchParams({ referrer: document.referrer, screen: screen.width + "x" + screen.height, user: "richjames", utcoffset: "0" }))};sessionStorage.setItem("_swa","1")'
+        }
+      </script>
     </Helmet>
   );
 };

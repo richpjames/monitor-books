@@ -1,7 +1,7 @@
 import React from "react";
 import { graphql, useStaticQuery, PageProps } from "gatsby";
 import styled from "@emotion/styled";
-import ReactMarkdown from "react-markdown";
+import { PortableText } from "@portabletext/react";
 
 import SEO from "../Components/seo";
 import Layout from "../Components/layout";
@@ -13,36 +13,26 @@ const TextWrap = styled.section`
     padding-top: var(--spacing-6);
   }
 `;
-const SubmissionsText = styled.section`
-  padding-top: var(--spacing-5);
-`;
 
 const About: React.FC<PageProps> = () => {
-  const { strapiAboutPage, strapiSubmissions } = useStaticQuery(graphql`
-    query AboutPageQuery {
-      strapiAboutPage {
-        Description
-      }
-      strapiSubmissions {
-        title
-        description
+  const { allSanityAbout } = useStaticQuery(graphql`
+    query {
+      allSanityAbout {
+        nodes {
+          _rawDescription
+        }
       }
     }
   `);
-  const { Description } = strapiAboutPage;
-  useSetBackground("about_background");
+
+  const { _rawDescription } = allSanityAbout.nodes[0];
+  useSetBackground("about");
 
   return (
     <Layout>
       <SEO title="About" description="About Monitor Books" />
       <TextWrap>
-        <ReactMarkdown children={Description} />
-        <SubmissionsText>
-          <h4>
-            <u>{strapiSubmissions.title}</u>
-          </h4>
-        </SubmissionsText>
-        <ReactMarkdown children={strapiSubmissions.description} />
+        <PortableText value={_rawDescription} />
       </TextWrap>
     </Layout>
   );

@@ -3,7 +3,7 @@ import { useStaticQuery, graphql } from "gatsby";
 import { basketProductMapper } from "../api/mappers";
 
 export const ProductsContext = createContext<Partial<{ skus: Skus }>>({});
-type SkusQuery = { allStrapiBooks: { nodes: ApiFullProduct[] } };
+type SkusQuery = { allSanityProduct: { nodes: ApiFullProduct[] } };
 
 /**
  * Wrapper to give Provider access to Sku nodes from Gatsby's GraphQL store.
@@ -43,7 +43,7 @@ const Provider = ({
 const processGatsbyData = (data: SkusQuery) => {
   const skus: { [index: string]: BasketProduct } = {};
   // Sku nodes are grouped by product
-  data.allStrapiBooks.nodes.forEach((book) => {
+  data.allSanityProduct.nodes.forEach((book) => {
     const mappedBook = basketProductMapper(book);
     const sku = mappedBook.priceId;
     skus[sku] = mappedBook;
@@ -53,39 +53,27 @@ const processGatsbyData = (data: SkusQuery) => {
 
 const skusQuery = graphql`
   {
-    allStrapiBooks {
+    allSanityProduct {
       nodes {
         title
         author
-        blurb1
-        blurb2
-        publishedDate
+        date_published
         slug
         id
-        gallery_images {
-          localFile {
-            childImageSharp {
-              gatsbyImageData(width: 1000
-              placeholder: BLURRED 
-              formats: [AUTO, WEBP, AVIF]
-              )
-            }
-          }
+        photos {
+          _key
+          _type
+          _rawAsset
+          _rawHotspot
+          _rawCrop
         }
         inventory
         thumbnail_image {
-          localFile {
-            childImageSharp {
-              gatsbyImageData(
-                width: 400
-                placeholder: BLURRED
-                formats: [AUTO, WEBP, AVIF]
-              )
-            }
+          asset {
+            gatsbyImageData(placeholder: BLURRED, fit: FILLMAX)
           }
         }
-        devPriceId
-        prodPriceId
+        price_id
         price
       }
     }

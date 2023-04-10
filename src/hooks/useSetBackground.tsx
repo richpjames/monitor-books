@@ -9,27 +9,23 @@ export const setBackground: (path: string) => void = (backgroundColour) => {
   }
 };
 
-type BackgroundColour =
-  | "basket_background"
-  | "about_background"
-  | "books_background"
-  | "occasions_background";
+type BackgroundColour = "basket" | "about" | "products" | "occasions";
 
 export const useSetBackground = (backgroundColour: BackgroundColour) => {
-  const { allStrapiBackgroundColours } = useStaticQuery(graphql`
+  const { allSanityBackgroundColours } = useStaticQuery(graphql`
     query MyQuery {
-      allStrapiBackgroundColours {
+      allSanityBackgroundColours {
         nodes {
-          books_background
-          about_background
-          basket_background
-          occasions_background
+          about
+          basket
+          occasions
+          products
         }
       }
     }
   `);
 
-  const backgroundColours = allStrapiBackgroundColours.nodes[0];
+  const backgroundColours = allSanityBackgroundColours.nodes[0];
 
   useLayoutEffect(() => {
     setBackground(`${backgroundColours[backgroundColour]}`);

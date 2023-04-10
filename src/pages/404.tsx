@@ -5,7 +5,7 @@ import Layout from "../Components/layout";
 import { useSetBackground } from "../hooks/useSetBackground";
 
 const NotFound: React.FC<PageProps> = () => {
-  useSetBackground("about_background");
+  useSetBackground("about");
 
   return (
     <Layout>

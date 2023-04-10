@@ -53,7 +53,7 @@ export const Photos = (props: PhotosProps) => {
   const timer = useRef<NodeJS.Timeout | null>(null);
 
   const photoReel = photos.map((photo, i) => {
-    const image = getImage(photo);
+    const image = getImage(photo.asset);
     if (image) {
       return (
         <GatsbyImage image={image} alt={`a photo of ${title} book`} key={i} />

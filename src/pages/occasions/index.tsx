@@ -1,34 +1,42 @@
-import React from "react";
-import { useStaticQuery, graphql, PageProps } from "gatsby";
+import { PageProps, graphql, useStaticQuery } from "gatsby";
 
 import Layout from "../../Components/layout";
+import { PortableText } from "@portabletext/react";
+import React from "react";
 import SEO from "../../Components/seo";
+import { urlFor } from "../../utils/sanityImage";
 import { useSetBackground } from "../../hooks/useSetBackground";
-import ReactMarkdown from "react-markdown";
 
 const VideosPage: React.FC<PageProps> = () => {
-  const {
-    strapiMurmurReadingSeriesDescription,
-  }: {
-    strapiMurmurReadingSeriesDescription: StrapiMurmurReadingSeriesDescription;
-  } = useStaticQuery(graphql`
+  useSetBackground("occasions");
+  const { allSanityEventList } = useStaticQuery(graphql`
     query {
-      strapiMurmurReadingSeriesDescription {
-        description_of_events
+      allSanityEventList {
+        nodes {
+          _rawEvents
+        }
       }
     }
   `);
-  const readingSeriesDescription =
-    strapiMurmurReadingSeriesDescription.description_of_events;
 
-  useSetBackground("occasions_background");
+  const eventList = allSanityEventList.nodes[0]._rawEvents;
+
   return (
     <Layout>
-      <SEO title="Occasions" description={readingSeriesDescription} />
-      <ReactMarkdown
-        children={readingSeriesDescription}
-        className="list-text"
-        allowDangerousHtml
+      <SEO title="Occasions" description="Monitor books occassions" />
+      <PortableText
+        value={eventList}
+        components={{
+          types: {
+            image: ({ value }) => {
+              return (
+                <p>
+                  <img src={urlFor(value).url()} alt="image" />
+                </p>
+              );
+            },
+          },
+        }}
       />
     </Layout>
   );

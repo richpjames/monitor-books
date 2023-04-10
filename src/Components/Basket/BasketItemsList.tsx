@@ -24,7 +24,7 @@ const BasketItemsSection = styled.ul`
       flex-direction: column;
     }
   }
-  :first-child {
+  :first-of-type {
     border-top: var(--line-thickness) solid var(--main-border-colour);
   }
 `;
@@ -41,7 +41,6 @@ export const BasketItemsList = () => {
       title,
       price,
       thumbnail,
-      id,
       inventory,
       slug,
     } = skus[cartItem[0]];
@@ -55,7 +54,7 @@ export const BasketItemsList = () => {
         thumbnail={thumbnail}
         id={cartItem[0]}
         stock={inventory}
-        key={id}
+        key={`${title}-${author}-${slug}`}
         index={index}
         slug={slug}
       />
