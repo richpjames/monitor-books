@@ -8,12 +8,12 @@
   --grey: hsl(209, 40.3%, 69.8%);
   --pink: #d8aec1;
   --green: #e4ffcf;
-  --lavender: #e4daf4;
+  --lavender: #ebe9e9;
 
-  --product-background-colour: var(--lavender);
-  --video-background-colour: #d3dcee;
-  --basket-background-colour: var(--green);
-  --about-background-colour: #ebd6e0;
+  --product-background-colour: #ebe9e9;
+  --video-background-colour: #dfdfdf;
+  --basket-background-colour: #939393;
+  --about-background-colour: #d3d3d3;
   --button-colour: var(--deep-blue);
   --current-background-colour: var(--lavender);
 
