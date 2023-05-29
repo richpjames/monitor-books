@@ -15,27 +15,30 @@ import Layout from "../../Components/layout";
 import { productListPageMapper } from "../../api/mappers";
 import SEO from "../../Components/seo";
 import { useSetBackground } from "../../hooks/useSetBackground";
+import styled from "@emotion/styled";
+
+const Image = styled(GatsbyImage)`
+  height: 100%;
+`;
 
 const ProductsPage: FC<PageProps> = () => {
-  useSetBackground("books_background");
+  useSetBackground("products");
 
   const {
-    allStrapiBooks,
-  }: { allStrapiBooks: { nodes: ApiListPageProduct[] } } =
+    allSanityProduct,
+  }: { allSanityProduct: { nodes: ApiListPageProduct[] } } =
     useStaticQuery(graphql`
       query {
-        allStrapiBooks(sort: { order: DESC, fields: pageOrder }) {
+        allSanityProduct(sort: { order: DESC, fields: page_order }) {
           nodes {
             slug
             title
             author
-            publishedDate
-            productType
+            date_published
+            product_type
             thumbnail_image {
-              localFile {
-                childImageSharp {
-                  gatsbyImageData(width: 350)
-                }
+              asset {
+                gatsbyImageData(placeholder: BLURRED, fit: FILLMAX, width: 350)
               }
             }
           }
@@ -43,7 +46,7 @@ const ProductsPage: FC<PageProps> = () => {
       }
     `);
 
-  const books = allStrapiBooks.nodes.map((book, index) => {
+  const books = allSanityProduct.nodes.map((book, index) => {
     const mappedBook = productListPageMapper(book);
     const { title, slug, thumbnail, author, yearPublished, productType } =
       mappedBook;
@@ -53,7 +56,7 @@ const ProductsPage: FC<PageProps> = () => {
       <ListItemLink to={slug} key={slug}>
         <ListItemWrap id={`${slug}-container`}>
           {image && (
-            <GatsbyImage
+            <Image
               id={`${slug}-photo`}
               image={image}
               alt={`a photo of the book ${title} by ${author}`}

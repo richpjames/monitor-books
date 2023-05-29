@@ -6,8 +6,7 @@
   "homepage": ".",
   "scripts": {
     "start": "gatsby develop",
-    "buildDev": "NODE_ENV=development gatsby build",
-    "buildProd": "NODE_ENV=production gatsby build",
+    "build": "gatsby build",
     "functions": "cd functions && npm i && cd ..",
     "dev": "netlify dev",
     "typecheck": "./node_modules/typescript/bin/tsc --noEmit --skipLibCheck",
@@ -19,6 +18,7 @@
   "dependencies": {
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
+    "@portabletext/react": "^2.0.0",
     "@sentry/gatsby": "^6.7.2",
     "@stripe/stripe-js": "^1.13.2",
     "@testing-library/cypress": "^7.0.6",
@@ -28,12 +28,13 @@
     "gatsby-plugin-emotion": "^7.17.0",
     "gatsby-plugin-image": "^2.16.1",
     "gatsby-plugin-manifest": "^2.12.0",
-    "gatsby-plugin-netlify": "^5.0.0",
+    "gatsby-plugin-netlify": "^5.1.0",
     "gatsby-plugin-react-helmet": "^5.16.0",
     "gatsby-plugin-sharp": "^4.16.1",
     "gatsby-plugin-typescript": "^4.16.0",
     "gatsby-source-cloudinary": "^0.1.14",
     "gatsby-source-filesystem": "^4.16.0",
+    "gatsby-source-sanity": "^7.6.0",
     "gatsby-source-strapi": "^1.0.2",
     "gatsby-transformer-sharp": "^4.16.0",
     "react": "^17.0.2",
@@ -46,12 +47,15 @@
     "sharp": "^0.30.6",
     "stripe": "^8.144.0",
     "typescript": "^4.2.4",
-    "use-mediaquery": "^1.0.1"
+    "use-mediaquery": "^1.0.1",
+    "@sanity/client": "^5.2.1",
+    "@sanity/image-url": "^1.0.2"
   },
   "devDependencies": {
     "@cypress/webpack-dev-server": "^1.4.0",
     "@percy/cli": "^1.0.0-beta.56",
     "@percy/cypress": "^3.1.0",
+
     "@testing-library/cypress": "^7.0.6",
     "@testing-library/jest-dom": "^5.11.0",
     "@testing-library/react": "^11.2.6",
@@ -79,6 +83,7 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-react": "^7.23.2",
     "jest-environment-jsdom-sixteen": "^1.0.3",
+    "netlify-cli": "^12.13.1",
     "netlify-plugin-cypress": "^1.3.11",
     "start-server-and-test": "^1.12.1"
   },

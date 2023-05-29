@@ -8,7 +8,7 @@ import SEO from "../Components/seo";
 import { useSetBackground } from "../hooks/useSetBackground";
 
 const Basket: React.FC<PageProps> = () => {
-  useSetBackground("basket_background");
+  useSetBackground("basket");
 
   return (
     <Layout>
