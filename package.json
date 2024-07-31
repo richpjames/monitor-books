@@ -48,7 +48,6 @@
     "reset-css": "^5.0.1",
     "sharp": "^0.30.6",
     "stripe": "^8.144.0",
-    "use-mediaquery": "^1.0.1",
     "typescript": "^4.2.4"
   },
   "devDependencies": {

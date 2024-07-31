@@ -18987,11 +18987,6 @@ urlpattern-polyfill@8.0.2:
   resolved "https://registry.yarnpkg.com/urlpattern-polyfill/-/urlpattern-polyfill-8.0.2.tgz#99f096e35eff8bf4b5a2aa7d58a1523d6ebc7ce5"
   integrity sha512-Qp95D4TPJl1kC9SKigDcqgyM2VDVO4RiJc2d4qe5GrYm+zbIQCWWKAFaJNQ4BhdFeDGwBmAxqJBwWSJDb9T3BQ==
 
-use-mediaquery@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/use-mediaquery/-/use-mediaquery-1.0.1.tgz#7066dd1b012f41525624ec341fc9eaaa3fb86e05"
-  integrity sha512-4f5PxWMZ6zlS15vmI9/auMztgbJ+wUkWjLcLSLpwSklardBz0zF6UJ5vQ05uBu6h4NoI1hPkbXFTF0GITOTbrA==
-
 util-deprecate@^1.0.1, util-deprecate@^1.0.2, util-deprecate@~1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
