@@ -92,6 +92,8 @@ const BasketListItem = ({
   const handleSubtract = (id: string) => (subtract ? subtract(id) : null);
   const image = getImage(thumbnail);
 
+  if (!image) throw new Error("Image not found");
+
   const basketItemLabel = slug.toLowerCase();
   return (
     <li id={`${slug}-basket-item`}>
