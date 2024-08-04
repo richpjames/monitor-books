@@ -53,8 +53,8 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
     try {
       if (localStorage)
         localCart = JSON.parse(localStorage.getItem("basket") || "");
-    } catch (err) {
-      console.error(err.message);
+    } catch (err: unknown) {
+      if (err instanceof Error) console.error(err.message);
     }
     if (!localCart || !Array.isArray(localCart)) return [];
     return localCart;
