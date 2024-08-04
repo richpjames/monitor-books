@@ -71,8 +71,9 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
   }, [contents]);
 
   /** An array representing cart items in the form of [{sku}, quantity] */
-  const cart = contents.map(([id, quantity]) => {
-    return [skus[id], quantity];
+  const cart = contents.map(([id, quantity]): [BasketProduct, number] => {
+    const sku = skus[id];
+    return [sku, quantity];
   });
 
   /** The number of items in the cart */
