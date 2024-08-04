@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { PortableText } from "@portabletext/react";
 
 import { mobileBreakpoint } from "../../constants";
 
