@@ -63,7 +63,8 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
   // Save cart to local storage after load and on update
   useEffect(() => {
     try {
-      if (localStorage) localStorage.setItem("basket", JSON.stringify(contents));
+      if (localStorage)
+        localStorage.setItem("basket", JSON.stringify(contents));
     } catch (err) {
       console.error(err);
     }
@@ -171,10 +172,12 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
     }
   };
   const onCheckoutClicked: onCheckoutClicked = () => {
-    const lineItems = cart.filter(([_, quantity]) => quantity).map(([sku, quantity]) => ({
-      price: sku.priceId,
-      quantity: quantity,
-    }));
+    const lineItems = cart
+      .filter(([_, quantity]) => quantity)
+      .map(([sku, quantity]) => ({
+        price: sku.priceId,
+        quantity: quantity,
+      }));
     lineItems.push({ price: shipping.priceId, quantity: 1 });
     const stripePromise = loadStripe(stripePublishableKey || "");
 
@@ -194,7 +197,8 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
           });
 
           if (stripeResponse.error) {
-            alert("something went wrong. try again or contact editor@monitorbooks.co.uk, you have not been charged"
+            alert(
+              "something went wrong. try again or contact editor@monitorbooks.co.uk, you have not been charged"
             );
           }
           // If `redirectToCheckout` fails due to a browser or network
@@ -225,7 +229,11 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
     setShipping,
     onCheckoutClicked,
   };
-  if (typeof window !== 'undefined' && (window as any).Cypress && !(window as any).ctx) {
+  if (
+    typeof window !== "undefined" &&
+    (window as any).Cypress &&
+    !(window as any).ctx
+  ) {
     (window as any).ctx = ctx;
   }
   return (
