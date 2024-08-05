@@ -15,8 +15,8 @@ describe("Header", () => {
   it("clicking Videos Nav item takes the user to the video page", () => {
     cy.visit("/books/propositions");
 
-    cy.contains("Murmur Reading Series").click();
-    cy.url().should("include", "/murmur-reading-series");
+    cy.contains("Occasions").click();
+    cy.url().should("include", "/occasions");
   });
 
   it("clicking Basket Nav item takes the user to the basket page", () => {

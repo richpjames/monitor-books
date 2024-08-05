@@ -1,8 +1,8 @@
 interface Video {
   title: string;
   artists: string[];
-  blurb1: string;
-  blurb2: string;
+  blurb1: SanityEvent["_rawBlurb1"];
+  blurb2: SanityEvent["_rawBlurb1"];
   url: string;
   publishedDate: Date;
   slug: string;

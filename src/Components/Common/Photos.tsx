@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "@emotion/styled";
 
-import { GatsbyImage, getImage, ImageDataLike } from "gatsby-plugin-image";
+import { getImage, GatsbyImage } from "gatsby-plugin-image";
 import { mobileBreakpoint } from "../../constants";
+import { SanityAsset } from "@sanity/image-url/lib/types/types";
 
 const PhotoWrap = styled.section`
   padding: 0 var(--spacing-6);
@@ -43,7 +44,7 @@ const RightArrow = styled(Arrow)`
 `;
 
 interface PhotosProps {
-  photos: ImageDataLike[];
+  photos: SanityAsset[];
   title: string;
 }
 

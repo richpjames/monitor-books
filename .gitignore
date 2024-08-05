@@ -6,7 +6,10 @@ applitools_key.ts
 
 # Local Netlify folder
 .netlify
+
+# Cypress
 cypress/videos/*
+cypress/screenshots/*
 
 # gatsby
 .cache/
@@ -14,3 +17,4 @@ public/
 # @netlify/plugin-gatsby ignores start
 functions/gatsby
 # @netlify/plugin-gatsby ignores end
+

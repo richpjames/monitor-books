@@ -2,9 +2,7 @@ describe("Video Page", () => {
   beforeEach(() =>
     cy
       .fixture("initialisedState")
-      .then((initialisedState) =>
-        cy.visit("/murmur-reading-series/episode-two")
-      )
+      .then((initialisedState) => cy.visit("/occasions/two"))
   );
   it("test correct information is shown for product", () => {
     cy.get("h1")
