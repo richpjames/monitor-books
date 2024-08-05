@@ -45,7 +45,7 @@
     "react-native-fast-image": "^8.3.0",
     "react-spring": "^9.1.2",
     "reset-css": "^5.0.1",
-    "sharp": "^0.30.6",
+    "sharp": "^0.32.6",
     "stripe": "^8.144.0"
   },
   "devDependencies": {
