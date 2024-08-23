@@ -25,6 +25,7 @@
     "@stripe/stripe-js": "^1.13.2",
     "@testing-library/cypress": "^7.0.6",
     "@testing-library/user-event": "13.1.5",
+    "dotenv": "^16.4.5",
     "gatsby": "^4.25.7",
     "gatsby-plugin-emotion": "^7.17.0",
     "gatsby-plugin-image": "^2.16.1",
