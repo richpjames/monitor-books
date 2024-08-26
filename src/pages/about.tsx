@@ -7,6 +7,7 @@ import SEO from "../Components/seo";
 import Layout from "../Components/layout";
 import { mobileBreakpoint } from "../constants";
 import { useSetBackground } from "../hooks/useSetBackground";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 const TextWrap = styled.section`
   @media only screen and (max-width: ${mobileBreakpoint}) {
@@ -15,23 +16,32 @@ const TextWrap = styled.section`
 `;
 
 const About: React.FC<PageProps> = () => {
-  const { allSanityAbout } = useStaticQuery(graphql`
+  const { sanityAbout } = useStaticQuery(graphql`
     query {
-      allSanityAbout {
-        nodes {
-          _rawDescription
+      sanityAbout {
+        _rawDescription
+        banner_image {
+          asset {
+            gatsbyImageData(placeholder: BLURRED, fit: FILLMAX)
+          }
         }
       }
     }
   `);
 
-  const { _rawDescription } = allSanityAbout.nodes[0];
+  const { _rawDescription, banner_image } = sanityAbout;
   useSetBackground("about");
-
+  const photo = getImage(banner_image.asset);
   return (
     <Layout>
       <SEO title="About" description="About Monitor Books" />
       <TextWrap>
+        {photo && (
+          <GatsbyImage
+            image={photo}
+            alt={`a photo of some of Monitor's books`}
+          />
+        )}
         <PortableText value={_rawDescription} />
       </TextWrap>
     </Layout>
