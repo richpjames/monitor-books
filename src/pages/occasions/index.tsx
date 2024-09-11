@@ -5,24 +5,26 @@ import { PortableText } from "@portabletext/react";
 import React from "react";
 import SEO from "../../Components/seo";
 import { urlFor } from "../../utils/sanityImage";
-import { useSetBackground } from "../../hooks/useSetBackground";
 
 const VideosPage: React.FC<PageProps> = () => {
-  useSetBackground("occasions");
-  const { allSanityEventList } = useStaticQuery(graphql`
-    query {
-      allSanityEventList {
-        nodes {
-          _rawEvents
+  const { allSanityEventList, sanityBackgroundColours } =
+    useStaticQuery(graphql`
+      query {
+        allSanityEventList {
+          nodes {
+            _rawEvents
+          }
+        }
+        sanityBackgroundColours {
+          occasions
         }
       }
-    }
-  `);
+    `);
 
   const eventList = allSanityEventList.nodes[0]._rawEvents;
 
   return (
-    <Layout>
+    <Layout backgroundColour={sanityBackgroundColours.occasions}>
       <SEO title="Occasions" description="Monitor books occassions" />
       <PortableText
         value={eventList}

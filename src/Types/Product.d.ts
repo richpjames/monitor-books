@@ -84,3 +84,12 @@ interface ApiListPageProduct {
 interface ProductQuantityById {
   [index: string]: number;
 }
+
+type CssHexValue = string;
+
+interface ApiBackgroundColours {
+  basket: CssHexValue;
+  products: CssHexValue;
+  about: CssHexValue;
+  occasions: CssHexValue;
+}
