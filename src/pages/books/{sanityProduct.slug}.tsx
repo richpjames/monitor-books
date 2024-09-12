@@ -9,7 +9,6 @@ import Layout from "../../Components/layout";
 import { AddToBasketButton, Photos } from "../../Components/Common";
 import SEO from "../../Components/seo";
 import { mobileBreakpoint } from "../../constants";
-import { useSetBackground } from "../../hooks/useSetBackground";
 import {
   LeftSection,
   RightSection,
@@ -63,14 +62,20 @@ export const query = graphql`
         }
       }
     }
+    sanityBackgroundColours {
+      products
+    }
   }
 `;
 interface ProductPageProps extends PageProps {
-  data: { sanityProduct: ApiSinglePageProduct };
+  data: {
+    sanityProduct: ApiSinglePageProduct;
+    sanityBackgroundColours: SanityBackgroundColours;
+  };
 }
+export type SanityBackgroundColours = ApiBackgroundColours;
 
 const ProductPage: React.FC<ProductPageProps> = ({ data }) => {
-  useSetBackground("products");
   const product: SinglePageProduct = singleProductPageMapper(
     data.sanityProduct
   );
@@ -84,8 +89,10 @@ const ProductPage: React.FC<ProductPageProps> = ({ data }) => {
     galleryImages,
   } = product;
 
+  const { products: productsBackgroundColour } = data.sanityBackgroundColours;
+
   return (
-    <Layout>
+    <Layout backgroundColour={productsBackgroundColour}>
       <SEO
         title={`${title} by ${author}`}
         description={`${title} by ${author}`}

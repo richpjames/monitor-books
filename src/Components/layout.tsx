@@ -16,7 +16,7 @@ const Main = styled.section`
   flex: 1;
 `;
 
-export const PageWrapper = styled.main`
+export const PageWrapper = styled.main<{ backgroundColour: string }>`
   padding-top: var(--spacing-6);
   padding-left: var(--spacing-6);
   padding-right: var(--spacing-6);
@@ -28,7 +28,7 @@ export const PageWrapper = styled.main`
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
-  background-color: var(--current-background-colour);
+  background-color: ${(props) => props.backgroundColour};
   @media only screen and (max-width: ${mobileBreakpoint}) {
     padding: var(--spacing-6), var(--spacing-2);
   }
@@ -40,11 +40,13 @@ export const IntroPageWrapper = styled(PageWrapper)`
 
 interface LayoutProps {
   children: any;
+  backgroundColour: CssHexValue;
 }
 
-const Layout: React.FC<LayoutProps> = ({ children }) => {
+const Layout: React.FC<LayoutProps> = ({ children, backgroundColour }) => {
+  console.log({ backgroundColour });
   return (
-    <PageWrapper>
+    <PageWrapper backgroundColour={backgroundColour}>
       <ProductsProvider>
         <CartProvider>
           <Header />

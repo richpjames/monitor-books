@@ -14,37 +14,43 @@ import {
 import Layout from "../../Components/layout";
 import { productListPageMapper } from "../../api/mappers";
 import SEO from "../../Components/seo";
-import { useSetBackground } from "../../hooks/useSetBackground";
 import styled from "@emotion/styled";
+import { SanityBackgroundColours } from "./{sanityProduct.slug}";
 
 const Image = styled(GatsbyImage)`
   height: 100%;
 `;
 
 const ProductsPage: FC<PageProps> = () => {
-  useSetBackground("products");
-
   const {
     allSanityProduct,
-  }: { allSanityProduct: { nodes: ApiListPageProduct[] } } =
-    useStaticQuery(graphql`
-      query {
-        allSanityProduct(sort: { order: DESC, fields: page_order }) {
-          nodes {
-            slug
-            title
-            author
-            date_published
-            product_type
-            thumbnail_image {
-              asset {
-                gatsbyImageData(placeholder: BLURRED, fit: FILLMAX, width: 350)
-              }
+    sanityBackgroundColours,
+  }: {
+    allSanityProduct: {
+      nodes: ApiListPageProduct[];
+    };
+    sanityBackgroundColours: SanityBackgroundColours;
+  } = useStaticQuery(graphql`
+    query {
+      allSanityProduct(sort: { order: DESC, fields: page_order }) {
+        nodes {
+          slug
+          title
+          author
+          date_published
+          product_type
+          thumbnail_image {
+            asset {
+              gatsbyImageData(placeholder: BLURRED, fit: FILLMAX, width: 350)
             }
           }
         }
       }
-    `);
+      sanityBackgroundColours {
+        products
+      }
+    }
+  `);
 
   const books = allSanityProduct.nodes.map((book, index) => {
     const mappedBook = productListPageMapper(book);
@@ -77,9 +83,11 @@ const ProductsPage: FC<PageProps> = () => {
     );
   });
 
+  const { products: productsBackgroundColour } = sanityBackgroundColours;
+
   return (
     <>
-      <Layout>
+      <Layout backgroundColour={productsBackgroundColour}>
         <SEO title="Books" description="Publications from Monitor books" />
         <ListWrap>{books}</ListWrap>
       </Layout>

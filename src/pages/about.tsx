@@ -6,7 +6,6 @@ import { PortableText } from "@portabletext/react";
 import SEO from "../Components/seo";
 import Layout from "../Components/layout";
 import { mobileBreakpoint } from "../constants";
-import { useSetBackground } from "../hooks/useSetBackground";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 const TextWrap = styled.section`
@@ -16,7 +15,7 @@ const TextWrap = styled.section`
 `;
 
 const About: React.FC<PageProps> = () => {
-  const { sanityAbout } = useStaticQuery(graphql`
+  const { sanityAbout, allSanityBackgroundColours } = useStaticQuery(graphql`
     query {
       sanityAbout {
         _rawDescription
@@ -26,14 +25,21 @@ const About: React.FC<PageProps> = () => {
           }
         }
       }
+      allSanityBackgroundColours {
+        nodes {
+          about
+        }
+      }
     }
   `);
 
   const { _rawDescription, banner_image } = sanityAbout;
-  useSetBackground("about");
+
+  const { about: aboutBackgroundColour } = allSanityBackgroundColours.nodes[0];
+  console.log({ aboutBackgroundColour });
   const photo = getImage(banner_image.asset);
   return (
-    <Layout>
+    <Layout backgroundColour={aboutBackgroundColour}>
       <SEO title="About" description="About Monitor Books" />
       <TextWrap>
         {photo && (

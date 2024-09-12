@@ -1,12 +1,22 @@
 import React from "react";
-import { PageProps } from "gatsby";
+import { graphql, PageProps, useStaticQuery } from "gatsby";
 import Layout from "../Components/layout";
-import { useSetBackground } from "../hooks/useSetBackground";
 
 const Success: React.FC<PageProps> = () => {
-  useSetBackground("basket");
+  const { allSanityBackgroundColours } = useStaticQuery(graphql`
+    query {
+      allSanityBackgroundColours {
+        nodes {
+          basket
+        }
+      }
+    }
+  `);
+
+  const { basket: basketBackgroundColour } = allSanityBackgroundColours.nodes;
+
   return (
-    <Layout>
+    <Layout backgroundColour={basketBackgroundColour}>
       <h1>Order Successful</h1>
       <p>
         Everything went through ok.
