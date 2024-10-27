@@ -29,6 +29,9 @@ export const PageWrapper = styled.main<{ backgroundColour: string }>`
   align-items: center;
   box-sizing: border-box;
   background-color: ${(props) => props.backgroundColour};
+  & header button { 
+    background-color: ${(props) => props.backgroundColour};
+  }
   @media only screen and (max-width: ${mobileBreakpoint}) {
     padding: var(--spacing-6), var(--spacing-2);
   }
@@ -44,7 +47,6 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({ children, backgroundColour }) => {
-  console.log({ backgroundColour });
   return (
     <PageWrapper backgroundColour={backgroundColour}>
       <ProductsProvider>
