@@ -8,9 +8,8 @@
 import * as React from "react";
 import PropTypes from "prop-types";
 import { useStaticQuery, graphql } from "gatsby";
-import { Helmet as HelmetImport, HelmetProps } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
-const Helmet = HelmetImport as React.ComponentClass<HelmetProps>;
 const SEO = ({
   description,
   lang,

@@ -11,7 +11,7 @@ module.exports = {
     },
   },
   plugins: [
-    "gatsby-plugin-react-helmet",
+    "gatsby-plugin-react-helmet-async",
     "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
     "gatsby-plugin-image",
