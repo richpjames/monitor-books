@@ -7,9 +7,10 @@
 
 import * as React from "react";
 import PropTypes from "prop-types";
-import { Helmet } from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
+import { Helmet as HelmetImport, HelmetProps } from "react-helmet";
 
+const Helmet = HelmetImport as React.ComponentClass<HelmetProps>;
 const SEO = ({
   description,
   lang,
