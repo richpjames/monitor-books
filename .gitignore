@@ -18,3 +18,4 @@ public/
 functions/gatsby
 # @netlify/plugin-gatsby ignores end
 
+dist
