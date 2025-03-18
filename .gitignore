@@ -1,20 +1,4 @@
-node_modules
-**/.DS_Store/**
-.DS_Store
-build/static/*
-applitools_key.ts
-
-# Local Netlify folder
-.netlify
-
-# Cypress
-cypress/videos/*
-cypress/screenshots/*
-
-# gatsby
+node_modules/
 .cache/
-public/
-# @netlify/plugin-gatsby ignores start
-functions/gatsby
-# @netlify/plugin-gatsby ignores end
-
+public
+src/gatsby-types.d.ts
