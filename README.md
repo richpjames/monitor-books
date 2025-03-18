@@ -1,1 +1,1 @@
-Website for Monitor Books built using React
+Website for Monitor Books

@@ -1,0 +1,125 @@
+{
+  "cart": {
+    "addedIds": [],
+    "quantityById": {},
+    "shipping": {
+      "region": "UK",
+      "priceId": "price_1HMwTgJs9ciiqN7OnYGR5rOp",
+      "price": 2.5
+    },
+    "config": {
+      "hasError": false
+    },
+    "loading": false
+  },
+  "products": {
+    "byId": {
+      "1": {
+        "title": "MURMUR ANTHOLOGY 1",
+        "author": "Various",
+        "images": {
+          "fullSize": [
+            "https://res.cloudinary.com/hngylvknd/image/upload/v1613420722/monitor/anthology/anthology_1.jpg",
+            "https://res.cloudinary.com/hngylvknd/image/upload/v1613420722/monitor/anthology/anthology_2.jpg",
+            "https://res.cloudinary.com/hngylvknd/image/upload/v1613420722/monitor/anthology/anthology_3.jpg",
+            "https://res.cloudinary.com/hngylvknd/image/upload/v1613420722/monitor/anthology/anthology_4.jpg"
+          ]
+        },
+        "slug": "anthology",
+        "price": 10,
+        "inventory": 20,
+        "thumbnail": "https://res.cloudinary.com/hngylvknd/image/upload/v1613423920/monitor/book_thumbnails/anthology_thumb.jpg",
+        "devPriceId": "price_1HdckTJs9ciiqN7O218PIefo",
+        "prodPriceId": "price_1HdcjyJs9ciiqN7OWAHUyKRy",
+        "id": 1,
+        "publishedDate": "2019-09-30T00:00:00.000Z",
+        "priceId": "price_1HdckTJs9ciiqN7O218PIefo",
+        "blurb1": "<p>Monitor Books is proud to present: Murmur Anthology #1. Featuring new writing from contributors to the Murmur Reading Series in Manchester, this anthology is a varied and exciting collection of innovative poetry, prose, and drama from seventeen international authors.<br /><br />Authors: Rachael Allen, Bryony Bates, Jen Calleja, Alan Fielden, Joey Frances, Aurelia Guo, Tessa Harris, Tom Jenks, Barbara Juch, Sophie Jung, Shiv Kotecha, Jazmine Linklater, Amy McCauley, Lila Matsumoto, Sam Riviere, Michelle Steinbeck, Mónica de la Torre.</p>",
+        "blurb2": "<p>Designed by Joe Haigh at Chaosmos Studios <br /> Artwork by Joe Haigh & Michael Holland <br /> Edited by Rory Cook with Harriet Hill-Payne, Lucy Burns & RL Perry <br /> 234mm x 130mm <br /> 124 pages <br /> Perfect bound with tracing paper dust-jacket <br /> Edition of 250 <br /> Published 30th September 2019 <br /> £10 + p&p</p>\n",
+        "photos": [
+          "https://res.cloudinary.com/hngylvknd/image/upload/v1613420722/monitor/anthology/anthology_1.jpg",
+          "https://res.cloudinary.com/hngylvknd/image/upload/v1613420722/monitor/anthology/anthology_2.jpg",
+          "https://res.cloudinary.com/hngylvknd/image/upload/v1613420722/monitor/anthology/anthology_3.jpg",
+          "https://res.cloudinary.com/hngylvknd/image/upload/v1613420722/monitor/anthology/anthology_4.jpg"
+        ]
+      },
+      "2": {
+        "title": "PROPOSITIONS",
+        "author": "Amy McCauley",
+        "images": {
+          "fullSize": [
+            "https://res.cloudinary.com/hngylvknd/image/upload/v1613420822/monitor/propositions/propositions_1.jpg",
+            "https://res.cloudinary.com/hngylvknd/image/upload/v1613420822/monitor/propositions/propositions_2.jpg",
+            "https://res.cloudinary.com/hngylvknd/image/upload/v1613420822/monitor/propositions/propositions_3.jpg",
+            "https://res.cloudinary.com/hngylvknd/image/upload/v1613420822/monitor/propositions/propositions_4.jpg"
+          ]
+        },
+        "slug": "propositions",
+        "price": 10,
+        "inventory": 20,
+        "thumbnail": "https://res.cloudinary.com/hngylvknd/image/upload/v1613423907/monitor/book_thumbnails/propositions_thumb.jpg",
+        "devPriceId": "price_1Ho2ZQJs9ciiqN7O7i3XGV6r",
+        "prodPriceId": "price_1Hnt5cJs9ciiqN7OVvlJanor",
+        "id": 2,
+        "publishedDate": "2020-10-16T00:00:00.000Z",
+        "priceId": "price_1Ho2ZQJs9ciiqN7O7i3XGV6r",
+        "blurb1": "<p>A fragmentary treatise on desire and its consequences, Propositions is a playful examination of how we constitute and disassemble the self in language.</p><br /><p>‘Adroit aphorisms coiling around their own warping structure, filled with historic echoes and utterly recognisable voices. R.D. Laing minus the surplus arrogance, Sarah Kane with the lights on, Antigone in her cell waiting slyly for the men to return—a penetrable delight.’ — <b>Melissa Lee-Houghton</b></p><br /><p>‘It's exhilarating to read McCauley go into battle full-tilt with words against language, using as a weapon her very own body of vocabulary.’ — <b>Joanna Walsh</b></p><br /><p>‘A document of constellatory flesh from this cardinal supplier of horror-comedy.’ — <b>Alan Fielden</b> </p>\n",
+        "blurb2": "<p>Designed by John Newton and Rory Cook<br /> Printed and bound in Salford<br /> Covers screen-printed by John Powell-Jones<br /> Perfect-bound with French flaps<br /> Published 16th November 2020<br /> Edition of 150<br /> £10 + p&p<br /><br /> £1.50 from each sale is donated to The Trussell Trust </p> \n",
+        "photos": [
+          "https://res.cloudinary.com/hngylvknd/image/upload/v1613420822/monitor/propositions/propositions_1.jpg",
+          "https://res.cloudinary.com/hngylvknd/image/upload/v1613420822/monitor/propositions/propositions_2.jpg",
+          "https://res.cloudinary.com/hngylvknd/image/upload/v1613420822/monitor/propositions/propositions_3.jpg",
+          "https://res.cloudinary.com/hngylvknd/image/upload/v1613420822/monitor/propositions/propositions_4.jpg"
+        ]
+      }
+    },
+    "visibleIds": [2, 1]
+  },
+  "videos": {
+    "byId": {
+      "430660074": {
+        "title": "Murmur Reading Series #1",
+        "publishedDate": "2020-06-26T00:00:00.000Z",
+        "id": "430660074",
+        "slug": "episode-one",
+        "url": "430660074",
+        "thumbnail": "https://res.cloudinary.com/hngylvknd/image/upload/v1613423294/monitor/video_thumbnail/reading_series_1.jpg",
+        "blurb1": "<p>Murmur is a series of occasional events in Manchester, UK, bringing poetry and innovative writing to new audiences.<br /> This broadcast, the first in a new series of video readings, was produced for the English Shared Futures Conference 2020.<br />  Alan Fielden’s plays are performed by Alan Fielden, Nell Osborne, Rory Cook, and Amy McCauley.</p>\n",
+        "blurb2": "<p><b>Alan Fielden</b> is a writer, director, poet and performer. He was born in Seoul and lives in London, where he makes work with JAMS and ROOM. Marathon, a play, ran at the Barbican Centre in September 2018 having won the Oxford Samuel Beckett Theatre Trust Award. His fiction and poetry have appeared in Minor Literatures, 404ink, The Literateur, Der Grief and Allotrope Press.</p><br /><p><b>Aurelia Guo</b> is an artist, writer and researcher based in London. She is the author of the chapbooks NYT (Gauss PDF, 2018), 2016 (After Hours Ltd., 2016) and HOME INTRUDER EDITION (Publishing-House.me, 2015). Her writing and editing have also appeared in How To Sleep Faster, The Fanzine and Imperial Matters.</p><br /><p><b>Mónica De La Torre</b> works with and between languages. Her most recent poetry book is Repetition Nineteen (Nightboat Books, 2020). Born and raised in Mexico City, she lives in New York and teaches Literary Arts at Brooklyn College.</p>\n",
+        "artistNames": ["Alan Fielden", "Aurelia Guo", "Mónica De La Torre"]
+      },
+      "478497873": {
+        "title": "Murmur Reading Series #2",
+        "publishedDate": "2020-12-10T00:00:00.000Z",
+        "id": "478497873",
+        "slug": "episode-two",
+        "url": "478497873",
+        "thumbnail": "https://res.cloudinary.com/hngylvknd/image/upload/v1613423313/monitor/video_thumbnail/reading_series_2.jpg",
+        "blurb1": "<p>Originally a programme of occasional live events in Manchester between 2017-2019, Murmur is a series of video readings showcasing poetry, innovative writing, and performance.<br /> Nisha Ramayya's 'A Basket Woven of One's Own Hair' is <a href='https://www.the87press.com/post/digital-poetics-16-a-basket-woven-of-one-s-own-hair-nisha-ramayya'>available to read here</a>.<br/>Will Harris's 'Seven Dreams of Richard Spencer' is taken from RENDANG (Granta, 2020).</p>\n",
+        "blurb2": "<p><b>Nisha Ramayya</b> grew up in Glasgow and is based in London. Her debut collection, States of the Body Produced by Love, was published by Ignota Books in 2019. Other publications include a ‘Memo on Multiplicity’ in Frieze (2020); ‘Notes on a Means without End’ (2020) in Poetry Review; In Me the Juncture (Sad Press, 2019), and Threads (clinic, 2018), a critical-creative pamphlet co-authored with Sandeep Parmar and Bhanu Kapil.</p><br /><p><b>Will Harris</b> is a poet and critic from London. His debut collection, RENDANG, was published by Granta in 2020, and he is also the author of the critically acclaimed Mixed-Race Superman (Peninsula Press, 2018) and All This is Implied (HappenStance Press, 2017). RENDANG won the Forward Prize for Best First Collection, and is nominated for the T.S. Eliot Prize.</p><br /><p><b>Sophie Collins</b> grew up in Bergen, North Holland, and lives in Glasgow. She is the author of Who Is Mary Sue? (Faber, 2018) and small white monkeys (Book Works, 2017), and the editor of Currently & Emotion (Test Centre, 2016), an anthology of contemporary poetry translations; a sequel, Intimacy, is forthcoming. She is the translator, from the Dutch, of Lieke Marsman’s The Following Scan Will Last Five Minutes (Pavilion, 2019). She is now translating Marsman’s novel, The Opposite of a Person (Daunt Books, 2022), as well as working on new poetry and a text on her present preoccupations of love, affect, and fiction.\n",
+        "artistNames": ["Nisha Ramayya", "Will Harris", "Sophie Collins"]
+      }
+    },
+    "visibleIds": ["478497873", "430660074"]
+  },
+  "shippingCosts": [
+    {
+      "region": "UK",
+      "priceId": "price_1HMwTgJs9ciiqN7OnYGR5rOp",
+      "price": 2.5
+    },
+    {
+      "region": "Europe",
+      "priceId": "price_1HMwTgJs9ciiqN7OwbLHDoty",
+      "price": 4
+    },
+    {
+      "region": "Rest Of The World",
+      "priceId": "price_1HMwTgJs9ciiqN7OBWk2Jv6a",
+      "price": 5
+    }
+  ],
+  "config": {
+    "showSlideshow": true
+  }
+}

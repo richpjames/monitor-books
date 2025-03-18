@@ -32,7 +32,7 @@ const ProductsPage: FC<PageProps> = () => {
     sanityBackgroundColours: SanityBackgroundColours;
   } = useStaticQuery(graphql`
     query {
-      allSanityProduct(sort: { order: DESC, fields: page_order }) {
+      allSanityProduct(sort: { page_order: DESC }) {
         nodes {
           slug
           title

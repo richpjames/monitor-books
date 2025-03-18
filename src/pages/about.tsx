@@ -36,7 +36,7 @@ const About: React.FC<PageProps> = () => {
   const { _rawDescription, banner_image } = sanityAbout;
 
   const { about: aboutBackgroundColour } = allSanityBackgroundColours.nodes[0];
-  console.log({ aboutBackgroundColour });
+
   const photo = getImage(banner_image.asset);
   return (
     <Layout backgroundColour={aboutBackgroundColour}>
