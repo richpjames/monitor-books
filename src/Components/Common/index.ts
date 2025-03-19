@@ -15,8 +15,8 @@ import {
   ItemType,
 } from "./ListComponents";
 import { ErrorText } from "./Text";
-import { VideoTitle } from "./VideoTitle";
 import { Video } from "./Video";
+import { VideoTitle } from "./VideoTitle";
 
 export {
   AddToBasketButton,

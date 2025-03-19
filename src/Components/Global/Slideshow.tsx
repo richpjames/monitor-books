@@ -1,4 +1,4 @@
-import React from "react";
+import React, { PropsWithChildren } from "react";
 import styled from "@emotion/styled";
 
 import { mobileBreakpoint } from "../../constants";
@@ -35,9 +35,12 @@ export const IntroPageWrapper = styled.div`
   }
 `;
 
-export const Slideshow: React.FC<{
+export const Slideshow = ({
+  children,
+  show,
+}: PropsWithChildren<{
   show: React.Dispatch<React.SetStateAction<boolean>>;
-}> = ({ children, show }) => {
+}>) => {
   return (
     <div onClick={() => show(false)}>
       <EagerLoadWrapper>{children}</EagerLoadWrapper>

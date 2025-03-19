@@ -49,8 +49,6 @@ export const Footer = () => {
           );
         } else if (item.text) {
           return <span key={i}>{item.text}</span>;
-        } else {
-          return item;
         }
       })}
     </FooterWrap>
