@@ -16,17 +16,13 @@ const Iframe = styled.iframe`
   display: block;
 `;
 
-export const Video = ({ url, title }) => {
+export const Video = ({ url, title }: { url: string; title: string }) => {
   return (
     <VideoWrap>
       <Iframe
         src={`https://player.vimeo.com/video/${url}?color=ffffff&title=0&byline=0&portrait=0`}
         allow="autoplay; fullscreen"
-        allowfullscreen
-        frameBorder="0"
         allowFullScreen
-        webkitallowfullscreen
-        mozallowfullscreen
         title={title}
       />
     </VideoWrap>
