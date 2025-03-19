@@ -1,14 +1,14 @@
 [build]
-  command = "yarn build"
+  command = "npm run build"
   publish = "public/"
   functions = "functions/"
 
 [context.production]
-  command = "yarn build"
+  command = "npm run build"
   environment = { NODE_ENV = "production", GATSBY_ENV = "production"}
 
 [context.branch-deploy]
-  command = "SENTRY_LOG_LEVEL=debug yarn build"
+  command = "SENTRY_LOG_LEVEL=debug npm run build"
   publish = "public/"
   environment = { NODE_ENV = "production", GATSBY_ENV = "production"}
 
