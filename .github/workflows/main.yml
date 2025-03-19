@@ -32,12 +32,12 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
       - name: Run install
-        run: yarn install
+        run: npm i install
       - name: run typecheck
-        run: yarn run typecheck
+        run: npm run typecheck
       - name: cypress & percy test
         uses: percy/exec-action@v0.3.1
         with:
-          command: "yarn ci"
+          command: "npm run ci"
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
