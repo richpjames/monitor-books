@@ -16,11 +16,13 @@
     "typecheck": "tsc --noEmit",
     "functions": "cd functions && npm i && cd ..",
     "cypress": "npx cypress run",
-    "ci": "start-server-and-test 'npm run develop' http://127.0.0.1:8888/books 'npm run cypress'"
+    "ci": "start-server-and-test 'npm run develop' localhost:8000/books 'npm run cypress'"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
+    "@percy/cli": "^1.30.7",
+    "@percy/cypress": "^3.1.5",
     "@portabletext/react": "^3.2.1",
     "@sanity/client": "^6.28.3",
     "@sentry/gatsby": "^9.6.0",
