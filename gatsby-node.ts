@@ -1,4 +1,10 @@
-export const createSchemaCustomization = ({ actions }) => {
+import { Actions } from "gatsby";
+
+export const createSchemaCustomization = ({
+  actions,
+}: {
+  actions: Actions;
+}) => {
   const { createTypes } = actions;
 
   // Explicitly define the siteMetadata {} object
@@ -16,7 +22,7 @@ export const createSchemaCustomization = ({ actions }) => {
   
      `);
 };
-export const createPages = ({ actions }) => {
+export const createPages = ({ actions }: { actions: Actions }) => {
   const { createRedirect } = actions;
   createRedirect({
     fromPath: "/",
