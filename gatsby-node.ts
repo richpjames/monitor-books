@@ -1,4 +1,4 @@
-exports.createSchemaCustomization = ({ actions }) => {
+export const createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions;
 
   // Explicitly define the siteMetadata {} object
@@ -16,7 +16,7 @@ exports.createSchemaCustomization = ({ actions }) => {
   
      `);
 };
-exports.createPages = ({ actions }) => {
+export const createPages = ({ actions }) => {
   const { createRedirect } = actions;
   createRedirect({
     fromPath: "/",
