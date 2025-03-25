@@ -56,6 +56,12 @@ const SEO = ({
       link={[
         {
           rel: "icon",
+          type: "image/x-icon", // Add MIME type
+          href: favicon,
+        },
+        {
+          rel: "shortcut icon", // Add fallback
+          type: "image/x-icon",
           href: favicon,
         },
       ]}
