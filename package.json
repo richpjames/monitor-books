@@ -21,6 +21,7 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
+    "@google-cloud/storage": "^7.15.2",
     "@netlify/functions": "^3.0.4",
     "@percy/cli": "^1.30.7",
     "@percy/cypress": "^3.1.5",
@@ -30,6 +31,7 @@
     "@stripe/stripe-js": "^7.0.0",
     "cypress": "^14.2.0",
     "eslint": "^7.32.0",
+    "formidable": "^3.5.2",
     "gatsby": "^5.14.1",
     "gatsby-plugin-emotion": "^8.14.0",
     "gatsby-plugin-image": "^3.14.0",
@@ -50,6 +52,9 @@
   },
   "devDependencies": {
     "@types/node": "^22.14.1",
+    "@types/busboy": "^1.5.4",
+    "@types/formidable": "^3.4.5",
+
     "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.19",
     "typescript": "^5.8.3"
