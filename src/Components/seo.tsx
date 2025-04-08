@@ -12,29 +12,21 @@ import { Helmet } from "react-helmet-async";
 
 const SEO = ({
   description,
-  lang,
-  meta,
+  lang = "en",
+  meta = [],
   title,
 }: {
   description: string;
-  lang: string;
-  meta: any[];
+  lang?: string;
+  meta?: any[];
   title: string;
 }) => {
-  const { site, sanityFavicon } = useStaticQuery(
+  const { site } = useStaticQuery(
     graphql`
       query {
         site {
           siteMetadata {
             title
-          }
-        }
-
-        sanityFavicon {
-          image {
-            asset {
-              publicUrl
-            }
           }
         }
       }
@@ -44,8 +36,6 @@ const SEO = ({
   const metaDescription = description || site.siteMetadata.description;
   const defaultTitle = site.siteMetadata?.title;
 
-  const favicon = sanityFavicon.image.asset.publicUrl;
-
   return (
     <Helmet
       htmlAttributes={{
@@ -53,18 +43,6 @@ const SEO = ({
       }}
       title={title}
       titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : undefined}
-      link={[
-        {
-          rel: "icon",
-          type: "image/x-icon", // Add MIME type
-          href: favicon,
-        },
-        {
-          rel: "shortcut icon", // Add fallback
-          type: "image/x-icon",
-          href: favicon,
-        },
-      ]}
       meta={[
         {
           name: `description`,
@@ -107,11 +85,6 @@ const SEO = ({
       </script>
     </Helmet>
   );
-};
-
-SEO.defaultProps = {
-  lang: `en`,
-  meta: [],
 };
 
 SEO.propTypes = {
