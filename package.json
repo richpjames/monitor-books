@@ -26,7 +26,7 @@
     "@percy/cypress": "^3.1.5",
     "@portabletext/react": "^3.2.1",
     "@sanity/client": "^6.28.3",
-    "@sentry/gatsby": "^9.6.0",
+    "@sentry/gatsby": "^9.13.0",
     "@stripe/stripe-js": "^7.0.0",
     "cypress": "^14.2.0",
     "eslint": "^7.32.0",
