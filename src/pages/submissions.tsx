@@ -24,9 +24,11 @@ const Label = styled.label`
 `;
 
 const SubmissionPage: React.FC<PageProps> = () => {
-  const [uploading, setUploading] = useState(false);
+  const [submissionStatus, setSubmissionStatus] = useState<
+    "error" | "uploading" | "successful" | null
+  >(null);
   const [error, setError] = useState<string | null>(null);
-
+  const uploading = submissionStatus === "uploading";
   const { allSanityBackgroundColours } = useStaticQuery(graphql`
     query {
       allSanityBackgroundColours {
@@ -42,7 +44,7 @@ const SubmissionPage: React.FC<PageProps> = () => {
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 
-    setUploading(true);
+    setSubmissionStatus("uploading");
     setError(null);
 
     try {
@@ -54,16 +56,17 @@ const SubmissionPage: React.FC<PageProps> = () => {
       });
 
       if (!response.ok) {
+        setSubmissionStatus("error");
         throw new Error("Upload failed");
       }
 
       if (event.target instanceof HTMLFormElement) {
         event.target.reset();
       }
+      setSubmissionStatus("successful");
     } catch (err) {
+      setSubmissionStatus("error");
       setError(err instanceof Error ? err.message : "Upload failed");
-    } finally {
-      setUploading(false);
     }
   };
 
@@ -119,9 +122,14 @@ const SubmissionPage: React.FC<PageProps> = () => {
             name="cover-letter"
             aria-label="Upload your cover letter"
           />
-          {error && (
+          {submissionStatus === "error" && (
             <p style={{ color: "red" }} role="alert">
               {error}
+            </p>
+          )}
+          {submissionStatus === "successful" && (
+            <p style={{ color: "green" }} role="alert">
+              Submission successful! Thank you for your submission.
             </p>
           )}
           <button type="submit" disabled={uploading}>
