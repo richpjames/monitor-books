@@ -1,7 +1,6 @@
 import type { HandlerEvent } from "@netlify/functions";
 import { Storage } from "@google-cloud/storage";
 import busboy from "busboy";
-import { uploadValidation } from "../src/utils/uploadValidation";
 
 const storage = new Storage({
   projectId: process.env.GOOGLE_CLOUD_PROJECT,
