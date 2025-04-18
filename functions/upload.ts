@@ -1,6 +1,7 @@
 import type { HandlerEvent } from "@netlify/functions";
 import { Storage } from "@google-cloud/storage";
 import busboy from "busboy";
+import { uploadValidation } from "../src/utils/uploadValidation";
 
 const storage = new Storage({
   projectId: process.env.GOOGLE_CLOUD_PROJECT,
@@ -14,8 +15,7 @@ if (!bucketName) {
 }
 
 export const handler = async (event: HandlerEvent) => {
-  // uploadValidation(event);
-  console.dir(event, { depth: null });
+  uploadValidation(event);
   return new Promise((resolve, reject) => {
     const formData: {
       name?: string;
@@ -60,7 +60,6 @@ export const handler = async (event: HandlerEvent) => {
           .toLowerCase()
           .replace(/[^a-z0-9-]/g, "-");
 
-        console.log({ formData, folderName });
         // Upload each file to the personalized folder
         const uploadPromises = Object.entries(formData.files).map(
           async ([type, fileData]) => {
@@ -83,6 +82,31 @@ export const handler = async (event: HandlerEvent) => {
             };
           }
         );
+
+        // create a json file with the name and email
+        const submitterInfoPath = `${folderName}/info.txt`;
+        const blob = bucket.file(submitterInfoPath);
+        const payload = `Submitter Name: ${formData.name}
+        Email: ${formData.email}
+        Submission Date: ${new Date().toISOString()}`;
+
+        const saveSubmitterInfo = async () => {
+          await blob.save(payload, {
+            contentType: "text/plain",
+            metadata: {
+              submitterName: formData.name,
+              submitterEmail: formData.email,
+            },
+          });
+
+          return {
+            type: "info",
+            path: submitterInfoPath,
+            filename: "info.txt",
+          };
+        };
+
+        uploadPromises.push(saveSubmitterInfo());
 
         const uploadResults = await Promise.all(uploadPromises);
 

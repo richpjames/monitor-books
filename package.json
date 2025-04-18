@@ -12,7 +12,7 @@
     "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
-    "clean": "gatsby clean",
+    "clean": "trash .netlify && gatsby clean",
     "typecheck": "tsc --noEmit",
     "functions": "cd functions && npm i && cd ..",
     "cypress": "npx cypress run",
@@ -54,7 +54,6 @@
     "@types/node": "^22.14.1",
     "@types/busboy": "^1.5.4",
     "@types/formidable": "^3.4.5",
-
     "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.19",
     "typescript": "^5.8.3"

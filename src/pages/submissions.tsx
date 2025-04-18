@@ -128,7 +128,7 @@ const SubmissionPage: React.FC<PageProps> = () => {
             </p>
           )}
           {submissionStatus === "successful" && (
-            <p style={{ color: "green" }} role="alert">
+            <p role="alert">
               Submission successful! Thank you for your submission.
             </p>
           )}
